@@ -134,9 +134,19 @@ def path_field(value: str, *, file: bool = False) -> tuple[QWidget, QLineEdit]:
 
     def browse() -> None:
         result = (
-            QFileDialog.getOpenFileName(widget, "Selecionar arquivo", field.text())[0]
+            QFileDialog.getOpenFileName(
+                widget,
+                tr("Selecionar arquivo"),
+                field.text(),
+                options=QFileDialog.Option.DontUseNativeDialog,
+            )[0]
             if file
-            else QFileDialog.getExistingDirectory(widget, "Selecionar pasta", field.text())
+            else QFileDialog.getExistingDirectory(
+                widget,
+                tr("Selecionar pasta"),
+                field.text(),
+                options=QFileDialog.Option.DontUseNativeDialog,
+            )
         )
         if result:
             field.setText(result)
@@ -231,6 +241,7 @@ def friendly_details(value: Any, level: int = 0, key: str = "") -> str:
         "application_version": "Versão do aplicativo",
         "scheduled_task": "Tarefa do Agendador",
         "shortcuts": "Atalhos",
+        "windows_registration": "Registro Windows",
     }
     indent = "  " * level
     if isinstance(value, dict):
@@ -263,6 +274,7 @@ def friendly_details(value: Any, level: int = 0, key: str = "") -> str:
         "mode",
         "category",
         "reason",
+        "error",
         "component",
         "operation",
         "destination_state",
@@ -295,7 +307,7 @@ class RoutineDialog(QDialog):
         self.config, self.job = config, job
         self.config_paths = getattr(parent, "paths", None)
         self.updated = job
-        self.setWindowTitle(f"Rotina • {job.label}")
+        self.setWindowTitle(tr(f"Rotina • {job.label}"))
         self.resize(750, 700)
         layout = QVBoxLayout(self)
         tabs = QTabWidget()
@@ -307,7 +319,9 @@ class RoutineDialog(QDialog):
         self.enabled = QCheckBox("Habilitar esta rotina")
         self.enabled.setChecked(job.enabled)
         form.addRow(self.enabled)
-        form.addRow("Origem", QLabel(job.origin))
+        origin_label = QLabel(job.origin)
+        origin_label.setProperty("preserveUserText", True)
+        form.addRow("Origem", origin_label)
         script, self.script = path_field(job.script, file=True)
         form.addRow("Extrator", script)
         self.version = QLineEdit(job.script_version)
@@ -710,21 +724,22 @@ class InstallWizard(QWizard):
         self.config = (
             copy.deepcopy(config) if config and config.test_mode else prepare_config(paths, config)
         )
+        install_translation(QApplication.instance(), self.config.language)
         self.installer = installer or Installer(paths)
         self.installed = False
         self.install_task: Task | None = None
         self.changes: list[str] = []
         self.setWindowTitle("Orquestrador • Instalação de teste e atualização")
         self.setWizardStyle(QWizard.WizardStyle.ModernStyle)
-        self.setButtonText(QWizard.WizardButton.NextButton, "Avançar")
-        self.setButtonText(QWizard.WizardButton.BackButton, "Voltar")
-        self.setButtonText(QWizard.WizardButton.CancelButton, "Cancelar")
-        self.setButtonText(QWizard.WizardButton.FinishButton, "Abrir aplicativo")
+        self.setButtonText(QWizard.WizardButton.NextButton, tr("Avançar"))
+        self.setButtonText(QWizard.WizardButton.BackButton, tr("Voltar"))
+        self.setButtonText(QWizard.WizardButton.CancelButton, tr("Cancelar"))
+        self.setButtonText(QWizard.WizardButton.FinishButton, tr("Abrir aplicativo"))
         self.resize(900, 690)
         diagnostic = InstallPage("1. Diagnóstico prévio", self.initial_decision)
         layout = QVBoxLayout(diagnostic)
         current = read_json(self.installer.pointer) if self.installer.pointer.is_file() else {}
-        text = f"Versão atual de teste: {current.get('version', 'não instalada')}\nNova versão: {VERSION}\nSistema: {sys.platform}\nRuntime: {'privado no executável' if getattr(sys, 'frozen', False) else 'modo de desenvolvimento'}\n\nEDIÇÃO DE TESTE ISOLADA\nEscolha uma pasta vazia. Aplicativo, perfil do Edge, relatórios, configurações e logs serão mantidos nessa pasta. A instalação original e suas tarefas permanecem preservadas. O versionamento usa snapshots e hashes internos. Falhas internas acionam reversão automática. Login e VPN são testes operacionais separados."
+        text = f"Versão atual de teste: {current.get('version', tr('não instalada'))}\nNova versão: {VERSION}\nSistema: {sys.platform}\nRuntime: {tr('privado no executável' if getattr(sys, 'frozen', False) else 'modo de desenvolvimento')}\n\nEDIÇÃO DE TESTE ISOLADA\nEscolha uma pasta vazia. Aplicativo, perfil do Edge, relatórios, configurações e logs serão mantidos nessa pasta. A instalação original e suas tarefas permanecem preservadas. O versionamento usa snapshots e hashes internos. Falhas internas acionam reversão automática. Login e VPN são testes operacionais separados."
         label = QLabel(text)
         label.setWordWrap(True)
         layout.addWidget(label)
@@ -764,7 +779,7 @@ class InstallWizard(QWizard):
         self.accounts.addItem("Selecione explicitamente um destino ou use o seletor de pastas", "")
         for account in onedrives():
             self.accounts.addItem(
-                f"{account['kind']} • {account['account']} • {account['path']}", account["path"]
+                f"{tr(account['kind'])} • {account['account']} • {account['path']}", account["path"]
             )
         form.addRow("Contas detectadas", self.accounts)
         form.addRow(
@@ -867,7 +882,7 @@ class InstallWizard(QWizard):
                 self.refresh_routines()
             return True
         except Exception as exc:
-            QMessageBox.warning(self, "Pasta de teste", str(exc))
+            QMessageBox.warning(self, tr("Pasta de teste"), tr(str(exc)))
             return False
 
     def initial_decision(self) -> bool:
@@ -896,7 +911,11 @@ class InstallWizard(QWizard):
 
     def import_legacy(self) -> None:
         filename = QFileDialog.getOpenFileName(
-            self, "Configuração da instalação existente", "", "JSON (*.json)"
+            self,
+            tr("Configuração da instalação existente"),
+            "",
+            tr("JSON (*.json)"),
+            options=QFileDialog.Option.DontUseNativeDialog,
         )[0]
         if not filename:
             return
@@ -911,13 +930,15 @@ class InstallWizard(QWizard):
             self.refresh_routines()
             show_detail(self, "Prévia da migração", self.changes)
         except Exception as exc:
-            QMessageBox.warning(self, "Migração não aplicada", str(exc))
+            QMessageBox.warning(self, tr("Migração não aplicada"), tr(str(exc)))
 
     def apply_base(self) -> None:
         folder = self.accounts.currentData()
         if not folder:
             QMessageBox.information(
-                self, "Destino", "Selecione uma conta ou escolha cada pasta na próxima etapa."
+                self,
+                tr("Destino"),
+                tr("Selecione uma conta ou escolha cada pasta na próxima etapa."),
             )
             return
         for job in self.config.routines:
@@ -942,7 +963,7 @@ class InstallWizard(QWizard):
                 job.target = str(candidate / filename) if filename else job.target
             return True
         except Exception as exc:
-            QMessageBox.warning(self, "Destino inválido", str(exc))
+            QMessageBox.warning(self, tr("Destino inválido"), tr(str(exc)))
             return False
 
     def refresh_routines(self) -> None:
@@ -978,7 +999,7 @@ class InstallWizard(QWizard):
             validate(self.config)
             return True
         except Exception as exc:
-            QMessageBox.warning(self, "Revisão", str(exc))
+            QMessageBox.warning(self, tr("Revisão"), tr(str(exc)))
             return False
 
     def page_changed(self, page: int) -> None:
@@ -1023,7 +1044,7 @@ class InstallWizard(QWizard):
         self.install_bar.setRange(0, 1)
         self.install_bar.setValue(1)
         self.button(QWizard.WizardButton.FinishButton).setEnabled(True)
-        self.install_text.appendPlainText(f"Versão instalada: {result}")
+        self.install_text.appendPlainText(tr(f"Versão instalada: {result}"))
 
     def install_failed(self, error: str) -> None:
         self.install_bar.setRange(0, 1)
@@ -1073,7 +1094,7 @@ class MainWindow(QMainWindow):
         self._log_stamp: tuple[str, int, int] | None = None
         self._last_stage = ""
         self.setWindowTitle(
-            f"CAIO • Teste {VERSION}" if self.config.test_mode else f"CAIO • {VERSION}"
+            tr(f"CAIO • Teste {VERSION}") if self.config.test_mode else f"CAIO • {VERSION}"
         )
         self.resize(1400, 940)
         self.setMinimumSize(980, 720)
@@ -1219,7 +1240,7 @@ class MainWindow(QMainWindow):
         self.navigation.setCurrentRow(index)
         self.page_title.setText(tr(self.tabs.tabText(index)))
         self.page_description.setText(tr(self.page_descriptions[index]))
-        product = f"CAIO • Teste {VERSION}" if self.config.test_mode else f"CAIO • {VERSION}"
+        product = tr(f"CAIO • Teste {VERSION}") if self.config.test_mode else f"CAIO • {VERSION}"
         self.setWindowTitle(f"{tr(self.tabs.tabText(index))} — {product}")
         if index == 3:
             self.refresh_history()
@@ -1623,6 +1644,7 @@ class MainWindow(QMainWindow):
         targets = QHBoxLayout()
         targets.addWidget(QLabel(tr("Destino do teste de conectividade/VPN")))
         self.connectivity_job = QComboBox()
+        self.connectivity_job.setProperty("preserveUserText", True)
         for job in self.config.routines:
             if job.requires_browser:
                 self.connectivity_job.addItem(job.label, job.id)
@@ -1957,11 +1979,17 @@ class MainWindow(QMainWindow):
     def import_script_folder(self) -> None:
         if not self.confirm_settings_navigation():
             return
-        root = QFileDialog.getExistingDirectory(self, tr("Selecionar pasta do script"))
+        root = QFileDialog.getExistingDirectory(
+            self, tr("Selecionar pasta do script"), options=QFileDialog.Option.DontUseNativeDialog
+        )
         if not root:
             return
         entry = QFileDialog.getOpenFileName(
-            self, tr("Selecionar entrada Python"), root, "Python (*.py)"
+            self,
+            tr("Selecionar entrada Python"),
+            root,
+            tr("Python (*.py)"),
+            options=QFileDialog.Option.DontUseNativeDialog,
         )[0]
         if not entry:
             return
@@ -2031,7 +2059,11 @@ class MainWindow(QMainWindow):
         folder = self.paths.root / "extras/trash"
         folder.mkdir(parents=True, exist_ok=True)
         record = QFileDialog.getOpenFileName(
-            self, tr("Restaurar cadastro da lixeira"), str(folder), "JSON (*.json)"
+            self,
+            tr("Restaurar cadastro da lixeira"),
+            str(folder),
+            tr("JSON (*.json)"),
+            options=QFileDialog.Option.DontUseNativeDialog,
         )[0]
         if not record:
             return
@@ -2049,7 +2081,11 @@ class MainWindow(QMainWindow):
         if row < 0:
             return
         target = QFileDialog.getSaveFileName(
-            self, tr("Exportar rotina"), "rotina.zip", "ZIP (*.zip)"
+            self,
+            tr("Exportar rotina"),
+            "rotina.zip",
+            tr("ZIP (*.zip)"),
+            options=QFileDialog.Option.DontUseNativeDialog,
         )[0]
         if not target:
             return
@@ -2069,7 +2105,11 @@ class MainWindow(QMainWindow):
         if row < 0:
             return
         file = QFileDialog.getOpenFileName(
-            self, tr("Selecionar script candidato"), "", "Python (*.py)"
+            self,
+            tr("Selecionar script candidato"),
+            "",
+            tr("Python (*.py)"),
+            options=QFileDialog.Option.DontUseNativeDialog,
         )[0]
         if not file:
             return
@@ -2142,7 +2182,7 @@ class MainWindow(QMainWindow):
                         row["last_at"] or row["at"],
                     )
                 ):
-                    set_cell(table, index, col, value)
+                    set_cell(table, index, col, value, localize=col not in {1, 3})
 
         def detail(row: int, column: int) -> None:
             item = table.item(row, 3)
@@ -2166,7 +2206,11 @@ class MainWindow(QMainWindow):
 
     def support_package(self) -> None:
         target = QFileDialog.getSaveFileName(
-            self, tr("Pacote de suporte"), "suporte.json", "JSON (*.json);;Excel (*.xlsx)"
+            self,
+            tr("Pacote de suporte"),
+            "suporte.json",
+            tr("JSON (*.json);;Excel (*.xlsx)"),
+            options=QFileDialog.Option.DontUseNativeDialog,
         )[0]
         if not target:
             return
@@ -2295,7 +2339,8 @@ class MainWindow(QMainWindow):
             self,
             tr("Selecionar registro de arquivo rejeitado"),
             str(self.paths.root / "rejected"),
-            "JSON (*.json)",
+            tr("JSON (*.json)"),
+            options=QFileDialog.Option.DontUseNativeDialog,
         )[0]
         if not filename:
             return
@@ -2474,7 +2519,7 @@ class MainWindow(QMainWindow):
             configure_table(table)
             for index, record in enumerate(records):
                 for column, key in enumerate(("at", "version", "notes", "sha256", "source")):
-                    set_cell(table, index, column, record.get(key, ""))
+                    set_cell(table, index, column, record.get(key, ""), localize=key == "at")
             layout.addWidget(table)
 
             def compare() -> None:
@@ -2567,7 +2612,9 @@ class MainWindow(QMainWindow):
     def background(self, callback: Callable[[], Any], details: bool = False) -> None:
         if self.task and self.task.isRunning():
             QMessageBox.information(
-                self, "Operação em andamento", "Acompanhe a operação atual antes de iniciar outra."
+                self,
+                tr("Operação em andamento"),
+                tr("Acompanhe a operação atual antes de iniciar outra."),
             )
             return
         self.status_label.setText(tr("Processando… acompanhe o log acima."))
@@ -2626,11 +2673,12 @@ class MainWindow(QMainWindow):
             show_detail(self, "Resultado da operação", value)
 
     def task_error(self, error: str) -> None:
+        error = tr(error)
         self.progress.hide()
         self.append_log(error)
         self.set_status(error, "error")
         QApplication.alert(self, 15000)
-        QMessageBox.warning(self, "Operação não concluída", error)
+        QMessageBox.warning(self, tr("Operação não concluída"), tr(error))
         self.refresh()
 
     def append_log(self, text: str) -> None:
@@ -2641,7 +2689,7 @@ class MainWindow(QMainWindow):
             scroll.setValue(position)
 
     def set_status(self, text: str, severity: str = "") -> None:
-        self.status_label.setText(text)
+        self.status_label.setText(tr(text))
         self.status_label.setProperty("severity", severity)
         self.status_label.style().unpolish(self.status_label)
         self.status_label.style().polish(self.status_label)
@@ -2781,10 +2829,16 @@ class MainWindow(QMainWindow):
         key = self.path_key.currentText()
         value = (
             QFileDialog.getOpenFileName(
-                self, "Selecionar executável do driver", "", "Executáveis (*.exe)"
+                self,
+                tr("Selecionar executável do driver"),
+                "",
+                tr("Executáveis (*.exe)"),
+                options=QFileDialog.Option.DontUseNativeDialog,
             )[0]
             if key == "driver"
-            else QFileDialog.getExistingDirectory(self, "Selecionar pasta")
+            else QFileDialog.getExistingDirectory(
+                self, tr("Selecionar pasta"), options=QFileDialog.Option.DontUseNativeDialog
+            )
         )
         if value:
             data = json.loads(self.settings_json.toPlainText())
@@ -2801,7 +2855,11 @@ class MainWindow(QMainWindow):
 
     def export_settings(self) -> None:
         filename = QFileDialog.getSaveFileName(
-            self, "Exportar preferências", "preferencias.json", "JSON (*.json)"
+            self,
+            tr("Exportar preferências"),
+            "preferencias.json",
+            tr("JSON (*.json)"),
+            options=QFileDialog.Option.DontUseNativeDialog,
         )[0]
         if filename:
             atomic_json(Path(filename), portable(load(self.paths)))
@@ -2809,16 +2867,22 @@ class MainWindow(QMainWindow):
     def import_settings(self) -> None:
         if not self.confirm_settings_navigation():
             return
-        filename = QFileDialog.getOpenFileName(self, "Importar preferências", "", "JSON (*.json)")[
-            0
-        ]
+        filename = QFileDialog.getOpenFileName(
+            self,
+            tr("Importar preferências"),
+            "",
+            tr("JSON (*.json)"),
+            options=QFileDialog.Option.DontUseNativeDialog,
+        )[0]
         if not filename:
             return
         try:
             candidate, changes = import_preview(load(self.paths), read_json(Path(filename)))
             show_detail(self, "Prévia das alterações", changes)
             if (
-                QMessageBox.question(self, "Aplicar importação", "Aplicar as alterações exibidas?")
+                QMessageBox.question(
+                    self, tr("Aplicar importação"), tr("Aplicar as alterações exibidas?")
+                )
                 == QMessageBox.StandardButton.Yes
             ):
                 self.write_config(candidate)
@@ -2826,7 +2890,11 @@ class MainWindow(QMainWindow):
             self.task_error(str(exc))
 
     def discover_jobs(self) -> None:
-        folder = QFileDialog.getExistingDirectory(self, "Localizar extratores adicionais")
+        folder = QFileDialog.getExistingDirectory(
+            self,
+            tr("Localizar extratores adicionais"),
+            options=QFileDialog.Option.DontUseNativeDialog,
+        )
         if folder:
             config = load(self.paths)
             additions = discover(config, Path(folder))
@@ -2840,7 +2908,11 @@ class MainWindow(QMainWindow):
 
     def register_script(self) -> None:
         filename = QFileDialog.getOpenFileName(
-            self, "Cadastrar extrator Python", "", "Python (*.py)"
+            self,
+            tr("Cadastrar extrator Python"),
+            "",
+            tr("Python (*.py)"),
+            options=QFileDialog.Option.DontUseNativeDialog,
         )[0]
         if filename:
             config = load(self.paths)
@@ -2880,7 +2952,11 @@ class MainWindow(QMainWindow):
                     "Publicação local disponível para Clientes, Eventos, Procedimentos e ATMS."
                 )
             filename = QFileDialog.getOpenFileName(
-                self, "Publicar/mesclar arquivo local", "", "Excel (*.xlsx)"
+                self,
+                tr("Publicar/mesclar arquivo local"),
+                "",
+                tr("Excel (*.xlsx)"),
+                options=QFileDialog.Option.DontUseNativeDialog,
             )[0]
             if filename:
                 from .operations import file_info, publication_preview
@@ -2960,9 +3036,10 @@ class MainWindow(QMainWindow):
     def export_history(self) -> None:
         filename = QFileDialog.getSaveFileName(
             self,
-            "Exportar diagnóstico sem endpoints/segredos",
+            tr("Exportar diagnóstico sem endpoints/segredos"),
             "diagnostico.xlsx",
-            "Excel (*.xlsx);;JSON (*.json)",
+            tr("Excel (*.xlsx);;JSON (*.json)"),
+            options=QFileDialog.Option.DontUseNativeDialog,
         )[0]
         if filename:
             self.background(lambda: self.store.export(Path(filename)))
@@ -3253,14 +3330,19 @@ class MainWindow(QMainWindow):
 
     def rollback_application(self) -> None:
         folder = QFileDialog.getExistingDirectory(
-            self, "Selecionar backup de aplicativo", str(self.paths.root / "backups/app")
+            self,
+            tr("Selecionar backup de aplicativo"),
+            str(self.paths.root / "backups/app"),
+            options=QFileDialog.Option.DontUseNativeDialog,
         )
         if (
             folder
             and QMessageBox.question(
                 self,
-                "Reverter aplicativo",
-                "Restaurar versão, configuração, estado e tarefa deste backup? A configuração atual será preservada em outro backup.",
+                tr("Reverter aplicativo"),
+                tr(
+                    "Restaurar versão, configuração, estado e tarefa deste backup? A configuração atual será preservada em outro backup."
+                ),
             )
             == QMessageBox.StandardButton.Yes
         ):
@@ -3459,7 +3541,14 @@ class MainWindow(QMainWindow):
                     last.get("id", ""),
                 ]
                 for column, value in enumerate(values):
-                    set_cell(self.panel, row, column, value, record["id"] if column == 0 else None)
+                    set_cell(
+                        self.panel,
+                        row,
+                        column,
+                        value,
+                        record["id"] if column == 0 else None,
+                        localize=column != 0,
+                    )
             busy = active or bool(self.task and self.task.isRunning())
             self.progress.setVisible(busy)
             self.progress.setRange(0, 0 if busy else 1)
@@ -3489,7 +3578,7 @@ class MainWindow(QMainWindow):
                         job.origin,
                     )
                 ):
-                    set_cell(self.routines, row, column, value)
+                    set_cell(self.routines, row, column, value, localize=column not in {0, 5})
             if "history" in snapshot and snapshot.get("history_request") == self._history_committed:
                 self.apply_history(snapshot["history"])
             if "backups" in snapshot:
@@ -3521,7 +3610,7 @@ class MainWindow(QMainWindow):
             self._last_stage = stage
             self.selection_actions()
         except Exception as exc:
-            self.status_label.setText(str(exc))
+            self.status_label.setText(tr(str(exc)))
 
     def deliver_notifications(self, rows: list[dict[str, Any]]) -> None:
         for row in rows:
@@ -3545,8 +3634,10 @@ class MainWindow(QMainWindow):
         ):
             QMessageBox.information(
                 self,
-                "Execução em andamento",
-                "Use Cancelar e aguarde o encerramento controlado, ou minimize para manter a execução.",
+                tr("Execução em andamento"),
+                tr(
+                    "Use Cancelar e aguarde o encerramento controlado, ou minimize para manter a execução."
+                ),
             )
             self.hide()
             return
@@ -3593,11 +3684,13 @@ def launch(paths: Paths, run_detail: str = "") -> int:
     paths.ensure()
     from .native_updates import is_native
 
+    if paths.config.is_file():
+        install_translation(app, load(paths).language)
     native = is_native(paths)
     installer = Installer(paths)
     recovery = "" if native else installer.recover()
     if recovery:
-        QMessageBox.information(None, "Recuperação de instalação", recovery)
+        QMessageBox.information(None, tr("Recuperação de instalação"), tr(recovery))
     current = read_json(installer.pointer) if installer.pointer.is_file() else None
     if not paths.config.is_file() or (
         not native

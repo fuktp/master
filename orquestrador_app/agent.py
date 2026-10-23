@@ -37,18 +37,22 @@ def run_agent(paths: Paths) -> int:
             raise RuntimeError("O monitor exige uma instância QApplication.")
         app = existing_app if existing_app is not None else QApplication(sys.argv[:1])
         app.setQuitOnLastWindowClosed(False)
+        from .i18n import install_translation, tr
+
+        monitor_language = load(paths).language
+        install_translation(app, monitor_language)
         from .notifications import claim, show
         from .ui import icon
         from .windows_identity import set_process_identity
 
         set_process_identity(paths)
         tray = QSystemTrayIcon(icon())
-        tray.setToolTip("Orquestrador • monitor de horários e atualização")
+        tray.setToolTip(tr("Orquestrador • monitor de horários e atualização"))
         menu = QMenu()
-        open_action = QAction("Abrir Orquestrador", menu)
+        open_action = QAction(tr("Abrir Orquestrador"), menu)
         open_action.triggered.connect(lambda: spawn(command("--data-root", str(paths.root))))
         menu.addAction(open_action)
-        pause_action = QAction("Pausar/retomar agendamento", menu)
+        pause_action = QAction(tr("Pausar/retomar agendamento"), menu)
 
         def pause() -> None:
             try:
@@ -67,11 +71,9 @@ def run_agent(paths: Paths) -> int:
         tray.show()
         store = Store(paths.database)
         engine = Engine(paths)
-        from .i18n import install_translation
         from .ui import apply_theme, icon
 
         apply_theme(app)
-        install_translation(app, load(paths).language)
         tray.setIcon(icon())
         planner: Task | None = None
         task: Task | None = None
@@ -134,13 +136,21 @@ def run_agent(paths: Paths) -> int:
                 )
                 return {
                     "restart": restart,
+                    "language": config.language,
                     "due": due,
                     "interval": interval,
                     "notifications": claim(store),
                 }
 
         def observed(value: dict[str, object]) -> None:
-            nonlocal task
+            nonlocal task, monitor_language
+            language = str(value["language"])
+            if language != monitor_language:
+                install_translation(app, language)
+                monitor_language = language
+                tray.setToolTip(tr("Orquestrador • monitor de horários e atualização"))
+                open_action.setText(tr("Abrir Orquestrador"))
+                pause_action.setText(tr("Pausar/retomar agendamento"))
             timer.setInterval(int(str(value["interval"])) * 1000)
             if value["restart"] and not (task and task.isRunning()):
                 tray.hide()

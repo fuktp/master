@@ -2622,5 +2622,1661 @@
   "Verificando execução dos hosts CAIO antes de copiar o runtime": [
     "Checking CAIO host execution before copying the runtime",
     "Verificando la ejecución de los hosts CAIO antes de copiar el entorno de ejecución"
+  ],
+  "Desinstalar": [
+    "Uninstall",
+    "Desinstalar"
+  ],
+  "TESTE ISOLADO": [
+    "ISOLATED TEST",
+    "PRUEBA AISLADA"
+  ],
+  "Configuração": [
+    "Configuration",
+    "Configuración"
+  ],
+  "Aplicar alterações": [
+    "Apply changes",
+    "Aplicar cambios"
+  ],
+  "Orquestrador • Instalação de teste e atualização": [
+    "Orchestrator • Test installation and update",
+    "Orquestador • Instalación de prueba y actualización"
+  ],
+  "1. Diagnóstico prévio": [
+    "1. Preliminary diagnostics",
+    "1. Diagnóstico previo"
+  ],
+  "2. Pasta exclusiva da versão de teste": [
+    "2. Dedicated test version folder",
+    "2. Carpeta exclusiva de la versión de prueba"
+  ],
+  "Pasta de teste": [
+    "Test folder",
+    "Carpeta de prueba"
+  ],
+  "3. Usuário, computador e OneDrive": [
+    "3. User, computer and OneDrive",
+    "3. Usuario, equipo y OneDrive"
+  ],
+  "E-mail corporativo": [
+    "Corporate email",
+    "Correo corporativo"
+  ],
+  "Selecione explicitamente um destino ou use o seletor de pastas": [
+    "Select a destination explicitly or use the folder picker",
+    "Seleccione un destino explícitamente o use el selector de carpetas"
+  ],
+  "Contas detectadas": [
+    "Detected accounts",
+    "Cuentas detectadas"
+  ],
+  "4. Destinos dos arquivos": [
+    "4. File destinations",
+    "4. Destinos de los archivos"
+  ],
+  "5. Rotinas, dependências e horários próprios": [
+    "5. Routines, dependencies and schedules",
+    "5. Rutinas, dependencias y horarios"
+  ],
+  "Instalar monitor de teste no Agendador (agendamento inicialmente pausado)": [
+    "Install the test monitor in Task Scheduler (scheduling initially paused)",
+    "Instalar el monitor de prueba en el Programador de tareas (programación inicialmente pausada)"
+  ],
+  "6. Validação de dependências": [
+    "6. Dependency validation",
+    "6. Validación de dependencias"
+  ],
+  "7. Revisão das alterações": [
+    "7. Review changes",
+    "7. Revisión de los cambios"
+  ],
+  "Aplicar somente na pasta de teste e criar snapshots internos verificáveis": [
+    "Apply only to the test folder and create verifiable internal snapshots",
+    "Aplicar solo en la carpeta de prueba y crear instantáneas internas verificables"
+  ],
+  "8. Instalação, atualização e verificação final": [
+    "8. Installation, update and final checks",
+    "8. Instalación, actualización y verificación final"
+  ],
+  "CAIO • Orquestrador": [
+    "CAIO • Orchestrator",
+    "CAIO • Orquestador"
+  ],
+  "Diagnóstico": [
+    "Diagnostics",
+    "Diagnóstico"
+  ],
+  "Agendador e monitor": [
+    "Task Scheduler and monitor",
+    "Programador de tareas y monitor"
+  ],
+  "Backups de relatórios": [
+    "Report backups",
+    "Copias de seguridad de informes"
+  ],
+  "Versões do aplicativo e armazenamento": [
+    "Application versions and storage",
+    "Versiones de la aplicación y almacenamiento"
+  ],
+  "Selecionar backup de aplicativo": [
+    "Select an application backup",
+    "Seleccionar una copia de seguridad de la aplicación"
+  ],
+  "A interface exige uma instância QApplication.": [
+    "The interface requires a QApplication instance.",
+    "La interfaz requiere una instancia de QApplication."
+  ],
+  "Recuperação de instalação": [
+    "Installation recovery",
+    "Recuperación de la instalación"
+  ],
+  "Rotina • {1}": [
+    "Routine • {1}",
+    "Rutina • {1}"
+  ],
+  "Dependências": [
+    "Dependencies",
+    "Dependencias"
+  ],
+  "Calendário e recuperação": [
+    "Calendar and catch-up",
+    "Calendario y recuperación"
+  ],
+  "Use uma pasta vazia ou uma instalação de teste reconhecida. Nenhum arquivo existente de outra instalação será substituído. É possível voltar ou cancelar antes de aplicar.": [
+    "Use an empty folder or a recognized test installation. Files from another installation will be preserved. You can go back or cancel before applying.",
+    "Use una carpeta vacía o una instalación de prueba reconocida. Se conservarán los archivos de otra instalación. Puede volver o cancelar antes de aplicar."
+  ],
+  "Contas exibidas para identificação. Os destinos desta edição permanecem na pasta de teste.": [
+    "Accounts are shown for identification. This edition's destinations remain inside the test folder.",
+    "Las cuentas se muestran para identificación. Los destinos de esta edición permanecen en la carpeta de prueba."
+  ],
+  "Selecione uma rotina para editar frequência, dias, horários, ordem, dependências e retries.": [
+    "Select a routine to edit frequency, days, times, order, dependencies and retries.",
+    "Seleccione una rutina para editar frecuencia, días, horarios, orden, dependencias y reintentos."
+  ],
+  "O health check de instalação valida somente recursos internos. Antes da primeira extração, use Diagnóstico para verificar Edge/assinatura e Testar login para renovar SSO/MFA.": [
+    "The installation health check validates internal resources only. Before the first extraction, use Diagnostics to check Edge/signatures and Test login to renew SSO/MFA.",
+    "La comprobación de instalación valida solo recursos internos. Antes de la primera extracción, use Diagnóstico para verificar Edge y las firmas, y Probar inicio de sesión para renovar SSO/MFA."
+  ],
+  "A gravação é local. A sincronização do OneDrive/SharePoint não é confirmada pelo aplicativo.": [
+    "Files are written locally. The application does not verify OneDrive/SharePoint synchronization.",
+    "Los archivos se guardan localmente. La aplicación no verifica la sincronización de OneDrive/SharePoint."
+  ],
+  "Configuração da instalação existente": [
+    "Existing installation configuration",
+    "Configuración de la instalación existente"
+  ],
+  "Destinos, perfil, logs e downloads redirecionados ao teste; tarefas e estado de produção preservados.": [
+    "Destinations, profile, logs and downloads redirected to testing; production tasks and state preserved.",
+    "Destinos, perfil, registros y descargas redirigidos a pruebas; tareas y estado de producción conservados."
+  ],
+  "Prévia da migração": [
+    "Migration preview",
+    "Vista previa de la migración"
+  ],
+  "Selecione uma conta ou escolha cada pasta na próxima etapa.": [
+    "Select an account or choose each folder in the next step.",
+    "Seleccione una cuenta o elija cada carpeta en el siguiente paso."
+  ],
+  "Versão instalada: {1}": [
+    "Installed version: {1}",
+    "Versión instalada: {1}"
+  ],
+  "CAIO • Teste {1}": [
+    "CAIO • Test {1}",
+    "CAIO • Prueba {1}"
+  ],
+  "Executar pendentes": [
+    "Run pending routines",
+    "Ejecutar rutinas pendientes"
+  ],
+  "Importar desabilitado": [
+    "Import disabled",
+    "Importar deshabilitada"
+  ],
+  "Restaurar desabilitado": [
+    "Restore disabled",
+    "Restaurar deshabilitada"
+  ],
+  "Abrir destino": [
+    "Open destination",
+    "Abrir destino"
+  ],
+  "Instale o executável pelo wizard antes de gerenciar tarefas reais.": [
+    "Install the executable through the wizard before managing real tasks.",
+    "Instale el ejecutable mediante el asistente antes de gestionar tareas reales."
+  ],
+  "Pasta de trabalho": [
+    "Working directory",
+    "Directorio de trabajo"
+  ],
+  "Duração": [
+    "Duration",
+    "Duración"
+  ],
+  "privado no executável": [
+    "private executable runtime",
+    "entorno privado del ejecutable"
+  ],
+  "modo de desenvolvimento": [
+    "development mode",
+    "modo de desarrollo"
+  ],
+  "Reparar a instalação": [
+    "Repair installation",
+    "Reparar la instalación"
+  ],
+  "Migração não aplicada": [
+    "Migration not applied",
+    "Migración no aplicada"
+  ],
+  "Destino inválido": [
+    "Invalid destination",
+    "Destino no válido"
+  ],
+  "Revise e marque a aplicação das alterações para continuar.": [
+    "Review and confirm the changes to continue.",
+    "Revise y confirme los cambios para continuar."
+  ],
+  "Informe um e-mail válido ou deixe vazio para testes locais.": [
+    "Enter a valid email or leave it empty for local testing.",
+    "Introduzca un correo válido o déjelo vacío para pruebas locales."
+  ],
+  "Revisão": [
+    "Review",
+    "Revisión"
+  ],
+  "Pasta gerenciada inválida.": [
+    "Invalid managed folder.",
+    "Carpeta gestionada no válida."
+  ],
+  "pasta importada": [
+    "imported folder",
+    "carpeta importada"
+  ],
+  "Selecionar executável do driver": [
+    "Select driver executable",
+    "Seleccionar el ejecutable del controlador"
+  ],
+  "Executáveis (*.exe)": [
+    "Executables (*.exe)",
+    "Ejecutables (*.exe)"
+  ],
+  "Cadastre uma rotina de navegador para testar conectividade.": [
+    "Register a browser routine to test connectivity.",
+    "Registre una rutina de navegador para probar la conectividad."
+  ],
+  "Informe a URL da rotina para testar conectividade.": [
+    "Enter the routine URL to test connectivity.",
+    "Introduzca la URL de la rutina para probar la conectividad."
+  ],
+  "Mesma sonda de rede do adaptador KWMS: destino, conexão pública e interfaces VPN. Resposta vazia isolada não confirma VPN.": [
+    "Same network probe as the KWMS adapter: destination, public connection and VPN interfaces. An empty response alone does not confirm VPN connectivity.",
+    "La misma prueba de red del adaptador KWMS: destino, conexión pública e interfaces VPN. Una respuesta vacía aislada no confirma la conectividad VPN."
+  ],
+  "Reverter aplicativo": [
+    "Roll back application",
+    "Revertir la aplicación"
+  ],
+  "interno: snapshots e SHA-256; sem Git": [
+    "internal: snapshots and SHA-256; no Git",
+    "interno: instantáneas y SHA-256; sin Git"
+  ],
+  "Execuções": [
+    "Runs",
+    "Ejecuciones"
+  ],
+  "Escolha a pasta de destino de {1}.": [
+    "Choose the destination folder for {1}.",
+    "Elija la carpeta de destino de {1}."
+  ],
+  "Temporários": [
+    "Temporary files",
+    "Archivos temporales"
+  ],
+  "Perfil do Edge": [
+    "Edge profile",
+    "Perfil de Edge"
+  ],
+  "Sucesso exigido": [
+    "Required success",
+    "Éxito requerido"
+  ],
+  "Validade (minutos)": [
+    "Validity (minutes)",
+    "Validez (minutos)"
+  ],
+  "Tentativas totais": [
+    "Total attempts",
+    "Intentos totales"
+  ],
+  "Espera (s)": [
+    "Wait (s)",
+    "Espera (s)"
+  ],
+  "Orçamento (s)": [
+    "Time budget (s)",
+    "Tiempo disponible (s)"
+  ],
+  "Pacote ZIP (*.zip)": [
+    "ZIP package (*.zip)",
+    "Paquete ZIP (*.zip)"
+  ],
+  "Atualização": [
+    "Update",
+    "Actualización"
+  ],
+  "O desinstalador exige QApplication.": [
+    "The uninstaller requires QApplication.",
+    "El desinstalador requiere QApplication."
+  ],
+  "Recurso em uso por outra execução.": [
+    "Resource in use by another execution.",
+    "Recurso en uso por otra ejecución."
+  ],
+  "em uso (lock do sistema operacional)": [
+    "in use (operating system lock)",
+    "en uso (bloqueo del sistema operativo)"
+  ],
+  "interface/monitor atual": [
+    "current interface/monitor",
+    "interfaz/monitor actual"
+  ],
+  "desenvolvimento em código": [
+    "source development",
+    "desarrollo desde código"
+  ],
+  "RAM (MiB)": [
+    "RAM (MiB)",
+    "RAM (MiB)"
+  ],
+  "execução {1}": [
+    "run {1}",
+    "ejecución {1}"
+  ],
+  "Leitura falhou: {1}": [
+    "Read failed: {1}",
+    "Error de lectura: {1}"
+  ],
+  "Autoteste falhou (código {1}); veja autoteste-interno.log.": [
+    "Self-test failed (code {1}); see autoteste-interno.log.",
+    "La autoprueba falló (código {1}); consulte autoteste-interno.log."
+  ],
+  "Autoteste: {1} • versão {3} • sem rede.": [
+    "Self-test: {1} • version {3} • offline.",
+    "Autoprueba: {1} • versión {3} • sin red."
+  ],
+  "Autoteste excedeu 180 segundos.": [
+    "Self-test exceeded 180 seconds.",
+    "La autoprueba superó los 180 segundos."
+  ],
+  "O ícone CAIO não pôde ser carregado.": [
+    "The CAIO icon could not be loaded.",
+    "No se pudo cargar el icono de CAIO."
+  ],
+  "Orquestrador • monitor de horários e atualização": [
+    "Orchestrator • scheduling and update monitor",
+    "Orquestador • monitor de horarios y actualizaciones"
+  ],
+  "O monitor exige uma instância QApplication.": [
+    "The monitor requires a QApplication instance.",
+    "El monitor requiere una instancia de QApplication."
+  ],
+  "Atualização/manutenção em andamento; aguarde para alterar o agendamento.": [
+    "Update/maintenance in progress; wait before changing the schedule.",
+    "Actualización o mantenimiento en curso; espere antes de modificar la programación."
+  ],
+  "KWMS • Verifique a VPN": [
+    "KWMS • Check the VPN",
+    "KWMS • Verifique la VPN"
+  ],
+  "A edição de teste não abre configurações da instalação original.": [
+    "The test edition does not open the original installation's configuration.",
+    "La edición de prueba no abre la configuración de la instalación original."
+  ],
+  "Componentes obrigatórios da interface não foram construídos.": [
+    "Required interface components were not created.",
+    "No se crearon los componentes obligatorios de la interfaz."
+  ],
+  "Manifesto interno ausente.": [
+    "Internal manifest missing.",
+    "Falta el manifiesto interno."
+  ],
+  "Configuração inicial necessária; abra o wizard do aplicativo.": [
+    "Initial configuration required; open the application wizard.",
+    "Se requiere la configuración inicial; abra el asistente de la aplicación."
+  ],
+  "Falha do SQLite.": [
+    "SQLite failure.",
+    "Error de SQLite."
+  ],
+  "Integridade do payload interno divergiu.": [
+    "Internal payload integrity mismatch.",
+    "La integridad del paquete interno no coincide."
+  ],
+  "Informe início e fim dos horários de silêncio em HH:MM.": [
+    "Enter the start and end of quiet hours in HH:MM.",
+    "Introduzca el inicio y el fin del horario de silencio en HH:MM."
+  ],
+  "Informe o nome do calendário de feriados explicitamente configurado.": [
+    "Enter the name of the explicitly configured holiday calendar.",
+    "Introduzca el nombre del calendario de festivos configurado explícitamente."
+  ],
+  "Configuração desktop deve usar schema_version 2.": [
+    "Desktop configuration must use schema_version 2.",
+    "La configuración de escritorio debe usar schema_version 2."
+  ],
+  "Idioma inválido.": [
+    "Invalid language.",
+    "Idioma no válido."
+  ],
+  "Intervalo entre rotinas deve ficar entre 0 e 3600 segundos.": [
+    "The interval between routines must be between 0 and 3600 seconds.",
+    "El intervalo entre rutinas debe estar entre 0 y 3600 segundos."
+  ],
+  "Informe separador e chave do histórico.": [
+    "Enter the history delimiter and key.",
+    "Introduzca el separador y la clave del historial."
+  ],
+  "A linha de cabeçalho começa em zero.": [
+    "Header row numbering starts at zero.",
+    "La numeración de la fila de encabezado comienza en cero."
+  ],
+  "Importação portátil contém parâmetros de máquina ou desconhecidos.": [
+    "Portable import contains machine-specific or unknown parameters.",
+    "La importación portátil contiene parámetros del equipo o desconocidos."
+  ],
+  "Ciclo nas dependências: {1}": [
+    "Dependency cycle: {1}",
+    "Ciclo en las dependencias: {1}"
+  ],
+  "Pausa temporária precisa incluir fuso horário.": [
+    "A temporary pause must include a time zone.",
+    "La pausa temporal debe incluir una zona horaria."
+  ],
+  "Prazo de limpeza deve ficar entre 1 e 3650 dias.": [
+    "The cleanup period must be between 1 and 3650 days.",
+    "El plazo de limpieza debe estar entre 1 y 3650 días."
+  ],
+  "Identificador de rotina inválido ou duplicado.": [
+    "Invalid or duplicate routine identifier.",
+    "Identificador de rutina no válido o duplicado."
+  ],
+  "Intervalo próprio deve ficar entre 0 e 3600 segundos.": [
+    "The routine interval must be between 0 and 3600 seconds.",
+    "El intervalo de la rutina debe estar entre 0 y 3600 segundos."
+  ],
+  "Alerta sem evolução deve ficar entre 1 e 1440 minutos.": [
+    "The no-progress alert must be between 1 and 1440 minutes.",
+    "La alerta sin progreso debe estar entre 1 y 1440 minutos."
+  ],
+  "Frequência inválida.": [
+    "Invalid frequency.",
+    "Frecuencia no válida."
+  ],
+  "Defina um ou mais horários HH:MM por rotina.": [
+    "Set one or more HH:MM times per routine.",
+    "Defina uno o más horarios HH:MM por rutina."
+  ],
+  "Horários duplicados.": [
+    "Duplicate times.",
+    "Horarios duplicados."
+  ],
+  "Dias devem estar entre 0 (segunda) e 6 (domingo).": [
+    "Days must be between 0 (Monday) and 6 (Sunday).",
+    "Los días deben estar entre 0 (lunes) y 6 (domingo)."
+  ],
+  "Dia inicial ou janela de recuperação inválidos.": [
+    "Invalid start day or catch-up window.",
+    "Día inicial o ventana de recuperación no válidos."
+  ],
+  "O dia inicial semanal precisa estar habilitado.": [
+    "The weekly start day must be enabled.",
+    "El día inicial semanal debe estar habilitado."
+  ],
+  "Timeout e prazo de atualização precisam ser positivos.": [
+    "Timeout and freshness period must be positive.",
+    "El tiempo de espera y el plazo de actualización deben ser positivos."
+  ],
+  "Destino deve ser absoluto.": [
+    "The destination must be an absolute path.",
+    "El destino debe ser una ruta absoluta."
+  ],
+  "Não armazene segredos em variáveis da configuração.": [
+    "Do not store secrets in configuration variables.",
+    "No almacene secretos en las variables de configuración."
+  ],
+  "Variável de runtime reservada.": [
+    "Reserved runtime variable.",
+    "Variable reservada del entorno de ejecución."
+  ],
+  "Retenção precisa preservar ao menos uma versão.": [
+    "Retention must preserve at least one version.",
+    "La retención debe conservar al menos una versión."
+  ],
+  "Origem inexistente: {1}": [
+    "Source does not exist: {1}",
+    "El origen no existe: {1}"
+  ],
+  "Horários por dia: use dias 0–6 e horários HH:MM sem duplicatas.": [
+    "Daily times: use days 0–6 and HH:MM times without duplicates.",
+    "Horarios por día: use días 0–6 y horarios HH:MM sin duplicados."
+  ],
+  "Modo de dependência inválido.": [
+    "Invalid dependency mode.",
+    "Modo de dependencia no válido."
+  ],
+  "Defina janela explícita para sucesso anterior.": [
+    "Set an explicit validity window for prior success.",
+    "Defina una ventana explícita de validez para un éxito anterior."
+  ],
+  "Política de tentativas inválida.": [
+    "Invalid retry policy.",
+    "Política de reintentos no válida."
+  ],
+  "Autenticação aguarda interação; VPN possui duas tentativas internas.": [
+    "Authentication waits for interaction; VPN has two internal attempts.",
+    "La autenticación espera la interacción; la VPN tiene dos intentos internos."
+  ],
+  "Rotina não cadastrada nesta máquina: {1}": [
+    "Routine not registered on this machine: {1}",
+    "Rutina no registrada en este equipo: {1}"
+  ],
+  "Parâmetros de execução não podem vir de importação portátil.": [
+    "Execution parameters cannot come from a portable import.",
+    "Los parámetros de ejecución no pueden proceder de una importación portátil."
+  ],
+  "URL alvo inválida.": [
+    "Invalid target URL.",
+    "URL de destino no válida."
+  ],
+  "URL de diagnóstico inválida.": [
+    "Invalid diagnostic URL.",
+    "URL de diagnóstico no válida."
+  ],
+  "Resolvedor retornou versão incompatível; consultando o mirror oficial.": [
+    "The resolver returned an incompatible version; checking the official mirror.",
+    "El resolvedor devolvió una versión incompatible; consultando el servidor oficial."
+  ],
+  "PowerShell do Windows indisponível para diagnóstico de versão.": [
+    "Windows PowerShell is unavailable for version diagnostics.",
+    "Windows PowerShell no está disponible para el diagnóstico de versión."
+  ],
+  "Falha na consulta de versão pelo Windows.": [
+    "Windows version query failed.",
+    "Error al consultar la versión en Windows."
+  ],
+  "Rotina não cadastrada.": [
+    "Routine not registered.",
+    "Rutina no registrada."
+  ],
+  "O conteúdo excede o limite de linhas do XLSX; exporte em JSON, sem truncamento.": [
+    "Content exceeds the XLSX row limit; export to JSON without truncation.",
+    "El contenido supera el límite de filas de XLSX; expórtelo a JSON sin truncamiento."
+  ],
+  "Arquivo não é um XLSX íntegro.": [
+    "The file is not an intact XLSX workbook.",
+    "El archivo no es un libro XLSX íntegro."
+  ],
+  "Arquivo vazio ou sem linhas de dados.": [
+    "Empty file or no data rows.",
+    "Archivo vacío o sin filas de datos."
+  ],
+  "CRC inválido no XLSX.": [
+    "Invalid XLSX CRC.",
+    "CRC no válido en el XLSX."
+  ],
+  "Identificador de versão inválido.": [
+    "Invalid version identifier.",
+    "Identificador de versión no válido."
+  ],
+  "Backup inválido: tamanho/hash divergentes.": [
+    "Invalid backup: size/hash mismatch.",
+    "Copia de seguridad no válida: el tamaño o el hash no coincide."
+  ],
+  "Extensão da origem difere do contrato de destino.": [
+    "Source extension differs from the destination contract.",
+    "La extensión del origen difiere del contrato de destino."
+  ],
+  "Download parcial não pode ser publicado.": [
+    "A partial download cannot be published.",
+    "No se puede publicar una descarga parcial."
+  ],
+  "Versão de relatório não encontrada.": [
+    "Report version not found.",
+    "Versión del informe no encontrada."
+  ],
+  "Pasta original indisponível.": [
+    "Original folder unavailable.",
+    "Carpeta original no disponible."
+  ],
+  "Chave ausente nas colunas de Eventos.": [
+    "Key missing from Events columns.",
+    "Falta la clave en las columnas de Eventos."
+  ],
+  "Chave de Eventos ausente/inválida na linha {1}; histórico preservado.": [
+    "Missing/invalid Events key on row {1}; history preserved.",
+    "Clave de Eventos ausente o no válida en la fila {1}; historial conservado."
+  ],
+  "Exportação de Eventos sem dados.": [
+    "Events export has no data.",
+    "Exportación de Eventos sin datos."
+  ],
+  "Colunas ou ordem do histórico de Eventos divergentes.": [
+    "Events history columns or order mismatch.",
+    "Las columnas o el orden del historial de Eventos no coinciden."
+  ],
+  "A instalação exige um executável Windows gerado e íntegro.": [
+    "Installation requires a built, intact Windows executable.",
+    "La instalación requiere un ejecutable de Windows generado e íntegro."
+  ],
+  "Atalho do produto disponível somente no Windows.": [
+    "Product shortcuts are available only on Windows.",
+    "Los accesos directos del producto solo están disponibles en Windows."
+  ],
+  "Backup do aplicativo não reconhecido.": [
+    "Application backup not recognized.",
+    "Copia de seguridad de la aplicación no reconocida."
+  ],
+  "Escolha uma pasta absoluta de instalação.": [
+    "Choose an absolute installation path.",
+    "Elija una ruta absoluta de instalación."
+  ],
+  "Criando e verificando backup do aplicativo, configuração, estado e tarefa": [
+    "Creating and verifying a backup of the application, settings, state and task",
+    "Creando y verificando una copia de la aplicación, la configuración, el estado y la tarea"
+  ],
+  "Backup fora do diretório gerenciado.": [
+    "Backup outside the managed directory.",
+    "Copia de seguridad fuera del directorio gestionado."
+  ],
+  "Backup do aplicativo falhou na verificação de integridade.": [
+    "Application backup failed integrity verification.",
+    "La copia de seguridad de la aplicación no superó la verificación de integridad."
+  ],
+  "Preparando nova versão em diretório separado": [
+    "Preparing the new version in a separate directory",
+    "Preparando la nueva versión en un directorio separado"
+  ],
+  "Validando runtime privado e smoke test sem rede nem extrações": [
+    "Validating the private runtime and smoke test without network or extractions",
+    "Validando el entorno privado y la prueba básica sin red ni extracciones"
+  ],
+  "Aplicando configuração e migrações de estado": [
+    "Applying configuration and state migrations",
+    "Aplicando la configuración y las migraciones de estado"
+  ],
+  "Registrando componentes próprios da instalação de teste": [
+    "Registering this test installation's own components",
+    "Registrando los componentes propios de esta instalación de prueba"
+  ],
+  "Verificando configuração, integridade e tarefa após ativação": [
+    "Checking settings, integrity and task after activation",
+    "Verificando la configuración, la integridad y la tarea tras la activación"
+  ],
+  "Instalação concluída; backups e versão anterior preservados": [
+    "Installation complete; backups and previous version preserved",
+    "Instalación completada; copias de seguridad y versión anterior conservadas"
+  ],
+  "Instalação não reconhecida.": [
+    "Installation not recognized.",
+    "Instalación no reconocida."
+  ],
+  "Recuperação automática incompleta; consulte o backup e o diagnóstico local.": [
+    "Automatic recovery incomplete; check the backup and local diagnostics.",
+    "Recuperación automática incompleta; consulte la copia de seguridad y el diagnóstico local."
+  ],
+  "Hash do executável copiado divergiu.": [
+    "Copied executable hash mismatch.",
+    "El hash del ejecutable copiado no coincide."
+  ],
+  "Falha induzida após cópia.": [
+    "Injected failure after copying.",
+    "Fallo inducido tras la copia."
+  ],
+  "Falha induzida no health check.": [
+    "Injected health-check failure.",
+    "Fallo inducido en la comprobación de estado."
+  ],
+  "Falha induzida durante migração.": [
+    "Injected failure during migration.",
+    "Fallo inducido durante la migración."
+  ],
+  "Falha induzida após ativação.": [
+    "Injected failure after activation.",
+    "Fallo inducido tras la activación."
+  ],
+  "Tarefa própria não foi encontrada após a instalação.": [
+    "The installation's own task was not found after setup.",
+    "No se encontró la tarea propia tras la instalación."
+  ],
+  "Falha induzida na verificação final.": [
+    "Injected failure in the final check.",
+    "Fallo inducido en la verificación final."
+  ],
+  "Falha: restaurando automaticamente versão, configuração, estado e tarefa": [
+    "Failure: automatically restoring version, settings, state and task",
+    "Fallo: restaurando automáticamente la versión, la configuración, el estado y la tarea"
+  ],
+  "Script habilitado indisponível: {1}": [
+    "Enabled script unavailable: {1}",
+    "Script habilitado no disponible: {1}"
+  ],
+  "Falha de atualização e de reversão automática; backup preservado.": [
+    "Update and automatic rollback failed; backup preserved.",
+    "Fallaron la actualización y la reversión automática; copia de seguridad conservada."
+  ],
+  "Rotina já cadastrada; use Editar para trocar o script.": [
+    "Routine already registered; use Edit to replace the script.",
+    "Rutina ya registrada; use Editar para cambiar el script."
+  ],
+  "Ação nativa desconhecida.": [
+    "Unknown native action.",
+    "Acción nativa desconocida."
+  ],
+  "Health check ou versão do runtime diverge do pacote; ativação recusada.": [
+    "Health check or runtime version differs from the package; activation refused.",
+    "La comprobación o la versión del entorno difiere del paquete; activación rechazada."
+  ],
+  "Pacote de scripts não reconhecido.": [
+    "Script package not recognized.",
+    "Paquete de scripts no reconocido."
+  ],
+  "Versão inválida no manifesto.": [
+    "Invalid manifest version.",
+    "Versión no válida en el manifiesto."
+  ],
+  "Pacote incompleto ou com manifesto inválido.": [
+    "Incomplete package or invalid manifest.",
+    "Paquete incompleto o con manifiesto no válido."
+  ],
+  "Arquivos não declarados no pacote.": [
+    "Undeclared files in the package.",
+    "Archivos no declarados en el paquete."
+  ],
+  "A verificação de execução dos hosts exige Windows real.": [
+    "Host execution verification requires real Windows.",
+    "La verificación de ejecución de los hosts requiere Windows real."
+  ],
+  "Integridade do pacote divergente: {1}": [
+    "Package integrity mismatch: {1}",
+    "La integridad del paquete no coincide: {1}"
+  ],
+  "O host {1} não concluiu a verificação de execução (código {3}). Nenhuma extração foi iniciada.": [
+    "Host {1} did not complete the execution check (code {3}). No extraction was started.",
+    "El host {1} no completó la comprobación de ejecución (código {3}). No se inició ninguna extracción."
+  ],
+  "Health check do runtime Windows exige Windows; não foi simulado.": [
+    "Windows runtime health check requires Windows; it was not simulated.",
+    "La comprobación del entorno de Windows requiere Windows; no se simuló."
+  ],
+  "Backup de scripts não reconhecido.": [
+    "Script backup not recognized.",
+    "Copia de seguridad de scripts no reconocida."
+  ],
+  "Ícone CAIO ausente no lançador instalado.": [
+    "CAIO icon missing from the installed launcher.",
+    "Falta el icono de CAIO en el iniciador instalado."
+  ],
+  "Integridade do backup divergente.": [
+    "Backup integrity mismatch.",
+    "La integridad de la copia de seguridad no coincide."
+  ],
+  "Instalação cancelada no checkpoint seguro; alterações revertidas.": [
+    "Installation cancelled at a safe checkpoint; changes rolled back.",
+    "Instalación cancelada en un punto seguro; cambios revertidos."
+  ],
+  "Instalação de scripts não reconhecida.": [
+    "Script installation not recognized.",
+    "Instalación de scripts no reconocida."
+  ],
+  "Backup recusou link de diretório em componentes gerenciados.": [
+    "Backup refused a directory link in managed components.",
+    "La copia de seguridad rechazó un enlace de directorio en los componentes gestionados."
+  ],
+  "Versão anterior fora do diretório gerenciado.": [
+    "Previous version outside the managed directory.",
+    "Versión anterior fuera del directorio gestionado."
+  ],
+  "Falha induzida na migração.": [
+    "Injected migration failure.",
+    "Fallo inducido en la migración."
+  ],
+  "Monitor próprio não encontrado após registro.": [
+    "The installation's own monitor was not found after registration.",
+    "No se encontró el monitor propio tras el registro."
+  ],
+  "Há um atalho de outra instalação com o mesmo nome; ele foi preservado.": [
+    "A shortcut from another installation has the same name; it was preserved.",
+    "Hay un acceso directo de otra instalación con el mismo nombre; se conservó."
+  ],
+  "Versão de restauração fora da instalação.": [
+    "Restore version outside the installation.",
+    "Versión de restauración fuera de la instalación."
+  ],
+  "Instalação cancelada durante cópia; versão anterior preservada.": [
+    "Installation cancelled while copying; previous version preserved.",
+    "Instalación cancelada durante la copia; versión anterior conservada."
+  ],
+  "Arquivos copiados: {1} / {3}": [
+    "Files copied: {1} / {3}",
+    "Archivos copiados: {1} / {3}"
+  ],
+  "Use um endereço HTTPS sem credenciais na URL.": [
+    "Use an HTTPS address without credentials in the URL.",
+    "Use una dirección HTTPS sin credenciales en la URL."
+  ],
+  "O hash do ZIP diverge do feed aprovado.": [
+    "ZIP hash differs from the approved feed.",
+    "El hash del ZIP difiere del canal aprobado."
+  ],
+  "Feed inválido ou pacote em outro servidor; revise a origem.": [
+    "Invalid feed or package on another server; review the source.",
+    "Canal no válido o paquete en otro servidor; revise el origen."
+  ],
+  "Feed sem SHA-256 válido.": [
+    "Feed has no valid SHA-256.",
+    "El canal no contiene un SHA-256 válido."
+  ],
+  "Versão do pacote diverge do feed.": [
+    "Package version differs from the feed.",
+    "La versión del paquete difiere del canal."
+  ],
+  "O wizard WinForms exige Windows.": [
+    "The WinForms wizard requires Windows.",
+    "El asistente WinForms requiere Windows."
+  ],
+  "Wizard nativo não encontrado nesta distribuição.": [
+    "Native wizard not found in this distribution.",
+    "No se encontró el asistente nativo en esta distribución."
+  ],
+  "ZIP não contém exatamente um pacote completo do Orquestrador.": [
+    "ZIP must contain exactly one complete Orchestrator package.",
+    "El ZIP debe contener exactamente un paquete completo del Orquestador."
+  ],
+  "O feed exige resposta HTTPS 200 sem redirecionamento.": [
+    "The feed requires an HTTPS 200 response without redirects.",
+    "El canal requiere una respuesta HTTPS 200 sin redirecciones."
+  ],
+  "Pacote excede o limite de tamanho/arquivos.": [
+    "Package exceeds the size/file count limit.",
+    "El paquete supera el límite de tamaño o cantidad de archivos."
+  ],
+  "Espaço insuficiente para preparar atualização e backup.": [
+    "Not enough space to prepare the update and backup.",
+    "No hay espacio suficiente para preparar la actualización y la copia de seguridad."
+  ],
+  "Feed excede o limite.": [
+    "Feed exceeds the limit.",
+    "El canal supera el límite."
+  ],
+  "Download interrompido ou integridade divergente.": [
+    "Download interrupted or integrity mismatch.",
+    "Descarga interrumpida o integridad no coincidente."
+  ],
+  "Caminho inseguro/duplicado no ZIP de atualização.": [
+    "Unsafe/duplicate path in update ZIP.",
+    "Ruta insegura o duplicada en el ZIP de actualización."
+  ],
+  "O pacote exige resposta HTTPS 200 sem redirecionamento.": [
+    "The package requires an HTTPS 200 response without redirects.",
+    "El paquete requiere una respuesta HTTPS 200 sin redirecciones."
+  ],
+  "Download excede o limite do pacote.": [
+    "Download exceeds the package limit.",
+    "La descarga supera el límite del paquete."
+  ],
+  "Identificador de execução inválido.": [
+    "Invalid execution identifier.",
+    "Identificador de ejecución no válido."
+  ],
+  "Defina o destino desta rotina antes de publicar.": [
+    "Set this routine's destination before publishing.",
+    "Defina el destino de esta rutina antes de publicar."
+  ],
+  "Backup não encontrado.": [
+    "Backup not found.",
+    "Copia de seguridad no encontrada."
+  ],
+  "Somente downloads gerenciados podem ir para rejeitados.": [
+    "Only managed downloads can be moved to rejected files.",
+    "Solo las descargas gestionadas pueden moverse al área de rechazados."
+  ],
+  "Falha ao preservar arquivo rejeitado.": [
+    "Failed to preserve the rejected file.",
+    "No se pudo conservar el archivo rechazado."
+  ],
+  "Arquivo fora da pasta revisada.": [
+    "File outside the reviewed folder.",
+    "Archivo fuera de la carpeta revisada."
+  ],
+  "Revise os arquivos sinalizados; exportação cancelada para não transportar segredos.": [
+    "Review the flagged files; export cancelled to avoid transferring secrets.",
+    "Revise los archivos señalados; exportación cancelada para evitar el traslado de secretos."
+  ],
+  "Limpeza fora do diretório gerenciado recusada.": [
+    "Cleanup outside the managed directory refused.",
+    "Limpieza fuera del directorio gestionado rechazada."
+  ],
+  "Arquivo mudou após a prévia; refaça a revisão.": [
+    "File changed after the preview; review it again.",
+    "El archivo cambió tras la vista previa; repita la revisión."
+  ],
+  "Selecione um caminho absoluto.": [
+    "Select an absolute path.",
+    "Seleccione una ruta absoluta."
+  ],
+  "Pasta indisponível: {1}": [
+    "Folder unavailable: {1}",
+    "Carpeta no disponible: {1}"
+  ],
+  "Espaço insuficiente em {1}.": [
+    "Not enough space in {1}.",
+    "No hay espacio suficiente en {1}."
+  ],
+  "Caminho de recurso inválido.": [
+    "Invalid resource path.",
+    "Ruta de recurso no válida."
+  ],
+  "Escolha uma pasta exclusiva para a instalação de teste.": [
+    "Choose a dedicated folder for the test installation.",
+    "Elija una carpeta exclusiva para la instalación de prueba."
+  ],
+  "A pasta de teste não pode ser um atalho de diretório.": [
+    "The test folder cannot be a directory shortcut.",
+    "La carpeta de prueba no puede ser un enlace de directorio."
+  ],
+  "{0} deve ficar dentro da pasta da instalação de teste: {2}": [
+    "{0} must be inside the test installation folder: {2}",
+    "{0} debe estar dentro de la carpeta de instalación de prueba: {2}"
+  ],
+  "Esta edição executa somente configurações de teste isoladas.": [
+    "This edition runs only isolated test configurations.",
+    "Esta edición solo ejecuta configuraciones de prueba aisladas."
+  ],
+  "O aplicativo de teste deve ficar em app na pasta escolhida no wizard.": [
+    "The test application must be inside app in the folder chosen in the wizard.",
+    "La aplicación de prueba debe estar en app dentro de la carpeta elegida en el asistente."
+  ],
+  "O destino não é uma pasta.": [
+    "The destination is not a folder.",
+    "El destino no es una carpeta."
+  ],
+  "Os caminhos de {1} são gerenciados pelo ambiente de teste; use os seletores de pastas.": [
+    "Paths for {1} are managed by the test environment; use the folder pickers.",
+    "Las rutas de {1} son gestionadas por el entorno de prueba; use los selectores de carpetas."
+  ],
+  "A pasta pertence a outra instalação.": [
+    "The folder belongs to another installation.",
+    "La carpeta pertenece a otra instalación."
+  ],
+  "Esta pasta contém arquivos existentes. Selecione uma pasta vazia ou crie uma subpasta de teste. Os arquivos originais serão preservados.": [
+    "This folder contains existing files. Select an empty folder or create a test subfolder. Original files will be preserved.",
+    "Esta carpeta contiene archivos existentes. Seleccione una carpeta vacía o cree una subcarpeta de prueba. Se conservarán los archivos originales."
+  ],
+  "O script precisa ser um arquivo Python existente.": [
+    "The script must be an existing Python file.",
+    "El script debe ser un archivo Python existente."
+  ],
+  "Entrada fora da pasta do script.": [
+    "Entry point outside the script folder.",
+    "Punto de entrada fuera de la carpeta del script."
+  ],
+  "Remova primeiro as dependências que apontam para esta rotina.": [
+    "First remove dependencies pointing to this routine.",
+    "Primero elimine las dependencias que apuntan a esta rutina."
+  ],
+  "Cadastro fora da lixeira gerenciada.": [
+    "Registration outside the managed recycle bin.",
+    "Registro fuera de la papelera gestionada."
+  ],
+  "Cadastro não reconhecido.": [
+    "Registration not recognized.",
+    "Registro no reconocido."
+  ],
+  "Identificador já cadastrado; restauração não substitui rotinas existentes.": [
+    "Identifier already registered; restoration does not replace existing routines.",
+    "Identificador ya registrado; la restauración no sustituye rutinas existentes."
+  ],
+  "Links não são aceitos em pastas de script.": [
+    "Links are not accepted in script folders.",
+    "No se aceptan enlaces en las carpetas de scripts."
+  ],
+  "Pasta excede 2.000 arquivos ou 100 MB; escolha somente os recursos necessários.": [
+    "Folder exceeds 2,000 files or 100 MB; select only the required resources.",
+    "La carpeta supera los 2.000 archivos o 100 MB; seleccione solo los recursos necesarios."
+  ],
+  "Arquivo de versão fora do snapshot.": [
+    "Version file outside the snapshot.",
+    "Archivo de versión fuera de la instantánea."
+  ],
+  "Metadados de snapshot divergentes.": [
+    "Snapshot metadata mismatch.",
+    "Los metadatos de la instantánea no coinciden."
+  ],
+  "Entrada ausente no snapshot.": [
+    "Snapshot entry point missing.",
+    "Falta el punto de entrada en la instantánea."
+  ],
+  "Snapshot de script inválido.": [
+    "Invalid script snapshot.",
+    "Instantánea de script no válida."
+  ],
+  "Snapshot corrompido; versão anterior preservada.": [
+    "Corrupted snapshot; previous version preserved.",
+    "Instantánea dañada; versión anterior conservada."
+  ],
+  "Arquivo mudou durante o snapshot; tente novamente.": [
+    "File changed during the snapshot; try again.",
+    "El archivo cambió durante la instantánea; inténtelo de nuevo."
+  ],
+  "Snapshot de pasta inválido.": [
+    "Invalid folder snapshot.",
+    "Instantánea de carpeta no válida."
+  ],
+  "Link inesperado na área de scripts.": [
+    "Unexpected link in the script area.",
+    "Enlace inesperado en el área de scripts."
+  ],
+  "Página ou tamanho de histórico inválido.": [
+    "Invalid history page or page size.",
+    "Página o tamaño de página del historial no válido."
+  ],
+  "Ordenação inválida.": [
+    "Invalid sort order.",
+    "Orden no válido."
+  ],
+  "Agendador real disponível somente no Windows.": [
+    "The real Task Scheduler is available only on Windows.",
+    "El Programador de tareas real solo está disponible en Windows."
+  ],
+  "XML não pertence a este produto/instalação.": [
+    "XML does not belong to this product/installation.",
+    "El XML no pertenece a este producto o instalación."
+  ],
+  "Nome de tarefa em conflito; tarefa externa preservada.": [
+    "Task name conflict; external task preserved.",
+    "Conflicto en el nombre de la tarea; tarea externa conservada."
+  ],
+  "A pré-verificação do Agendador exige Windows.": [
+    "Task Scheduler preflight requires Windows.",
+    "La comprobación previa del Programador de tareas requiere Windows."
+  ],
+  "A tarefa ainda existe após a remoção.": [
+    "The task still exists after removal.",
+    "La tarea sigue existiendo tras la eliminación."
+  ],
+  "Inventário de tarefas legadas requer Windows.": [
+    "Legacy task inventory requires Windows.",
+    "El inventario de tareas heredadas requiere Windows."
+  ],
+  "Tarefa não reconhecida como legado revisado.": [
+    "Task not recognized as reviewed legacy.",
+    "La tarea no se reconoce como heredada revisada."
+  ],
+  "A tarefa temporária divergiu após registro.": [
+    "The temporary task differed after registration.",
+    "La tarea temporal difiere tras el registro."
+  ],
+  "Recusa de remover tarefa externa.": [
+    "Refusing to remove an external task.",
+    "Se rechaza la eliminación de una tarea externa."
+  ],
+  "Link inesperado na pasta de versões; remoção recusada.": [
+    "Unexpected link in the versions folder; removal refused.",
+    "Enlace inesperado en la carpeta de versiones; eliminación rechazada."
+  ],
+  "Registro de desinstalação pertence a outra instalação; foi preservado.": [
+    "Uninstall registration belongs to another installation; it was preserved.",
+    "El registro de desinstalación pertenece a otra instalación; se conservó."
+  ],
+  "O processo observado não é um monitor próprio; encerramento recusado.": [
+    "The observed process is not this installation's monitor; termination refused.",
+    "El proceso observado no es el monitor propio de esta instalación; cierre rechazado."
+  ],
+  "Não foi possível confirmar a identidade do monitor; feche-o antes de desinstalar.": [
+    "Could not confirm the monitor's identity; close it before uninstalling.",
+    "No se pudo confirmar la identidad del monitor; ciérrelo antes de desinstalar."
+  ],
+  "Registro do backup não pertence a esta instalação.": [
+    "Backup registration does not belong to this installation.",
+    "El registro de la copia de seguridad no pertenece a esta instalación."
+  ],
+  "Item não gerenciado": [
+    "Unmanaged item",
+    "Elemento no gestionado"
+  ],
+  "O Windows não aceitou a identificação do aplicativo CAIO.": [
+    "Windows did not accept the CAIO application identity.",
+    "Windows no aceptó la identidad de la aplicación CAIO."
+  ],
+  "Selecione um arquivo Python existente para esta rotina.": [
+    "Select an existing Python file for this routine.",
+    "Seleccione un archivo Python existente para esta rutina."
+  ],
+  "O script cadastrado não está disponível.": [
+    "The registered script is unavailable.",
+    "El script registrado no está disponible."
+  ],
+  "Extrator encerrou sem publicação validada; sucesso não registrado.": [
+    "Extractor finished without a validated publication; success not recorded.",
+    "El extractor terminó sin publicación validada; éxito no registrado."
+  ],
+  "Defina staged_output para validar e publicar o resultado deste extrator.": [
+    "Set staged_output to validate and publish this extractor's result.",
+    "Defina staged_output para validar y publicar el resultado de este extractor."
+  ],
+  "Resultado adicional fora da área temporária gerenciada.": [
+    "Additional result outside the managed temporary area.",
+    "Resultado adicional fuera del área temporal gestionada."
+  ],
+  "Extrator mudou durante a pausa; retomada bloqueada.": [
+    "Extractor changed while paused; resume blocked.",
+    "El extractor cambió durante la pausa; reanudación bloqueada."
+  ],
+  "Chave ausente: {1}": [
+    "Missing key: {1}",
+    "Falta la clave: {1}"
+  ],
+  "Extraia o ZIP completo antes de abrir o instalador. O payload não foi encontrado.": [
+    "Extract the complete ZIP before opening the installer. The payload was not found.",
+    "Extraiga el ZIP completo antes de abrir el instalador. No se encontró el paquete de la aplicación."
+  ],
+  "Pacote não reconhecido.": [
+    "Package not recognized.",
+    "Paquete no reconocido."
+  ],
+  "Plano de limpeza nao reconhecido.": [
+    "Cleanup plan not recognized.",
+    "Plan de limpieza no reconocido."
+  ],
+  "Link inesperado na pasta da versao.": [
+    "Unexpected link in the version folder.",
+    "Enlace inesperado en la carpeta de la versión."
+  ],
+  "Orquestrador • falha ao abrir": [
+    "Orchestrator • failed to open",
+    "Orquestador • error al abrir"
+  ],
+  "Versão fora da pasta gerenciada.": [
+    "Version outside the managed folder.",
+    "Versión fuera de la carpeta gestionada."
+  ],
+  "A política deste computador restringe WinForms/PowerShell. Solicite avaliação da TI.": [
+    "This computer's policy restricts WinForms/PowerShell. Ask IT to review it.",
+    "La política de este equipo restringe WinForms/PowerShell. Solicite una revisión de TI."
+  ],
+  "Instalacao nao encontrada. Abra 01 - Instalar.vbs primeiro.": [
+    "Installation not found. Open 01 - Instalar.vbs first.",
+    "Instalación no encontrada. Abra primero 01 - Instalar.vbs."
+  ],
+  "Instalacao nao reconhecida. Abra 01 - Instalar.vbs primeiro.": [
+    "Installation not recognized. Open 01 - Instalar.vbs first.",
+    "Instalación no reconocida. Abra primero 01 - Instalar.vbs."
+  ],
+  "Instalação não reconhecida para abertura.": [
+    "Installation not recognized for opening.",
+    "Instalación no reconocida para abrir."
+  ],
+  "O aplicativo não encerrou no prazo. Atualização cancelada; nenhum processo foi forçado a fechar.": [
+    "The application did not exit in time. Update cancelled; no process was forcibly closed.",
+    "La aplicación no se cerró a tiempo. Actualización cancelada; no se forzó el cierre de ningún proceso."
+  ],
+  "Versao nao gerenciada; arquivos preservados.": [
+    "Unmanaged version; files preserved.",
+    "Versión no gestionada; archivos conservados."
+  ],
+  "Manifesto da versão foi alterado; abra o wizard para reparar.": [
+    "The version manifest changed; open the wizard to repair it.",
+    "El manifiesto de la versión cambió; abra el asistente para repararlo."
+  ],
+  "Arquivo mudou depois da confirmacao; versao preservada.": [
+    "File changed after confirmation; version preserved.",
+    "El archivo cambió tras la confirmación; versión conservada."
+  ],
+  "A desinstalacao nao foi concluida. Consulte o diagnostico na pasta logs da instalacao.": [
+    "Uninstallation did not complete. Check diagnostics in the installation's logs folder.",
+    "No se completó la desinstalación. Consulte el diagnóstico en la carpeta logs de la instalación."
+  ],
+  "Versão anterior fora da pasta gerenciada.": [
+    "Previous version outside the managed folder.",
+    "Versión anterior fuera de la carpeta gestionada."
+  ],
+  "Link inesperado nos arquivos da versao.": [
+    "Unexpected link in version files.",
+    "Enlace inesperado en los archivos de la versión."
+  ],
+  "Esta pasta nao e uma instalacao CAIO reconhecida.": [
+    "This folder is not a recognized CAIO installation.",
+    "Esta carpeta no es una instalación CAIO reconocida."
+  ],
+  "O mesmo health check será obrigatório antes e depois da ativação. Falha externa de autenticação/VPN não é usada como critério de rollback.": [
+    "The same health check is required before and after activation. External authentication/VPN failure is not a rollback criterion.",
+    "Se requiere la misma comprobación antes y después de la activación. Un fallo externo de autenticación o VPN no es un criterio de reversión."
+  ],
+  "A recuperação continua em segundo plano; aguarde antes de abrir novamente.": [
+    "Recovery continues in the background; wait before opening again.",
+    "La recuperación continúa en segundo plano; espere antes de volver a abrir."
+  ],
+  "A operação ainda está em execução.": [
+    "The operation is still running.",
+    "La operación sigue en curso."
+  ],
+  "CAIO - Desinstalacao": [
+    "CAIO - Uninstall",
+    "CAIO - Desinstalación"
+  ],
+  "Limpeza fora da pasta de versoes recusada.": [
+    "Cleanup outside the versions folder refused.",
+    "Limpieza fuera de la carpeta de versiones rechazada."
+  ],
+  "Distribuição de scripts não reconhecida.": [
+    "Script distribution not recognized.",
+    "Distribución de scripts no reconocida."
+  ],
+  "O Windows negou a execucao. Este codigo nao distingue permissoes de bloqueio por protecao ou politica. Solicite a verificacao deste executavel pela TI.": [
+    "Windows denied execution. This code does not distinguish permissions from protection or policy blocking. Ask IT to review this executable.",
+    "Windows denegó la ejecución. Este código no distingue los permisos de un bloqueo por protección o política. Solicite a TI que revise este ejecutable."
+  ],
+  "CAIO • Instalação e atualização": [
+    "CAIO • Installation and update",
+    "CAIO • Instalación y actualización"
+  ],
+  "Versao fora da instalacao reconhecida.": [
+    "Version outside the recognized installation.",
+    "Versión fuera de la instalación reconocida."
+  ],
+  "Esta pasta não é uma instalação de teste reconhecida.": [
+    "This folder is not a recognized test installation.",
+    "Esta carpeta no es una instalación de prueba reconocida."
+  ],
+  "Orquestrador • instalação não iniciada": [
+    "Orchestrator • installation not started",
+    "Orquestador • instalación no iniciada"
+  ],
+  "A versao contem arquivos externos; eles foram preservados.": [
+    "The version contains external files; they were preserved.",
+    "La versión contiene archivos externos; se conservaron."
+  ],
+  "Selecione ou crie uma pasta exclusiva para o teste": [
+    "Select or create a dedicated test folder",
+    "Seleccione o cree una carpeta exclusiva para la prueba"
+  ],
+  "Manifesto alterado; repare a instalacao antes de desinstalar.": [
+    "Manifest changed; repair the installation before uninstalling.",
+    "El manifiesto cambió; repare la instalación antes de desinstalar."
+  ],
+  "TESTE ISOLADO • Versão {0} • Runtime privado • Versionamento interno": [
+    "ISOLATED TEST • Version {0} • Private runtime • Internal versioning",
+    "PRUEBA AISLADA • Versión {0} • Entorno privado • Versionado interno"
+  ],
+  "Falha ao iniciar processo. Codigo nativo: {0}": [
+    "Failed to start process. Native code: {0}",
+    "No se pudo iniciar el proceso. Código nativo: {0}"
+  ],
+  "Falha ao iniciar processo. Código nativo: {1}": [
+    "Failed to start process. Native code: {1}",
+    "No se pudo iniciar el proceso. Código nativo: {1}"
+  ],
+  "Executavel: {0}": [
+    "Executable: {0}",
+    "Ejecutable: {0}"
+  ],
+  "Executável: {3}": [
+    "Executable: {3}",
+    "Ejecutable: {3}"
+  ],
+  "Pasta de trabalho: {0}": [
+    "Working directory: {0}",
+    "Directorio de trabajo: {0}"
+  ],
+  "Motivo informado pelo sistema: {0}": [
+    "Reason reported by the system: {0}",
+    "Motivo indicado por el sistema: {0}"
+  ],
+  "Diagnostico: {0}": [
+    "Diagnostics: {0}",
+    "Diagnóstico: {0}"
+  ],
+  "Componente ausente: {0}": [
+    "Missing component: {0}",
+    "Falta el componente: {0}"
+  ],
+  "Pasta de trabalho ausente: {0}": [
+    "Missing working directory: {0}",
+    "Falta el directorio de trabajo: {0}"
+  ],
+  "Verifique as permissões e os registros de proteção/políticas do Windows para este executável.": [
+    "Check permissions and Windows protection/policy logs for this executable.",
+    "Compruebe los permisos y los registros de protección o políticas de Windows para este ejecutable."
+  ],
+  "Manifesto mudou depois da confirmacao; arquivos preservados.": [
+    "The manifest changed after confirmation; files preserved.",
+    "El manifiesto cambió tras la confirmación; archivos conservados."
+  ],
+  "O identificador do processo foi reutilizado. Nenhum processo foi encerrado.": [
+    "The process identifier was reused. No process was terminated.",
+    "El identificador del proceso se reutilizó. No se cerró ningún proceso."
+  ],
+  "Recurso indisponível": [
+    "Resource unavailable",
+    "Recurso no disponible"
+  ],
+  "Versão atual de teste: {0}": [
+    "Current test version: {0}",
+    "Versión de prueba actual: {0}"
+  ],
+  "Nova versão: {0}": [
+    "New version: {0}",
+    "Nueva versión: {0}"
+  ],
+  "Sistema: {0}": [
+    "System: {0}",
+    "Sistema: {0}"
+  ],
+  "Runtime: {0}": [
+    "Runtime: {0}",
+    "Entorno de ejecución: {0}"
+  ],
+  "Versão atual: {0}": [
+    "Current version: {0}",
+    "Versión actual: {0}"
+  ],
+  "Versão nova: {0}": [
+    "New version: {0}",
+    "Nueva versión: {0}"
+  ],
+  "Pasta: {0}": [
+    "Folder: {0}",
+    "Carpeta: {0}"
+  ],
+  "Destino: {0}": [
+    "Destination: {0}",
+    "Destino: {0}"
+  ],
+  "Usuário: {0}": [
+    "User: {0}",
+    "Usuario: {0}"
+  ],
+  "Computador: {0}": [
+    "Computer: {0}",
+    "Equipo: {0}"
+  ],
+  "Idioma de execução: {0}": [
+    "Execution language mode: {0}",
+    "Modo de lenguaje de ejecución: {0}"
+  ],
+  "Dados, configurações, scripts adicionais e último sucesso são preservados nas atualizações.": [
+    "Data, settings, additional scripts and last success are preserved during updates.",
+    "Los datos, la configuración, los scripts adicionales y el último éxito se conservan durante las actualizaciones."
+  ],
+  "O parâmetro Bypass afeta apenas este processo. Políticas da organização, Smart App Control, antivírus e Windows Script Host continuam aplicáveis. Nenhuma política do computador será alterada.": [
+    "The Bypass parameter affects only this process. Organization policies, Smart App Control, antivirus and Windows Script Host still apply. No computer policy will be changed.",
+    "El parámetro Bypass solo afecta a este proceso. Siguen vigentes las políticas de la organización, Smart App Control, el antivirus y Windows Script Host. No se modificará ninguna política del equipo."
+  ],
+  "Backup: backups\\app (verificação SHA-256 obrigatória)": [
+    "Backup: backups\\app (SHA-256 verification required)",
+    "Copia de seguridad: backups\\app (verificación SHA-256 obligatoria)"
+  ],
+  "Health check offline antes/depois; ativação por ponteiro; rollback automático em falha interna.": [
+    "Offline health check before/after; pointer activation; automatic rollback on internal failure.",
+    "Comprobación sin red antes y después; activación mediante puntero; reversión automática ante un fallo interno."
+  ],
+  "EDIÇÃO DE TESTE ISOLADA": [
+    "ISOLATED TEST EDITION",
+    "EDICIÓN DE PRUEBA AISLADA"
+  ],
+  "Escolha uma pasta vazia. Aplicativo, perfil do Edge, relatórios, configurações e logs serão mantidos nessa pasta. A instalação original e suas tarefas permanecem preservadas. O versionamento usa snapshots e hashes internos. Falhas internas acionam reversão automática. Login e VPN são testes operacionais separados.": [
+    "Choose an empty folder. The application, Edge profile, reports, settings and logs will be kept in that folder. The original installation and its tasks are preserved. Versioning uses internal snapshots and hashes. Internal failures trigger automatic rollback. Login and VPN are separate operational tests.",
+    "Elija una carpeta vacía. La aplicación, el perfil de Edge, los informes, la configuración y los registros se guardarán en esa carpeta. Se conservan la instalación original y sus tareas. El versionado usa instantáneas y hashes internos. Los fallos internos activan la reversión automática. El inicio de sesión y la VPN se prueban por separado."
+  ],
+  "Consulte acima o resultado da reversão. A conversão não será marcada como instalada.": [
+    "See the rollback result above. The conversion will not be marked as installed.",
+    "Consulte arriba el resultado de la reversión. La conversión no se marcará como instalada."
+  ],
+  "A versão anterior permanece disponível pelo atalho do produto.": [
+    "The previous version remains available through the product shortcut.",
+    "La versión anterior sigue disponible mediante el acceso directo del producto."
+  ],
+  "Script indisponível: {1}": [
+    "Script unavailable: {1}",
+    "Script no disponible: {1}"
+  ],
+  "Destino indisponível; corrija antes de executar: {1}": [
+    "Destination unavailable; correct it before running: {1}",
+    "Destino no disponible; corríjalo antes de ejecutar: {1}"
+  ],
+  "Preferências: {1}": [
+    "Preferences: {1}",
+    "Preferencias: {1}"
+  ],
+  "Verificação de assinatura do EdgeDriver não aprovada: {1}": [
+    "EdgeDriver signature verification not approved: {1}",
+    "Verificación de firma de EdgeDriver no aprobada: {1}"
+  ],
+  "{0}: concluída. Abra o detalhe da execução.": [
+    "{0}: completed. Open the run details.",
+    "{0}: completada. Abra los detalles de la ejecución."
+  ],
+  "{0}: pendente. Abra o detalhe da execução.": [
+    "{0}: pending. Open the run details.",
+    "{0}: pendiente. Abra los detalles de la ejecución."
+  ],
+  "{0}: cancelada. Abra o detalhe da execução.": [
+    "{0}: cancelled. Open the run details.",
+    "{0}: cancelada. Abra los detalles de la ejecución."
+  ],
+  "{0}: falhou. Abra o detalhe da execução.": [
+    "{0}: failed. Open the run details.",
+    "{0}: falló. Abra los detalles de la ejecución."
+  ],
+  "{0}: sem evolução recente. Confira etapa e processos; nenhum processo foi encerrado automaticamente.": [
+    "{0}: no recent progress. Check the stage and processes; no process was automatically terminated.",
+    "{0}: sin progreso reciente. Revise la etapa y los procesos; no se cerró ningún proceso automáticamente."
+  ],
+  "recuperação {1}; próxima tentativa em {3} s": [
+    "recovering {1}; next attempt in {3} s",
+    "recuperación {1}; próximo intento en {3} s"
+  ],
+  "fila: próxima rotina em {1} s": [
+    "queue: next routine in {1} s",
+    "cola: próxima rutina en {1} s"
+  ],
+  "[Conteúdo completo: planilha Conteúdo longo; linha {1}; campo {3}; {5} partes]": [
+    "[Full content: Long content sheet; row {1}; field {3}; {5} parts]",
+    "[Contenido completo: hoja Contenido largo; fila {1}; campo {3}; {5} partes]"
+  ],
+  "Eventos: {1} chaves com conteúdo divergente. Histórico preservado; revise os conflitos antes de publicar.": [
+    "Events: {1} keys with conflicting content. History preserved; review conflicts before publishing.",
+    "Eventos: {1} claves con contenido diferente. Historial conservado; revise los conflictos antes de publicar."
+  ],
+  "{0}: aguardando; pausa no próximo checkpoint seguro": [
+    "{0}: waiting; pause at the next safe checkpoint",
+    "{0}: esperando; pausa en el próximo punto seguro"
+  ],
+  "{0}: concluída": [
+    "{0}: completed",
+    "{0}: completada"
+  ],
+  "CAIO desinstalado. Configuracao, relatorios, historicos, scripts e backups foram preservados em: {0}": [
+    "CAIO uninstalled. Settings, reports, history, scripts and backups were preserved in: {0}",
+    "CAIO desinstalado. La configuración, los informes, el historial, los scripts y las copias de seguridad se conservaron en: {0}"
+  ],
+  "Pastas nao verificadas foram preservadas: {0}": [
+    "Unverified folders were preserved: {0}",
+    "Se conservaron las carpetas no verificadas: {0}"
+  ],
+  "CAIO desinstalado. Os dados, backups e arquivos do aplicativo foram preservados conforme sua escolha em: {0}": [
+    "CAIO uninstalled. Data, backups and application files were preserved as requested in: {0}",
+    "CAIO desinstalado. Los datos, las copias de seguridad y los archivos de la aplicación se conservaron según su elección en: {0}"
+  ],
+  "Os componentes do CAIO ja foram removidos. Os dados preservados continuam em: {0}": [
+    "CAIO components have already been removed. Preserved data remains in: {0}",
+    "Los componentes de CAIO ya se eliminaron. Los datos conservados permanecen en: {0}"
+  ],
+  "Os dados e backups foram preservados. Execute 03 - Desinstalar CAIO.vbs novamente para tentar concluir.": [
+    "Data and backups were preserved. Run 03 - Desinstalar CAIO.vbs again to try to finish.",
+    "Se conservaron los datos y las copias de seguridad. Ejecute de nuevo 03 - Desinstalar CAIO.vbs para intentar finalizar."
+  ],
+  "O runtime não retornou diagnóstico (código {0}). Verifique bloqueios de execução e dependências. Registro: {1}": [
+    "The runtime returned no diagnostics (code {0}). Check execution blocks and dependencies. Record: {1}",
+    "El entorno no devolvió un diagnóstico (código {0}). Compruebe los bloqueos de ejecución y las dependencias. Registro: {1}"
+  ],
+  "Processo terminou com código {0}.": [
+    "Process exited with code {0}.",
+    "El proceso terminó con el código {0}."
+  ],
+  "Windows negou a execução": [
+    "Windows denied execution",
+    "Windows denegó la ejecución"
+  ],
+  "Registro Windows": [
+    "Windows registration",
+    "Registro de Windows"
+  ],
+  "corporativa": [
+    "corporate",
+    "corporativa"
+  ],
+  "pessoal": [
+    "personal",
+    "personal"
+  ],
+  "tipo não confirmado": [
+    "type unconfirmed",
+    "tipo sin confirmar"
+  ],
+  "Falha ao iniciar processo. Código nativo: {1}\nExecutável: {3}\nPasta de trabalho: {5}\nMotivo informado pelo sistema: {7}\nVerifique as permissões e os registros de proteção/políticas do Windows para este executável.": [
+    "Failed to start process. Native code: {1}\nExecutable: {3}\nWorking directory: {5}\nReason reported by the system: {7}\nCheck permissions and Windows protection/policy logs for this executable.",
+    "No se pudo iniciar el proceso. Código nativo: {1}\nEjecutable: {3}\nDirectorio de trabajo: {5}\nMotivo indicado por el sistema: {7}\nCompruebe los permisos y los registros de protección o políticas de Windows para este ejecutable."
+  ],
+  "A configuração mudou em outro processo. Recarregue e revise suas alterações antes de salvar.": [
+    "Configuration changed in another process. Reload and review your changes before saving.",
+    "La configuración cambió en otro proceso. Vuelva a cargarla y revise sus cambios antes de guardar."
+  ],
+  "Tempo limite na verificação de conectividade.": [
+    "Connectivity check timed out.",
+    "Se agotó el tiempo de la comprobación de conectividad."
+  ],
+  "Falha de integridade ao copiar o arquivo.": [
+    "File copy integrity check failed.",
+    "Falló la comprobación de integridad al copiar el archivo."
+  ],
+  "Não foi possível criar o Job Object da execução.": [
+    "Could not create the execution Job Object.",
+    "No se pudo crear el Job Object de la ejecución."
+  ],
+  "Não foi possível proteger os subprocessos próprios no Windows.": [
+    "Could not protect this application's own subprocesses on Windows.",
+    "No se pudieron proteger los subprocesos propios de esta aplicación en Windows."
+  ],
+  "Recurso do aplicativo ausente: {1}": [
+    "Application resource missing: {1}",
+    "Falta el recurso de la aplicación: {1}"
+  ],
+  "Cancelado em checkpoint seguro; arquivo anterior preservado.": [
+    "Cancelled at a safe checkpoint; previous file preserved.",
+    "Cancelado en un punto seguro; archivo anterior conservado."
+  ],
+  "Cancelado durante pausa segura.": [
+    "Cancelled during a safe pause.",
+    "Cancelado durante una pausa segura."
+  ],
+  "Sessão requer interação. Abra Testar login no aplicativo.": [
+    "The session requires interaction. Open Test login in the application.",
+    "La sesión requiere interacción. Abra Probar inicio de sesión en la aplicación."
+  ],
+  "Indisponibilidade HTTP do servidor confirmada.": [
+    "Server HTTP unavailability confirmed.",
+    "Se confirmó la indisponibilidad HTTP del servidor."
+  ],
+  "Falha nas conexões pública e do destino; verifique a conectividade.": [
+    "Public and destination connections failed; check connectivity.",
+    "Fallaron las conexiones pública y de destino; compruebe la conectividad."
+  ],
+  "Autenticação necessária; use Testar login.": [
+    "Authentication required; use Test login.",
+    "Se requiere autenticación; use Probar inicio de sesión."
+  ],
+  "O destino apresentou erro HTTP de servidor antes da extração.": [
+    "The destination returned a server HTTP error before extraction.",
+    "El destino devolvió un error HTTP del servidor antes de la extracción."
+  ],
+  "Conexões necessárias indisponíveis antes da extração.": [
+    "Required connections unavailable before extraction.",
+    "Las conexiones necesarias no estaban disponibles antes de la extracción."
+  ],
+  "Sessão precisa de autenticação após a pausa.": [
+    "The session needs authentication after the pause.",
+    "La sesión necesita autenticación tras la pausa."
+  ],
+  "Sessão não pôde ser revalidada após a pausa.": [
+    "The session could not be revalidated after the pause.",
+    "No se pudo volver a validar la sesión tras la pausa."
+  ],
+  "Pausa no próximo checkpoint seguro": [
+    "Pause at the next safe checkpoint",
+    "Pausa en el próximo punto seguro"
+  ],
+  "Idioma / Language / Idioma": [
+    "Language",
+    "Idioma"
+  ],
+  "Recuperação parcial: {0}": [
+    "Partial recovery: {0}",
+    "Recuperación parcial: {0}"
+  ],
+  "Verificação interna falhou: {0}": [
+    "Internal check failed: {0}",
+    "Falló la comprobación interna: {0}"
+  ],
+  "Verificação interna falhou: relatório ausente": [
+    "Internal check failed: report missing",
+    "Falló la comprobación interna: falta el informe"
+  ],
+  "A reversão exige recuperação; backup preservado: {0}": [
+    "Rollback requires recovery; backup preserved: {0}",
+    "La reversión requiere recuperación; copia de seguridad conservada: {0}"
+  ],
+  "Desinstalação incompleta; recuperação exige intervenção. Backup: {0}": [
+    "Uninstall incomplete; recovery needs intervention. Backup: {0}",
+    "Desinstalación incompleta; la recuperación requiere intervención. Copia de seguridad: {0}"
+  ],
+  "Chave de Eventos ausente ou inválida: {0}": [
+    "Events key missing or invalid: {0}",
+    "Clave de Eventos ausente o no válida: {0}"
+  ],
+  "Falha no Agendador do Windows: {0}": [
+    "Windows Task Scheduler failure: {0}",
+    "Error del Programador de tareas de Windows: {0}"
+  ],
+  "A tarefa não corresponde à configuração após o registro. {0} Diagnóstico local: {1}": [
+    "The task does not match the configuration after registration. {0} Local diagnostics: {1}",
+    "La tarea no coincide con la configuración tras el registro. {0} Diagnóstico local: {1}"
+  ],
+  "Não foi possível consultar a tarefa do Windows: {0}": [
+    "Could not query the Windows task: {0}",
+    "No se pudo consultar la tarea de Windows: {0}"
+  ],
+  "A tarefa temporária mudou de proprietário; remoção recusada: {0}": [
+    "The temporary task changed owner; removal refused: {0}",
+    "La tarea temporal cambió de propietario; eliminación rechazada: {0}"
+  ],
+  "A tarefa temporária não foi removida: {0}": [
+    "The temporary task was not removed: {0}",
+    "No se eliminó la tarea temporal: {0}"
+  ],
+  "Há um arquivo externo com o nome do iniciador; ele foi preservado: {0}": [
+    "An external file has the launcher's name; it was preserved: {0}",
+    "Hay un archivo externo con el nombre del iniciador; se conservó: {0}"
+  ],
+  "Resposta vazia. Verifique a VPN; causa {0}.": [
+    "Empty response. Check the VPN; cause {0}.",
+    "Respuesta vacía. Verifique la VPN; causa {0}."
+  ],
+  "Health check interno da nova versão falhou; atualização revertida. {0}": [
+    "The new version's internal health check failed; update rolled back. {0}",
+    "Falló la comprobación interna de la nueva versión; actualización revertida. {0}"
+  ],
+  "Pasta pessoal": [
+    "Home folder",
+    "Carpeta personal"
+  ],
+  "Nenhuma conta detectada": [
+    "No accounts detected",
+    "No se detectaron cuentas"
+  ],
+  "JSON (*.json)": [
+    "JSON (*.json)",
+    "JSON (*.json)"
+  ],
+  "Python (*.py)": [
+    "Python (*.py)",
+    "Python (*.py)"
+  ],
+  "ZIP (*.zip)": [
+    "ZIP (*.zip)",
+    "ZIP (*.zip)"
+  ],
+  "Excel (*.xlsx)": [
+    "Excel (*.xlsx)",
+    "Excel (*.xlsx)"
+  ],
+  "JSON (*.json);;Excel (*.xlsx)": [
+    "JSON (*.json);;Excel (*.xlsx)",
+    "JSON (*.json);;Excel (*.xlsx)"
+  ],
+  "Excel (*.xlsx);;JSON (*.json)": [
+    "Excel (*.xlsx);;JSON (*.json)",
+    "Excel (*.xlsx);;JSON (*.json)"
+  ],
+  "Retirar rotina": [
+    "Remove routine",
+    "Retirar rutina"
+  ],
+  "Logs": [
+    "Logs",
+    "Registros"
   ]
 }

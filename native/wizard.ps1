@@ -26,16 +26,13 @@ try {
             if ((Test-Path -LiteralPath (Join-Path $remembered.root 'instalacao-teste.json'))) { $DataRoot = $remembered.root }
         }
     }
-    $script:language = 'pt-BR'
+    Set-NativeLanguage 'pt-BR'
     $script:languageChosen = $false
     $script:catalog = Read-NativeJson (Join-Path $script:payload 'src\orquestrador_app\locales.json')
-    function T([string]$Text) {
-        if ($script:language -eq 'pt-BR') { return $Text }
-        $entry = $script:catalog.PSObject.Properties[$Text]
-        if ($null -eq $entry) { return $Text }
-        return $entry.Value[$(if($script:language -eq 'en'){0}else{1})]
-    }
+    Initialize-NativeLanguage $DataRoot
     . (Join-Path $PSScriptRoot 'Native.Routines.ps1')
+    $script:previewValue = $null
+    $script:fillingConfiguration = $false
     $script:healthPassed = $false
     $script:job = $null
     $script:jobAction = ''
@@ -160,10 +157,11 @@ try {
     $languageChoice.DropDownStyle = 'DropDownList'
     $languageChoice.SetBounds(620,85,265,30)
     $languageChoice.Items.AddRange(@('Português (Brasil)','English','Español'))
-    $languageChoice.SelectedIndex=0
+    $languageChoice.SelectedIndex=[Array]::IndexOf(@('pt-BR','en','es'), $script:language)
     $languageChoice.Add_SelectedIndexChanged({
-        $script:languageChosen=$true
-        $script:language=@('pt-BR','en','es')[$languageChoice.SelectedIndex]
+        if (-not $script:fillingConfiguration) { $script:languageChosen=$true }
+        Set-NativeLanguage (@('pt-BR','en','es')[$languageChoice.SelectedIndex])
+        if ($null -ne $script:config -and -not $script:fillingConfiguration) { Collect-Configuration; Refresh-RoutineRows }
         foreach($panel in $script:pages){ Translate-Controls $panel }
         Show-Page $script:pageIndex
     })
@@ -179,7 +177,8 @@ try {
     foreach($policy in Get-ExecutionPolicy -List) {
         $policyGrid.Rows.Add([object[]]@([string]$policy.Scope,[string]$policy.ExecutionPolicy,$meanings[[string]$policy.Scope])) | Out-Null
     }
-    $diagnostic.Text = "Usuário: $env:USERNAME`r`nComputador: $env:COMPUTERNAME`r`nPowerShell: $($PSVersionTable.PSVersion)`r`nIdioma de execução: $($ExecutionContext.SessionState.LanguageMode)`r`nO parâmetro Bypass afeta apenas este processo. Políticas da organização, Smart App Control, antivírus e Windows Script Host continuam aplicáveis. Nenhuma política do computador será alterada."
+    $diagnostic.Tag = "Usuário: {0}`r`nComputador: {1}`r`nPowerShell: {2}`r`nIdioma de execução: {3}`r`nO parâmetro Bypass afeta apenas este processo. Políticas da organização, Smart App Control, antivírus e Windows Script Host continuam aplicáveis. Nenhuma política do computador será alterada."
+    $diagnostic.Text = T $diagnostic.Tag @($env:USERNAME,$env:COMPUTERNAME,$PSVersionTable.PSVersion,$ExecutionContext.SessionState.LanguageMode)
 
     $page = New-Page
     New-Label $page 'Escolha uma pasta vazia ou uma instalação de teste reconhecida. Os arquivos originais de outra instalação serão recusados e preservados.' 0 70 | Out-Null
@@ -194,7 +193,7 @@ try {
     $browse.Width = $rootBox.Width
     $browse.Add_Click({
         $picker = New-Object Windows.Forms.FolderBrowserDialog
-        $picker.Description = 'Selecione ou crie uma pasta exclusiva para o teste'
+        $picker.Description = T 'Selecione ou crie uma pasta exclusiva para o teste'
         $picker.SelectedPath = $rootBox.Text
         if ($picker.ShowDialog() -eq 'OK') { $rootBox.Text = $picker.SelectedPath }
         $picker.Dispose()
@@ -338,12 +337,16 @@ try {
                 $c.Text=T ([string]$c.Tag)
             }
             if($c -is [Windows.Forms.DataGridView]) {
-                foreach($row in $c.Rows){foreach($cell in $row.Cells){if($cell.Value -is [string]){$cell.Value=T $cell.Value}}}
                 foreach($column in $c.Columns){if($null -eq $column.Tag){$column.Tag=$column.HeaderText}; $column.HeaderText=T ([string]$column.Tag)}
             }
         }
     }
     function Show-Page([int]$Index) {
+        Update-PreviewSummary
+        $form.Text = T 'CAIO • Instalação e atualização'
+        $diagnostic.Text = T $diagnostic.Tag @($env:USERNAME,$env:COMPUTERNAME,$PSVersionTable.PSVersion,$ExecutionContext.SessionState.LanguageMode)
+
+        $subtitle.Text = T 'TESTE ISOLADO • Versão {0} • Runtime privado • Versionamento interno' @($script:release.version)
         foreach ($panel in $script:pages) { $panel.Visible = $false }
         $script:pageIndex = $Index
         $script:pages[$Index].Visible = $true
@@ -373,16 +376,33 @@ try {
         }
     }
     function Fill-Configuration($Value) {
+        $script:fillingConfiguration = $true
+        $script:previewValue = $Value
         $script:config = $Value.config
         if(-not $script:languageChosen){$languageChoice.SelectedIndex=[Array]::IndexOf(@('pt-BR','en','es'),[string]$config.language)}
-        $identityText.Text = ($Value.identity | ConvertTo-Json) + "`r`n`r`nOneDrive:`r`n" + ($Value.onedrives | ConvertTo-Json -Depth 5)
         $email.Text = [string]$config.email
         $schedules.Checked = [bool]$config.install_schedules
         $pauseSchedules.Checked=[bool]$config.scheduling_paused
         Refresh-RoutineRows
-        $current = if ($null -eq $Value.current) { 'não instalada' } else { [string]$Value.current.version }
-        $locationStatus.Text = "Versão atual: $current`r`nNova versão: $($release.version)`r`nDestino: $($rootBox.Text)`r`nDados, configurações, scripts adicionais e último sucesso são preservados nas atualizações."
+        $script:fillingConfiguration = $false
+        Update-PreviewSummary
     }
+    function Update-PreviewSummary {
+        if ($null -eq $script:previewValue) { return }
+        $current = if ($null -eq $script:previewValue.current) { 'não instalada' } else { [string]$script:previewValue.current.version }
+        $locationStatus.Text = T "Versão atual: {0}`r`nNova versão: {1}`r`nDestino: {2}`r`nDados, configurações, scripts adicionais e último sucesso são preservados nas atualizações." @((T $current),$release.version,$rootBox.Text)
+        $identityLabels = @{ user='Usuário'; computer='Computador'; home='Pasta pessoal' }
+        $lines = @(
+            foreach ($property in $script:previewValue.identity.PSObject.Properties) {
+                $caption = if ($identityLabels.ContainsKey($property.Name)) { $identityLabels[$property.Name] } else { $property.Name }
+                (T $caption) + ': ' + [string]$property.Value
+            }
+        )
+        $accounts = @($script:previewValue.onedrives | ForEach-Object { (T ([string]$_.kind)) + ' • ' + [string]$_.account + ' • ' + [string]$_.path })
+        if (-not $accounts.Count) { $accounts = @((T 'Nenhuma conta detectada')) }
+        $identityText.Text = ($lines -join "`r`n") + "`r`n`r`nOneDrive:`r`n" + ($accounts -join "`r`n")
+    }
+
     function Start-Operation([string]$Action) {
         if ($null -ne $script:job) { return }
         $script:jobAction = $Action
@@ -412,7 +432,7 @@ try {
             }
             if ($script:pageIndex -eq 5) {
                 Collect-Configuration
-                $review.Text = "Versão nova: $($release.version)`r`nPasta: $($rootBox.Text)`r`nBackup: backups\app (verificação SHA-256 obrigatória)`r`nHealth check offline antes/depois; ativação por ponteiro; rollback automático em falha interna.`r`n`r`n" + ($script:config | ConvertTo-Json -Depth 64)
+                $review.Text = (T "Versão nova: {0}`r`nPasta: {1}`r`nBackup: backups\app (verificação SHA-256 obrigatória)`r`nHealth check offline antes/depois; ativação por ponteiro; rollback automático em falha interna.`r`n`r`n" @($release.version,$rootBox.Text)) + ($script:config | ConvertTo-Json -Depth 64)
             }
             if ($script:pageIndex -eq 6) {
                 if (-not $approve.Checked) { throw 'Revise e marque a aplicação das alterações.' }
@@ -482,21 +502,22 @@ try {
                 $script:completed = $true
                 $script:exitCode = 0
                 $progress.Style = 'Continuous'; $progress.Value = 100
-                $cancel.Text = 'Fechar'
+                $cancel.Text = T 'Fechar'
                 $next.Enabled = $true
                 if ($AutoUpdate) { Open-NativeApplication $rootBox.Text; $form.Close() }
             }
         } catch {
             $script:job = $null
             $script:exitCode = 2
-            $status.Text = $_.Exception.Message
-            if (-not $log.Text.EndsWith($_.Exception.Message)) { $log.AppendText("`r`n" + $_.Exception.Message) }
+            $displayError = T $_.Exception.Message
+            $status.Text = $displayError
+            if (-not $log.Text.EndsWith($displayError)) { $log.AppendText("`r`n" + $displayError) }
             $verifyButton.Enabled = $true; $cancel.Enabled = $true
             $back.Enabled = $script:pageIndex -gt 0 -and $script:pageIndex -lt 7
             if ($script:pageIndex -lt 7) { $next.Enabled = $true }
             $progress.Style = 'Continuous'; $progress.Value = 0
             $healthBar.Visible=$false
-            if($script:pageIndex -eq 5){$dependenciesText.AppendText("`r`n" + $_.Exception.Message); $next.Enabled=$false}
+            if($script:pageIndex -eq 5){$dependenciesText.AppendText("`r`n" + $displayError); $next.Enabled=$false}
             Show-NativeError $_.Exception.Message
             if ($AutoUpdate -and (Test-Path -LiteralPath (Join-Path $rootBox.Text 'installation.json'))) { Open-NativeApplication $rootBox.Text; $form.Close() }
         }
@@ -519,6 +540,6 @@ try {
     $form.Dispose()
     exit $script:exitCode
 } catch {
-    [Windows.Forms.MessageBox]::Show($_.Exception.Message, 'Orquestrador • instalação não iniciada') | Out-Null
+    [Windows.Forms.MessageBox]::Show((T $_.Exception.Message), (T 'Orquestrador • instalação não iniciada')) | Out-Null
     exit 2
 }

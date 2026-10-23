@@ -1,4 +1,20 @@
-# CAIO 2.0.0.dev12 — validação e histórico das melhorias
+# CAIO 2.0.0.dev13 — validação e histórico das melhorias
+
+## Resultado dev13
+
+A revisão de idiomas preserva o tema e os cinco extratores. O catálogo compartilhado possui **1.070 entradas**, com inglês/espanhol e os campos dinâmicos conferidos. A auditoria estática cobre **324 legendas explícitas** do Python e não encontrou ausência nesse conjunto. Isso não é uma promessa de tradução dos conteúdos de usuário, logs externos ou controles do sistema operacional.
+
+Suíte offline: **279 testes e 7 subtestes aprovados; 1 teste exclusivo Windows não executado**. PowerShell 7.6.8/Linux: **40 verificações**. Tipos, Ruff, saúde, benchmark e auditoria Premium têm evidências atuais. Capturas Qt: seis páginas em três tamanhos, PT/EN/ES, editor/popup, desinstalação e seletor de arquivos. A renderização WinForms continua pendente no Windows.
+
+| Verificação | Evidência | Limite |
+|---|---|---|
+| Catálogo e mensagens dinâmicas | Todos os pares EN/ES com campos iguais; nomes e caminhos com acentos/chaves preservados; diagnóstico multilinha traduzido por campo | Logs e erros externos não são reescritos |
+| Botões e calendário | Qt real: Sim/Yes/Sí e meses na preferência do produto | Texto de shell/metadados depende do Windows |
+| Tabelas e dados do usuário | Rotina chamada Diária permanece Diária na interface espanhola; logs brutos preservados | A auditoria não traduz dados corporativos |
+| Wizard e monitor | Monitor Qt real troca EN para ES após salvar configuração sem reiniciar; catálogo comum, cultura, títulos, frequência legível e erro de processo; evento de idioma preserva valores editados e não sobrescreve configuração durante preenchimento | Parser e doubles não homologam WinForms |
+| Server 2019/1809 | Fontes oficiais Python/Qt e ambiente registrado pelo roteiro Windows | Não executado no Server 2019 nem sob a política Zero Trust do usuário |
+
+**Parecer de plataforma:** potencialmente compatível com Server 2019 x64 com Desktop Experience e usuário logado. Qt lista Windows 10 1809+, mas não Server 2019; o produto ainda não está homologado nesse servidor. Não há suporte declarado a Server Core ou modo de serviço. Usar o roteiro incluído no ZIP em VM/servidor autorizado da mesma edição antes de aprovar produção. Conferir DLLs, Edge/driver, tarefas, RDP/logoff, idiomas e Zero Trust.
 
 ## Resultado dev12
 

@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import re
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -16,13 +18,54 @@ def set_language(language: str) -> None:
     if not _catalog:
         catalog = json.loads((Path(__file__).with_name("locales.json")).read_text(encoding="utf-8"))
         _catalog = {key.casefold(): values for key, values in catalog.items()}
+    _translate.cache_clear()
 
 
 def tr(text: str) -> str:
     if _language == "pt-BR" or not isinstance(text, str):
         return text
+    return _translate(_language, text)
+
+
+@lru_cache(maxsize=1)
+def _templates() -> list[tuple[re.Pattern[str], list[str]]]:
+    result = []
+    for source, translations in _catalog.items():
+        if not re.search(r"\{\d+\}", source):
+            continue
+        pieces = re.split(r"(\{\d+\})", source)
+        value_pattern = ".*?" if "\n" in source else r"[^\r\n]*?"
+        pattern = "".join(
+            f"(?P<v{piece[1:-1]}>{value_pattern})"
+            if re.fullmatch(r"\{\d+\}", piece)
+            else re.escape(piece)
+            for piece in pieces
+        )
+        result.append((re.compile(pattern, re.IGNORECASE | re.DOTALL), translations))
+    return result
+
+
+@lru_cache(maxsize=2048)
+def _translate(language: str, text: str) -> str:
+    index = 0 if language == "en" else 1
     values = _catalog.get(text.casefold())
-    return values[0 if _language == "en" else 1] if values else text
+    if values:
+        return values[index]
+    for pattern, translations in _templates():
+        match = pattern.fullmatch(text)
+        if match:
+            captures: dict[str, str] = match.groupdict()
+
+            def substitute(slot: re.Match[str]) -> str:
+                return captures["v" + slot.group(1)]
+
+            return re.sub(r"\{(\d+)\}", substitute, translations[index])
+    if "\n" in text or "\r" in text:
+        return "".join(
+            _translate(language, line.rstrip("\r\n")) + line[len(line.rstrip("\r\n")) :]
+            for line in text.splitlines(keepends=True)
+        )
+    return text
 
 
 def display_value(value: str) -> str:
@@ -82,21 +125,41 @@ def translate_tree(root: Any) -> None:
     from PySide6.QtWidgets import (
         QAbstractButton,
         QComboBox,
+        QGroupBox,
         QLabel,
         QLineEdit,
         QTableWidget,
         QTabWidget,
         QWidget,
+        QWizardPage,
     )
 
     for widget in [root, *root.findChildren(QWidget)]:
-        if isinstance(widget, (QLabel, QAbstractButton)):
+        if isinstance(widget, (QLabel, QAbstractButton)) and not widget.property(
+            "preserveUserText"
+        ):
             widget.setText(tr(widget.text()))
+        if isinstance(widget, QGroupBox):
+            widget.setTitle(tr(widget.title()))
+        if isinstance(widget, QWizardPage):
+            widget.setTitle(tr(widget.title()))
+            widget.setSubTitle(tr(widget.subTitle()))
+        for action in widget.actions():
+            action.setText(tr(action.text()))
+            action.setToolTip(tr(action.toolTip()))
+        if widget.accessibleName():
+            widget.setAccessibleName(tr(widget.accessibleName()))
+        if widget.accessibleDescription():
+            widget.setAccessibleDescription(tr(widget.accessibleDescription()))
         if widget.toolTip():
             widget.setToolTip(tr(widget.toolTip()))
         if isinstance(widget, QLineEdit):
             widget.setPlaceholderText(tr(widget.placeholderText()))
-        if isinstance(widget, QComboBox) and not widget.isEditable():
+        if (
+            isinstance(widget, QComboBox)
+            and not widget.isEditable()
+            and not widget.property("preserveUserText")
+        ):
             widget.blockSignals(True)
             for i in range(widget.count()):
                 widget.setItemText(i, tr(widget.itemText(i)))
@@ -114,9 +177,21 @@ def translate_tree(root: Any) -> None:
 
 
 def install_translation(app: Any, language: str) -> None:
-    from PySide6.QtCore import QEvent, QObject
+    from PySide6.QtCore import QEvent, QLibraryInfo, QLocale, QObject, QTranslator
 
     set_language(language)
+    locale = QLocale({"pt-BR": "pt_BR", "en": "en_US", "es": "es_ES"}.get(language, "pt_BR"))
+    QLocale.setDefault(locale)
+    old = getattr(app, "_caio_qt_translation", None)
+    if old is not None:
+        app.removeTranslator(old)
+        old.deleteLater()
+    translator = QTranslator(app)
+    if translator.load(
+        locale, "qtbase", "_", QLibraryInfo.path(QLibraryInfo.LibraryPath.TranslationsPath)
+    ):
+        app.installTranslator(translator)
+    app._caio_qt_translation = translator
     if getattr(app, "_caio_translation", None):
         return
 

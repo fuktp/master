@@ -1,6 +1,69 @@
 ﻿Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+# A single catalog is copied beside these launchers, including after runtime removal.
+$script:language = 'pt-BR'
+$script:catalog = $null
+$script:localeTemplates = $null
+$localePath = Join-Path $PSScriptRoot 'locales.json'
+if (Test-Path -LiteralPath $localePath) { $script:catalog = Get-Content -LiteralPath $localePath -Raw -Encoding UTF8 | ConvertFrom-Json }
+
+function Set-NativeLanguage([string]$Language) {
+    $names = @{'pt-BR'='pt-BR'; en='en-US'; es='es-ES'}
+    if (-not $names.ContainsKey($Language)) { $Language = 'pt-BR' }
+    $script:language = $Language
+    $culture = [Globalization.CultureInfo]::GetCultureInfo($names[$Language])
+    [Threading.Thread]::CurrentThread.CurrentCulture = $culture
+    [Threading.Thread]::CurrentThread.CurrentUICulture = $culture
+}
+
+function Initialize-NativeLanguage([string]$DataRoot) {
+    if ($DataRoot -and (Test-Path -LiteralPath (Join-Path $DataRoot 'config.json'))) {
+        try {
+            $preferences = Read-NativeJson (Join-Path $DataRoot 'config.json')
+            Set-NativeLanguage ([string]$preferences.language)
+        } catch { } # Retain the available language when configuration itself is unreadable.
+    }
+}
+
+function T([string]$Text, [object[]]$Values = @()) {
+    $translated = $Text
+    if ($script:language -ne 'pt-BR' -and $null -ne $script:catalog) {
+        $index = if ($script:language -eq 'en') { 0 } else { 1 }
+        $entry = $script:catalog.PSObject.Properties[$Text]
+        if ($null -ne $entry) { $translated = [string]$entry.Value[$index] }
+        elseif ($Text) {
+            if ($null -eq $script:localeTemplates) {
+                $script:localeTemplates = @(
+                    foreach ($item in $script:catalog.PSObject.Properties) {
+                        if ($item.Name -notmatch '\{\d+\}') { continue }
+                        $parts = [regex]::Split($item.Name, '(\{\d+\})')
+                        $capture = if ($item.Name.Contains("`n")) { '.*?)' } else { '[^\r\n]*?)' }
+                        $pattern = ($parts | ForEach-Object {
+                            if ($_ -match '^\{(\d+)\}$') { '(?<v' + $Matches[1] + '>' + $capture }
+                            else { [regex]::Escape($_) }
+                        }) -join ''
+                        [pscustomobject]@{Regex=[regex]::new('\A' + $pattern + '\z', [Text.RegularExpressions.RegexOptions]'IgnoreCase, Singleline'); Translations=$item.Value}
+                    }
+                )
+            }
+            foreach ($item in $script:localeTemplates) {
+                $found = $item.Regex.Match($Text)
+                if (-not $found.Success) { continue }
+                $translated = [regex]::Replace([string]$item.Translations[$index], '\{(\d+)\}', {param($slot) $found.Groups['v' + $slot.Groups[1].Value].Value})
+                break
+            }
+        }
+    }
+    if ($translated -eq $Text -and $Text -match "[\r\n]") {
+        $translated = [regex]::Replace($Text, '[^\r\n]+', {param($line) T $line.Value})
+    }
+    if ($Values.Count) {
+        $translated = [regex]::Replace($translated, '\{(\d+)\}', {param($slot) [string]$Values[[int]$slot.Groups[1].Value]})
+    }
+    return $translated
+}
+
 function Test-NativeEmail([string]$Value) {
     $value = $Value.Trim()
     if ($value -notmatch '^[^@\s]+@[^@\s]+\.[^@\s]+$') { return $false }
@@ -193,7 +256,39 @@ function Open-NativeApplication([string]$DataRoot) {
 
 function Show-NativeError([string]$Message) {
     Add-Type -AssemblyName System.Windows.Forms
-    [Windows.Forms.MessageBox]::Show($Message, 'Orquestrador', [Windows.Forms.MessageBoxButtons]::OK, [Windows.Forms.MessageBoxIcon]::Error) | Out-Null
+    [Windows.Forms.MessageBox]::Show((T $Message), (T 'Orquestrador'), [Windows.Forms.MessageBoxButtons]::OK, [Windows.Forms.MessageBoxIcon]::Error) | Out-Null
+}
+
+function Show-NativeRemovalConfirmation($Owner, [string]$Message) {
+    $dialog = New-Object Windows.Forms.Form
+    $dialog.Text = T 'Retirar rotina'
+    $dialog.Font = $Owner.Font
+    $dialog.StartPosition = 'CenterParent'
+    $dialog.AutoScaleMode = 'Dpi'
+    $dialog.AutoSize = $true
+    $dialog.AutoSizeMode = 'GrowAndShrink'
+    $dialog.MinimizeBox = $false; $dialog.MaximizeBox = $false
+    $root = New-Object Windows.Forms.TableLayoutPanel
+    $root.AutoSize = $true; $root.Dock = 'Fill'; $root.ColumnCount = 1
+    $root.Padding = New-Object Windows.Forms.Padding(16)
+    $dialog.Controls.Add($root)
+    $label = New-Object Windows.Forms.Label
+    $label.Text = T $Message; $label.AutoSize = $true
+    $label.MaximumSize = New-Object Drawing.Size(560,0)
+    $root.Controls.Add($label)
+    $actions = New-Object Windows.Forms.FlowLayoutPanel
+    $actions.AutoSize = $true; $actions.FlowDirection = 'RightToLeft'; $actions.Dock = 'Fill'
+    $root.Controls.Add($actions)
+    $cancel = New-Object Windows.Forms.Button
+    $cancel.Text = T 'Cancelar'; $cancel.AutoSize = $true; $cancel.DialogResult = 'Cancel'
+    $remove = New-Object Windows.Forms.Button
+    $remove.Text = T 'Retirar rotina'; $remove.Name = 'danger'; $remove.AutoSize = $true; $remove.DialogResult = 'Yes'
+    $actions.Controls.Add($cancel); $actions.Controls.Add($remove)
+    $dialog.AcceptButton = $cancel; $dialog.CancelButton = $cancel
+    Set-NativeTheme $dialog
+    Set-NativeControlSizes $dialog
+    $dialog.Add_Load({ Fit-NativeWindow $dialog; $cancel.Focus() | Out-Null })
+    try { return $dialog.ShowDialog($Owner) -eq 'Yes' } finally { $dialog.Dispose() }
 }
 
 function Remove-NativeOwnedRelease {

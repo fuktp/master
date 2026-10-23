@@ -10,14 +10,14 @@ foreach ($file in $files) {
 }
 . (Join-Path $Root 'native/Native.Common.ps1')
 . (Join-Path $Root 'native/Native.Routines.ps1')
-$catalog = Read-NativeJson (Join-Path $Root 'orquestrador_app/locales.json')
-foreach ($property in $catalog.PSObject.Properties) {
+$translationCatalog = Read-NativeJson (Join-Path $Root 'orquestrador_app/locales.json')
+foreach ($property in $translationCatalog.PSObject.Properties) {
     if ($property.Value.Count -ne 2 -or -not $property.Value[0] -or -not $property.Value[1]) {
         throw "Traduções incompletas: $($property.Name)"
     }
 }
 foreach ($key in @('Desabilitada', 'desabilitada')) {
-    $entry = $catalog.PSObject.Properties[$key]
+    $entry = $translationCatalog.PSObject.Properties[$key]
     if ($null -eq $entry -or $entry.Value[0] -cne 'Disabled' -or $entry.Value[1] -cne 'Deshabilitada') {
         throw "Catálogo incompatível com a consulta do wizard: $key"
     }
@@ -84,7 +84,7 @@ namespace Windows.Forms {
         $name = $node.Expression.Extent.Text
         if ($name -in @('$destinationAdd','$destinationRemove','$addJob','$removeJob','$next')) { $handlers[$name] = $node.Arguments[0].ScriptBlock.GetScriptBlock() }
     }
-    function T([string]$Text) { return $Text }
+    function Show-NativeRemovalConfirmation($Owner, [string]$Message) { return [Windows.Forms.MessageBox]::Answer -eq 'Yes' }
     function Collect-Configuration { $script:collected++ }
     function Refresh-RoutineRows { $script:refreshed++ }
     function Start-Operation([string]$Action) { $script:actions += $Action }
@@ -200,6 +200,43 @@ namespace Windows.Forms {
         $env:LOCALAPPDATA = $savedLocalAppData
         . (Join-Path $Root 'native/Native.Common.ps1')
     }
+    $languageHandler = $wizard.FindAll({param($node) $node -is [Management.Automation.Language.InvokeMemberExpressionAst] -and $node.Expression.Extent.Text -eq '$languageChoice' -and $node.Member.Value -eq 'Add_SelectedIndexChanged'}, $true)[0].Arguments[0].ScriptBlock.GetScriptBlock()
+    $languageChoice = [pscustomobject]@{SelectedIndex=2}
+    $script:config = [pscustomobject]@{language='es'}
+    $script:pages = @(); $script:pageIndex=0
+    $script:collected=0; $script:refreshed=0; $script:fillingConfiguration=$true
+    & $languageHandler
+    if ($script:collected -ne 0 -or $script:refreshed -ne 0) { throw 'Mudar idioma durante leitura substituiu dados da configuracao.' }
+    $script:fillingConfiguration=$false
+    & $languageHandler
+    if ($script:collected -ne 1 -or $script:refreshed -ne 1) { throw 'Mudar idioma nao preservou valores editados.' }
+    $count++
+    $script:catalog = $translationCatalog
+    try {
+        foreach ($locale in @('en','es')) {
+            Set-NativeLanguage $locale
+            $position = if ($locale -eq 'en') { 0 } else { 1 }
+            foreach ($entry in $translationCatalog.PSObject.Properties) {
+                if ((T $entry.Name) -cne [string]$entry.Value[$position]) { throw ('Traducao nativa ausente: ' + $entry.Name) }
+                $tokens = @([regex]::Matches($entry.Name, '\{\d+\}') | ForEach-Object {$_.Value} | Sort-Object)
+                $translatedTokens = @([regex]::Matches([string]$entry.Value[$position], '\{\d+\}') | ForEach-Object {$_.Value} | Sort-Object)
+                if (($tokens -join ',') -ne ($translatedTokens -join ',')) { throw ('Campos dinamicos divergentes: ' + $entry.Name) }
+            }
+        }
+        $count++
+        Set-NativeLanguage 'en'
+        if ((T 'Arquivos copiados: 21 / 99') -cne 'Files copied: 21 / 99') { throw 'Progresso dinamico nao traduzido.' }
+        $count++
+        Set-NativeLanguage 'es'
+        $userPath = 'C:\Ação\Diária {1}.exe'
+        $message = T ("Falha ao iniciar processo. Codigo nativo: 5`nExecutavel: " + $userPath)
+        if (-not $message.Contains('Código nativo: 5') -or -not $message.Contains('Ejecutable: ' + $userPath)) { throw 'Diagnostico multilinha perdeu traducao ou alterou dados.' }
+        if ((T 'Rotina • Diária') -cne 'Rutina • Diária') { throw 'Nome de rotina foi retraduzido.' }
+        $count++
+        if ((T 'TESTE ISOLADO • Versão {0} • Runtime privado • Versionamento interno' @('2.0.0.dev13')) -notmatch 'PRUEBA AISLADA.*2.0.0.dev13') { throw 'Valores explicitos nao aplicados ao cabecalho.' }
+        if ([Threading.Thread]::CurrentThread.CurrentUICulture.Name -ne 'es-ES') { throw 'Cultura do wizard nao acompanha idioma.' }
+        $count++
+    } finally { Set-NativeLanguage 'pt-BR' }
     foreach ($script in $files) {
         $content = Get-Content -LiteralPath $script.FullName -Raw
         if ($content -match '(?im)^\s*(Set-ExecutionPolicy|Unblock-File|Add-MpPreference|Set-MpPreference)\b') { throw 'Alteração de política de segurança não autorizada.' }

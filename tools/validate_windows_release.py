@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import os
 import platform
 import subprocess
 import sys
@@ -23,6 +24,8 @@ def main() -> int:
     args = parser.parse_args()
     if sys.platform != "win32":
         raise RuntimeError("This check requires real Windows; mocks are not accepted.")
+    import winreg
+
     from orquestrador_app import VERSION
     from orquestrador_app.config import load
     from orquestrador_app.io import digest, read_json
@@ -33,6 +36,12 @@ def main() -> int:
     from orquestrador_app.windows_hosts import HOST_DESCRIPTIONS
     from orquestrador_app.windows_identity import app_id, launch_icon
 
+    with winreg.OpenKey(
+        winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows NT\CurrentVersion"
+    ) as system_key:
+        os_product = winreg.QueryValueEx(system_key, "ProductName")[0]
+        installation_type = winreg.QueryValueEx(system_key, "InstallationType")[0]
+    windows_version = sys.getwindowsversion()
     payload = args.payload.resolve()
     if not Path(sys.executable).resolve().is_relative_to(payload / "runtime"):
         raise RuntimeError("Run this tool using the supplied private runtime.")
@@ -40,6 +49,12 @@ def main() -> int:
         "version": VERSION,
         "platform": platform.platform(),
         "runtime": sys.executable,
+        "os_product": os_product,
+        "installation_type": installation_type,
+        "windows_build": windows_version.build,
+        "session": "RDP"
+        if os.environ.get("SESSIONNAME", "").startswith("RDP")
+        else "console_or_other",
         "at": dt.datetime.now(dt.timezone.utc).isoformat(),
         "scenarios": [],
         "manual_pending": [

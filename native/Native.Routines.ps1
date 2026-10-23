@@ -20,7 +20,7 @@ function Remove-Routine([int]$Index) {
     $dependents = @($script:config.routines | Where-Object { @($_.dependencies | Where-Object { $_.job -ceq $id }).Count -gt 0 })
     if ($dependents.Count -gt 0) { Show-NativeError (T 'Retire as dependências desta rotina antes de removê-la.'); return }
     $message = (T 'Retirar esta rotina do programa?') + "`r`n" + (T 'O arquivo original, o histórico e as versões serão preservados.')
-    if ([Windows.Forms.MessageBox]::Show($form, $message, 'CAIO', 'YesNo', 'Question', 'Button2') -ne 'Yes') { return }
+    if (-not (Show-NativeRemovalConfirmation $form $message)) { return }
     $script:config.routines = @($script:config.routines | Where-Object { $_.id -cne $id })
     $position = 0
     foreach ($routine in @($script:config.routines | Sort-Object order,id)) { $routine.order = $position; $position++ }
@@ -226,7 +226,8 @@ function Refresh-RoutineRows {
         if (-not (Test-NativeDayPreset $routine.schedule.frequency $routine.schedule.days $routine.schedule.weekday)) {
             $daysText = (T 'Personalizado') + ': ' + $daysText
         }
-        $routines.Rows.Add([object[]]@([bool]$routine.enabled, [string]$routine.label, [string]$routine.schedule.frequency, ($routine.schedule.times -join ', '), $daysText, ([int]$routine.order+1))) | Out-Null
+        $frequencyLabel = T (@{daily='Diária'; weekly='Semanal'; weekdays='Somente dias úteis'; every_run='Todos os horários'}[[string]$routine.schedule.frequency])
+        $routines.Rows.Add([object[]]@([bool]$routine.enabled, [string]$routine.label, $frequencyLabel, ($routine.schedule.times -join ', '), $daysText, ([int]$routine.order+1))) | Out-Null
         $destinations.Rows.Add([object[]]@([string]$routine.label,[string]$routine.target)) | Out-Null
     }
 }

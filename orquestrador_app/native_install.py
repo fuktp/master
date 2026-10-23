@@ -68,6 +68,8 @@ def verify_release(folder: Path) -> dict[str, Any]:
                 "native/Entrada.bat",
             }
         )
+    if record.get("shared_translation_catalog"):
+        required.add("native/locales.json")
     if not required.issubset(files) or len(files) > 20000:
         raise ValueError("Pacote incompleto ou com manifesto inválido.")
     for name, expected in files.items():

@@ -9,6 +9,7 @@ from typing import Any, Callable
 from PySide6.QtCore import QThread, QTimer, Signal
 from PySide6.QtWidgets import QApplication, QDialog, QLabel, QVBoxLayout, QWidget
 
+from .i18n import tr
 from .store import Store
 
 
@@ -76,11 +77,11 @@ class VpnNotice(QDialog):
                 self.clock.stop()
                 self.close()
             else:
-                self.countdown.setText(row["stage"])
+                self.countdown.setText(tr(row["stage"]))
 
         if self.read_task:
             self.read_task.deleteLater()
         self.read_task = Task(read, self)
         self.read_task.done.connect(loaded)
-        self.read_task.failed.connect(self.countdown.setText)
+        self.read_task.failed.connect(lambda message: self.countdown.setText(tr(message)))
         self.read_task.start()

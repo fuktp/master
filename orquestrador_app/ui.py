@@ -350,11 +350,14 @@ def explain(text: str) -> QLabel:
     return label
 
 
-def set_cell(table: Any, row: int, column: int, value: Any, role: Any = None) -> None:
+def set_cell(
+    table: Any, row: int, column: int, value: Any, role: Any = None, *, localize: bool = True
+) -> None:
     from PySide6.QtWidgets import QTableWidgetItem
 
     text = str(value if value is not None else "")
-    text = display_value(text)
+    if localize:
+        text = display_value(text)
     item = table.item(row, column)
     if item is None:
         item = QTableWidgetItem(text)

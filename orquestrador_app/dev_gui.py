@@ -30,7 +30,7 @@ from PySide6.QtWidgets import (
 
 from . import VERSION
 from .config import load
-from .i18n import tr
+from .i18n import display_value, tr
 from .io import BusyError, Lock, read_json, sanitize
 from .paths import Paths
 from .processes import command, spawn
@@ -266,7 +266,7 @@ class DevPanel(QWidget):
             return
         self.task = Task(callback, self)
         self.task.done.connect(completed)
-        self.task.failed.connect(lambda text: self.status.setText(f"Leitura falhou: {text}"))
+        self.task.failed.connect(lambda text: self.status.setText(tr(f"Leitura falhou: {text}")))
         self.task.start()
 
     @staticmethod
@@ -281,7 +281,7 @@ class DevPanel(QWidget):
         self.latest = value
         self.status.setText(
             tr("Leitura")
-            + f": {value['observed_at']} • "
+            + f": {display_value(value['observed_at'])} • "
             + str(len(value["processes"]))
             + " "
             + tr("processos")
@@ -331,7 +331,7 @@ class DevPanel(QWidget):
 
     def health(self) -> None:
         if self.task and self.task.isRunning():
-            self.status.setText("Aguarde a leitura atual e tente novamente.")
+            self.status.setText(tr("Aguarde a leitura atual e tente novamente."))
             return
         report = self.paths.root / "logs/autoteste-interno.json"
         logfile = self.paths.root / "logs/autoteste-interno.log"
@@ -356,20 +356,23 @@ class DevPanel(QWidget):
             Store(self.paths.database).event(None, "dev_health_check", result)
             return result
 
-        self.status.setText("Autoteste em subprocesso oculto; nenhuma extração será iniciada.")
+        self.status.setText(tr("Autoteste em subprocesso oculto; nenhuma extração será iniciada."))
         self.start(
             run,
             lambda result: self.status.setText(
-                f"Autoteste: {result.get('health')} • versão {result.get('version')} • sem rede."
+                tr(
+                    f"Autoteste: {result.get('health')} • versão {result.get('version')} • sem rede."
+                )
             ),
         )
 
     def export(self) -> None:
         name = QFileDialog.getSaveFileName(
             self,
-            "Exportar diagnóstico sanitizado",
+            tr("Exportar diagnóstico sanitizado"),
             "diagnostico-dev.xlsx",
-            "Excel (*.xlsx);;JSON (*.json)",
+            tr("Excel (*.xlsx);;JSON (*.json)"),
+            options=QFileDialog.Option.DontUseNativeDialog,
         )[0]
         if not name:
             return
@@ -381,7 +384,7 @@ class DevPanel(QWidget):
                 lambda result: self.status.setText(str(result)),
             )
         except Exception as exc:
-            QMessageBox.warning(self, "Exportação", str(exc))
+            QMessageBox.warning(self, tr("Exportação"), tr(str(exc)))
 
     def shutdown(self) -> None:
         self.timer.stop()

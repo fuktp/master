@@ -1,0 +1,38 @@
+{
+  "target": "Windows Server 2019 x64, version 1809, Desktop Experience",
+  "runtime": {
+    "python": "3.13.16",
+    "PySide6_Qt": "6.9.3"
+  },
+  "assessment": "Potential compatibility; not homologated for this server edition or its Zero Trust policy.",
+  "windows_server_executed": false,
+  "desktop_and_user_session_required": true,
+  "server_core_supported": false,
+  "monitor_is_windows_service": false,
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/qt/qtdoc/v6.9.3/doc/src/platforms/supported-platforms.qdocinc",
+      "canonical_url": "https://doc.qt.io/qt-6.9/supported-platforms.html",
+      "sha256": "ed31f9f74fcb43190efd23c8172aac5247eeeb13fd0b64efd39444b588238486",
+      "evidence": "Windows 10 (1809 or later), x86_64; Windows 11, x86_64. Windows Server 2019 is not listed."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/qt/qtdoc/v6.9.3/doc/src/platforms/supported-platforms.qdoc",
+      "sha256": "6a14e949668eb554872942d65dc5b97ef5877a906074bc81ac9ae451390753e0",
+      "evidence": "Configurations not listed below are not officially supported by the Qt Project. However, Qt may still run on unsupported platforms and configurations."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/python/cpython/3.13/Doc/using/windows.rst",
+      "canonical_url": "https://docs.python.org/3.13/using/windows.html",
+      "sha256": "9e2a25eec1bbcf5a0ca2a36fe727136be2a90aefd8a7fab7126eb75781e4b4a9",
+      "evidence": "Python 3.13 supports Windows 8.1 and newer."
+    }
+  ],
+  "pending": [
+    "Actual Server 2019 Desktop Experience installation/update/rollback/uninstall",
+    "Qt GUI and private runtime DLL loading",
+    "Edge/EdgeDriver/SSO/VPN in target user session",
+    "Task Scheduler execution and session/logoff policy",
+    "Zero Trust approval of runtime, scripts and source location"
+  ]
+}

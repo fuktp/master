@@ -35,6 +35,12 @@ def main() -> None:
             packaged = release / "native" / path.name
             if path.read_text(encoding="utf-8-sig") != packaged.read_text(encoding="utf-8-sig"):
                 raise ValueError("Script empacotado diverge do fonte: " + path.name)
+    if digest(source / "orquestrador_app/locales.json") != digest(release / "native/locales.json"):
+        raise ValueError("Catálogo dos iniciadores diverge do catálogo da interface.")
+    for locale in ("en", "es", "pt_BR"):
+        pack = release / "runtime/Lib/site-packages/PySide6/translations" / f"qtbase_{locale}.qm"
+        if not pack.is_file() or not pack.stat().st_size:
+            raise ValueError("Pacote de idioma Qt ausente: " + locale)
     entries = {p.name for p in root.iterdir() if p.is_file()}
     from orquestrador_app.uninstallation import PUBLIC_ENTRIES, render_entries
 
@@ -88,6 +94,8 @@ def main() -> None:
         "sha256": digest(args.archive),
         "payload_files_verified": len(record["files"]),
         "source_matches_package": True,
+        "shared_translation_catalog_verified": True,
+        "qt_language_packs": ["en", "es", "pt_BR"],
         "private_runtime": "Windows x64 GUI PE",
         "named_process_hosts": HOST_DESCRIPTIONS,
         "process_hosts_byte_identical_to_original": True,

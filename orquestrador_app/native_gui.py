@@ -56,7 +56,8 @@ def preferences(window: Any) -> None:
                 dialog,
                 tr("Salvar preferências de atualização"),
                 "atualizacao.json",
-                "JSON (*.json)",
+                tr("JSON (*.json)"),
+                options=QFileDialog.Option.DontUseNativeDialog,
             )[0]
             if not destination:
                 return
@@ -64,11 +65,15 @@ def preferences(window: Any) -> None:
             atomic_json(Path(destination), {"enabled": False, "feed_url": address.text().strip()})
             dialog.accept()
         except Exception as exc:
-            QMessageBox.warning(dialog, "Atualização", str(exc))
+            QMessageBox.warning(dialog, tr("Atualização"), tr(str(exc)))
 
     def local_package() -> None:
         archive = QFileDialog.getOpenFileName(
-            dialog, "Selecionar pacote completo", "", "Pacote ZIP (*.zip)"
+            dialog,
+            tr("Selecionar pacote completo"),
+            "",
+            tr("Pacote ZIP (*.zip)"),
+            options=QFileDialog.Option.DontUseNativeDialog,
         )[0]
         if archive:
             dialog.accept()
@@ -111,8 +116,8 @@ def handoff(window: Any, package: Path | None = None, backup: Path | None = None
         if (
             QMessageBox.question(
                 window,
-                "Abrir manutenção",
-                "O aplicativo será fechado para o wizard de instalação/atualização. Continuar?",
+                tr("Abrir manutenção"),
+                tr("O aplicativo será fechado para o wizard de instalação/atualização. Continuar?"),
             )
             != QMessageBox.StandardButton.Yes
         ):

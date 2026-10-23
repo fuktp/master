@@ -104,3 +104,7 @@ O histórico grande usa modelo Qt e paginação; tabelas pequenas mantêm seleç
 ## Ajustes dev11
 
 O rodapé TESTE ISOLADO ocupa uma linha, com altura medida pela fonte. Caminhos longos recebem reticências no meio; tooltip e nome acessível retêm o endereço completo. A área de atividade continua redimensionável. Desinstalar CAIO usa o tema existente, mostra a pasta e os dados preservados, destaca a remoção em vermelho e dá foco inicial a Cancelar. Erro mantém a confirmação aberta; progresso indeterminado corresponde ao trabalho assíncrono real.
+
+## Localização dev13
+
+O catálogo é o dono dos textos de produto em PT-BR/EN/ES; os pacotes oficiais Qt complementam botões e calendário. Moldes preservam variáveis e não traduzem dados do usuário. Seletores de arquivo Qt passam a usar o diálogo Qt para respeitar o idioma escolhido; os controles do shell mantêm a aparência/idioma do Windows. A confirmação de retirada no wizard usa o mesmo tema, fonte, tamanho pela fonte e Cancelar como foco inicial. Não há mudança de paleta, ícone nem hierarquia visual.

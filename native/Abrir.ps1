@@ -4,6 +4,7 @@ try {
     . (Join-Path $PSScriptRoot 'Native.Common.ps1')
     if (-not $DataRoot) { $DataRoot = Split-Path -Parent $PSScriptRoot }
     $DataRoot = [IO.Path]::GetFullPath($DataRoot)
+    Initialize-NativeLanguage $DataRoot
     $marker = Read-NativeJson (Join-Path $DataRoot 'instalacao-teste.json')
     if ($marker.owner -ne 'orquestrador-test-v1') { throw 'Esta pasta não é uma instalação de teste reconhecida.' }
     $journalPath = Join-Path $DataRoot 'state\native-transaction.json'
@@ -34,7 +35,7 @@ try {
 } catch {
     if (-not $Agent) {
         Add-Type -AssemblyName System.Windows.Forms
-        [Windows.Forms.MessageBox]::Show($_.Exception.Message, 'Orquestrador • falha ao abrir') | Out-Null
+        [Windows.Forms.MessageBox]::Show((T $_.Exception.Message), (T 'Orquestrador • falha ao abrir')) | Out-Null
     }
     exit 2
 }

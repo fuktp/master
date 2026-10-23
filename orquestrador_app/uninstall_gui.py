@@ -111,7 +111,7 @@ class UninstallDialog(QDialog):
         self.status.setText(
             tr("Feche a interface CAIO e aguarde as rotinas em execução antes de tentar novamente.")
             if error == str(BusyError("Recurso em uso por outra execução."))
-            else error
+            else tr(error)
         )
         self.apply.setEnabled(True)
         self.cancel.setEnabled(True)

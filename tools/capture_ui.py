@@ -15,10 +15,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from PySide6.QtCore import Qt, QThread
 from PySide6.QtTest import QTest
-from PySide6.QtWidgets import QApplication
+from PySide6.QtWidgets import QApplication, QFileDialog
 
 from orquestrador_app.config import save
 from orquestrador_app.gui import MainWindow, RoutineDialog
+from orquestrador_app.i18n import tr
 from orquestrador_app.paths import Paths
 from orquestrador_app.sandbox import prepare_config
 from orquestrador_app.uninstall_gui import UninstallDialog
@@ -92,6 +93,12 @@ def main() -> None:
                 app.processEvents()
                 assert uninstall.grab().save(str(args.output / f"{language}-uninstall.png"))
                 uninstall.reject()
+                picker = QFileDialog(window, tr("Selecionar pacote completo"), str(paths.root))
+                picker.setOption(QFileDialog.Option.DontUseNativeDialog, True)
+                picker.show()
+                app.processEvents()
+                assert picker.grab().save(str(args.output / f"{language}-file-picker.png"))
+                picker.reject()
             finally:
                 window.timer.stop()
                 window.dev_panel.timer.stop()

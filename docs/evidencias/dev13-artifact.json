@@ -1,0 +1,32 @@
+{
+  "archive": "CAIO_2.0.0.dev13.zip",
+  "sha256": "689f3cc87b7c364cfc0490321b3d6685e7905d9c35f04f010dad30e0ac38bea5",
+  "payload_files_verified": 4123,
+  "source_matches_package": true,
+  "shared_translation_catalog_verified": true,
+  "qt_language_packs": [
+    "en",
+    "es",
+    "pt_BR"
+  ],
+  "private_runtime": "Windows x64 GUI PE",
+  "named_process_hosts": {
+    "CAIO-Orquestrador.exe": "CAIO - Orquestrador",
+    "CAIO-Monitor.exe": "CAIO - Monitor de agendamentos",
+    "CAIO-Desinstalador.exe": "CAIO - Desinstalador",
+    "CAIO-Rotina.exe": "CAIO - Rotina adicional",
+    "CAIO-Rotina-Clientes.exe": "CAIO - Rotina Clientes",
+    "CAIO-Rotina-Eventos.exe": "CAIO - Rotina Eventos",
+    "CAIO-Rotina-Procedimentos.exe": "CAIO - Rotina Procedimentos",
+    "CAIO-Rotina-KWMS.exe": "CAIO - Rotina KWMS",
+    "CAIO-Rotina-ATMS.exe": "CAIO - Rotina ATMS"
+  },
+  "process_hosts_byte_identical_to_original": true,
+  "original_interpreter_sha256": "435e222945e1a110559fb71b5ebff8c3d698689b5e5eee0371815c1141d72738",
+  "windows_signature_trust_verified": false,
+  "root_open_and_uninstall_entries_verified": true,
+  "windows_runtime_executed": false,
+  "winforms_executed": false,
+  "scheduled_tasks_executed": false,
+  "extracted_root": "/workspace/master/build/validation-dev13/cache/updates/b4ce3d66-e1ff-4a5c-b185-0a0bf9fc5e6c/CAIO_2.0.0.dev13"
+}

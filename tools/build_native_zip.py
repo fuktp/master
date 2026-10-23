@@ -142,6 +142,7 @@ def main() -> None:
                     "%~dp0wizard.ps1", "%~dp0payload\\native\\wizard.ps1"
                 )
                 (root / entry).write_bytes(wrapper.replace("\n", "\r\n").encode(encoding))
+    shutil.copy2(source / "orquestrador_app/locales.json", native / "locales.json")
     shutil.copytree(source / "assets", payload / "assets")
     shutil.copy2(source / "assets/caio.ico", payload / "assets/orquestrador.ico")
     from prepare_windows_hosts import build_hosts
@@ -166,6 +167,7 @@ def main() -> None:
         "windows_process_hosts": HOST_DESCRIPTIONS,
         "process_host_identity": "CAIO filenames; original Python publisher metadata and signature preserved",
         "public_entries": list(PUBLIC_ENTRIES),
+        "shared_translation_catalog": "native/locales.json",
         "files": files,
         "signature": "scripts unsigned; process hosts preserve the original Python executable and its signature; no CAIO certificate",
     }

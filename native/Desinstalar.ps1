@@ -3,6 +3,7 @@ $ErrorActionPreference = 'Stop'
 try {
     . (Join-Path $PSScriptRoot 'Native.Common.ps1')
     $DataRoot = [IO.Path]::GetFullPath($DataRoot)
+    Initialize-NativeLanguage $DataRoot
     $pointerPath = Join-Path $DataRoot 'installation.json'
     $planPath = Join-Path $DataRoot 'state\uninstall-cleanup.json'
     $owned = [IO.Path]::GetFullPath((Join-Path $DataRoot 'app\versions')) + [IO.Path]::DirectorySeparatorChar
@@ -39,7 +40,7 @@ try {
     } elseif ($completed) { $message = 'CAIO desinstalado. Os dados, backups e arquivos do aplicativo foram preservados conforme sua escolha em: ' + $DataRoot }
     else { $message = 'Os componentes do CAIO ja foram removidos. Os dados preservados continuam em: ' + $DataRoot }
     Add-Type -AssemblyName System.Windows.Forms
-    [Windows.Forms.MessageBox]::Show($message, 'CAIO - Desinstalacao') | Out-Null
+    [Windows.Forms.MessageBox]::Show((T $message), (T 'CAIO - Desinstalacao')) | Out-Null
     exit 0
 } catch {
     Show-NativeError ($_.Exception.Message + "`nOs dados e backups foram preservados. Execute 03 - Desinstalar CAIO.vbs novamente para tentar concluir.")

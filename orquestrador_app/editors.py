@@ -182,6 +182,7 @@ class DependencyEditor(QWidget):
             enabled = QCheckBox(
                 origin.label + ("" if origin.enabled else " · " + tr("Desabilitada"))
             )
+            enabled.setProperty("preserveUserText", True)
             enabled.setChecked(origin.id in selected)
             mode = QComboBox()
             mode.addItem(tr("Na mesma cadeia"), "same_chain")

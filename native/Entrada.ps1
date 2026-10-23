@@ -1,4 +1,4 @@
-param([ValidateSet('open','uninstall')][string]$Action = 'open', [string]$DataRoot = '', [int]$ParentPid = 0, [double]$ParentStarted = 0)
+﻿param([ValidateSet('open','uninstall')][string]$Action = 'open', [string]$DataRoot = '', [int]$ParentPid = 0, [double]$ParentStarted = 0)
 $ErrorActionPreference = 'Stop'
 try {
     . (Join-Path $PSScriptRoot 'Native.Common.ps1')
@@ -11,6 +11,7 @@ try {
         $DataRoot = [string]$locator.root
     }
     $DataRoot = [IO.Path]::GetFullPath($DataRoot)
+    Initialize-NativeLanguage $DataRoot
     $marker = Read-NativeJson (Join-Path $DataRoot 'instalacao-teste.json')
     if ($marker.owner -ne 'orquestrador-test-v1') { throw 'Esta pasta nao e uma instalacao CAIO reconhecida.' }
     if ($Action -eq 'open') {

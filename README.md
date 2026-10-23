@@ -1,4 +1,4 @@
-# CAIO — versão de teste 2.0.0.dev12
+# CAIO — versão de teste 2.0.0.dev13
 
 Aplicativo Windows de automação, com interface em português, inglês e espanhol. Esta revisão redesenha a interface a partir do tema KPMG Claro: navegação lateral, títulos e resumos claros, hierarquia de ações e campos legíveis. As correções do instalador e do Agendador da dev8 foram preservadas.
 
@@ -6,15 +6,15 @@ Aplicativo Windows de automação, com interface em português, inglês e espanh
 A dev10 aplica as melhorias operacionais avaliadas em [docs/VALIDACAO.md](docs/VALIDACAO.md): monitor com comunicação real, histórico paginado, configuração protegida contra edição concorrente, formulários guiados e prévias antes de operações em arquivos. Mantém o tema integral KPMG Claro e os cinco extratores originais. **Windows real ainda precisa de homologação.**
 
 
-A dev12 corrige a inicialização interna do wizard: a janela 2 usa o interpretador original do pacote. Os hosts com nomes CAIO passam a ser cópias idênticas desse interpretador, preservando seus recursos, metadados e assinatura upstream. Mantém rodapé de uma linha, logs UTF-8, desinstalador e iniciadores na raiz. A aprovação pela política Zero Trust da organização ainda precisa ser verificada pela TI.
+A dev13 amplia a revisão de PT-BR, inglês e espanhol: mensagens dinâmicas, diálogos, menus do monitor, datas/calendários e botões padrão do Qt seguem a preferência escolhida. Nomes, caminhos, notas, JSON técnico e logs originais permanecem preservados. Mantém o runtime com assinatura upstream, o rodapé de uma linha e os iniciadores/desinstalador.
 
-## Downloads da dev12
+## Downloads da dev13
 
-- [Aplicativo completo com runtime privado](https://github.com/fuktp/master/raw/refs/heads/master/releases/2.0.0.dev12/CAIO_2.0.0.dev12.zip)
-- [Fontes, testes, evidências e versionamento interno](https://github.com/fuktp/master/raw/refs/heads/master/releases/2.0.0.dev12/Fontes_CAIO_2.0.0.dev12.zip)
-- [Hashes SHA-256 dos ZIPs](releases/2.0.0.dev12/SHA256SUMS.txt)
+- [Aplicativo completo com runtime privado](https://github.com/fuktp/master/raw/refs/heads/master/releases/2.0.0.dev13/CAIO_2.0.0.dev13.zip)
+- [Fontes, testes, evidências e snapshot desta versão](https://github.com/fuktp/master/raw/refs/heads/master/releases/2.0.0.dev13/Fontes_CAIO_2.0.0.dev13.zip)
+- [Hashes SHA-256 dos ZIPs](releases/2.0.0.dev13/SHA256SUMS.txt)
 
-Extraia todo o aplicativo e abra `01 - Instalar.vbs`. O repositório mantém os pacotes anteriores. A homologação Windows continua pendente conforme a matriz de validação.
+Extraia todo o aplicativo e abra `01 - Instalar.vbs`. O ZIP de fontes inclui o snapshot desta versão; todos os snapshots e pacotes anteriores permanecem no repositório GitHub. A homologação Windows continua pendente conforme a matriz de validação.
 
 ## Instalar ou atualizar
 
@@ -27,13 +27,25 @@ Extraia todo o aplicativo e abra `01 - Instalar.vbs`. O repositório mantém os 
 
 Se a tentativa anterior foi revertida ao conferir a tarefa, abra o iniciador deste ZIP e selecione novamente a mesma pasta de teste reconhecida. Não apague configurações nem backups para repetir a instalação.
 
-Depois de atualizar, confirme **CAIO • Teste 2.0.0.dev12** no título da janela. O atalho existente abre a versão apontada pela instalação. Se um ícone fixado manualmente na barra de tarefas ainda apontar para um lançador antigo do Python/WSH, desafixe-o e fixe a janela CAIO atual; a atualização não altera itens externos fixados pelo usuário.
+Depois de atualizar, confirme **CAIO • Teste 2.0.0.dev13** no título da janela. O atalho existente abre a versão apontada pela instalação. Se um ícone fixado manualmente na barra de tarefas ainda apontar para um lançador antigo do Python/WSH, desafixe-o e fixe a janela CAIO atual; a atualização não altera itens externos fixados pelo usuário.
 
 Janelas, bandeja, atalhos e mensagens usam o mesmo ICO CAIO. Os atalhos passam a ter identidade própria do Windows e nome de arquivo de ícone baseado no conteúdo, evitando reutilizar o caminho do ícone antigo em cache. Abrir o atalho novamente solicita o foco da janela já aberta, inclusive para detalhes de notificações.
 
 Python 3.13.16 e as bibliotecas estão incluídos em um runtime privado. O usuário não precisa instalar Python, pip ou executar comandos. A entrada continua sendo o VBS. O runtime inclui hosts gráficos com nomes e metadados CAIO: `CAIO-Orquestrador.exe`, `CAIO-Monitor.exe` e `CAIO-Rotina-Clientes.exe`, `Eventos`, `Procedimentos`, `KWMS` e `ATMS`. Scripts adicionais usam `CAIO-Rotina.exe`. São cópias byte a byte do `pythonw.exe` original: a assinatura e os metadados do fornecedor permanecem intactos. Os nomes de arquivo são CAIO; a descrição interna e o ícone do próprio executável continuam sendo os do Python. Janela, bandeja, atalhos e notificações usam a identidade CAIO existente. A apresentação e o agrupamento no Gerenciador de Tarefas ainda exigem conferência em Windows real. Mantenha a pasta `payload` junto dos iniciadores e não execute seus arquivos manualmente.
 
 Requer Windows x64, sessão de usuário compatível e Edge para as rotinas de navegador. Scripts e pacote não têm certificado próprio. O iniciador não altera políticas persistentes nem desativa proteções: se a organização bloquear VBS/PowerShell/runtime, a TI precisa avaliar a execução. Trocar EXE por scripts não garante liberação pelo SmartScreen ou Defender.
+
+## Windows Server 2019, versão 1809
+
+**Compatibilidade possível, ainda não homologada.** O Python 3.13 aceita Windows 8.1 ou posterior. O Qt/PySide6 6.9.3 lista Windows 10 a partir da versão 1809, mas não inclui Windows Server 2019 explicitamente na matriz de plataformas suportadas. Isso não comprova o funcionamento no seu servidor. As fontes consultadas e os limites estão em `docs/evidencias/dev13-server2019.json`.
+
+O aplicativo precisa de **Windows x64 com Desktop Experience**, perfil de usuário e sessão iniciada. Esta edição não oferece suporte a Server Core nem transforma o monitor em serviço Windows. A tarefa própria usa a sessão do usuário; políticas de logoff/RDP precisam ser conferidas. Edge/EdgeDriver, acesso aos destinos, SSO/VPN, PowerShell/WSH e aprovação Zero Trust também precisam ser validados no servidor. O runtime privado dispensa Python global. Antes de produção, execute o roteiro Windows incluído no ZIP nessa mesma edição e política; esta entrega foi verificada em Linux/Qt offscreen, não no Server 2019.
+
+## Idiomas
+
+Em **Configurações > Idioma**, selecione **Português (Brasil), English ou Español** e aplique. O wizard também oferece essa seleção; os iniciadores instalados e o desinstalador leem a preferência salva. Os textos de produto usam um catálogo compartilhado. Os seletores de arquivo da interface Qt usam os diálogos do Qt para acompanhar o idioma e os botões/calendários carregam o pacote oficial de tradução correspondente.
+
+Nomes de rotinas, caminhos, notas escritas pelo usuário, chaves do JSON, identificadores de diagnóstico e conteúdo original dos extratores não são traduzidos. Mensagens nativas do Windows, tipos de arquivo fornecidos pelo sistema, controles de diálogos do shell e avisos VBS anteriores ao carregamento da preferência podem usar o idioma do sistema ou o padrão do iniciador. O aplicativo conserva essas evidências, em vez de reescrever erros externos.
 
 ## Execução em Windows com Zero Trust
 

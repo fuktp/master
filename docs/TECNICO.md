@@ -1,4 +1,20 @@
-# CAIO 2.0.0.dev12 — referência técnica
+# CAIO 2.0.0.dev13 — referência técnica
+
+## Localização e alvo Server 2019 — dev13
+
+O parecer de plataforma é documental e condicional. Python 3.13 documenta Windows 8.1 ou mais recente; Qt 6.9.3 documenta Windows 10 1809+ e informa que configurações ausentes da matriz não têm suporte oficial. Server 2019 não está na tabela. Não há evidência de execução nesta edição: Desktop Experience x64, carga das DLLs privadas, Edge/SSO/VPN, Agendador, sessão/logoff e Zero Trust permanecem no roteiro de homologação. O verificador Windows registra produto, tipo de instalação, build e tipo de sessão. Não houve troca especulativa de dependências nem alteração dos binários assinados.
+
+`i18n.py` conserva o catálogo existente e acrescenta mensagens com campos numerados. Compara moldes ancorados, escapa seus trechos literais e reinsere os valores sem traduzi-los. Moldes de uma linha não capturam outras linhas; mensagens compostas podem ser traduzidas linha a linha. Cache de até 2.048 mensagens evita repetir as correspondências. Locale não muda códigos, caminhos, fontes de script, JSON ou dados persistidos. Os erros armazenados permanecem originais; a apresentação traduz somente mensagens próprias conhecidas.
+
+`install_translation` define QLocale e carrega `qtbase_pt_BR.qm`, `qtbase_en.qm` ou `qtbase_es.qm`; retira o tradutor anterior ao trocar idioma. O filtro compartilhado cobre títulos, grupos, páginas, ações, tooltips e nomes acessíveis. Menus do monitor são criados após instalar o idioma; a próxima observação de configuração atualiza menu, tooltip e novos avisos quando a preferência muda, sem reiniciar o processo. `set_cell(localize=False)` e `preserveUserText` protegem nomes/notas e opções fornecidas pelo usuário. Mensagens dinâmicas passam pelas fronteiras de apresentação; o acompanhamento de logs brutos continua preservando bytes e acentos.
+
+Os seletores de arquivo Qt usam `DontUseNativeDialog`, mantendo o mesmo contrato visual e o idioma do produto. A confirmação WinForms para retirar rotina usa controles próprios, Cancelar como ação padrão e os adaptadores de tema/tamanho existentes. Diálogos do shell, mensagens de plataforma e metadados nativos de arquivo seguem as regras do sistema. Avisos VBS de bootstrap anteriores ao carregamento da preferência mantêm o padrão do iniciador.
+
+`Native.Common.ps1` compartilha T, moldes, cultura e leitura de idioma salvo. O builder copia o mesmo `locales.json` para `payload/native`, que também chega a `launch`; assim a desinstalação mantém o catálogo após remover o runtime. `verify_native_artifact.py` exige igualdade dos catálogos e presença dos três pacotes Qt. O wizard atualiza cabeçalhos e resumos ao mudar idioma, preserva edições antes de reconstruir as linhas e protege o preenchimento programático contra sobrescrita por eventos de seleção. A tabela não traduz nomes/caminhos do usuário nem mostra frequência como código interno.
+
+Auditoria reproduzível: `.venv/bin/python tools/audit_localization.py --output docs/evidencias/dev13-localization.json`. Verifica entradas, colisões de caixa, paridade de campos e legendas próprias explícitas no Python. Testes Qt e PowerShell complementam o inventário estático: ele não comprova todos os estados visuais, a renderização WinForms nem a qualidade linguística de textos externos.
+
+Build em `build/release-dev13`, evidências `docs/evidencias/dev13-*` e snapshot imutável `Versionamento_interno/2.0.0.dev13-caio`. O ZIP de fontes passa a incluir apenas o snapshot desta versão, além dos fontes/testes/evidências atuais; todos os snapshots anteriores continuam no GitHub e não são apagados. Isso evita repetir o histórico inteiro em cada pacote. As seções anteriores abaixo são históricas.
 
 ## Inicialização e assinatura — dev12
 
