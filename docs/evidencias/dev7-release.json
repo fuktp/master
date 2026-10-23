@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0.dev7",
+  "previous_version": "2.0.0.dev6",
+  "versioning": "internal, no Git",
+  "artifact": "CAIO_2.0.0.dev7.zip",
+  "bytes": 84303777,
+  "sha256": "f3cf870b7885b09bd2c31784475e0fdbe7ea928b3ecf8ffffa1084be29b12466",
+  "tests": {
+    "pytest": 191,
+    "subtests": 7,
+    "powershell_checks": 25,
+    "lint": "passed",
+    "format": "passed",
+    "mypy_win32": "passed",
+    "dependency_audit": "41 pinned dependencies; no known vulnerabilities found",
+    "lock": "72 packages, checked offline"
+  },
+  "windows_runtime_executed": false,
+  "real_winforms_executed": false,
+  "real_scheduler_executed": false,
+  "runtime_preserved": true,
+  "extractors_preserved": 5,
+  "theme_preserved": true
+}

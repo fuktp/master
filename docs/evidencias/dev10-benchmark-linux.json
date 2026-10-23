@@ -1,0 +1,16 @@
+{
+  "version": "2.0.0.dev10",
+  "environment": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "idle_cpu_percent_one_core": 1.083584505176435,
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform_plugin": "offscreen",
+  "mode": "source",
+  "method": "one process; import + construct + show + processEvents; 10ms QTimer, 5s idle panel; OS page cache not reset",
+  "opening_seconds": 0.3493231210004524,
+  "rss_bytes_ready": 76226560,
+  "memory_method": "/proc/self/status VmRSS (namespace-aware)",
+  "timer_samples": 482,
+  "median_timer_interval_seconds": 0.010113764999914565,
+  "max_timer_interval_seconds": 0.013392554000347445,
+  "windows_benchmark": "NOT_EXECUTED"
+}

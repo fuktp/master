@@ -1,0 +1,430 @@
+{
+  "version": "2.0.0.dev2",
+  "at": "2026-10-21T23:19:34.823676+00:00",
+  "files": {
+    "Orquestrador.spec": {
+      "size": 1120,
+      "sha256": "19727476832d45544da53678e581801b46bc12c3eca306c7845f3a700945b9bf"
+    },
+    "requirements-resolved.txt": {
+      "size": 1932,
+      "sha256": "7c0f16f19572b05b5e40d670f7a41deff5862f42d6f6941c93641af522bd3419"
+    },
+    "pipefy_orchestrator.config.json": {
+      "size": 2944,
+      "sha256": "11dacee52b38ae3ac9ba533b57e730cf7cfda0a3a7fde7664169bc6fc48ec70c"
+    },
+    "desktop_entry.py": {
+      "size": 102,
+      "sha256": "d17bbe3215458c9d52ed245fae8b6c9421fb5abf2e117abc8d11bc920864e537"
+    },
+    "automation_schedule.py": {
+      "size": 11003,
+      "sha256": "28e3ebe8cc84e01f21fd002b9dce7bb7858e282b636fa884623f58321e64170a"
+    },
+    "REGISTRO_DEV2.md": {
+      "size": 2290,
+      "sha256": "2421f7aca1587c3d6b44e460270c16746658c4ad6daf2d58da4b47209bba7528"
+    },
+    "MATRIZ_TESTE_DEV2.md": {
+      "size": 2981,
+      "sha256": "99681792ff211bde4ec1dba5e0931f0afaa7b64569227ae28b4cbc5c2941f145"
+    },
+    "requirements.txt": {
+      "size": 70,
+      "sha256": "b5962e564cfbdb8158a7274051e111543d12f5b049c399a7aa7e5c2eb03c03fb"
+    },
+    "pyproject.toml": {
+      "size": 992,
+      "sha256": "52cbeb6bb0a0b2c042297fbd4ece4365a80fe5525825d4fda1fcfea7cba583c8"
+    },
+    "README_DESKTOP.md": {
+      "size": 13310,
+      "sha256": "10e427326f33efe1457a0a1f4fee4262856ab90186f5719524d7e079b3859262"
+    },
+    "requirements-all-resolved.txt": {
+      "size": 3694,
+      "sha256": "be504afbeb01e2e3b2ce3867790e39110f14567c82cfe132e947076449c85832"
+    },
+    "uv.lock": {
+      "size": 114148,
+      "sha256": "84b4576cb04445328886aadae93cf31fc1fc90e1a1272aa2abfaeaee564ccbc3"
+    },
+    "conftest.py": {
+      "size": 497,
+      "sha256": "fe7988316df1759d0e5790c017f39041e056732947b39f64396c48c160cdad33"
+    },
+    "update_installation.py": {
+      "size": 4156,
+      "sha256": "2548a65608eca103c256aff10b3897a2e0de13dfebd9f0e75d1e71514f719fbd"
+    },
+    ".gitignore": {
+      "size": 177,
+      "sha256": "86eeb3f7afb16b68297945b3e96d1c5724c027f28814dff8dbc611f8aa7bcf9c"
+    },
+    "install_tasks.ps1": {
+      "size": 4134,
+      "sha256": "7d02a607d56d5996530cc568365f61946b9caaa020e1d8a95b6c88868f216e38"
+    },
+    "Executar_Pipefy.cmd": {
+      "size": 933,
+      "sha256": "acb5d64bfedf054e58d494cd90533c0d52c7bd41e410d2b3a24ab4c0599ac279"
+    },
+    "requirements-runtime-portable.txt": {
+      "size": 1914,
+      "sha256": "52c3669c0bdca2ee9d16fd5456d77b48d43cc8ba759a0ef16deb0f2b84b2a235"
+    },
+    "README.md": {
+      "size": 13171,
+      "sha256": "a9fd74c4325a54385ade5588ad926e8faca340d6f8ff1c49c03997b640d2fd78"
+    },
+    "Instalar_Automacao_Pipefy.cmd": {
+      "size": 1544,
+      "sha256": "8df84e27a4834ec3781f9ba129f70cd23c4b0104f374a71c7529df4ba4d2cee5"
+    },
+    "requirements-windows-build.txt": {
+      "size": 733,
+      "sha256": "9e0a72983d7d63115ed1ad07303a77dda2241dd989409f52c604c76e6e9eab01"
+    },
+    "README_TESTE.md": {
+      "size": 7597,
+      "sha256": "591b7f6ae602239d3cdfe5d52b573f0f4a43f67e3e9d0dc59b2fead123fa248c"
+    },
+    "Atualizar_Instalacao.cmd": {
+      "size": 248,
+      "sha256": "82a0ddd46043608affa81deca02fc314da58f7df9029ddcc87f6c2f0e3b4aa92"
+    },
+    "Configurar_Automacoes.cmd": {
+      "size": 336,
+      "sha256": "31e89537e52b37f47673cf2b0b33d11fea934b9f1b38b8e9f719dacd8ff682eb"
+    },
+    "pipefy_orchestrator.py": {
+      "size": 71562,
+      "sha256": "eb780c62f66561be983cdeb76bf25686db607c6d63f8909b52187f0d73ac2027"
+    },
+    "tests/test_extractors_paths.py": {
+      "size": 6914,
+      "sha256": "0e8a532a13a9194484d697b329b33b0136e597e4dcaeddc6313c84f0371890f4"
+    },
+    "tests/test_pipefy_orchestrator.py": {
+      "size": 20396,
+      "sha256": "1170687cbfb70e771b9946093d6030639d356ab8d2e5e2063f771e0ed5e6cea0"
+    },
+    "tests/test_kwms_schedule.py": {
+      "size": 14833,
+      "sha256": "5b121127695507f97df23a19e22f6a25034abe70869de983fa29d33c488156d9"
+    },
+    "orquestrador_app/io.py": {
+      "size": 3628,
+      "sha256": "f1dc8059b3e6a2e0cee44f5915242991d04f29b6a09a8f1add4caa80342c32df"
+    },
+    "orquestrador_app/config.py": {
+      "size": 16395,
+      "sha256": "cf2215e256055585cb3090d7f8ed22c960e80669ba36ce6a1ffea0cb2eff01de"
+    },
+    "orquestrador_app/engine.py": {
+      "size": 15898,
+      "sha256": "5d9b00ed3dc202a590315a566955102a4161f61d42d2e76b4bbfb6ffc07616ae"
+    },
+    "orquestrador_app/gui.py": {
+      "size": 60334,
+      "sha256": "5fb099dad969fd45fa293127ccc5b4e2b88094af74c8a7a9ce20083a28550679"
+    },
+    "orquestrador_app/runtime.py": {
+      "size": 1918,
+      "sha256": "5878faf056c2af21c1026d5b71740f50ae727f1ac303eb1113cfcd1d9a8634f5"
+    },
+    "orquestrador_app/driver.py": {
+      "size": 2680,
+      "sha256": "042f774e6df5d4b30ec5964f18b4254bb9c5457ebdd39a476b7b2566852fe759"
+    },
+    "orquestrador_app/agent.py": {
+      "size": 5203,
+      "sha256": "1ae97f7af3670659a3a311e2658651107aefc6d9b91b9877e9e95b85f8921d75"
+    },
+    "orquestrador_app/schedule.py": {
+      "size": 5383,
+      "sha256": "a35b883b59007da8c72b4e6058e9115a4a46a10e15831118ca79724f7afc6a57"
+    },
+    "orquestrador_app/resources.py": {
+      "size": 496,
+      "sha256": "1933d07cb54fa3fed6fd68b51c65695a19033894ededd2bb18c4acc7ad8edb22"
+    },
+    "orquestrador_app/clock.py": {
+      "size": 258,
+      "sha256": "88a990001257b765dfd9a2d780bc3244e60116f9043d19b0b89173b643ee422e"
+    },
+    "orquestrador_app/processes.py": {
+      "size": 5958,
+      "sha256": "b5732a47464a0b8bc04858c4fcffacd07e89bc27da0730e480ae597c72d0b82e"
+    },
+    "orquestrador_app/files.py": {
+      "size": 10536,
+      "sha256": "d84a84c98ba949c33b312e7f698a8159f2f64eac99a76d6fffb4da3c44a1d02d"
+    },
+    "orquestrador_app/__main__.py": {
+      "size": 7637,
+      "sha256": "68b109096d69edb388b7f85e50db26e1884e889ffc65d0d3872bb103bad3e2d9"
+    },
+    "orquestrador_app/connectivity.py": {
+      "size": 3816,
+      "sha256": "27913fe01d217096524604efa87f7a9dea027ef00c0a1f98a1d47c337f78da7b"
+    },
+    "orquestrador_app/notifications.py": {
+      "size": 1147,
+      "sha256": "defeae28e60f4649db42b0d1af89619842fe8fb8d5ce4827eb1c4a6ed65ae38d"
+    },
+    "orquestrador_app/__init__.py": {
+      "size": 43,
+      "sha256": "40abc7da1dc1b3e942516c41093a91a4bd901276b080784627e1027a4a14f9fd"
+    },
+    "orquestrador_app/sandbox.py": {
+      "size": 5524,
+      "sha256": "d6a9df09fa24c414239fb073dc3b0548e16b399cf8013c6971bbdbea9f3da0cb"
+    },
+    "orquestrador_app/install.py": {
+      "size": 16723,
+      "sha256": "fba9965ac4ef8b87852625a42a19588ef9b8f352ba11a20b268ff01093c14481"
+    },
+    "orquestrador_app/versioning.py": {
+      "size": 1304,
+      "sha256": "1b36d0fcc0716db8e8e6068a81f0d81a68f1a4d5061b87808b670b2e4903eaf5"
+    },
+    "orquestrador_app/store.py": {
+      "size": 8528,
+      "sha256": "cab1be4419546f94497eb8201dd8761c671f22ecda56606da60f47c4010ea43b"
+    },
+    "orquestrador_app/worker.py": {
+      "size": 22020,
+      "sha256": "6b3993d0a0f51914555809552f38fcbe04248998822f87f85bc8c1681d6368b7"
+    },
+    "orquestrador_app/dev_gui.py": {
+      "size": 13168,
+      "sha256": "1f2732ce308e428f19950c10ac98ce475d32bd797adeb8275e2c654d9e160a23"
+    },
+    "orquestrador_app/paths.py": {
+      "size": 3651,
+      "sha256": "0b19e1bab9d1ed6c80cc405c859f05832c00d64c61446e961d7167a45ed668f9"
+    },
+    "orquestrador_app/tasks.py": {
+      "size": 7246,
+      "sha256": "1efed566dd761a02ce5cda04f209f0dfcdb18bdf16570afa501e4e6bfebc466f"
+    },
+    "docs/MIGRACAO_DESKTOP.md": {
+      "size": 5739,
+      "sha256": "92f0015dd7645b22d33f64effabf4499fb29488529cde1d9ef171aa0c7e94394"
+    },
+    "docs/MATRIZ_ACEITE_DESKTOP.md": {
+      "size": 8293,
+      "sha256": "78235165aa107b2efa430963e3e52541d4b67de09856e0f77b8ac6dd734cdc8e"
+    },
+    "docs/INSPECAO_E_BLOQUEIOS.md": {
+      "size": 17492,
+      "sha256": "3a7ee7cabe9b4f259f35a1c64e42fe9fba3eb2a3348eb54eab97cb7e6c824720"
+    },
+    "docs/COMANDOS.md": {
+      "size": 5538,
+      "sha256": "c0237e8d97018e1126f15a850c38be611c9d64b0e3fc4acc938135b57f15869d"
+    },
+    "docs/COMANDOS_DESKTOP.md": {
+      "size": 4465,
+      "sha256": "d1fcea5b2ebe64e25fbae417daac72c389239389ef5c5c44d239b0a4312e4f0c"
+    },
+    "tools/prepare_windows_payload.py": {
+      "size": 3690,
+      "sha256": "8497a06c1544894ce87087c189244b7610c3b61f0a4040294a4b187e2e6c47fb"
+    },
+    "tools/pack_windows_payload.py": {
+      "size": 9019,
+      "sha256": "5ffa946e8aec038708defce5c2e2c902d220e949f84fade33bdf76cafe76adae"
+    },
+    "tools/build_windows.py": {
+      "size": 2056,
+      "sha256": "991271b767b2fd17e32e51115d679040071f5c72b0932d54a0dc063e2f114b62"
+    },
+    "tools/benchmark_gui.py": {
+      "size": 3012,
+      "sha256": "e30542ea4a50fbe5f6cadf8d912340abf21dc86dab0d4c803c520184a75bc5ec"
+    },
+    "desktop_tests/test_adapters.py": {
+      "size": 6604,
+      "sha256": "c38e79dfc9d022e08b003dde3e6c8e5c035e18466198bb09bc39d5d1749418c0"
+    },
+    "desktop_tests/test_files.py": {
+      "size": 5597,
+      "sha256": "7db87b2740a80e7a861b0db1d4819fbc286a0dc051c167e09d7533ea4a6d5827"
+    },
+    "desktop_tests/test_install.py": {
+      "size": 4153,
+      "sha256": "316207b9aa62f737a1ca959a1ab9a03b60279e0b42bdbb0373add1ddd966357f"
+    },
+    "desktop_tests/test_schedule.py": {
+      "size": 5283,
+      "sha256": "2d89e17a9c5283859f3f2192d1c171dfffd2743f90039d16857524ea3e884d6a"
+    },
+    "desktop_tests/conftest.py": {
+      "size": 1355,
+      "sha256": "31f0055919b97a1859c278663eb26dae0e16383f63279082813cae6f91db44a0"
+    },
+    "desktop_tests/test_test_edition.py": {
+      "size": 8968,
+      "sha256": "c59b3eef8f0a90ea93330093112412a12da117bdaf510e1b1deed411fba6f4a2"
+    },
+    "desktop_tests/test_processes_gui.py": {
+      "size": 5846,
+      "sha256": "9cbf31ff3ad811056b25f2e21356a67525313c19d838242c4da4eff9deb854b8"
+    },
+    "desktop_tests/test_engine.py": {
+      "size": 7859,
+      "sha256": "336a7191047ca63326660146dad4ab50feb3b1912c483bf99ac6c4e07d87a40c"
+    },
+    "scripts/pipefy_status_atms_tool_edge.py": {
+      "size": 73690,
+      "sha256": "3ee725aacc01c570d11f6baf12b2222fdc689b91a24a3cdcb71bbd98e6315826"
+    },
+    "scripts/pipefy_eventos_tool_edge.py": {
+      "size": 63504,
+      "sha256": "237525a0e2c25410b618c82ec14579c96f196118eb8bd3f15d379804a9b7cffd"
+    },
+    "scripts/pipefy_procedimentos_tool_edge.py": {
+      "size": 55998,
+      "sha256": "c29b703c9889cf5a9f313dd87a1fe13f7d6ac2e698741937fc06d0e719af8ed5"
+    },
+    "scripts/pipefy_clientes_tool_edge.py": {
+      "size": 55567,
+      "sha256": "0ff5cdbb38eee83764444de169c3e791ad8689cc4174eee53df8d89f5a85c995"
+    },
+    "scripts/kwms_alocacoes_tool_edge.py": {
+      "size": 15563,
+      "sha256": "7f24e9ae376378e7937d435811b7e2ed755768c5a56d75bcefb79c7922e3595d"
+    },
+    "build_inputs/windows-x64.json": {
+      "size": 13141,
+      "sha256": "911a1d56c49033c1409525708bacf78c63a669f78266db9ac9908ca69f3da839"
+    },
+    "docs/evidencias/GUI-Dev-Linux.png": {
+      "size": 105703,
+      "sha256": "24d611bf99866fddc312bded7b09829d22e872c3dcbf861133d03b6d4af3e19b"
+    },
+    "docs/evidencias/desktop-dependency-audit-initial.json": {
+      "size": 2657,
+      "sha256": "7374b88aa082f23bedb7d6c0f9c908b0e6f326f7796fda2f0b1239bdfcdee24c"
+    },
+    "docs/evidencias/desktop-dependency-audit.json": {
+      "size": 1788,
+      "sha256": "f544086582fc0d69687e4516fe34b7762e1337431b6da48602cafb6fc9942028"
+    },
+    "docs/evidencias/test-edition-tests.xml": {
+      "size": 16243,
+      "sha256": "fb0bcae556d3f43a536b9a05937e12ae1631ea1d47511f462241eeb7248b3c0a"
+    },
+    "docs/evidencias/gui-dev-source-smoke.json": {
+      "size": 543,
+      "sha256": "1ce4483b9178558a29768140c576fcb89f28f1f2e7038469c332b41857e46118"
+    },
+    "docs/evidencias/test-edition-limitations.json": {
+      "size": 635,
+      "sha256": "304cad9f2b32f116a1479df04d1b163c155e8afc6fa976dfce93917a554c156b"
+    },
+    "docs/evidencias/lint-isolado.json": {
+      "size": 4146,
+      "sha256": "c08dcf19d5172a6c3ea9ef881c5b90efafe21e2d67ac4dc1fb91ba7b9a73eb05"
+    },
+    "docs/evidencias/test-edition-originals-preserved.json": {
+      "size": 167,
+      "sha256": "a1304910d3177bb5dc13fd2c6a68c08b54b48cf7d91bf61e2d9c97b0fb3ba3d5"
+    },
+    "docs/evidencias/source-manifest.json": {
+      "size": 3226,
+      "sha256": "9ea4298175944f6336b143ca7dfe561f95c9879ab7f21c44597679722b6e16fb"
+    },
+    "docs/evidencias/desktop-audit-all.json": {
+      "size": 3706,
+      "sha256": "2f94eabe1b53e0acc431973d1bb2535ed822a120937ba2c9307c4289a9b01a94"
+    },
+    "docs/evidencias/formatacao.json": {
+      "size": 240,
+      "sha256": "0a138e8943c25d011065d62dcbdb275ae26d819cc65b6fa8089a1d2bcef7da07"
+    },
+    "docs/evidencias/desktop-tests.xml": {
+      "size": 13992,
+      "sha256": "44562de71575251a6c82b141e4079a16f280179e24480352253b4b656386899e"
+    },
+    "docs/evidencias/desktop-benchmark-linux.json": {
+      "size": 645,
+      "sha256": "506c2dc3a68cfbe523a14ce922343455c261fce86636326d035a990d13c1bcc1"
+    },
+    "docs/evidencias/formatacao-isolada.json": {
+      "size": 360,
+      "sha256": "dd10e2f4aaa574d47c4ed82a97752f80e650eb2fcf30ece623d773592018c503"
+    },
+    "docs/evidencias/test-edition-validation.json": {
+      "size": 720,
+      "sha256": "343526c163c46de4740d35bd0aaa4ad3cbd0762bab9b1fa3cb2501136e5cac4e"
+    },
+    "docs/evidencias/desktop-validation.json": {
+      "size": 3699,
+      "sha256": "5f7def9dce957025feb86697b6f20521ad4b8bc43194899682deaf2c974a033e"
+    },
+    "docs/evidencias/lint-ambiente-externo.json": {
+      "size": 18533,
+      "sha256": "2836289c74228f95982e8b67e3b8959d19c0340b023d9f5d266f230b347b4c6b"
+    },
+    "docs/evidencias/test-edition-windows-build.json": {
+      "size": 596,
+      "sha256": "1b09fed31a9343d0609acde122d9a26f4c271269ef1e97b1a7a1709211d73250"
+    },
+    "docs/evidencias/desktop-audit-all-initial.json": {
+      "size": 4011,
+      "sha256": "065e70dc8e4136ad0af5ef4b536026c662ed36575be6ffb596f6d30507f001be"
+    },
+    "docs/evidencias/testes-legado.json": {
+      "size": 509,
+      "sha256": "6e557ec6fe8d5e244b0db0d2692b0d455e0297efcfabbb9bf6cb4ec5dfd7218f"
+    },
+    "docs/evidencias/inventario.json": {
+      "size": 35809,
+      "sha256": "e169612d27a074e8a5962ca04bbe7c4ffeb8b3de8a6012b5a35450023db3383f"
+    },
+    "docs/evidencias/desktop-preservation.json": {
+      "size": 3338,
+      "sha256": "795acd6f1b61c294fed3ff072635da04a4fceef2efc22515021a5155ae81fc4e"
+    },
+    "docs/evidencias/tipos.json": {
+      "size": 259,
+      "sha256": "e76e7b231fd97cc3c260275f02fd989b1901e454c6b86b6aa539d6a92eff4944"
+    },
+    "docs/evidencias/tipos-windows.json": {
+      "size": 2428,
+      "sha256": "43751f2301ef957c61f75c00a8114108b045edeb90ba2f59066fb946243c5cdd"
+    },
+    "docs/evidencias/test-edition-audit-windows.json": {
+      "size": 2364,
+      "sha256": "9d9a8b7f9b8a6b63d310661015658aa7d2527c596590deba8a73131f19047983"
+    },
+    "docs/evidencias/auditoria.json": {
+      "size": 4811,
+      "sha256": "e75937c598d157bb435194d89b582ca34968f897feb09a54721d4354c9942da6"
+    },
+    "docs/evidencias/desktop-tests-initial.xml": {
+      "size": 5227,
+      "sha256": "d37a1bdda1eb4ca2e0a1e0e23186d1b4773b756492b859d12be06639b7d715d9"
+    },
+    "docs/evidencias/ambiente-inspecao.txt": {
+      "size": 1236,
+      "sha256": "98b28cf082a96baa12a9060e8446b03d7edf135482a6066465574001d57de4b8"
+    },
+    "docs/evidencias/lint.json": {
+      "size": 252,
+      "sha256": "94c0c1e35789cd6ae639f116ec57cfb900ed17b6ba5203fd50caaf1768a57ef2"
+    },
+    "docs/evidencias/ambiente.json": {
+      "size": 247,
+      "sha256": "b70ab3ca5a5ebcc6d773543a584a9b5357af9d737b01cd3b800f2a2499056579"
+    },
+    "docs/evidencias/test-edition-carchive-linux-control.json": {
+      "size": 1033,
+      "sha256": "6da85dd6952c91ba0e134fc0382827e5632bb6182b4af9638b26143aaf2849e8"
+    }
+  }
+}

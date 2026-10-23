@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0.dev8",
+  "previous_version": "2.0.0.dev7",
+  "versioning": "internal, no Git",
+  "archive": "CAIO_2.0.0.dev8.zip",
+  "bytes": 84306660,
+  "sha256": "ee1bba1a214bfe074170acadae12ae539c2feca2c76d188bc2379c9ca785e642",
+  "pytest_passed": 221,
+  "subtests_passed": 7,
+  "pytest_skipped": 1,
+  "skipped_reason": "Windows Scheduler real requires Windows and opt-in; not executed on Linux",
+  "powershell_checks_passed": 25,
+  "windows_runtime_executed": false,
+  "real_com_executed": false,
+  "real_scheduler_executed": false,
+  "corporate_extractions_executed": false,
+  "runtime_and_five_extractors_preserved": true
+}

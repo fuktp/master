@@ -1,0 +1,7 @@
+{
+  "powershell": "7.4.13",
+  "error": "Cannot convert the JSON string because it contains keys with different casing. Please use the -AsHashTable switch instead. The key that was attempted to be added to the existing key 'Desabilitada' was 'desabilitada'.",
+  "error_id": "KeysWithDifferentCasingInJsonString,Microsoft.PowerShell.Commands.ConvertFromJsonCommand",
+  "reproduced": true,
+  "winforms_executed": false
+}

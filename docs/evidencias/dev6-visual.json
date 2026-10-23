@@ -1,0 +1,67 @@
+{
+  "environment": "Qt offscreen Linux",
+  "requested": [
+    1280,
+    850
+  ],
+  "actual": [
+    1280,
+    850
+  ],
+  "tabs": [
+    {
+      "index": 0,
+      "name": "Painel",
+      "size": [
+        1280,
+        850
+      ],
+      "activity_visible": true
+    },
+    {
+      "index": 1,
+      "name": "Rotinas e agendamentos",
+      "size": [
+        1280,
+        850
+      ],
+      "activity_visible": true
+    },
+    {
+      "index": 2,
+      "name": "Configurações",
+      "size": [
+        1280,
+        850
+      ],
+      "activity_visible": true
+    },
+    {
+      "index": 3,
+      "name": "Histórico e logs",
+      "size": [
+        1280,
+        850
+      ],
+      "activity_visible": true
+    },
+    {
+      "index": 4,
+      "name": "Diagnóstico e manutenção",
+      "size": [
+        1280,
+        850
+      ],
+      "activity_visible": true
+    },
+    {
+      "index": 5,
+      "name": "Dev • Internos",
+      "size": [
+        1280,
+        850
+      ],
+      "activity_visible": true
+    }
+  ]
+}

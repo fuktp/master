@@ -1,0 +1,273 @@
+{
+  "version": "2.0.0.dev6",
+  "baseline": "2.0.0.dev5",
+  "baseline_files_verified": 114,
+  "versioning": "internal, no Git",
+  "extractors_unchanged": {
+    "scripts/kwms_alocacoes_tool_edge.py": "7f24e9ae376378e7937d435811b7e2ed755768c5a56d75bcefb79c7922e3595d",
+    "scripts/pipefy_clientes_tool_edge.py": "0ff5cdbb38eee83764444de169c3e791ad8689cc4174eee53df8d89f5a85c995",
+    "scripts/pipefy_eventos_tool_edge.py": "237525a0e2c25410b618c82ec14579c96f196118eb8bd3f15d379804a9b7cffd",
+    "scripts/pipefy_procedimentos_tool_edge.py": "c29b703c9889cf5a9f313dd87a1fe13f7d6ac2e698741937fc06d0e719af8ed5",
+    "scripts/pipefy_status_atms_tool_edge.py": "3ee725aacc01c570d11f6baf12b2222fdc689b91a24a3cdcb71bbd98e6315826"
+  },
+  "native_scripts_unchanged": [
+    "native/Abrir.ps1",
+    "native/Iniciar.vbs",
+    "native/Instalar.bat",
+    "native/Instalar.vbs",
+    "native/Native.Common.ps1",
+    "native/Native.Routines.ps1",
+    "native/Update.ps1",
+    "native/wizard.ps1"
+  ],
+  "theme_sha256": "ccbd72f0ba43bef2d0fc22a3ed5c725fee5d5a3b96aeac73ed0ae77ece806ce6",
+  "changes": [
+    {
+      "path": "AGENTS.md",
+      "status": "created",
+      "sha256": "25440e7a45c18869958d2200b5e6be5def38c3622c05de4c4c079e037cc93e62"
+    },
+    {
+      "path": "README.md",
+      "status": "modified",
+      "sha256": "43724a55d4bbc7e54ea9d61eaea68d7f16f7da88271007826f7756a48d2cc5d4"
+    },
+    {
+      "path": "assets/checkmark.svg",
+      "status": "created",
+      "sha256": "3c26ae2672dde9a74ced7df676501205f7a4a16fb6523902984bf4a2ca39ca48"
+    },
+    {
+      "path": "assets/dashboard-theme.json",
+      "status": "created",
+      "sha256": "ccbd72f0ba43bef2d0fc22a3ed5c725fee5d5a3b96aeac73ed0ae77ece806ce6"
+    },
+    {
+      "path": "desktop_tests/test_app_regressions.py",
+      "status": "created",
+      "sha256": "1f0ff4a91e6dd2c3c565a53fa7e806c83a4fe98aa0c3e403d652fd5df12e95b7"
+    },
+    {
+      "path": "docs/TECNICO.md",
+      "status": "modified",
+      "sha256": "168823b440b329da9da37d5024fd5d04e06484fd3c9f38dbe435f279e73c839d"
+    },
+    {
+      "path": "docs/VALIDACAO.md",
+      "status": "modified",
+      "sha256": "953e915508d2dfe188e00a266dcbc7dc99d763f856bb522c098ebe544ebf580a"
+    },
+    {
+      "path": "docs/evidencias/dev6-artifact.json",
+      "status": "created",
+      "sha256": "633fa40805e63d3f69f1645b56576e7f74e96e7b7ec3275bba544e7d10333df7"
+    },
+    {
+      "path": "docs/evidencias/dev6-audit-log.txt",
+      "status": "created",
+      "sha256": "79d30422388543b2563e1dde76bb7e7857d7ef0c6fdf05c8c71598633ca07e1e"
+    },
+    {
+      "path": "docs/evidencias/dev6-benchmark.json",
+      "status": "created",
+      "sha256": "07e597aa0c0cc182be1ddf6c0028061601a07e565461f18a33993dd1961153e9"
+    },
+    {
+      "path": "docs/evidencias/dev6-build.json",
+      "status": "created",
+      "sha256": "5b7307cd0f1fc4284a8f3a06a57790e9f0f728dffae4400bbfaf3b40fb8dc7cc"
+    },
+    {
+      "path": "docs/evidencias/dev6-dependency-audit.json",
+      "status": "created",
+      "sha256": "39ffcc260b9bb148af1988e04b75d4dd2178833a8eb5d546a855d00c909587ce"
+    },
+    {
+      "path": "docs/evidencias/dev6-format.txt",
+      "status": "created",
+      "sha256": "d29644cebc037e2a733db225b8964bef215b4d0e037a4d4d2ce1aeb46f05a78c"
+    },
+    {
+      "path": "docs/evidencias/dev6-health.json",
+      "status": "created",
+      "sha256": "a5482224f475f5c789c08126fa9cc89a853335df98e7d5a89a1ebf08433b59ec"
+    },
+    {
+      "path": "docs/evidencias/dev6-language-recheck.txt",
+      "status": "created",
+      "sha256": "10036adc1354a4058554ec2ceb8f7e3c95262bc37597329fed3548d9500f1d8f"
+    },
+    {
+      "path": "docs/evidencias/dev6-lint.txt",
+      "status": "created",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "docs/evidencias/dev6-lock.txt",
+      "status": "created",
+      "sha256": "f210c2900ede3d7433def62df4565cc18da7024becb369cacc878d98128d4297"
+    },
+    {
+      "path": "docs/evidencias/dev6-packaged-health.json",
+      "status": "created",
+      "sha256": "a5482224f475f5c789c08126fa9cc89a853335df98e7d5a89a1ebf08433b59ec"
+    },
+    {
+      "path": "docs/evidencias/dev6-packaged-json.json",
+      "status": "created",
+      "sha256": "11aff32307a87bdd08cb09402f62617fbd11720af30f3a1271f371c83bb175c0"
+    },
+    {
+      "path": "docs/evidencias/dev6-powershell.json",
+      "status": "created",
+      "sha256": "74efbf40f82132f96dd5fd83a0d2a65bcbbc8c0b1bdb719100e9646cc440eca1"
+    },
+    {
+      "path": "docs/evidencias/dev6-tests.txt",
+      "status": "created",
+      "sha256": "508cb3c22b8eb2cf3a657f79c75b0688b540942f4e2e8485415162cd5bbdeff3"
+    },
+    {
+      "path": "docs/evidencias/dev6-tests.xml",
+      "status": "created",
+      "sha256": "144ce5ca06713decc71a3a694621a91a1e9b6dbf0bacb88d7fe923d0c21002d2"
+    },
+    {
+      "path": "docs/evidencias/dev6-types.txt",
+      "status": "created",
+      "sha256": "2964f4e84ac77897e510c8d7fa5b664a688c51c01f2c3733e4c2fa20c1f6c174"
+    },
+    {
+      "path": "docs/evidencias/dev6-visual/pagina-0.png",
+      "status": "created",
+      "sha256": "ca966962b25e41c17db76016deba7a7533f810419b6d8704ce3c601fb3aa1132"
+    },
+    {
+      "path": "docs/evidencias/dev6-visual/pagina-1.png",
+      "status": "created",
+      "sha256": "e9f08b26ab8727cd27276fc7132021860e8b7e01c071a24bebd37133812868d9"
+    },
+    {
+      "path": "docs/evidencias/dev6-visual/pagina-2.png",
+      "status": "created",
+      "sha256": "e49eb35ace3cd9f5819120d97ca6ff1db2d4a8bb6b657edba33328bc523191c0"
+    },
+    {
+      "path": "docs/evidencias/dev6-visual/pagina-3.png",
+      "status": "created",
+      "sha256": "3ce78753f73aa2a51909e1ba9cfc2d6b8802af16cee09b1bc207d7777de965f6"
+    },
+    {
+      "path": "docs/evidencias/dev6-visual/pagina-4.png",
+      "status": "created",
+      "sha256": "b90dfc1515cb2326621429bda3d71dfef71dfd72860314ee5c9f3cc31766e3ce"
+    },
+    {
+      "path": "docs/evidencias/dev6-visual/pagina-5.png",
+      "status": "created",
+      "sha256": "004709793740fbaf03293f8bc028dde0192978772e1744b0a2aa87c77bd68f9c"
+    },
+    {
+      "path": "docs/evidencias/dev6-visual/rotina.png",
+      "status": "created",
+      "sha256": "04dfa14b235898c19f38d67108e7a4cd51d242d15cc99e32a1ee67d56e1f689f"
+    },
+    {
+      "path": "docs/evidencias/dev6-visual.json",
+      "status": "created",
+      "sha256": "e5052e79b4fa75cd747aca091bb5cd32422c24a8d1f31e3b826dfe095e5d5a1f"
+    },
+    {
+      "path": "orquestrador_app/__init__.py",
+      "status": "modified",
+      "sha256": "91c453e90758f7f48ee2bac60dbe145da28a9999d9974f980e8ca2e578ffd55a"
+    },
+    {
+      "path": "orquestrador_app/__main__.py",
+      "status": "modified",
+      "sha256": "f90aad785e46e50397322ea7e265f333b89fc7ed8f5bd024fbda66c065fea703"
+    },
+    {
+      "path": "orquestrador_app/agent.py",
+      "status": "modified",
+      "sha256": "814da92f0919a4a417572c35d3a69917618588a58d924cd85fe4eb05fe51344b"
+    },
+    {
+      "path": "orquestrador_app/dev_gui.py",
+      "status": "modified",
+      "sha256": "e8ad9afc263762b543fd99692777c371ae15f3cdc5944bb8cdabf66fdb53c055"
+    },
+    {
+      "path": "orquestrador_app/driver.py",
+      "status": "modified",
+      "sha256": "e60afb939fdf3f5ae13a58a2a5cddf80d4c5f2618c4c06b1a71c7aa0cfbc32f0"
+    },
+    {
+      "path": "orquestrador_app/gui.py",
+      "status": "modified",
+      "sha256": "69e561f0cf8cdd0ee04572e3fd3f1b961e0e77bc9706ab6ef58c8e2241670f03"
+    },
+    {
+      "path": "orquestrador_app/locales.json",
+      "status": "modified",
+      "sha256": "b55ee79d145233203ba488a32c77d9b5fa26d00da0926db092cf75af982b7322"
+    },
+    {
+      "path": "orquestrador_app/native_gui.py",
+      "status": "modified",
+      "sha256": "74edc7b9f2c151caceb1fc64c9a75fddd590e5a0019f35e36d11444a9fde088f"
+    },
+    {
+      "path": "orquestrador_app/native_install.py",
+      "status": "modified",
+      "sha256": "54d930fd89c0bc85b0668baabf115ce06963fa63fb17dca413b1c8f1e1fe589c"
+    },
+    {
+      "path": "orquestrador_app/notifications.py",
+      "status": "modified",
+      "sha256": "d498ed3738c4fbd53ce65bd142ff8de717299680afb24dc695a872ff5702acf2"
+    },
+    {
+      "path": "orquestrador_app/resources.py",
+      "status": "modified",
+      "sha256": "e491a64bf331cda4db306c22c5a90990835265bfe10c2bc40ca59039bc3b917f"
+    },
+    {
+      "path": "orquestrador_app/schedule.py",
+      "status": "modified",
+      "sha256": "1e44fe9321615ff43e6f7d41338ec33facc0635b5902cc2be635f15f852ae554"
+    },
+    {
+      "path": "orquestrador_app/tasks.py",
+      "status": "modified",
+      "sha256": "26632a02f9cca45a911014903ab3081c367db869faa770ae7f21c7c5a7723588"
+    },
+    {
+      "path": "orquestrador_app/ui.py",
+      "status": "modified",
+      "sha256": "189756d5a120d63921c3fc34b70105be0ebd9fd1214b794cb1134de102cafcbe"
+    },
+    {
+      "path": "orquestrador_app/windows_identity.py",
+      "status": "created",
+      "sha256": "066b287ad2ad7194e0ef0e535f8cf03171ca678419f0b10ecf4f9d0d3e4bb83e"
+    },
+    {
+      "path": "orquestrador_app/worker.py",
+      "status": "modified",
+      "sha256": "133bfd645da7c8d2d83542d0681025ebebe07505a59e1f02d7f99a77ab14c613"
+    },
+    {
+      "path": "pyproject.toml",
+      "status": "modified",
+      "sha256": "9283cbd590e7915fe1f86e8d84d133b4189125beb116d97ab6dc593e4705ce5e"
+    },
+    {
+      "path": "uv.lock",
+      "status": "modified",
+      "sha256": "dd690eb35e2ba4ff578ce471ad6aa4b5c4a7c3ff454e4d7370e7bb2556232763"
+    }
+  ],
+  "deleted": [],
+  "self_hash": "Consta no manifesto do snapshot, evitando autorreferência."
+}

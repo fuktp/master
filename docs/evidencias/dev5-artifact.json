@@ -1,0 +1,11 @@
+{
+  "archive": "CAIO_2.0.0.dev5.zip",
+  "sha256": "4c8484935bb6ee676275764750c2ad53ffc353f3c29e2ded612f36c6fe9ccb2d",
+  "payload_files_verified": 4096,
+  "source_matches_package": true,
+  "private_runtime": "Windows x64 GUI PE",
+  "windows_runtime_executed": false,
+  "winforms_executed": false,
+  "scheduled_tasks_executed": false,
+  "extracted_root": "/workspace/scratch/ec6d84ef17dc/validation-dev5/cache/updates/6b66338f-f9c3-4ee4-868a-69e940a99940/CAIO_2.0.0.dev5"
+}

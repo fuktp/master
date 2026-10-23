@@ -1,0 +1,9 @@
+{
+  "tested_from_extracted_zip": true,
+  "version": "2.0.0.dev5",
+  "parser": "Read-NativeJson / ConvertFrom-Json (sem AsHashtable)",
+  "powershell": "7.4.13",
+  "result": "passed",
+  "catalog_entries": 344,
+  "winforms_executed": false
+}

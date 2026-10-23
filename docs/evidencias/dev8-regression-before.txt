@@ -1,0 +1,48 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___ test_registration_accepts_equivalent_xml_and_does_not_register_it_again ____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_registration_accepts_equi0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f0305f451c0>
+normalized_task_xml = <function normalized_task_xml.<locals>.normalize at 0x7f0305e68900>
+
+    def test_registration_accepts_equivalent_xml_and_does_not_register_it_again(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, normalized_task_xml: Callable[[str], str]
+    ) -> None:
+        backend = WindowsTasks(Paths.user(tmp_path))
+        current: list[str | None] = [None]
+        calls: list[str] = []
+        monkeypatch.setattr(backend, "export", lambda: current[0])
+    
+        def register(value: str) -> None:
+            calls.append(value)
+            current[0] = normalized_task_xml(value)
+    
+        monkeypatch.setattr(backend, "register_xml", register)
+        launcher = tmp_path / "pasta com acentos ç/Iniciar.vbs"
+>       assert backend.install(launcher, "DOMAIN\\fixture")["matches"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+desktop_tests/test_tasks_windows.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <orquestrador_app.tasks.WindowsTasks object at 0x7f0305f45820>
+executable = PosixPath('/tmp/pytest-of-root/pytest-0/test_registration_accepts_equi0/pasta com acentos ç/Iniciar.vbs')
+user = 'DOMAIN\\fixture'
+
+    def install(self, executable: Path, user: str) -> dict[str, Any]:
+        current = self.export()
+        if current and not self.owned(current):
+            raise ValueError("Nome de tarefa em conflito; tarefa externa preservada.")
+        value = xml(executable, self.paths, user)
+        if current != value:
+            self.register_xml(value)
+        result = self.differences(executable, user)
+        if not result["matches"]:
+>           raise RuntimeError("A tarefa não corresponde à configuração após o registro.")
+E           RuntimeError: A tarefa não corresponde à configuração após o registro.
+
+orquestrador_app/tasks.py:164: RuntimeError
+=========================== short test summary info ============================
+FAILED desktop_tests/test_tasks_windows.py::test_registration_accepts_equivalent_xml_and_does_not_register_it_again
+1 failed in 0.03s

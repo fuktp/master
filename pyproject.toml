@@ -1,0 +1,41 @@
+[project]
+name = "orquestrador-desktop"
+version = "2.0.0.dev10"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "PySide6==6.9.3", "selenium==4.36.0", "pandas==2.3.3",
+  "openpyxl==3.1.5", "requests==2.33.0", "psutil==7.1.0", "tzlocal==5.3.1", "packaging==26.3",
+  "pywin32==311; sys_platform == 'win32'",
+]
+
+[dependency-groups]
+dev = [
+    "pytest==9.0.3",
+    "ruff==0.14.1",
+    "mypy==1.18.2",
+    "pip-audit==2.9.0",
+    "pyinstaller==6.16.0",
+    "types-requests==2.33.0.20261006",
+    "pefile==2023.2.7",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+include = ["orquestrador_app/**/*.py", "desktop_tests/**/*.py", "tools/**/*.py", "desktop_entry.py"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.mypy]
+python_version = "3.12"
+files = ["orquestrador_app", "desktop_entry.py"]
+follow_imports = "silent"
+ignore_missing_imports = true
+check_untyped_defs = true
+disallow_untyped_defs = true
+warn_unused_ignores = true
+
+[tool.pytest.ini_options]
+testpaths = ["desktop_tests", "tests"]
+addopts = "-ra"

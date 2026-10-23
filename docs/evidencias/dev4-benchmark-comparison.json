@@ -1,0 +1,66 @@
+{
+  "dev3": [
+    {
+      "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "startup_seconds": 0.26069398100003127,
+      "rss_ready_bytes": 81625088,
+      "timer_median_seconds": 0.009763423000094917,
+      "timer_max_seconds": 0.02303220099997816,
+      "samples": 397,
+      "method": "Linux source/offscreen; cold process, warm OS cache; 10ms timer during 4s panel; VmRSS from /proc; no Windows benchmark"
+    },
+    {
+      "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "startup_seconds": 0.1873817880000388,
+      "rss_ready_bytes": 82415616,
+      "timer_median_seconds": 0.009749481999961063,
+      "timer_max_seconds": 0.02454608800007918,
+      "samples": 397,
+      "method": "Linux source/offscreen; cold process, warm OS cache; 10ms timer during 4s panel; VmRSS from /proc; no Windows benchmark"
+    },
+    {
+      "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "startup_seconds": 0.18896494600016922,
+      "rss_ready_bytes": 83066880,
+      "timer_median_seconds": 0.00978669199992055,
+      "timer_max_seconds": 0.026032848000113518,
+      "samples": 396,
+      "method": "Linux source/offscreen; cold process, warm OS cache; 10ms timer during 4s panel; VmRSS from /proc; no Windows benchmark"
+    }
+  ],
+  "dev4": [
+    {
+      "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "startup_seconds": 0.2915009970001847,
+      "rss_ready_bytes": 89219072,
+      "timer_median_seconds": 0.009775568999884854,
+      "timer_max_seconds": 0.011068013999874893,
+      "samples": 399,
+      "method": "Linux source/offscreen; cold process, warm OS cache; 10ms timer during 4s panel; VmRSS from /proc; no Windows benchmark"
+    },
+    {
+      "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "startup_seconds": 0.29914133400006904,
+      "rss_ready_bytes": 88977408,
+      "timer_median_seconds": 0.009788201999981538,
+      "timer_max_seconds": 0.011166363000029378,
+      "samples": 399,
+      "method": "Linux source/offscreen; cold process, warm OS cache; 10ms timer during 4s panel; VmRSS from /proc; no Windows benchmark"
+    },
+    {
+      "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "startup_seconds": 0.2999761149999358,
+      "rss_ready_bytes": 90005504,
+      "timer_median_seconds": 0.009791942999981984,
+      "timer_max_seconds": 0.016043039000123827,
+      "samples": 399,
+      "method": "Linux source/offscreen; cold process, warm OS cache; 10ms timer during 4s panel; VmRSS from /proc; no Windows benchmark"
+    }
+  ]
+}

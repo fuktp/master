@@ -1,0 +1,2570 @@
+{
+  "Painel": [
+    "Dashboard",
+    "Panel"
+  ],
+  "Rotinas e agendamentos": [
+    "Routines and schedules",
+    "Rutinas y programación"
+  ],
+  "Configurações": [
+    "Settings",
+    "Configuración"
+  ],
+  "Histórico e logs": [
+    "History and logs",
+    "Historial y registros"
+  ],
+  "Diagnóstico e manutenção": [
+    "Diagnostics and maintenance",
+    "Diagnóstico y mantenimiento"
+  ],
+  "Dev • Internos": [
+    "Dev • Internals",
+    "Dev • Internos"
+  ],
+  "CAIO • Acompanhamento das extrações": [
+    "CAIO • Extraction dashboard",
+    "CAIO • Panel de extracciones"
+  ],
+  "Rotina": [
+    "Routine",
+    "Rutina"
+  ],
+  "Habilitada": [
+    "Enabled",
+    "Habilitada"
+  ],
+  "Estado/etapa": [
+    "Status / stage",
+    "Estado / etapa"
+  ],
+  "Última tentativa": [
+    "Last attempt",
+    "Último intento"
+  ],
+  "Último sucesso": [
+    "Last success",
+    "Último éxito"
+  ],
+  "Dados": [
+    "Data",
+    "Datos"
+  ],
+  "Próxima execução": [
+    "Next run",
+    "Próxima ejecución"
+  ],
+  "Duração (s)": [
+    "Duration (s)",
+    "Duración (s)"
+  ],
+  "Tentativas": [
+    "Attempts",
+    "Intentos"
+  ],
+  "Pendência/ação": [
+    "Pending / action",
+    "Pendiente / acción"
+  ],
+  "Execução": [
+    "Run",
+    "Ejecución"
+  ],
+  "Sim": [
+    "Yes",
+    "Sí"
+  ],
+  "Não": [
+    "No",
+    "No"
+  ],
+  "Pronta": [
+    "Ready",
+    "Lista"
+  ],
+  "Pronto": [
+    "Ready",
+    "Listo"
+  ],
+  "Nunca": [
+    "Never",
+    "Nunca"
+  ],
+  "Em execução": [
+    "Running",
+    "En ejecución"
+  ],
+  "Concluída": [
+    "Completed",
+    "Completada"
+  ],
+  "Falhou": [
+    "Failed",
+    "Falló"
+  ],
+  "Ignorada; pendente": [
+    "Skipped; pending",
+    "Omitida; pendiente"
+  ],
+  "Cancelada": [
+    "Cancelled",
+    "Cancelada"
+  ],
+  "Não elegível": [
+    "Not eligible",
+    "No elegible"
+  ],
+  "Desabilitada": [
+    "Disabled",
+    "Deshabilitada"
+  ],
+  "Bloqueada por dependência": [
+    "Blocked by dependency",
+    "Bloqueada por dependencia"
+  ],
+  "pausada": [
+    "Paused",
+    "Pausada"
+  ],
+  "nunca atualizada": [
+    "Never updated",
+    "Nunca actualizada"
+  ],
+  "atrasada": [
+    "Overdue",
+    "Atrasada"
+  ],
+  "atualizada": [
+    "Up to date",
+    "Actualizada"
+  ],
+  "bloqueada por origem desabilitada": [
+    "Blocked: dependency disabled",
+    "Bloqueada: dependencia deshabilitada"
+  ],
+  "Executar todas": [
+    "Run all",
+    "Ejecutar todas"
+  ],
+  "Executar lote": [
+    "Run batch",
+    "Ejecutar lote"
+  ],
+  "Executar rotina": [
+    "Run routine",
+    "Ejecutar rutina"
+  ],
+  "Forçar rotina": [
+    "Force routine",
+    "Forzar rutina"
+  ],
+  "Executar lote selecionado": [
+    "Run selected batch",
+    "Ejecutar lote seleccionado"
+  ],
+  "Forçar lote selecionado": [
+    "Force selected batch",
+    "Forzar lote seleccionado"
+  ],
+  "Simular": [
+    "Simulate",
+    "Simular"
+  ],
+  "Simular lote": [
+    "Simulate batch",
+    "Simular lote"
+  ],
+  "Testar login": [
+    "Test sign-in",
+    "Probar inicio de sesión"
+  ],
+  "Pausar/retomar agendamento": [
+    "Pause / resume scheduling",
+    "Pausar / reanudar programación"
+  ],
+  "Pausar execução": [
+    "Pause run",
+    "Pausar ejecución"
+  ],
+  "Retomar execução": [
+    "Resume run",
+    "Reanudar ejecución"
+  ],
+  "Cancelar rotina": [
+    "Cancel routine",
+    "Cancelar rutina"
+  ],
+  "Cancelar lote": [
+    "Cancel batch",
+    "Cancelar lote"
+  ],
+  "Frequência": [
+    "Frequency",
+    "Frecuencia"
+  ],
+  "Horários próprios": [
+    "Routine times",
+    "Horarios propios"
+  ],
+  "Dias": [
+    "Days",
+    "Días"
+  ],
+  "Ordem": [
+    "Order",
+    "Orden"
+  ],
+  "Origem": [
+    "Source",
+    "Origen"
+  ],
+  "Editar selecionada": [
+    "Edit selected",
+    "Editar seleccionada"
+  ],
+  "Editar rotina": [
+    "Edit routine",
+    "Editar rutina"
+  ],
+  "Descobrir extratores…": [
+    "Discover extractors…",
+    "Descubrir extractores…"
+  ],
+  "Cadastrar script…": [
+    "Add script…",
+    "Registrar script…"
+  ],
+  "Adicionar script…": [
+    "Add script…",
+    "Añadir script…"
+  ],
+  "Retirar rotina…": [
+    "Remove routine…",
+    "Retirar rutina…"
+  ],
+  "Versões do script…": [
+    "Script versions…",
+    "Versiones del script…"
+  ],
+  "Versões do script": [
+    "Script versions",
+    "Versiones del script"
+  ],
+  "Excluir rotina…": [
+    "Delete routine…",
+    "Eliminar rutina…"
+  ],
+  "Excluir rotina": [
+    "Delete routine",
+    "Eliminar rutina"
+  ],
+  "Publicar arquivo local…": [
+    "Publish local file…",
+    "Publicar archivo local…"
+  ],
+  "Rotinas descobertas começam desabilitadas.": [
+    "Discovered routines start disabled.",
+    "Las rutinas descubiertas empiezan deshabilitadas."
+  ],
+  "Adicionar scripts: selecione um arquivo .py, revise os argumentos e habilite a rotina. Versões são guardadas automaticamente. Publicar arquivo local valida e copia um Excel já baixado (Eventos: mescla o histórico), sem abrir o navegador.": [
+    "Add scripts: select a .py file, review its arguments and enable the routine. Versions are saved automatically. Publish local file validates and copies an existing Excel file (Events: merges history), without opening a browser.",
+    "Añada scripts: seleccione un archivo .py, revise los argumentos y habilite la rutina. Las versiones se guardan automáticamente. Publicar archivo local valida y copia un Excel existente (Eventos: combina el historial), sin abrir el navegador."
+  ],
+  "Espera entre rotinas agendadas na fila": [
+    "Delay between queued scheduled routines",
+    "Espera entre rutinas programadas en cola"
+  ],
+  "Salvar intervalo": [
+    "Save delay",
+    "Guardar intervalo"
+  ],
+  "O intervalo começa quando a rotina anterior termina. Não há execuções simultâneas no perfil compartilhado.": [
+    "The delay starts when the previous routine finishes. Runs never overlap in a shared browser profile.",
+    "El intervalo comienza cuando termina la rutina anterior. No hay ejecuciones simultáneas en el perfil compartido."
+  ],
+  "Aplicar idioma": [
+    "Apply language",
+    "Aplicar idioma"
+  ],
+  "Validar e salvar": [
+    "Validate and save",
+    "Validar y guardar"
+  ],
+  "Exportar preferências sem segredos…": [
+    "Export preferences without secrets…",
+    "Exportar preferencias sin secretos…"
+  ],
+  "Importar com prévia…": [
+    "Import with preview…",
+    "Importar con vista previa…"
+  ],
+  "Atualização…": [
+    "Update…",
+    "Actualización…"
+  ],
+  "Selecionar caminho": [
+    "Select path",
+    "Seleccionar ruta"
+  ],
+  "Escolher e aplicar caminho…": [
+    "Choose and apply path…",
+    "Elegir y aplicar ruta…"
+  ],
+  "Escolher…": [
+    "Browse…",
+    "Elegir…"
+  ],
+  "Configuração completa • campos de máquina, caminhos, URLs, histórico, retries, notificações e retenção. Use Editar rotina para os controles guiados.": [
+    "Full configuration • machine fields, paths, URLs, history, retries, notifications and retention. Use Edit routine for guided controls.",
+    "Configuración completa • campos del equipo, rutas, URL, historial, reintentos, notificaciones y retención. Use Editar rutina para los controles guiados."
+  ],
+  "Console oculto refere-se a subprocessos internos. Minimizar mantém a interface. Headless controla somente a janela do navegador. SSO/MFA não é convertido em serviço Windows.": [
+    "Hidden console applies to internal subprocesses. Minimizing keeps the interface running. Headless only hides the browser window. SSO/MFA is not converted into a Windows service.",
+    "La consola oculta se aplica a subprocesos internos. Minimizar mantiene la interfaz activa. Headless solo oculta el navegador. SSO/MFA no se convierte en servicio de Windows."
+  ],
+  "ID da rotina; vazio = todas": [
+    "Routine ID; empty = all",
+    "ID de rutina; vacío = todas"
+  ],
+  "Todos": [
+    "All",
+    "Todos"
+  ],
+  "Filtrar": [
+    "Filter",
+    "Filtrar"
+  ],
+  "Exportar diagnóstico sanitizado…": [
+    "Export sanitized diagnostics…",
+    "Exportar diagnóstico sanitizado…"
+  ],
+  "Início": [
+    "Started",
+    "Inicio"
+  ],
+  "Estado": [
+    "Status",
+    "Estado"
+  ],
+  "Modo": [
+    "Mode",
+    "Modo"
+  ],
+  "Categoria": [
+    "Category",
+    "Categoría"
+  ],
+  "Lote": [
+    "Batch",
+    "Lote"
+  ],
+  "Etapa": [
+    "Stage",
+    "Etapa"
+  ],
+  "Diagnosticar EdgeDriver": [
+    "Check EdgeDriver",
+    "Diagnosticar EdgeDriver"
+  ],
+  "Reparar EdgeDriver": [
+    "Repair EdgeDriver",
+    "Reparar EdgeDriver"
+  ],
+  "Testar conectividade": [
+    "Test connectivity",
+    "Probar conectividad"
+  ],
+  "Conferir tarefas": [
+    "Check scheduled tasks",
+    "Comprobar tareas"
+  ],
+  "Instalar/atualizar tarefa": [
+    "Install / update task",
+    "Instalar / actualizar tarea"
+  ],
+  "Remover tarefa própria": [
+    "Remove this app's task",
+    "Eliminar tarea de esta aplicación"
+  ],
+  "Backups de relatórios • restaurar preserva a versão atual e não registra nova extração.": [
+    "Report backups • restore preserves the current version and does not count as a new extraction.",
+    "Copias de informes • restaurar conserva la versión actual y no registra una nueva extracción."
+  ],
+  "Nenhum backup de relatório ainda. A lista é preenchida após a primeira substituição de um arquivo válido.": [
+    "No report backups yet. The list is populated after the first replacement of a valid file.",
+    "Aún no hay copias de informes. La lista se llena después de la primera sustitución de un archivo válido."
+  ],
+  "Data": [
+    "Date",
+    "Fecha"
+  ],
+  "Arquivo": [
+    "File",
+    "Archivo"
+  ],
+  "Tamanho": [
+    "Size",
+    "Tamaño"
+  ],
+  "Versão": [
+    "Version",
+    "Versión"
+  ],
+  "Atualizar lista": [
+    "Refresh list",
+    "Actualizar lista"
+  ],
+  "Validar selecionado": [
+    "Validate selected",
+    "Validar seleccionado"
+  ],
+  "Restaurar selecionado": [
+    "Restore selected",
+    "Restaurar seleccionado"
+  ],
+  "Backup do aplicativo": [
+    "Back up application",
+    "Crear copia de la aplicación"
+  ],
+  "Reverter atualização…": [
+    "Roll back update…",
+    "Revertir actualización…"
+  ],
+  "Desinstalar componentes próprios e preservar dados…": [
+    "Uninstall app components and keep data…",
+    "Desinstalar componentes y conservar datos…"
+  ],
+  "Habilitar esta rotina": [
+    "Enable this routine",
+    "Habilitar esta rutina"
+  ],
+  "Extrator": [
+    "Extractor",
+    "Extractor"
+  ],
+  "Versão do script": [
+    "Script version",
+    "Versión del script"
+  ],
+  "Ex.: 1.4.0; vazio usa a identificação automática": [
+    "Example: 1.4.0; leave empty for automatic identification",
+    "Ej.: 1.4.0; vacío usa la identificación automática"
+  ],
+  "Salvar registra a nova versão automaticamente. O arquivo original não será sobrescrito. Scripts cadastrados são código local confiável; não há aprovação repetida por hash.": [
+    "Saving records the new version automatically. The original file will not be overwritten. Registered scripts are trusted local code; hash approval is not repeated.",
+    "Guardar registra la nueva versión automáticamente. No se sobrescribe el archivo original. Los scripts registrados son código local de confianza; no se repite la aprobación por hash."
+  ],
+  "Este script utiliza o navegador Edge": [
+    "This script uses the Edge browser",
+    "Este script utiliza el navegador Edge"
+  ],
+  "Subcomando do script": [
+    "Script subcommand",
+    "Subcomando del script"
+  ],
+  "Vazio para scripts sem subcomando": [
+    "Leave empty for scripts without a subcommand",
+    "Vacío para scripts sin subcomando"
+  ],
+  "Diária: um sucesso por data": [
+    "Daily: one success per date",
+    "Diaria: un éxito por fecha"
+  ],
+  "Semanal: um sucesso por semana": [
+    "Weekly: one success per week",
+    "Semanal: un éxito por semana"
+  ],
+  "Todos os horários: um sucesso por ocorrência": [
+    "Every time: one success per occurrence",
+    "Cada horario: un éxito por ocurrencia"
+  ],
+  "Somente dias úteis: um sucesso por dia de segunda a sexta": [
+    "Weekdays only: one success per day, Monday to Friday",
+    "Solo días laborables: un éxito por día, de lunes a viernes"
+  ],
+  "Dias da semana": [
+    "Days of the week",
+    "Días de la semana"
+  ],
+  "Segunda-feira": [
+    "Monday",
+    "Lunes"
+  ],
+  "Terça-feira": [
+    "Tuesday",
+    "Martes"
+  ],
+  "Quarta-feira": [
+    "Wednesday",
+    "Miércoles"
+  ],
+  "Quinta-feira": [
+    "Thursday",
+    "Jueves"
+  ],
+  "Sexta-feira": [
+    "Friday",
+    "Viernes"
+  ],
+  "Sábado": [
+    "Saturday",
+    "Sábado"
+  ],
+  "Domingo": [
+    "Sunday",
+    "Domingo"
+  ],
+  "Seg": [
+    "Mon",
+    "Lun"
+  ],
+  "Ter": [
+    "Tue",
+    "Mar"
+  ],
+  "Qua": [
+    "Wed",
+    "Mié"
+  ],
+  "Qui": [
+    "Thu",
+    "Jue"
+  ],
+  "Sex": [
+    "Fri",
+    "Vie"
+  ],
+  "Sáb": [
+    "Sat",
+    "Sáb"
+  ],
+  "Dom": [
+    "Sun",
+    "Dom"
+  ],
+  "Selecione os dias pelos botões. Passe o mouse para ver o nome completo. Semanal começa no primeiro dia selecionado; os demais recuperam pendências. Feriados não são excluídos.": [
+    "Select days using the buttons. Hover to see the full name. Weekly starts on the first selected day; the others recover pending runs. Holidays are not excluded.",
+    "Seleccione los días con los botones. Pase el cursor para ver el nombre completo. Semanal empieza en el primer día seleccionado; los demás recuperan pendientes. No se excluyen festivos."
+  ],
+  "Pausar o agendamento desta rotina": [
+    "Pause scheduling for this routine",
+    "Pausar la programación de esta rutina"
+  ],
+  "Ordem/prioridade na fila": [
+    "Queue order / priority",
+    "Orden / prioridad en la cola"
+  ],
+  "Navegador headless (sem janela); SSO pode exigir Testar login": [
+    "Headless browser (no window); SSO may require Test sign-in",
+    "Navegador headless (sin ventana); SSO puede requerir Probar inicio de sesión"
+  ],
+  "Pasta de publicação local": [
+    "Local publication folder",
+    "Carpeta de publicación local"
+  ],
+  "Vazio preserva a URL confirmada no extrator": [
+    "Empty keeps the URL defined in the extractor",
+    "Vacío conserva la URL definida en el extractor"
+  ],
+  "URL configurável": [
+    "Configurable URL",
+    "URL configurable"
+  ],
+  "Endereço da página usada pela rotina. Deixe vazio para usar a URL do extrator. Alterar este campo não troca seletores nem credenciais.": [
+    "Page address used by the routine. Leave empty to use the extractor URL. Changing it does not change selectors or credentials.",
+    "Dirección de la página usada por la rutina. Déjela vacía para usar la URL del extractor. Cambiarla no modifica selectores ni credenciales."
+  ],
+  "Desabilitada: impede novos disparos manuais e agendados, preservando o histórico.": [
+    "Disabled: prevents new manual and scheduled runs, preserving history.",
+    "Deshabilitada: impide nuevas ejecuciones manuales y programadas, conservando el historial."
+  ],
+  "Suspende os próximos disparos; use Forçar para uma execução manual.": [
+    "Suspends upcoming runs; use Force for a manual run.",
+    "Suspende las próximas ejecuciones; use Forzar para una ejecución manual."
+  ],
+  "Oculta somente o navegador. SSO e MFA podem exigir Testar login com janela visível.": [
+    "Only hides the browser. SSO and MFA may require Test sign-in with a visible window.",
+    "Solo oculta el navegador. SSO y MFA pueden requerir Probar inicio de sesión con una ventana visible."
+  ],
+  "Diária: horários extras recuperam pendências. Todos os horários permite atualizar novamente após um sucesso. Recuperação reúne horários perdidos em uma oportunidade; não reexecuta toda a fila antiga.": [
+    "Daily: extra times recover pending runs. Every time allows another update after success. Recovery combines missed times into one opportunity; it does not replay the entire backlog.",
+    "Diaria: los horarios adicionales recuperan pendientes. Cada horario permite actualizar después de un éxito. La recuperación reúne horarios perdidos en una oportunidad; no repite toda la cola anterior."
+  ],
+  "Rotina e horários": [
+    "Routine and times",
+    "Rutina y horarios"
+  ],
+  "Dependências, retries e opções": [
+    "Dependencies, retries and options",
+    "Dependencias, reintentos y opciones"
+  ],
+  "Escolha a hora e os minutos; depois clique em Adicionar horário.": [
+    "Choose the hour and minutes; then click Add time.",
+    "Elija la hora y los minutos; después pulse Añadir horario."
+  ],
+  "Adicionar horário": [
+    "Add time",
+    "Añadir horario"
+  ],
+  "Retirar horário": [
+    "Remove time",
+    "Retirar horario"
+  ],
+  "Salvar": [
+    "Save",
+    "Guardar"
+  ],
+  "Cancelar": [
+    "Cancel",
+    "Cancelar"
+  ],
+  "Fechar": [
+    "Close",
+    "Cerrar"
+  ],
+  "Voltar": [
+    "Back",
+    "Atrás"
+  ],
+  "Avançar": [
+    "Next",
+    "Siguiente"
+  ],
+  "Instalar": [
+    "Install",
+    "Instalar"
+  ],
+  "Abrir aplicativo": [
+    "Open application",
+    "Abrir aplicación"
+  ],
+  "Configuração inválida": [
+    "Invalid configuration",
+    "Configuración no válida"
+  ],
+  "Selecionar arquivo": [
+    "Select file",
+    "Seleccionar archivo"
+  ],
+  "Selecionar pasta": [
+    "Select folder",
+    "Seleccionar carpeta"
+  ],
+  "Operação em andamento": [
+    "Operation in progress",
+    "Operación en curso"
+  ],
+  "Acompanhe a operação atual antes de iniciar outra.": [
+    "Wait for the current operation before starting another.",
+    "Espere a que termine la operación actual antes de iniciar otra."
+  ],
+  "Processando… acompanhe o log acima.": [
+    "Processing… follow the log above.",
+    "Procesando… consulte el registro de arriba."
+  ],
+  "Operação iniciada.": [
+    "Operation started.",
+    "Operación iniciada."
+  ],
+  "Etapa anterior concluída com sucesso.": [
+    "Previous step completed successfully.",
+    "Etapa anterior completada con éxito."
+  ],
+  "Execução com pendências. Consulte o log e o histórico.": [
+    "Run has pending items. Check the log and history.",
+    "La ejecución tiene pendientes. Consulte el registro y el historial."
+  ],
+  "Resultado da operação": [
+    "Operation result",
+    "Resultado de la operación"
+  ],
+  "Operação não concluída": [
+    "Operation not completed",
+    "Operación no completada"
+  ],
+  "Selecione uma ou mais rotinas no Painel.": [
+    "Select one or more routines on the dashboard.",
+    "Seleccione una o más rutinas en el panel."
+  ],
+  "Selecione uma rotina no Painel.": [
+    "Select a routine on the dashboard.",
+    "Seleccione una rutina en el panel."
+  ],
+  "Selecione uma rotina nesta tabela.": [
+    "Select a routine in this table.",
+    "Seleccione una rutina en esta tabla."
+  ],
+  "Intervalo salvo.": [
+    "Delay saved.",
+    "Intervalo guardado."
+  ],
+  "Aguarde a operação atual antes de trocar o idioma.": [
+    "Wait for the current operation before changing language.",
+    "Espere a que termine la operación antes de cambiar de idioma."
+  ],
+  "Retirar esta rotina do programa?": [
+    "Remove this routine from the application?",
+    "¿Retirar esta rutina de la aplicación?"
+  ],
+  "Por padrão, o histórico e as versões do script ficam guardados. O arquivo original e os relatórios nunca são apagados.": [
+    "By default, history and script versions are kept. The original file and reports are never deleted.",
+    "Por defecto se conservan el historial y las versiones del script. Nunca se eliminan el archivo original ni los informes."
+  ],
+  "Apagar também as cópias e versões gerenciadas deste script": [
+    "Also delete managed copies and versions of this script",
+    "Eliminar también las copias y versiones gestionadas de este script"
+  ],
+  "Snapshots automáticos ao salvar e executar. Restaurar cria uma cópia gerenciada, sem sobrescrever o script original. Dependências Python e arquivos auxiliares continuam sendo responsabilidade do script.": [
+    "Automatic snapshots on save and execution. Restore creates a managed copy without overwriting the original script. Python dependencies and supporting files remain the script's responsibility.",
+    "Copias automáticas al guardar y ejecutar. Restaurar crea una copia gestionada sin sobrescribir el script original. Las dependencias Python y archivos auxiliares siguen siendo responsabilidad del script."
+  ],
+  "Restaurar script": [
+    "Restore script",
+    "Restaurar script"
+  ],
+  "Ativar a versão selecionada? O histórico de execuções será preservado.": [
+    "Activate the selected version? Run history will be preserved.",
+    "¿Activar la versión seleccionada? Se conservará el historial de ejecuciones."
+  ],
+  "Restaurar versão selecionada": [
+    "Restore selected version",
+    "Restaurar versión seleccionada"
+  ],
+  "Restauração": [
+    "Restore",
+    "Restauración"
+  ],
+  "Exportar preferências": [
+    "Export preferences",
+    "Exportar preferencias"
+  ],
+  "Importar preferências": [
+    "Import preferences",
+    "Importar preferencias"
+  ],
+  "Prévia das alterações": [
+    "Preview changes",
+    "Vista previa de cambios"
+  ],
+  "Aplicar importação": [
+    "Apply import",
+    "Aplicar importación"
+  ],
+  "Aplicar as alterações exibidas?": [
+    "Apply the displayed changes?",
+    "¿Aplicar los cambios mostrados?"
+  ],
+  "Localizar extratores adicionais": [
+    "Find additional extractors",
+    "Buscar extractores adicionales"
+  ],
+  "Extratores encontrados; revise e habilite para executar": [
+    "Extractors found; review and enable to run",
+    "Extractores encontrados; revise y habilite para ejecutar"
+  ],
+  "Cadastrar extrator Python": [
+    "Register Python extractor",
+    "Registrar extractor Python"
+  ],
+  "Publicar/mesclar arquivo local": [
+    "Publish / merge local file",
+    "Publicar / combinar archivo local"
+  ],
+  "Detalhes locais da execução": [
+    "Local run details",
+    "Detalles locales de ejecución"
+  ],
+  "Exportar diagnóstico sem endpoints/segredos": [
+    "Export diagnostics without endpoints or secrets",
+    "Exportar diagnóstico sin endpoints ni secretos"
+  ],
+  "Tarefa instalada": [
+    "Task installed",
+    "Tarea instalada"
+  ],
+  "Configuração corresponde": [
+    "Configuration matches",
+    "La configuración coincide"
+  ],
+  "Efetiva": [
+    "Actual",
+    "Efectiva"
+  ],
+  "Esperada": [
+    "Expected",
+    "Esperada"
+  ],
+  "Programa": [
+    "Program",
+    "Programa"
+  ],
+  "Argumentos": [
+    "Arguments",
+    "Argumentos"
+  ],
+  "Usuário": [
+    "User",
+    "Usuario"
+  ],
+  "Sessão": [
+    "Session",
+    "Sesión"
+  ],
+  "Intervalo do monitor": [
+    "Monitor interval",
+    "Intervalo del monitor"
+  ],
+  "Abrir Orquestrador": [
+    "Open CAIO",
+    "Abrir CAIO"
+  ],
+  "Sair da interface": [
+    "Exit interface",
+    "Salir de la interfaz"
+  ],
+  "Painel de Dev • observação interna sem terminal": [
+    "Dev panel • internal observation without a terminal",
+    "Panel Dev • observación interna sin terminal"
+  ],
+  "Leitura em segundo plano. Processos e evidências pertencem a esta instalação. A exportação remove dados sensíveis.": [
+    "Background reading. Processes and evidence belong to this installation. Exports remove sensitive data.",
+    "Lectura en segundo plano. Los procesos y evidencias pertenecen a esta instalación. La exportación elimina datos sensibles."
+  ],
+  "Pausar atualização da visualização": [
+    "Pause view refresh",
+    "Pausar actualización de la vista"
+  ],
+  "Atualizar agora": [
+    "Refresh now",
+    "Actualizar ahora"
+  ],
+  "Autoteste isolado, sem rede": [
+    "Isolated self-test, offline",
+    "Autoprueba aislada, sin red"
+  ],
+  "Aguardando primeira leitura.": [
+    "Waiting for first reading.",
+    "Esperando primera lectura."
+  ],
+  "Runtime, instalação e locks": [
+    "Runtime, installation and locks",
+    "Runtime, instalación y bloqueos"
+  ],
+  "Processos próprios": [
+    "Owned processes",
+    "Procesos propios"
+  ],
+  "Processo": [
+    "Process",
+    "Proceso"
+  ],
+  "Fila e execuções": [
+    "Queue and runs",
+    "Cola y ejecuciones"
+  ],
+  "Tentativa": [
+    "Attempt",
+    "Intento"
+  ],
+  "Código": [
+    "Code",
+    "Código"
+  ],
+  "Eventos correlacionados": [
+    "Correlated events",
+    "Eventos correlacionados"
+  ],
+  "Evento": [
+    "Event",
+    "Evento"
+  ],
+  "Evidência": [
+    "Evidence",
+    "Evidencia"
+  ],
+  "Logs ao vivo": [
+    "Live logs",
+    "Registros en vivo"
+  ],
+  "Versionamento interno": [
+    "Internal versioning",
+    "Control interno de versiones"
+  ],
+  "Selecione um log gerenciado. Nenhum comando de terminal é necessário.": [
+    "Select a managed log. No terminal command is required.",
+    "Seleccione un registro gestionado. No se requiere ningún comando de terminal."
+  ],
+  "Aguarde a leitura atual e tente novamente.": [
+    "Wait for the current reading and try again.",
+    "Espere la lectura actual e inténtelo de nuevo."
+  ],
+  "Autoteste em subprocesso oculto; nenhuma extração será iniciada.": [
+    "Self-test in a hidden subprocess; no extraction will start.",
+    "Autoprueba en subproceso oculto; no se iniciará ninguna extracción."
+  ],
+  "Exportar diagnóstico sanitizado": [
+    "Export sanitized diagnostics",
+    "Exportar diagnóstico sanitizado"
+  ],
+  "Exportação": [
+    "Export",
+    "Exportación"
+  ],
+  "O wizard WinForms prepara versões em pastas separadas. Dados e extratores são preservados.": [
+    "The WinForms wizard prepares versions in separate folders. Data and extractors are preserved.",
+    "El asistente WinForms prepara versiones en carpetas separadas. Se conservan datos y extractores."
+  ],
+  "Feed interno (opcional, indisponível nesta edição)": [
+    "Internal feed (optional, unavailable in this edition)",
+    "Feed interno (opcional, no disponible en esta edición)"
+  ],
+  "Endereço HTTPS fornecido pelo administrador; opcional": [
+    "HTTPS address provided by the administrator; optional",
+    "Dirección HTTPS proporcionada por el administrador; opcional"
+  ],
+  "Feed é um endereço de catálogo de versões fornecido pela equipe de TI. Como não há servidor HTTPS disponível, use Atualizar por ZIP local. Nenhuma consulta automática será realizada.": [
+    "A feed is a version catalog address provided by IT. Since no HTTPS server is available, use Update from local ZIP. No automatic checks will run.",
+    "Un feed es la dirección de un catálogo de versiones proporcionada por TI. Como no hay servidor HTTPS disponible, use Actualizar desde ZIP local. No se realizarán consultas automáticas."
+  ],
+  "Verificar e baixar atualizações a cada 4 horas com a interface aberta": [
+    "Check and download updates every 4 hours while the interface is open",
+    "Buscar y descargar actualizaciones cada 4 horas con la interfaz abierta"
+  ],
+  "A atualização por ZIP verifica a integridade, guarda a versão atual e reinicia o aplicativo após sua confirmação.": [
+    "Updating from ZIP verifies integrity, saves the current version and restarts the app after confirmation.",
+    "Actualizar desde ZIP verifica la integridad, guarda la versión actual y reinicia la aplicación tras su confirmación."
+  ],
+  "Salvar preferências de atualização": [
+    "Save update preferences",
+    "Guardar preferencias de actualización"
+  ],
+  "Salvar preferências": [
+    "Save preferences",
+    "Guardar preferencias"
+  ],
+  "Abrir wizard de reparo e configuração": [
+    "Open repair and setup wizard",
+    "Abrir asistente de reparación y configuración"
+  ],
+  "Atualizar por ZIP local…": [
+    "Update from local ZIP…",
+    "Actualizar desde ZIP local…"
+  ],
+  "Selecionar pacote completo": [
+    "Select complete package",
+    "Seleccionar paquete completo"
+  ],
+  "Abrir manutenção": [
+    "Open maintenance",
+    "Abrir mantenimiento"
+  ],
+  "O aplicativo será fechado para o wizard de instalação/atualização. Continuar?": [
+    "The application will close to open the setup/update wizard. Continue?",
+    "La aplicación se cerrará para abrir el asistente de instalación/actualización. ¿Continuar?"
+  ],
+  "Diagnóstico prévio": [
+    "Pre-installation diagnostics",
+    "Diagnóstico previo"
+  ],
+  "Local da instalação de teste": [
+    "Test installation folder",
+    "Carpeta de instalación de prueba"
+  ],
+  "Usuário, computador e OneDrive": [
+    "User, computer and OneDrive",
+    "Usuario, equipo y OneDrive"
+  ],
+  "Destinos dos relatórios": [
+    "Report destinations",
+    "Destinos de informes"
+  ],
+  "Rotinas e horários próprios": [
+    "Routines and individual times",
+    "Rutinas y horarios propios"
+  ],
+  "Validação das dependências": [
+    "Dependency validation",
+    "Validación de dependencias"
+  ],
+  "Revisão das alterações": [
+    "Review changes",
+    "Revisión de cambios"
+  ],
+  "Instalação e verificação final": [
+    "Installation and final verification",
+    "Instalación y verificación final"
+  ],
+  "Este assistente instala somente na pasta de teste escolhida. Aplicativo, configuração, perfil do Edge e relatórios permanecem isolados. É possível voltar e cancelar antes de aplicar.": [
+    "This wizard installs only in the chosen test folder. The application, settings, Edge profile and reports remain isolated. You can go back or cancel before applying.",
+    "Este asistente instala solo en la carpeta de prueba elegida. La aplicación, configuración, perfil de Edge e informes permanecen aislados. Puede retroceder o cancelar antes de aplicar."
+  ],
+  "Instalar / atualizar": [
+    "Install / update",
+    "Instalar / actualizar"
+  ],
+  "Reparar instalação": [
+    "Repair installation",
+    "Reparar instalación"
+  ],
+  "Abrir versão instalada": [
+    "Open installed version",
+    "Abrir versión instalada"
+  ],
+  "Instalar cria um ambiente isolado; atualizar preserva os dados. Reparar repõe os componentes do pacote. Abrir inicia a versão já instalada sem alterar arquivos.": [
+    "Install creates an isolated environment; update preserves data. Repair replaces package components. Open starts the installed version without changing files.",
+    "Instalar crea un entorno aislado; actualizar conserva los datos. Reparar repone los componentes del paquete. Abrir inicia la versión instalada sin modificar archivos."
+  ],
+  "Escopo": [
+    "Scope",
+    "Ámbito"
+  ],
+  "Política": [
+    "Policy",
+    "Política"
+  ],
+  "O que controla": [
+    "What it controls",
+    "Qué controla"
+  ],
+  "Política da organização para o computador": [
+    "Organization policy for the computer",
+    "Política de la organización para el equipo"
+  ],
+  "Política da organização para o usuário": [
+    "Organization policy for the user",
+    "Política de la organización para el usuario"
+  ],
+  "Somente esta janela do instalador": [
+    "Only this installer window",
+    "Solo esta ventana del instalador"
+  ],
+  "Preferência do usuário": [
+    "User preference",
+    "Preferencia del usuario"
+  ],
+  "Preferência do computador": [
+    "Computer preference",
+    "Preferencia del equipo"
+  ],
+  "Escolha uma pasta vazia ou uma instalação de teste reconhecida. Os arquivos originais de outra instalação serão recusados e preservados.": [
+    "Choose an empty folder or a recognized test installation. Original files from another installation will be refused and preserved.",
+    "Elija una carpeta vacía o una instalación de prueba reconocida. Los archivos originales de otra instalación se rechazarán y conservarán."
+  ],
+  "O diretório será validado ao avançar. Não é necessário instalar Python nem executar comandos.": [
+    "The folder will be validated when you continue. No Python installation or commands are needed.",
+    "La carpeta se validará al continuar. No es necesario instalar Python ni ejecutar comandos."
+  ],
+  "E-mail usado pelos extratores; não informe senha.": [
+    "Email used by extractors; do not enter a password.",
+    "Correo utilizado por los extractores; no introduzca una contraseña."
+  ],
+  "Contas OneDrive são exibidas para identificação. Esta edição mantém os relatórios dentro da pasta de teste; publicação local não comprova sincronização.": [
+    "OneDrive accounts are shown for identification. This edition keeps reports in the test folder; local publication does not confirm synchronization.",
+    "Las cuentas de OneDrive se muestran para identificación. Esta edición mantiene los informes en la carpeta de prueba; la publicación local no confirma la sincronización."
+  ],
+  "Selecione uma rotina e use o botão para escolher sua pasta de destino. Nomes finais e contratos dos extratores são preservados.": [
+    "Select a routine and use the button to choose its destination folder. Final names and extractor contracts are preserved.",
+    "Seleccione una rutina y use el botón para elegir su carpeta de destino. Se conservan los nombres finales y contratos de los extractores."
+  ],
+  "Arquivo de destino": [
+    "Destination file",
+    "Archivo de destino"
+  ],
+  "Escolher pasta da rotina…": [
+    "Choose routine folder…",
+    "Elegir carpeta de rutina…"
+  ],
+  "Selecione a rotina e clique em Editar. Defina frequência, dias, vários horários e posição na fila. Diária executa até um sucesso por data; Todos os horários permite atualizar novamente. Somente dias úteis seleciona segunda a sexta.": [
+    "Select a routine and click Edit. Set frequency, days, multiple times and queue position. Daily runs until one success per date; Every time allows another update. Weekdays only selects Monday to Friday.",
+    "Seleccione la rutina y pulse Editar. Defina frecuencia, días, varios horarios y posición en cola. Diaria ejecuta hasta un éxito por fecha; Cada horario permite actualizar de nuevo. Solo días laborables selecciona lunes a viernes."
+  ],
+  "Ativa": [
+    "Enabled",
+    "Activa"
+  ],
+  "Monitor próprio: verifica os horários e atrasos com a interface fechada, enquanto este usuário estiver conectado ao Windows. Não é um serviço e não contorna SSO ou VPN.": [
+    "App monitor: checks schedules and overdue data with the interface closed while this user is signed into Windows. It is not a service and does not bypass SSO or VPN.",
+    "Monitor propio: comprueba horarios y retrasos con la interfaz cerrada mientras este usuario tenga sesión en Windows. No es un servicio ni evita SSO o VPN."
+  ],
+  "Instalar monitor próprio para executar horários com a interface fechada": [
+    "Install the monitor to run schedules with the interface closed",
+    "Instalar el monitor para ejecutar horarios con la interfaz cerrada"
+  ],
+  "Pausar agendamentos após instalar (opcional)": [
+    "Pause schedules after installation (optional)",
+    "Pausar programación tras instalar (opcional)"
+  ],
+  "O pacote já inclui Python e dependências privados. O teste valida imports, SQLite, interface e contratos sem login, VPN ou extrações corporativas.": [
+    "The package includes private Python and dependencies. The test validates imports, SQLite, interface and contracts without sign-in, VPN or corporate extractions.",
+    "El paquete incluye Python privado y dependencias. La prueba valida importaciones, SQLite, interfaz y contratos sin iniciar sesión, VPN ni extracciones corporativas."
+  ],
+  "Verificar dependências offline": [
+    "Check dependencies offline",
+    "Comprobar dependencias sin conexión"
+  ],
+  "Validando integridade e dependências…": [
+    "Validating integrity and dependencies…",
+    "Validando integridad y dependencias…"
+  ],
+  "Confirmo a instalação na pasta revisada. Criar backup e os atalhos deste aplicativo.": [
+    "I confirm installation in the reviewed folder. Create a backup and this app's shortcuts.",
+    "Confirmo la instalación en la carpeta revisada. Crear copia de seguridad y accesos directos de esta aplicación."
+  ],
+  "O monitor é opcional e só será instalado se selecionado na etapa de horários. A confirmação abaixo é obrigatória para aplicar as alterações. Cancelar preserva a instalação atual.": [
+    "The monitor is optional and is installed only if selected in the scheduling step. Confirmation below is required to apply changes. Cancel preserves the current installation.",
+    "El monitor es opcional y solo se instala si se selecciona en la etapa de horarios. La confirmación siguiente es obligatoria para aplicar los cambios. Cancelar conserva la instalación actual."
+  ],
+  "Ordem na fila": [
+    "Queue position",
+    "Posición en cola"
+  ],
+  "Script Python": [
+    "Python script",
+    "Script Python"
+  ],
+  "Semanal começa no primeiro dia selecionado. Dias extras recuperam pendências. Alterar a ordem reorganiza as demais posições automaticamente.": [
+    "Weekly starts on the first selected day. Additional days recover pending runs. Changing the order automatically rearranges the other positions.",
+    "Semanal empieza en el primer día seleccionado. Los días adicionales recuperan pendientes. Cambiar el orden reorganiza las demás posiciones automáticamente."
+  ],
+  "Selecione ao menos um dia e um horário.": [
+    "Select at least one day and one time.",
+    "Seleccione al menos un día y un horario."
+  ],
+  "Verificando a integridade dos arquivos do pacote": [
+    "Verifying package file integrity",
+    "Verificando la integridad de los archivos del paquete"
+  ],
+  "Verificando Python, bibliotecas, SQLite e interface; sem rede": [
+    "Checking Python, libraries, SQLite and interface; offline",
+    "Comprobando Python, bibliotecas, SQLite e interfaz; sin red"
+  ],
+  "Criando backup verificável de versão, configuração, histórico, tarefas e atalhos": [
+    "Creating a verifiable backup of version, settings, history, tasks and shortcuts",
+    "Creando copia verificable de versión, configuración, historial, tareas y accesos directos"
+  ],
+  "Copiando o runtime privado e a aplicação para uma nova pasta de versão": [
+    "Copying private runtime and application to a new version folder",
+    "Copiando runtime privado y aplicación a una nueva carpeta de versión"
+  ],
+  "Verificando imports, SQLite, interface e contratos dos cinco extratores; sem rede": [
+    "Checking imports, SQLite, interface and all five extractor contracts; offline",
+    "Comprobando importaciones, SQLite, interfaz y contratos de los cinco extractores; sin red"
+  ],
+  "Preservando configurações, frequência, scripts adicionais e estado": [
+    "Preserving settings, frequency, additional scripts and state",
+    "Conservando configuración, frecuencia, scripts adicionales y estado"
+  ],
+  "Registrando atalhos próprios na Área de Trabalho e no Menu Iniciar": [
+    "Registering app shortcuts on Desktop and Start Menu",
+    "Registrando accesos directos en Escritorio y menú Inicio"
+  ],
+  "Validando configuração, lançamento e tarefa após ativação": [
+    "Validating settings, launch and task after activation",
+    "Validando configuración, inicio y tarea tras la activación"
+  ],
+  "Instalação concluída; versão anterior e dados preservados": [
+    "Installation complete; previous version and data preserved",
+    "Instalación completada; versión anterior y datos conservados"
+  ],
+  "Revertendo a transação para a versão e o estado anteriores": [
+    "Rolling back the transaction to the previous version and state",
+    "Revirtiendo la transacción a la versión y estado anteriores"
+  ],
+  "daily": [
+    "Daily",
+    "Diaria"
+  ],
+  "weekly": [
+    "Weekly",
+    "Semanal"
+  ],
+  "every_run": [
+    "Every scheduled time",
+    "Cada horario"
+  ],
+  "weekdays": [
+    "Weekdays only",
+    "Solo días laborables"
+  ],
+  "Leitura": [
+    "Reading",
+    "Lectura"
+  ],
+  "processos": [
+    "processes",
+    "procesos"
+  ],
+  "eventos": [
+    "events",
+    "eventos"
+  ],
+  "Fuso local": [
+    "Local time zone",
+    "Zona horaria local"
+  ],
+  "Agendamento": [
+    "Scheduling",
+    "Programación"
+  ],
+  "pausado": [
+    "paused",
+    "pausada"
+  ],
+  "ativo": [
+    "active",
+    "activa"
+  ],
+  "Monitor configurado": [
+    "Monitor configured",
+    "Monitor configurado"
+  ],
+  "Sem monitor: instale a tarefa para executar horários automaticamente": [
+    "No monitor: install the task to run schedules automatically",
+    "Sin monitor: instale la tarea para ejecutar horarios automáticamente"
+  ],
+  "pacote v1.3.0": [
+    "v1.3.0 package",
+    "paquete v1.3.0"
+  ],
+  "cadastro manual explícito": [
+    "Explicit manual registration",
+    "Registro manual explícito"
+  ],
+  "Não foi possível carregar o extrator.": [
+    "Unable to load the extractor.",
+    "No se pudo cargar el extractor."
+  ],
+  "Selecione um arquivo Python existente.": [
+    "Select an existing Python file.",
+    "Seleccione un archivo Python existente."
+  ],
+  "Não é um arquivo Python existente.": [
+    "Not an existing Python file.",
+    "No es un archivo Python existente."
+  ],
+  "Encerre a execução antes de atualizar o aplicativo.": [
+    "End the run before updating the application.",
+    "Finalice la ejecución antes de actualizar la aplicación."
+  ],
+  "Aguardando o próximo registro da execução…": [
+    "Waiting for the next run record…",
+    "Esperando el próximo registro de ejecución…"
+  ],
+  "Interface minimizada. A execução e o monitor continuam ativos. Use Sair da interface para encerrar.": [
+    "Interface minimized. Runs and the monitor remain active. Use Exit interface to close.",
+    "Interfaz minimizada. La ejecución y el monitor siguen activos. Use Salir de la interfaz para cerrar."
+  ],
+  "Detalhe da execução": [
+    "Run details",
+    "Detalles de ejecución"
+  ],
+  "Execução em andamento": [
+    "Run in progress",
+    "Ejecución en curso"
+  ],
+  "Use Cancelar e aguarde o encerramento controlado, ou minimize para manter a execução.": [
+    "Use Cancel and wait for controlled shutdown, or minimize to keep the run active.",
+    "Use Cancelar y espere el cierre controlado, o minimice para mantener la ejecución."
+  ],
+  "Selecione uma versão de relatório.": [
+    "Select a report version.",
+    "Seleccione una versión de informe."
+  ],
+  "Versão inválida.": [
+    "Invalid version.",
+    "Versión no válida."
+  ],
+  "Restaurar relatório": [
+    "Restore report",
+    "Restaurar informe"
+  ],
+  "Restaurar esta versão, criando antes um backup do arquivo atual?": [
+    "Restore this version after backing up the current file?",
+    "¿Restaurar esta versión tras crear una copia del archivo actual?"
+  ],
+  "Remover somente tarefa e atalho próprios? Dados, histórico e backups serão preservados.": [
+    "Remove only this app's task and shortcut? Data, history and backups will be preserved.",
+    "¿Eliminar solo la tarea y el acceso directo de esta aplicación? Se conservarán los datos, historial y copias de seguridad."
+  ],
+  "Instalação/manutenção em andamento; aguardando liberação dos dados.": [
+    "Installation/maintenance in progress; waiting for data access.",
+    "Instalación/mantenimiento en curso; esperando acceso a los datos."
+  ],
+  "Pausa solicitada: será aplicada no próximo checkpoint seguro; publicações não são suspensas.": [
+    "Pause requested: it will apply at the next safe checkpoint; file publication is not suspended.",
+    "Pausa solicitada: se aplicará en el próximo punto seguro; la publicación de archivos no se suspende."
+  ],
+  "Retomada solicitada: pré-condições serão verificadas no checkpoint.": [
+    "Resume requested: preconditions will be checked at the checkpoint.",
+    "Reanudación solicitada: se comprobarán las condiciones previas en el punto de control."
+  ],
+  "Cancelamento solicitado; subprocessos próprios serão encerrados após o prazo cooperativo.": [
+    "Cancellation requested; owned subprocesses will close after the cooperative timeout.",
+    "Cancelación solicitada; los subprocesos propios se cerrarán tras el plazo cooperativo."
+  ],
+  "Aguarde a operação atual antes de atualizar.": [
+    "Wait for the current operation before updating.",
+    "Espere a que termine la operación antes de actualizar."
+  ],
+  "Aguarde o diagnóstico de Dev antes de atualizar.": [
+    "Wait for the Dev diagnostic before updating.",
+    "Espere a que termine el diagnóstico Dev antes de actualizar."
+  ],
+  "Aguarde a conclusão da verificação de atualização.": [
+    "Wait for the update check to finish.",
+    "Espere a que termine la comprobación de actualización."
+  ],
+  "Restaurar versão, configuração, estado e tarefa deste backup? A configuração atual será preservada em outro backup.": [
+    "Restore the version, settings, state and task from this backup? Current settings will be saved in another backup.",
+    "¿Restaurar la versión, configuración, estado y tarea de esta copia? La configuración actual se guardará en otra copia."
+  ],
+  "O modo de teste isolado não pode ser desativado nesta instalação.": [
+    "Isolated test mode cannot be disabled in this installation.",
+    "El modo de prueba aislado no se puede desactivar en esta instalación."
+  ],
+  "Publicação local disponível para Clientes, Eventos, Procedimentos e ATMS.": [
+    "Local publication is available for Clientes, Eventos, Procedimentos and ATMS.",
+    "Publicación local disponible para Clientes, Eventos, Procedimentos y ATMS."
+  ],
+  "Extrator adicional exige um contrato de destino explícito em Configuração completa.": [
+    "An additional extractor requires an explicit destination contract in Full configuration.",
+    "Un extractor adicional requiere un contrato de destino explícito en Configuración completa."
+  ],
+  "Nenhuma instalação registrada. O wizard cria manifestos com versão, data, SHA-256 e snapshot anterior. Não utiliza Git.": [
+    "No installation recorded. The wizard creates manifests with version, date, SHA-256 and the previous snapshot. Git is not used.",
+    "No hay instalación registrada. El asistente crea manifiestos con versión, fecha, SHA-256 y la copia anterior. No utiliza Git."
+  ],
+  "Revise e marque a aplicação das alterações.": [
+    "Review and confirm applying the changes.",
+    "Revise y confirme la aplicación de los cambios."
+  ],
+  "Cancelamento solicitado; aguardando checkpoint e reversão segura.": [
+    "Cancellation requested; waiting for a safe checkpoint and rollback.",
+    "Cancelación solicitada; esperando un punto seguro y reversión."
+  ],
+  "Instalar cria um ambiente novo na pasta escolhida. Atualizar preserva configurações, scripts e histórico de uma instalação de teste existente.": [
+    "Install creates a new environment in the chosen folder. Update preserves settings, scripts and history of an existing test installation.",
+    "Instalar crea un entorno nuevo en la carpeta elegida. Actualizar conserva configuración, scripts e historial de una instalación de prueba existente."
+  ],
+  "Reparar verifica e repõe os componentes desta versão. Mantém os seus dados e configurações e cria backup antes de aplicar.": [
+    "Repair verifies and replaces components of this version. It keeps your data and settings and creates a backup before applying changes.",
+    "Reparar comprueba y repone los componentes de esta versión. Conserva datos y configuración y crea una copia antes de aplicar cambios."
+  ],
+  "Abrir inicia a versão instalada na pasta escolhida. Não instala, atualiza ou altera arquivos.": [
+    "Open starts the installed version in the selected folder. It does not install, update or change files.",
+    "Abrir inicia la versión instalada en la carpeta elegida. No instala, actualiza ni modifica archivos."
+  ],
+  "Dependências: same_chain ou fresh_success + max_age_minutes.\nArgumentos: lista JSON, sem shell. Variáveis não podem conter segredos.\nPrazo esperado: horas em dias habilitados; tolerância em grace_hours.\nTentativas por categoria incluem a tentativa inicial; VPN interna = 2 × 30 s.": [
+    "Dependencies: same_chain or fresh_success + max_age_minutes.\nArguments: JSON list, without shell. Variables must not contain secrets.\nExpected freshness: hours on enabled days; tolerance in grace_hours.\nAttempts per category include the initial attempt; internal VPN policy = 2 attempts, 30 s wait.",
+    "Dependencias: same_chain o fresh_success + max_age_minutes.\nArgumentos: lista JSON, sin shell. Las variables no pueden contener secretos.\nPlazo esperado: horas en días habilitados; tolerancia en grace_hours.\nLos intentos incluyen el inicial; política VPN interna = 2 intentos, espera de 30 s."
+  ],
+  "Nome do arquivo final (opcional)": [
+    "Final file name (optional)",
+    "Nombre del archivo final (opcional)"
+  ],
+  "Sem publicação gerenciada: deixe pasta e nome vazios. Para publicar, informe ambos e configure staged_output nas opções avançadas.": [
+    "Without managed publication: leave folder and name empty. To publish, enter both and configure staged_output in advanced options.",
+    "Sin publicación gestionada: deje carpeta y nombre vacíos. Para publicar, complete ambos y configure staged_output en opciones avanzadas."
+  ],
+  "Informe somente o nome do arquivo, sem pastas.": [
+    "Enter only the file name, without folders.",
+    "Introduzca solo el nombre del archivo, sin carpetas."
+  ],
+  "Informe o nome completo do arquivo de destino na tabela antes de escolher a pasta.": [
+    "Enter the full destination file name in the table before choosing the folder.",
+    "Introduzca el nombre completo del archivo de destino en la tabla antes de elegir la carpeta."
+  ],
+  "Lote completo": [
+    "Complete batch",
+    "Lote completo"
+  ],
+  "Escolha uma rotina": [
+    "Choose a routine",
+    "Seleccione una rutina"
+  ],
+  "Lote selecionado": [
+    "Selected batch",
+    "Lote seleccionado"
+  ],
+  "Rotina selecionada": [
+    "Selected routine",
+    "Rutina seleccionada"
+  ],
+  "Simular todas": [
+    "Simulate all",
+    "Simular todas"
+  ],
+  "Ocultar janela do navegador (headless)": [
+    "Hide browser window (headless)",
+    "Ocultar ventana del navegador (headless)"
+  ],
+  "Pausa apenas o agendamento. Executar/Forçar manualmente continua disponível.": [
+    "Pauses scheduling only. Manual run/force remains available.",
+    "Pausa solo la programación. Ejecutar/Forzar manualmente sigue disponible."
+  ],
+  "Ative para preparar EdgeDriver, proteger o perfil e verificar conectividade antes de executar.": [
+    "Enable to prepare EdgeDriver, lock the profile and check connectivity before running.",
+    "Active para preparar EdgeDriver, proteger el perfil y comprobar la conectividad antes de ejecutar."
+  ],
+  "O EdgeDriver é localizado e reparado automaticamente. Ao escolher um driver externo, ele será validado e copiado para o cache gerenciado; o arquivo original será preservado.": [
+    "EdgeDriver is found and repaired automatically. An external driver is validated and copied to the managed cache; its original file is preserved.",
+    "EdgeDriver se localiza y repara automáticamente. Un controlador externo se valida y copia a la caché administrada; se conserva el archivo original."
+  ],
+  "Nenhuma rotina executada. Consulte os motivos no log; Forçar permite repetir uma atualização já concluída.": [
+    "No routine ran. Check the reasons in the log; Force repeats an already completed update.",
+    "No se ejecutó ninguna rutina. Consulte los motivos en el registro; Forzar permite repetir una actualización ya completada."
+  ],
+  "Selecione uma rotina em execução para aplicar esta ação.": [
+    "Select a running routine to apply this action.",
+    "Seleccione una rutina en ejecución para aplicar esta acción."
+  ],
+  "Destino do teste de conectividade/VPN": [
+    "Connectivity/VPN test target",
+    "Destino de la prueba de conectividad/VPN"
+  ],
+  "Conferir tarefas compara o monitor registrado com esta instalação. A lista abaixo contém backups de relatórios, não resultados do diagnóstico.": [
+    "Check tasks compares the registered monitor with this installation. The list below contains report backups rather than diagnostic results.",
+    "Comprobar tareas compara el monitor registrado con esta instalación. La lista inferior contiene copias de informes, no resultados del diagnóstico."
+  ],
+  "Campo": [
+    "Field",
+    "Campo"
+  ],
+  "No Windows": [
+    "In Windows",
+    "En Windows"
+  ],
+  "Esperado": [
+    "Expected",
+    "Esperado"
+  ],
+  "Resultado": [
+    "Result",
+    "Resultado"
+  ],
+  "Não instalada": [
+    "Not installed",
+    "No instalada"
+  ],
+  "Revisar": [
+    "Review",
+    "Revisar"
+  ],
+  "Agendamento pausado": [
+    "Scheduling paused",
+    "Programación en pausa"
+  ],
+  "Pausar agendamento": [
+    "Pause scheduling",
+    "Pausar programación"
+  ],
+  "Retomar agendamento": [
+    "Resume scheduling",
+    "Reanudar programación"
+  ],
+  "Interface minimizada. A execução continua ativa. Use Sair da interface para encerrar.": [
+    "Interface minimized. Running work continues. Use Exit interface to close it.",
+    "Interfaz minimizada. La ejecución continúa. Use Salir de la interfaz para cerrarla."
+  ],
+  "Atividade do aplicativo: operações, avisos e logs aparecem aqui.": [
+    "Application activity: operations, notices and logs appear here.",
+    "Actividad de la aplicación: operaciones, avisos y registros aparecen aquí."
+  ],
+  "Repare o EdgeDriver em Diagnóstico e manutenção.": [
+    "Repair EdgeDriver in Diagnostics and maintenance.",
+    "Repare EdgeDriver en Diagnóstico y mantenimiento."
+  ],
+  "Use Testar login para autenticar a sessão.": [
+    "Use Test login to authenticate the session.",
+    "Use Probar inicio de sesión para autenticar la sesión."
+  ],
+  "Verifique a VPN; a rotina permanece pendente.": [
+    "Check the VPN; the routine remains pending.",
+    "Compruebe la VPN; la rutina sigue pendiente."
+  ],
+  "Verifique as conexões de rede necessárias.": [
+    "Check the required network connections.",
+    "Compruebe las conexiones de red necesarias."
+  ],
+  "Feche o arquivo no Excel e tente novamente.": [
+    "Close the file in Excel and try again.",
+    "Cierre el archivo en Excel y vuelva a intentarlo."
+  ],
+  "Padrão da frequência": [
+    "Frequency default",
+    "Predeterminado de la frecuencia"
+  ],
+  "Personalizado": [
+    "Custom",
+    "Personalizado"
+  ],
+  "Calendário": [
+    "Calendar",
+    "Calendario"
+  ],
+  "E-mail obrigatório para os extratores. Informe um endereço válido; não informe senha.": [
+    "An email is required for the extractors. Enter a valid address; do not enter a password.",
+    "El correo es obligatorio para los extractores. Introduzca una dirección válida; no escriba una contraseña."
+  ],
+  "Informe um e-mail válido para continuar.": [
+    "Enter a valid email to continue.",
+    "Introduzca un correo válido para continuar."
+  ],
+  "Retire as dependências desta rotina antes de removê-la.": [
+    "Remove dependencies on this routine before removing it.",
+    "Quite las dependencias de esta rutina antes de eliminarla."
+  ],
+  "O arquivo original, o histórico e as versões serão preservados.": [
+    "The original file, history and versions will be preserved.",
+    "Se conservarán el archivo original, el historial y las versiones."
+  ],
+  "Personalizado preserva os dias escolhidos sem mudar a regra de sucesso da frequência.": [
+    "Custom preserves the selected days without changing the frequency success rule.",
+    "Personalizado conserva los días elegidos sin cambiar la regla de éxito de la frecuencia."
+  ],
+  "Diária e Todos os horários usam os sete dias; Somente dias úteis usa segunda a sexta; Semanal usa um dia inicial. Personalizado preserva os dias escolhidos sem mudar a regra de sucesso da frequência. Somente dias úteis ignora fins de semana.": [
+    "Daily and Every time use all seven days; Weekdays only uses Monday to Friday; Weekly uses a starting day. Custom preserves selected days without changing the frequency success rule. Weekdays only ignores weekends.",
+    "Diaria y Todos los horarios usan los siete días; Solo días hábiles usa lunes a viernes; Semanal usa un día inicial. Personalizado conserva los días elegidos sin cambiar la regla de éxito de la frecuencia. Solo días hábiles ignora los fines de semana."
+  ],
+  "Padrão": [
+    "Default",
+    "Predeterminado"
+  ],
+  "Identificação da tarefa": [
+    "Task identity",
+    "Identificación de la tarea"
+  ],
+  "Privilégios": [
+    "Privileges",
+    "Privilegios"
+  ],
+  "Encerrar ao fim da duração": [
+    "Stop at the end of the duration",
+    "Detener al finalizar la duración"
+  ],
+  "Início do monitor": [
+    "Monitor start",
+    "Inicio del monitor"
+  ],
+  "Intervalo em dias": [
+    "Interval in days",
+    "Intervalo en días"
+  ],
+  "Instâncias simultâneas": [
+    "Concurrent instances",
+    "Instancias simultáneas"
+  ],
+  "Limite de execução": [
+    "Execution time limit",
+    "Límite de ejecución"
+  ],
+  "Impedir início na bateria": [
+    "Prevent start on battery",
+    "Impedir inicio con batería"
+  ],
+  "Parar na bateria": [
+    "Stop on battery",
+    "Detener con batería"
+  ],
+  "Recuperar execução perdida": [
+    "Recover missed run",
+    "Recuperar ejecución perdida"
+  ],
+  "Exigir rede": [
+    "Require network",
+    "Exigir red"
+  ],
+  "Quantidade de ações": [
+    "Action count",
+    "Cantidad de acciones"
+  ],
+  "Quantidade de gatilhos": [
+    "Trigger count",
+    "Cantidad de desencadenadores"
+  ],
+  "Quantidade de usuários de execução": [
+    "Principal count",
+    "Cantidad de usuarios de ejecución"
+  ],
+  "Ao entrar no Windows": [
+    "At Windows logon",
+    "Al iniciar sesión en Windows"
+  ],
+  "Monitor periódico": [
+    "Periodic monitor",
+    "Monitor periódico"
+  ],
+  "Tarefa": [
+    "Task",
+    "Tarea"
+  ],
+  "A tarefa precisa de revisão. Consulte a tabela de tarefas.": [
+    "The task needs review. Check the task table.",
+    "La tarea necesita revisión. Consulte la tabla de tareas."
+  ],
+  "Registrando e conferindo a tarefa do monitor na sessão do usuário": [
+    "Registering and checking the monitor task in the user session",
+    "Registrando y comprobando la tarea del monitor en la sesión del usuario"
+  ],
+  "Central de automações": [
+    "Automation center",
+    "Centro de automatizaciones"
+  ],
+  "Navegação principal": [
+    "Main navigation",
+    "Navegación principal"
+  ],
+  "Versão de teste": [
+    "Test version",
+    "Versión de prueba"
+  ],
+  "Acompanhe as extrações e escolha o que executar.": [
+    "Monitor extractions and choose what to run.",
+    "Supervise las extracciones y elija qué ejecutar."
+  ],
+  "Organize scripts, frequências e horários de cada rotina.": [
+    "Organize scripts, frequencies and schedules for each routine.",
+    "Organice scripts, frecuencias y horarios de cada rutina."
+  ],
+  "Ajuste as preferências e os caminhos desta instalação.": [
+    "Adjust preferences and paths for this installation.",
+    "Ajuste las preferencias y las rutas de esta instalación."
+  ],
+  "Consulte resultados e investigue o histórico das execuções.": [
+    "Review results and investigate the run history.",
+    "Consulte los resultados y revise el historial de ejecuciones."
+  ],
+  "Verifique conexões, tarefas e backups antes de intervir.": [
+    "Check connections, tasks and backups before making changes.",
+    "Revise las conexiones, tareas y copias de seguridad antes de intervenir."
+  ],
+  "Inspecione os componentes e as evidências desta instalação.": [
+    "Inspect components and evidence for this installation.",
+    "Inspeccione los componentes y las evidencias de esta instalación."
+  ],
+  "Rotinas habilitadas": [
+    "Enabled routines",
+    "Rutinas habilitadas"
+  ],
+  "Preferência do monitor": [
+    "Monitor preference",
+    "Preferencia del monitor"
+  ],
+  "Atividade da instalação": [
+    "Installation activity",
+    "Actividad de la instalación"
+  ],
+  "Configuração completa": [
+    "Complete configuration",
+    "Configuración completa"
+  ],
+  "Filtrar por rotina": [
+    "Filter by routine",
+    "Filtrar por rutina"
+  ],
+  "Filtrar por estado": [
+    "Filter by status",
+    "Filtrar por estado"
+  ],
+  "Limpar filtros": [
+    "Clear filters",
+    "Borrar filtros"
+  ],
+  "Nenhuma execução registrada. Execute uma rotina no Painel para acompanhar o resultado aqui.": [
+    "No runs recorded. Run a routine from the Dashboard to see the result here.",
+    "No hay ejecuciones registradas. Ejecute una rutina desde el Panel para ver el resultado aquí."
+  ],
+  "Nenhum resultado para estes filtros. Use Limpar filtros para ver as execuções recentes.": [
+    "No results for these filters. Use Clear filters to see recent runs.",
+    "No hay resultados con estos filtros. Use Borrar filtros para ver las ejecuciones recientes."
+  ],
+  "Configurado": [
+    "Configured",
+    "Configurado"
+  ],
+  "Não configurado": [
+    "Not configured",
+    "No configurado"
+  ],
+  "A pausa temporária termina automaticamente. Uma pausa sem prazo continua ativa até ser retomada. Vazio remove somente o prazo.": [
+    "Temporary pauses end automatically. An indefinite pause remains active until resumed. Leave blank to remove only the end date.",
+    "La pausa temporal termina automáticamente. Una pausa indefinida sigue activa hasta reanudarla. Deje vacío para quitar solo el plazo."
+  ],
+  "A tentativa inicial conta no total. Autenticação não repete automaticamente. KWMS mantém duas tentativas internas de VPN, com espera de 30 segundos e sem repetição externa para código 20.": [
+    "The initial attempt counts toward the total. Authentication never retries automatically. KWMS keeps two internal VPN attempts, waiting 30 seconds, without external retries for code 20.",
+    "El intento inicial cuenta en el total. La autenticación no se repite automáticamente. KWMS mantiene dos intentos internos de VPN, esperando 30 segundos, sin reintentos externos para el código 20."
+  ],
+  "Abrir execução selecionada": [
+    "Open selected run",
+    "Abrir ejecución seleccionada"
+  ],
+  "Abrir o candidato em uma nova instalação de teste, sem ativá-lo nesta instalação? Scripts são código confiável e não recebem isolamento de segurança do Windows.": [
+    "Open the candidate in a new test installation without activating it here? Scripts must be trusted; this does not provide a Windows security sandbox.",
+    "¿Abrir el candidato en una nueva instalación de prueba sin activarlo aquí? Los scripts deben ser de confianza; esto no proporciona aislamiento de seguridad de Windows."
+  ],
+  "Acompanhar novas linhas": [
+    "Follow new lines",
+    "Seguir nuevas líneas"
+  ],
+  "Agrupar avisos repetidos (minutos)": [
+    "Group repeated alerts (minutes)",
+    "Agrupar avisos repetidos (minutos)"
+  ],
+  "Aguarde a prévia terminar antes de fechar.": [
+    "Wait for the preview to finish before closing.",
+    "Espere a que termine la vista previa antes de cerrar."
+  ],
+  "Alerta sem evolução (minutos)": [
+    "No progress alert (minutes)",
+    "Alerta sin progreso (minutos)"
+  ],
+  "Alterações não salvas": [
+    "Unsaved changes",
+    "Cambios sin guardar"
+  ],
+  "Alterações salvas.": [
+    "Changes saved.",
+    "Cambios guardados."
+  ],
+  "Ambiente de teste": [
+    "Test environment",
+    "Entorno de prueba"
+  ],
+  "Arquivo atual mudou depois da prévia.": [
+    "The current file changed after the preview.",
+    "El archivo actual cambió después de la vista previa."
+  ],
+  "Arquivo mudou depois da prévia.": [
+    "The file changed after the preview.",
+    "El archivo cambió después de la vista previa."
+  ],
+  "Arquivo rejeitado alterado ou inválido.": [
+    "The rejected file was changed or is invalid.",
+    "El archivo rechazado cambió o no es válido."
+  ],
+  "Arquivos rejeitados…": [
+    "Rejected files…",
+    "Archivos rechazados…"
+  ],
+  "Até: AAAA-MM-DD": [
+    "Through: YYYY-MM-DD",
+    "Hasta: AAAA-MM-DD"
+  ],
+  "Avançado": [
+    "Advanced",
+    "Avanzado"
+  ],
+  "Bibliotecas ausentes: ": [
+    "Missing libraries: ",
+    "Bibliotecas faltantes: "
+  ],
+  "Buscar nome, origem ou categoria": [
+    "Search name, source or category",
+    "Buscar nombre, origen o categoría"
+  ],
+  "Calendário de feriados (opcional)": [
+    "Holiday calendar (optional)",
+    "Calendario de festivos (opcional)"
+  ],
+  "Candidato preparado e desabilitado. Revise e habilite somente no ambiente de teste.": [
+    "Candidate prepared and disabled. Review and enable it only in the test environment.",
+    "Candidato preparado y deshabilitado. Revise y habilítelo solo en el entorno de prueba."
+  ],
+  "Carregando…": [
+    "Loading…",
+    "Cargando…"
+  ],
+  "Categoria do catálogo": [
+    "Catalog category",
+    "Categoría del catálogo"
+  ],
+  "Central de notificações": [
+    "Notification center",
+    "Centro de notificaciones"
+  ],
+  "Comparar e restaurar relatório": [
+    "Compare and restore report",
+    "Comparar y restaurar informe"
+  ],
+  "Copiar preferências da v1.3.0 para o teste…": [
+    "Copy v1.3.0 preferences into the test…",
+    "Copiar preferencias de v1.3.0 a la prueba…"
+  ],
+  "Data e hora ISO, incluindo fuso": [
+    "ISO date and time, including time zone",
+    "Fecha y hora ISO, incluida la zona horaria"
+  ],
+  "Datas do calendário: AAAA-MM-DD, separadas por vírgula": [
+    "Calendar dates: YYYY-MM-DD, comma separated",
+    "Fechas del calendario: AAAA-MM-DD, separadas por comas"
+  ],
+  "De: AAAA-MM-DD": [
+    "From: YYYY-MM-DD",
+    "Desde: AAAA-MM-DD"
+  ],
+  "Descartar as alterações desta edição?": [
+    "Discard changes to this edit?",
+    "¿Descartar los cambios de esta edición?"
+  ],
+  "Destino": [
+    "Destination",
+    "Destino"
+  ],
+  "Dias habilitados continuam obrigatórios. Horários perdidos são agrupados na oportunidade elegível mais recente; não há execução em tempestade. Sucesso diário ou semanal impede repetições no mesmo período.": [
+    "Enabled days still apply. Missed times collapse into the latest eligible opportunity. Daily or weekly success prevents repeats in the same period.",
+    "Se respetan los días habilitados. Los horarios perdidos se agrupan en la oportunidad elegible más reciente. Un éxito diario o semanal evita repeticiones en el mismo período."
+  ],
+  "E-mail": [
+    "Email",
+    "Correo electrónico"
+  ],
+  "Editar rotina selecionada": [
+    "Edit selected routine",
+    "Editar rutina seleccionada"
+  ],
+  "Entrada excluída da pasta de script.": [
+    "The entry point is excluded from the script folder.",
+    "El archivo de entrada está excluido de la carpeta del script."
+  ],
+  "Entrada fora da pasta selecionada.": [
+    "The entry point is outside the selected folder.",
+    "El archivo de entrada está fuera de la carpeta seleccionada."
+  ],
+  "Executar somente pendentes…": [
+    "Run pending routines only…",
+    "Ejecutar solo pendientes…"
+  ],
+  "Exportar rotina": [
+    "Export routine",
+    "Exportar rutina"
+  ],
+  "Exportar rotina…": [
+    "Export routine…",
+    "Exportar rutina…"
+  ],
+  "Habilitar notificações": [
+    "Enable notifications",
+    "Habilitar notificaciones"
+  ],
+  "Histórico de execuções": [
+    "Run history",
+    "Historial de ejecuciones"
+  ],
+  "Idade dos backups (dias)": [
+    "Backup age (days)",
+    "Antigüedad de copias (días)"
+  ],
+  "Identificador de rotina já cadastrado.": [
+    "This routine identifier is already registered.",
+    "El identificador de rutina ya está registrado."
+  ],
+  "Importar pasta de script…": [
+    "Import script folder…",
+    "Importar carpeta del script…"
+  ],
+  "Informe datas válidas no formato AAAA-MM-DD.": [
+    "Enter valid dates in YYYY-MM-DD format.",
+    "Introduzca fechas válidas en formato AAAA-MM-DD."
+  ],
+  "Informe um e-mail válido, como nome@empresa.com.": [
+    "Enter a valid email, such as name@company.com.",
+    "Introduzca un correo válido, como nombre@empresa.com."
+  ],
+  "Intervalo próprio após a rotina anterior (s)": [
+    "Custom delay after the previous routine (s)",
+    "Intervalo propio después de la rutina anterior (s)"
+  ],
+  "Janela de recuperação (horas)": [
+    "Catch-up window (hours)",
+    "Ventana de recuperación (horas)"
+  ],
+  "Limite de avisos por hora": [
+    "Alert limit per hour",
+    "Límite de avisos por hora"
+  ],
+  "Lixeira de cadastros": [
+    "Routine trash",
+    "Papelera de rutinas"
+  ],
+  "Logs: prévia de limpeza após dias": [
+    "Logs: preview cleanup after days",
+    "Registros: vista previa de limpieza después de días"
+  ],
+  "Mensagem": [
+    "Message",
+    "Mensaje"
+  ],
+  "Monitor": [
+    "Monitor",
+    "Monitor"
+  ],
+  "Monitor sem comunicação. Confira a tarefa e os processos em Diagnóstico; nenhuma rotina será marcada como concluída.": [
+    "Monitor is not communicating. Check the task and processes in Diagnostics; no routine will be marked complete.",
+    "El monitor no comunica. Compruebe la tarea y los procesos en Diagnóstico; ninguna rutina se marcará como completada."
+  ],
+  "Na mesma cadeia": [
+    "In the same chain",
+    "En la misma cadena"
+  ],
+  "Nenhum feriado é presumido. A limpeza exige prévia e confirmação; o arquivo mais recente é preservado.": [
+    "Holidays are never assumed. Cleanup requires a preview and confirmation; the latest file is preserved.",
+    "No se presuponen festivos. La limpieza requiere vista previa y confirmación; se conserva el archivo más reciente."
+  ],
+  "Nenhuma recuperação registrada.": [
+    "No recovery recorded.",
+    "No se registró ninguna recuperación."
+  ],
+  "Nenhuma rotina pendente encontrada.": [
+    "No pending routines found.",
+    "No se encontraron rutinas pendientes."
+  ],
+  "Notas desta versão": [
+    "Version notes",
+    "Notas de esta versión"
+  ],
+  "Não verificado": [
+    "Not verified",
+    "Sin verificar"
+  ],
+  "Ocupação e limpeza…": [
+    "Storage and cleanup…",
+    "Ocupación y limpieza…"
+  ],
+  "Ocupação e prévia da limpeza": [
+    "Storage and cleanup preview",
+    "Ocupación y vista previa de limpieza"
+  ],
+  "Operação concluída.": [
+    "Operation completed.",
+    "Operación completada."
+  ],
+  "Orçamento dos backups (MiB)": [
+    "Backup budget (MiB)",
+    "Presupuesto de copias (MiB)"
+  ],
+  "Pacote de suporte": [
+    "Support package",
+    "Paquete de soporte"
+  ],
+  "Pacote de suporte com prévia": [
+    "Support package preview",
+    "Paquete de soporte con vista previa"
+  ],
+  "Pasta de destino indisponível.": [
+    "Destination folder unavailable.",
+    "Carpeta de destino no disponible."
+  ],
+  "Pausar até ISO com fuso (opcional)": [
+    "Pause until ISO date with time zone (optional)",
+    "Pausar hasta fecha ISO con zona horaria (opcional)"
+  ],
+  "Pausar até…": [
+    "Pause until…",
+    "Pausar hasta…"
+  ],
+  "Preferências": [
+    "Preferences",
+    "Preferencias"
+  ],
+  "Prévia da exportação": [
+    "Export preview",
+    "Vista previa de exportación"
+  ],
+  "Prévia da pasta de script": [
+    "Script folder preview",
+    "Vista previa de carpeta del script"
+  ],
+  "Prévia da publicação local": [
+    "Local publication preview",
+    "Vista previa de publicación local"
+  ],
+  "Prévia das rotinas pendentes": [
+    "Pending routines preview",
+    "Vista previa de rutinas pendientes"
+  ],
+  "Prévia sanitizada do suporte": [
+    "Sanitized support preview",
+    "Vista previa del soporte saneado"
+  ],
+  "Prévia semanal": [
+    "Weekly preview",
+    "Vista previa semanal"
+  ],
+  "Próxima página": [
+    "Next page",
+    "Página siguiente"
+  ],
+  "Pular datas AAAA-MM-DD, separadas por vírgula": [
+    "Skip dates YYYY-MM-DD, comma separated",
+    "Omitir fechas AAAA-MM-DD, separadas por comas"
+  ],
+  "Página anterior": [
+    "Previous page",
+    "Página anterior"
+  ],
+  "Registro fora da área de rejeitados.": [
+    "Record outside the rejected files area.",
+    "Registro fuera del área de archivos rechazados."
+  ],
+  "Restaurar cadastro": [
+    "Restore routine",
+    "Restaurar rutina"
+  ],
+  "Restaurar cadastro da lixeira": [
+    "Restore routine from trash",
+    "Restaurar rutina de la papelera"
+  ],
+  "Resultado da recuperação": [
+    "Recovery result",
+    "Resultado de recuperación"
+  ],
+  "Revalidar arquivo rejeitado": [
+    "Revalidate rejected file",
+    "Revalidar archivo rechazado"
+  ],
+  "Salvar as alterações antes de continuar?": [
+    "Save changes before continuing?",
+    "¿Guardar los cambios antes de continuar?"
+  ],
+  "Salve ou descarte as alterações em Configurações antes desta operação.": [
+    "Save or discard changes in Settings before this operation.",
+    "Guarde o descarte los cambios en Configuración antes de esta operación."
+  ],
+  "Selecionar entrada Python": [
+    "Select Python entry point",
+    "Seleccionar archivo de entrada Python"
+  ],
+  "Selecionar pasta do script": [
+    "Select script folder",
+    "Seleccionar carpeta del script"
+  ],
+  "Selecionar registro de arquivo rejeitado": [
+    "Select rejected file record",
+    "Seleccionar registro de archivo rechazado"
+  ],
+  "Selecionar script candidato": [
+    "Select candidate script",
+    "Seleccionar script candidato"
+  ],
+  "Selecione primeiro uma rotina no catálogo.": [
+    "Select a routine in the catalog first.",
+    "Seleccione primero una rutina del catálogo."
+  ],
+  "Silêncio: fim HH:MM": [
+    "Quiet hours: end HH:MM",
+    "Silencio: fin HH:MM"
+  ],
+  "Silêncio: início HH:MM": [
+    "Quiet hours: start HH:MM",
+    "Silencio: inicio HH:MM"
+  ],
+  "Sucesso anterior válido": [
+    "Valid previous success",
+    "Éxito anterior válido"
+  ],
+  "Temporários: prévia de limpeza após dias": [
+    "Temporary files: preview cleanup after days",
+    "Temporales: vista previa de limpieza después de días"
+  ],
+  "Testar versão candidata…": [
+    "Test candidate version…",
+    "Probar versión candidata…"
+  ],
+  "Texto no histórico": [
+    "History text",
+    "Texto del historial"
+  ],
+  "Todas as categorias": [
+    "All categories",
+    "Todas las categorías"
+  ],
+  "Usar intervalo próprio nesta rotina": [
+    "Use a custom delay for this routine",
+    "Usar intervalo propio en esta rutina"
+  ],
+  "Validar backup": [
+    "Validate backup",
+    "Validar copia de seguridad"
+  ],
+  "Vazio usa os horários gerais da rotina": [
+    "Leave blank to use the routine's default times",
+    "Deje vacío para usar los horarios generales de la rutina"
+  ],
+  "Ver detalhe da execução": [
+    "View run details",
+    "Ver detalles de la ejecución"
+  ],
+  "Verificar bibliotecas": [
+    "Check libraries",
+    "Verificar bibliotecas"
+  ],
+  "Versões de relatório a manter": [
+    "Report versions to keep",
+    "Versiones de informe que se conservarán"
+  ],
+  "Última comunicação": [
+    "Last communication",
+    "Última comunicación"
+  ],
+  "Snapshots incluem os arquivos da pasta importada. Restaurar cria uma cópia gerenciada e preserva o original. Compare argumentos, destino e contrato antes de ativar.": [
+    "Snapshots include imported folder files. Restoring creates a managed copy and preserves the original. Compare arguments, destination and contract before activation.",
+    "Las versiones incluyen los archivos de la carpeta importada. Restaurar crea una copia administrada y conserva el original. Compare argumentos, destino y contrato antes de activar."
+  ],
+  "Selecione uma versão com uma versão anterior disponível.": [
+    "Select a version with an earlier version available.",
+    "Seleccione una versión que tenga una versión anterior disponible."
+  ],
+  "Comparação entre versões": [
+    "Version comparison",
+    "Comparación entre versiones"
+  ],
+  "Comparar com versão anterior": [
+    "Compare with previous version",
+    "Comparar con versión anterior"
+  ],
+  "Ativar versão revisada": [
+    "Activate reviewed version",
+    "Activar versión revisada"
+  ],
+  "Exportar arquivos revisados": [
+    "Export reviewed files",
+    "Exportar archivos revisados"
+  ],
+  "Exportar evidências": [
+    "Export evidence",
+    "Exportar evidencias"
+  ],
+  "Limpar arquivos revisados": [
+    "Clean reviewed files",
+    "Limpiar archivos revisados"
+  ],
+  "Publicar arquivo revisado": [
+    "Publish reviewed file",
+    "Publicar archivo revisado"
+  ],
+  "Falha": [
+    "Failure",
+    "Fallo"
+  ],
+  "Sem evolução": [
+    "No progress",
+    "Sin progreso"
+  ],
+  "Conclusão": [
+    "Completion",
+    "Finalización"
+  ],
+  "Servidor": [
+    "Server",
+    "Servidor"
+  ],
+  "Internet": [
+    "Internet",
+    "Internet"
+  ],
+  "Outros erros": [
+    "Other errors",
+    "Otros errores"
+  ],
+  "Inconclusivo": [
+    "Inconclusive",
+    "No concluyente"
+  ],
+  "Arquivo inválido": [
+    "Invalid file",
+    "Archivo no válido"
+  ],
+  "Arquivo bloqueado": [
+    "Locked file",
+    "Archivo bloqueado"
+  ],
+  "Autenticação": [
+    "Authentication",
+    "Autenticación"
+  ],
+  "Extração": [
+    "Extraction",
+    "Extracción"
+  ],
+  "Publicação local": [
+    "Local publication",
+    "Publicación local"
+  ],
+  "Elegibilidade": [
+    "Eligibility",
+    "Elegibilidad"
+  ],
+  "Manual": [
+    "Manual",
+    "Manual"
+  ],
+  "Agendada": [
+    "Scheduled",
+    "Programada"
+  ],
+  "Sucesso nesta cadeia": [
+    "Success in this chain",
+    "Éxito en esta cadena"
+  ],
+  "Origem desabilitada": [
+    "Source disabled",
+    "Origen deshabilitado"
+  ],
+  "Inclua e conclua a origem nesta cadeia": [
+    "Include and complete the source in this chain",
+    "Incluya y complete el origen en esta cadena"
+  ],
+  "Novo sucesso da origem": [
+    "New source success",
+    "Nuevo éxito del origen"
+  ],
+  "Sucesso anterior ausente ou fora da validade": [
+    "Previous success missing or expired",
+    "Éxito anterior ausente o caducado"
+  ],
+  "aguardando dia e horário semanais": [
+    "waiting for weekly day and time",
+    "esperando el día y la hora semanales"
+  ],
+  "disparo manual elegível": [
+    "eligible manual start",
+    "inicio manual elegible"
+  ],
+  "horário próprio ou recuperação": [
+    "scheduled time or catch-up",
+    "horario programado o recuperación"
+  ],
+  "forçada": [
+    "forced",
+    "forzada"
+  ],
+  "sucesso já concluído neste período": [
+    "success already completed in this period",
+    "éxito ya completado en este período"
+  ],
+  "data excluída do calendário": [
+    "date excluded from the calendar",
+    "fecha excluida del calendario"
+  ],
+  "somente dias úteis": [
+    "weekdays only",
+    "solo días laborables"
+  ],
+  "dia não habilitado": [
+    "day not enabled",
+    "día no habilitado"
+  ],
+  "aguardando horário próprio": [
+    "waiting for scheduled time",
+    "esperando el horario programado"
+  ],
+  "oportunidade já tentada; aguardando próximo horário": [
+    "opportunity already attempted; waiting for the next time",
+    "oportunidad ya intentada; esperando el siguiente horario"
+  ],
+  "Execução condicionada": [
+    "Conditional execution",
+    "Ejecución condicionada"
+  ],
+  "Simulação elegível": [
+    "Eligible simulation",
+    "Simulación elegible"
+  ],
+  "Processo ativo": [
+    "Process active",
+    "Proceso activo"
+  ],
+  "Sem comunicação": [
+    "No communication",
+    "Sin comunicación"
+  ],
+  "Monitor encerrado": [
+    "Monitor stopped",
+    "Monitor detenido"
+  ],
+  "CPU (%)": [
+    "CPU (%)",
+    "CPU (%)"
+  ],
+  "Tamanho (bytes)": [
+    "Size (bytes)",
+    "Tamaño (bytes)"
+  ],
+  "Última alteração": [
+    "Last modified",
+    "Última modificación"
+  ],
+  "Arquivo existe": [
+    "File exists",
+    "El archivo existe"
+  ],
+  "Validação": [
+    "Validation",
+    "Validación"
+  ],
+  "Estado do destino": [
+    "Destination status",
+    "Estado del destino"
+  ],
+  "Sincronização externa": [
+    "External synchronization",
+    "Sincronización externa"
+  ],
+  "Operação": [
+    "Operation",
+    "Operación"
+  ],
+  "Criará backup": [
+    "Will create a backup",
+    "Creará una copia"
+  ],
+  "Chaves de Eventos": [
+    "Event keys",
+    "Claves de Eventos"
+  ],
+  "Versão atual": [
+    "Current version",
+    "Versión actual"
+  ],
+  "Conteúdo idêntico": [
+    "Identical content",
+    "Contenido idéntico"
+  ],
+  "Preservará a versão atual antes de restaurar": [
+    "Will preserve the current version before restoring",
+    "Conservará la versión actual antes de restaurar"
+  ],
+  "Comparação disponível": [
+    "Comparison available",
+    "Comparación disponible"
+  ],
+  "Motivo": [
+    "Reason",
+    "Motivo"
+  ],
+  "Requisitos de sucesso": [
+    "Success requirements",
+    "Requisitos de éxito"
+  ],
+  "Bloqueios": [
+    "Blockers",
+    "Bloqueos"
+  ],
+  "Posição na fila": [
+    "Queue position",
+    "Posición en la cola"
+  ],
+  "Identificador da rotina": [
+    "Routine identifier",
+    "Identificador de rutina"
+  ],
+  "Oportunidade": [
+    "Opportunity",
+    "Oportunidad"
+  ],
+  "Período": [
+    "Period",
+    "Período"
+  ],
+  "Horário efetivo": [
+    "Actual start time",
+    "Horario efectivo"
+  ],
+  "Intervalo entre rotinas (s)": [
+    "Delay between routines (s)",
+    "Intervalo entre rutinas (s)"
+  ],
+  "Elegível": [
+    "Eligible",
+    "Elegible"
+  ],
+  "Recuperação de horário perdido": [
+    "Missed time recovery",
+    "Recuperación de horario perdido"
+  ],
+  "Total": [
+    "Total",
+    "Total"
+  ],
+  "Componentes": [
+    "Components",
+    "Componentes"
+  ],
+  "Componente": [
+    "Component",
+    "Componente"
+  ],
+  "Restaurado": [
+    "Restored",
+    "Restaurado"
+  ],
+  "Exige intervenção": [
+    "Requires intervention",
+    "Requiere intervención"
+  ],
+  "Recuperação completa": [
+    "Complete recovery",
+    "Recuperación completa"
+  ],
+  "Bibliotecas ausentes": [
+    "Missing libraries",
+    "Bibliotecas faltantes"
+  ],
+  "Bibliotecas utilizadas": [
+    "Libraries used",
+    "Bibliotecas utilizadas"
+  ],
+  "Script executado": [
+    "Script executed",
+    "Script ejecutado"
+  ],
+  "Limitação": [
+    "Limitation",
+    "Limitación"
+  ],
+  "Arquivos": [
+    "Files",
+    "Archivos"
+  ],
+  "Versão anterior": [
+    "Previous version",
+    "Versión anterior"
+  ],
+  "Versão posterior": [
+    "Later version",
+    "Versión posterior"
+  ],
+  "Arquivos alterados": [
+    "Changed files",
+    "Archivos modificados"
+  ],
+  "Diferenças no código": [
+    "Code differences",
+    "Diferencias de código"
+  ],
+  "Contrato de saída e execução": [
+    "Output and execution contract",
+    "Contrato de salida y ejecución"
+  ],
+  "Ocupação (bytes)": [
+    "Storage (bytes)",
+    "Ocupación (bytes)"
+  ],
+  "Arquivos selecionados para limpeza": [
+    "Files selected for cleanup",
+    "Archivos seleccionados para limpieza"
+  ],
+  "Amostra": [
+    "Sample",
+    "Muestra"
+  ],
+  "Dados sensíveis removidos": [
+    "Sensitive data removed",
+    "Datos sensibles eliminados"
+  ],
+  "Gravação local": [
+    "Local write",
+    "Escritura local"
+  ],
+  "Pasta indisponível": [
+    "Folder unavailable",
+    "Carpeta no disponible"
+  ],
+  "Validação aprovada; repetida ao publicar": [
+    "Validation passed; repeated when publishing",
+    "Validación aprobada; se repite al publicar"
+  ],
+  "Substituir": [
+    "Replace",
+    "Sustituir"
+  ],
+  "Mesclar Eventos": [
+    "Merge events",
+    "Combinar Eventos"
+  ],
+  "Depende da conclusão anterior; sem horário garantido": [
+    "Depends on prior completion; no guaranteed time",
+    "Depende de la finalización anterior; sin horario garantizado"
+  ],
+  "Datas, tamanhos e hashes; diferença de células não disponível": [
+    "Dates, sizes and hashes; cell differences unavailable",
+    "Fechas, tamaños y hashes; diferencias de celdas no disponibles"
+  ],
+  "Banco de dados": [
+    "Database",
+    "Base de datos"
+  ],
+  "Scripts e iniciadores": [
+    "Scripts and launchers",
+    "Scripts e iniciadores"
+  ],
+  "Versão do aplicativo": [
+    "Application version",
+    "Versión de la aplicación"
+  ],
+  "Tarefa do Agendador": [
+    "Scheduler task",
+    "Tarea del Programador"
+  ],
+  "Atalhos": [
+    "Shortcuts",
+    "Accesos directos"
+  ],
+  "Restaurar preservando o atual": [
+    "Restore and preserve current file",
+    "Restaurar conservando el archivo actual"
+  ],
+  "Atraso": [
+    "Delay",
+    "Retraso"
+  ],
+  "Todos os navegadores": [
+    "All browser requirements",
+    "Todos los requisitos de navegador"
+  ],
+  "Com navegador": [
+    "Uses a browser",
+    "Con navegador"
+  ],
+  "Sem navegador": [
+    "No browser",
+    "Sin navegador"
+  ],
+  "Habilitadas": [
+    "Enabled",
+    "Habilitadas"
+  ],
+  "Desabilitadas": [
+    "Disabled",
+    "Deshabilitadas"
+  ],
+  "Estado do monitor": [
+    "Monitor status",
+    "Estado del monitor"
+  ],
+  "Próxima elegibilidade": [
+    "Next eligibility",
+    "Próxima elegibilidad"
+  ],
+  "Controlar execução": [
+    "Control execution",
+    "Controlar ejecución"
+  ],
+  "Qualquer navegador": [
+    "Any browser requirement",
+    "Cualquier requisito de navegador"
+  ],
+  "Usa navegador": [
+    "Uses a browser",
+    "Usa navegador"
+  ],
+  "Repetições": [
+    "Repetitions",
+    "Repeticiones"
+  ],
+  "Última repetição": [
+    "Last repetition",
+    "Última repetición"
+  ]
+}

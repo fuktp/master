@@ -1,0 +1,21 @@
+F..                                                                      [100%]
+=================================== FAILURES ===================================
+_______ test_translation_catalog_has_unique_keys_for_windows_powershell ________
+
+    def test_translation_catalog_has_unique_keys_for_windows_powershell() -> None:
+        pairs = json.loads(
+            (source_root() / "orquestrador_app/locales.json").read_text(encoding="utf-8"),
+            object_pairs_hook=list,
+        )
+        keys = [key.casefold() for key, _ in pairs]
+>       assert len(keys) == len(set(keys)), "ConvertFrom-Json rejects case-insensitive duplicate keys"
+E       AssertionError: ConvertFrom-Json rejects case-insensitive duplicate keys
+E       assert 345 == 344
+E        +  where 345 = len(['painel', 'rotinas e agendamentos', 'configurações', 'histórico e logs', 'diagnóstico e manutenção', 'dev • internos', ...])
+E        +  and   344 = len({'a atualização por zip verifica a integridade, guarda a versão atual e reinicia o aplicativo após sua confirmação.', ...a. não instala, atualiza ou altera arquivos.', 'abrir manutenção', 'abrir orquestrador', 'abrir versão instalada', ...})
+E        +    where {'a atualização por zip verifica a integridade, guarda a versão atual e reinicia o aplicativo após sua confirmação.', ...a. não instala, atualiza ou altera arquivos.', 'abrir manutenção', 'abrir orquestrador', 'abrir versão instalada', ...} = set(['painel', 'rotinas e agendamentos', 'configurações', 'histórico e logs', 'diagnóstico e manutenção', 'dev • internos', ...])
+
+desktop_tests/test_caio_revision.py:31: AssertionError
+=========================== short test summary info ============================
+FAILED desktop_tests/test_caio_revision.py::test_translation_catalog_has_unique_keys_for_windows_powershell
+1 failed, 2 passed, 15 deselected in 0.05s

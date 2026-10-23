@@ -1,0 +1,97 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_task_com_query_distinguishes_missing_from_denied[-2147352567--2147024894] _
+
+_ = '\\Orquestrador-128d62b5bc37'
+
+    def get_task(_: str) -> Any:
+        if isinstance(value[0], Exception):
+>           raise value[0]
+E           test_app_regressions.test_task_com_query_distinguishes_missing_from_denied.<locals>.ComError: (-2147352567, 'Exception occurred.', (0, None, None, None, 0, -2147024894), None)
+
+desktop_tests/test_app_regressions.py:250: ComError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-5/test_task_com_query_distinguis0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f657345b5f0>
+outer = -2147352567, inner = -2147024894
+
+    @pytest.mark.parametrize(
+        "outer,inner",
+        [
+            (0x80070002, None),
+            (-2147024894, None),
+            (-2147352567, -2147024894),
+            (0x80020009, 0x80070002),
+        ],
+    )
+    def test_task_com_query_distinguishes_missing_from_denied(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, outer: int, inner: int | None
+    ) -> None:
+        import orquestrador_app.tasks as tasks
+    
+        class ComError(Exception):
+            def __init__(self, code: int, detail: int | None = None):
+                self.hresult = code
+                self.excepinfo = (0, None, None, None, 0, detail) if detail is not None else None
+                super().__init__(code, "Exception occurred.", self.excepinfo, None)
+    
+        value: list[Any] = [ComError(outer, inner)]
+    
+        def get_task(_: str) -> Any:
+            if isinstance(value[0], Exception):
+                raise value[0]
+            return SimpleNamespace(Xml=value[0])
+    
+        client = SimpleNamespace(
+            Dispatch=lambda _: SimpleNamespace(
+                Connect=lambda: None, GetFolder=lambda _: SimpleNamespace(GetTask=get_task)
+            )
+        )
+        package = ModuleType("win32com")
+        package.client = client
+        monkeypatch.setitem(sys.modules, "win32com", package)
+        monkeypatch.setitem(sys.modules, "win32com.client", client)
+        monkeypatch.setitem(
+            sys.modules,
+            "pythoncom",
+            SimpleNamespace(CoInitialize=lambda: None, CoUninitialize=lambda: None),
+        )
+        monkeypatch.setitem(sys.modules, "pywintypes", SimpleNamespace(com_error=ComError))
+        monkeypatch.setattr(tasks, "os", SimpleNamespace(name="nt"))
+        backend = tasks.WindowsTasks(Paths.user(tmp_path))
+>       assert backend.export() is None
+               ^^^^^^^^^^^^^^^^
+
+desktop_tests/test_app_regressions.py:270: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <orquestrador_app.tasks.WindowsTasks object at 0x7f657345bad0>
+name = None
+
+    def export(self, name: str | None = None) -> str | None:
+        if os.name != "nt":
+            raise RuntimeError("Agendador real disponível somente no Windows.")
+        import pythoncom
+        import pywintypes
+        import win32com.client
+    
+        pythoncom.CoInitialize()
+        try:
+            service = win32com.client.Dispatch("Schedule.Service")
+            service.Connect()
+            try:
+                task = service.GetFolder("\\").GetTask(name or task_name(self.paths))
+            except pywintypes.com_error as exc:
+                if exc.hresult & 0xFFFFFFFF in {0x80070002, 0x8004130F}:
+                    return None
+>               raise RuntimeError(
+                    "Não foi possível consultar a tarefa do Windows: " + str(exc)
+                ) from exc
+E               RuntimeError: Não foi possível consultar a tarefa do Windows: (-2147352567, 'Exception occurred.', (0, None, None, None, 0, -2147024894), None)
+
+../baseline-dev6/CAIO_2.0.0.dev6/orquestrador_app/tasks.py:128: RuntimeError
+=========================== short test summary info ============================
+FAILED desktop_tests/test_app_regressions.py::test_task_com_query_distinguishes_missing_from_denied[-2147352567--2147024894]
+1 failed in 0.18s

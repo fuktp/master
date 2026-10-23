@@ -1,0 +1,8 @@
+{
+  "environment": "Unix 6.18.55.0",
+  "powershell": "7.4.13",
+  "scheduled_tasks_executed": false,
+  "result": "passed",
+  "winforms_executed": false,
+  "checks": 11
+}

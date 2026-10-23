@@ -1,0 +1,32 @@
+{
+  "reviewed_documents": [
+    "README_TESTE.md",
+    "REGISTRO_CAIO.md",
+    "README.md",
+    "README_DESKTOP.md",
+    "REGISTRO_SCRIPTS.md",
+    "MATRIZ_SCRIPTS.md",
+    "REGISTRO_DEV2.md",
+    "README_SCRIPTS.md",
+    "MATRIZ_CAIO.md",
+    "MATRIZ_TESTE_DEV2.md",
+    "docs/MATRIZ_ACEITE_DESKTOP.md",
+    "docs/INSPECAO_E_BLOQUEIOS.md",
+    "docs/COMANDOS.md",
+    "docs/MIGRACAO_DESKTOP.md",
+    "docs/COMANDOS_DESKTOP.md"
+  ],
+  "consolidated_into": [
+    "README.md",
+    "docs/TECNICO.md",
+    "docs/VALIDACAO.md"
+  ],
+  "previous_snapshot": "Versionamento_interno/2.0.0.dev4-caio/codigo.zip",
+  "active_documents": [
+    "README.md",
+    "docs/TECNICO.md",
+    "docs/VALIDACAO.md"
+  ],
+  "markdown_bytes_before": 114921,
+  "markdown_bytes_after": 34768
+}

@@ -1,0 +1,32 @@
+{
+  "findings": [
+    {
+      "severity": "warning",
+      "path": "colors.accent",
+      "message": "'accent' is defined but never referenced by any component.",
+      "rule": "orphaned-tokens"
+    },
+    {
+      "severity": "warning",
+      "path": "colors.border",
+      "message": "'border' is defined but never referenced by any component.",
+      "rule": "orphaned-tokens"
+    },
+    {
+      "severity": "warning",
+      "path": "colors.warning",
+      "message": "'warning' is defined but never referenced by any component.",
+      "rule": "orphaned-tokens"
+    },
+    {
+      "severity": "info",
+      "message": "Design system defines 11 colors, 2 typography scales, 2 rounding levels, 3 spacing tokens, 9 components.",
+      "rule": "token-summary"
+    }
+  ],
+  "summary": {
+    "errors": 0,
+    "warnings": 3,
+    "infos": 1
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "archive": "/workspace/scratch/ec6d84ef17dc/caio/build/caio-dev5/CAIO_2.0.0.dev5.zip",
+  "size": 84290896,
+  "sha256": "4c8484935bb6ee676275764750c2ad53ffc353f3c29e2ded612f36c6fe9ccb2d",
+  "payload_files": 4096,
+  "payload_bytes": 236653103,
+  "runtime": "official Windows CPython with private pinned dependencies",
+  "windows_execution": "not executed on this Linux host"
+}

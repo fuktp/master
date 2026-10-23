@@ -1,0 +1,11 @@
+{
+  "archive": "CAIO_2.0.0.dev10.zip",
+  "sha256": "5ba7f21104cae07a5969c240a3ac259132c880d83b37b78da5356ca34173bfcb",
+  "payload_files_verified": 4106,
+  "source_matches_package": true,
+  "private_runtime": "Windows x64 GUI PE",
+  "windows_runtime_executed": false,
+  "winforms_executed": false,
+  "scheduled_tasks_executed": false,
+  "extracted_root": "/workspace/master/build/validation-dev10/cache/updates/0f421e88-b7e4-43a8-be02-bd6acfd06cc0/CAIO_2.0.0.dev10"
+}

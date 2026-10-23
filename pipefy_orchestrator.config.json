@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "project_root": "scripts",
+  "output_dir": "C:\\Users\\chailer\\OneDrive - KPMG\\BR - CAIO 2-1 Gestão - Dashboard\\Testes - PBi",
+  "python_executable": "py",
+  "runtime_dir": "../.pipefy_orchestrator",
+  "logs_dir": "../logs",
+  "orchestration_log": "../logs/pipefy_orchestrator.log",
+  "inter_job_delay_seconds": 300,
+  "continue_on_error": false,
+  "check_driver_before_each_job": true,
+  "driver": {
+    "edge_binary": "",
+    "managed_path": "C:\\Users\\chailer\\Downloads\\edgedriver_win64\\msedgedriver.exe",
+    "selenium_cache": "../.pipefy_orchestrator/selenium-cache",
+    "driver_mirror_url": "https://msedgedriver.microsoft.com",
+    "auto_repair": true,
+    "verify_authenticode": true,
+    "session_test": true,
+    "session_test_headless": true,
+    "manager_timeout_seconds": 300,
+    "keep_backups": 3,
+    "force_managed_driver_for_jobs": true,
+    "adapt_script_driver_paths": true
+  },
+  "discovery": {
+    "enabled": true,
+    "pattern": "pipefy_*_tool_edge.py",
+    "exclude": [],
+    "inject_log_file": true,
+    "options": [],
+    "command": "run",
+    "command_arguments": [
+      "--headless",
+      "--weekdays-only"
+    ],
+    "timeout_minutes": 45,
+    "retries": 1,
+    "retry_delay_seconds": 30
+  },
+  "jobs": [
+    {
+      "name": "kwms_alocacoes_tool_edge",
+      "script": "kwms_alocacoes_tool_edge.py",
+      "options": [
+        "--log-file",
+        "{log_file}"
+      ],
+      "command": "run",
+      "command_arguments": [],
+      "timeout_minutes": 30,
+      "retries": 0,
+      "retry_delay_seconds": 30,
+      "skip_exit_codes": [
+        20
+      ],
+      "environment": {
+        "KWMS_EMAIL": "chailer@kpmg.com.br",
+        "KWMS_OUTPUT_DIR": "C:\\Users\\chailer\\OneDrive - KPMG\\BR - CAIO 2-1 Gestão - Dashboard\\Planilhas de Apoio\\KWMS"
+      },
+      "schedule": {
+        "frequency": "weekly",
+        "weekday": "Monday",
+        "time": "08:30",
+        "weekdays_only": true
+      }
+    }
+  ],
+  "schedules": [
+    "08:30",
+    "10:30",
+    "12:30",
+    "14:30",
+    "16:30"
+  ],
+  "schedule_setup_completed": false,
+  "schedule_defaults": {
+    "frequency": "daily",
+    "time": "08:30",
+    "weekday": "Monday",
+    "weekdays_only": true
+  },
+  "job_schedules": {
+    "pipefy_clientes_tool_edge": {
+      "enabled": true,
+      "frequency": "daily",
+      "time": "08:30",
+      "weekday": "Monday",
+      "weekdays_only": true
+    },
+    "pipefy_eventos_tool_edge": {
+      "enabled": true,
+      "frequency": "daily",
+      "time": "08:30",
+      "weekday": "Monday",
+      "weekdays_only": true
+    },
+    "pipefy_procedimentos_tool_edge": {
+      "enabled": true,
+      "frequency": "daily",
+      "time": "08:30",
+      "weekday": "Monday",
+      "weekdays_only": true
+    },
+    "kwms_alocacoes_tool_edge": {
+      "enabled": true,
+      "frequency": "weekly",
+      "time": "08:30",
+      "weekday": "Monday",
+      "weekdays_only": true
+    }
+  }
+}

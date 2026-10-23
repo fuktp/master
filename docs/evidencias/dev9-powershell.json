@@ -1,0 +1,9 @@
+{
+  "result": "passed",
+  "scheduled_tasks_executed": false,
+  "winforms_executed": false,
+  "powershell": "7.6.8",
+  "checks": 27,
+  "environment": "Unix 6.18.55.0",
+  "wizard_actions": "real handlers with dialog doubles"
+}

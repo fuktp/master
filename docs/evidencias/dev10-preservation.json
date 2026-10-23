@@ -1,0 +1,33 @@
+{
+  "all_match": true,
+  "files": {
+    "assets/dashboard-theme.json": {
+      "expected": "ccbd72f0ba43bef2d0fc22a3ed5c725fee5d5a3b96aeac73ed0ae77ece806ce6",
+      "actual": "ccbd72f0ba43bef2d0fc22a3ed5c725fee5d5a3b96aeac73ed0ae77ece806ce6"
+    },
+    "scripts/pipefy_clientes_tool_edge.py": {
+      "expected": "0ff5cdbb38eee83764444de169c3e791ad8689cc4174eee53df8d89f5a85c995",
+      "actual": "0ff5cdbb38eee83764444de169c3e791ad8689cc4174eee53df8d89f5a85c995"
+    },
+    "scripts/kwms_alocacoes_tool_edge.py": {
+      "expected": "7f24e9ae376378e7937d435811b7e2ed755768c5a56d75bcefb79c7922e3595d",
+      "actual": "7f24e9ae376378e7937d435811b7e2ed755768c5a56d75bcefb79c7922e3595d"
+    },
+    "scripts/pipefy_procedimentos_tool_edge.py": {
+      "expected": "c29b703c9889cf5a9f313dd87a1fe13f7d6ac2e698741937fc06d0e719af8ed5",
+      "actual": "c29b703c9889cf5a9f313dd87a1fe13f7d6ac2e698741937fc06d0e719af8ed5"
+    },
+    "scripts/pipefy_status_atms_tool_edge.py": {
+      "expected": "3ee725aacc01c570d11f6baf12b2222fdc689b91a24a3cdcb71bbd98e6315826",
+      "actual": "3ee725aacc01c570d11f6baf12b2222fdc689b91a24a3cdcb71bbd98e6315826"
+    },
+    "scripts/pipefy_eventos_tool_edge.py": {
+      "expected": "237525a0e2c25410b618c82ec14579c96f196118eb8bd3f15d379804a9b7cffd",
+      "actual": "237525a0e2c25410b618c82ec14579c96f196118eb8bd3f15d379804a9b7cffd"
+    },
+    "assets/caio.ico": {
+      "expected": "d018b24f03983ff7a8a879b09d91dc04d220d20ab4685f280cc12ed3ab8f1ed0",
+      "actual": "d018b24f03983ff7a8a879b09d91dc04d220d20ab4685f280cc12ed3ab8f1ed0"
+    }
+  }
+}
