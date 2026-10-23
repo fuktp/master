@@ -21,7 +21,7 @@ from .config import (
     validate,
 )
 from .io import atomic_json, read_json
-from .native_install import NativeInstaller, verify_release
+from .native_install import NativeInstaller, check_windows_hosts, verify_release
 from .paths import Paths, identity, onedrives
 from .sandbox import check_location, prepare_config, validate_isolation
 
@@ -108,6 +108,11 @@ def main(argv: list[str] | None = None) -> int:
 
             progress("Verificando a integridade dos arquivos do pacote")
             verify_release(Path(request["payload"]))
+            import sys
+
+            if sys.platform == "win32":
+                progress("Verificando execução dos hosts CAIO antes de copiar o runtime")
+                check_windows_hosts(Path(request["payload"]))
             progress("Verificando Python, bibliotecas, SQLite e interface; sem rede")
             value = health_check()
             progress("Etapa anterior concluída com sucesso.")

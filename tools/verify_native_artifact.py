@@ -57,23 +57,14 @@ def main() -> None:
 
     from orquestrador_app.windows_hosts import HOST_DESCRIPTIONS
 
-    for name, description in HOST_DESCRIPTIONS.items():
-        host = pefile.PE(str(release / "runtime" / name))
-        strings = next(
-            table.entries
-            for group in host.FileInfo
-            for item in group
-            if hasattr(item, "StringTable")
-            for table in item.StringTable
-        )
-        if (
-            strings[b"FileDescription"].decode("utf8") != description
-            or strings[b"OriginalFilename"].decode("utf8") != name
-            or host.OPTIONAL_HEADER.Subsystem != 2
-            or host.FILE_HEADER.Machine != 0x8664
-        ):
-            raise ValueError("Identidade do executável CAIO divergente: " + name)
-        host.close()
+    original_hash = digest(release / "runtime/pythonw.exe")
+    original = pefile.PE(str(release / "runtime/pythonw.exe"))
+    if not original.OPTIONAL_HEADER.DATA_DIRECTORY[4].Size:
+        raise ValueError("O runtime original não contém a assinatura upstream esperada.")
+    original.close()
+    for name in HOST_DESCRIPTIONS:
+        if digest(release / "runtime" / name) != original_hash:
+            raise ValueError("Host CAIO alterou bytes/assinatura do Python original: " + name)
     for name in ("locales.json",):
         if digest(source / "orquestrador_app" / name) != digest(
             release / "src/orquestrador_app" / name
@@ -98,7 +89,10 @@ def main() -> None:
         "payload_files_verified": len(record["files"]),
         "source_matches_package": True,
         "private_runtime": "Windows x64 GUI PE",
-        "branded_process_hosts": HOST_DESCRIPTIONS,
+        "named_process_hosts": HOST_DESCRIPTIONS,
+        "process_hosts_byte_identical_to_original": True,
+        "original_interpreter_sha256": original_hash,
+        "windows_signature_trust_verified": False,
         "root_open_and_uninstall_entries_verified": True,
         "windows_runtime_executed": False,
         "winforms_executed": False,

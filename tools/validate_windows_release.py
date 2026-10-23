@@ -105,12 +105,16 @@ def main() -> int:
 
                     release = Path(read_json(installer.pointer)["release"])
                     probes = []
-                    for name, description in HOST_DESCRIPTIONS.items():
+                    for name in HOST_DESCRIPTIONS:
                         target = release / "runtime" / name
                         info = win32api.GetFileVersionInfo(
                             str(target), r"\StringFileInfo\040904B0\FileDescription"
                         )
-                        assert info == description, (name, info)
+                        assert digest(target) == digest(release / "runtime/pythonw.exe"), name
+                        assert info == win32api.GetFileVersionInfo(
+                            str(release / "runtime/pythonw.exe"),
+                            r"\StringFileInfo\040904B0\FileDescription",
+                        ), (name, info)
                         output = paths.root / "state" / (name + ".json")
                         code = (
                             "import json,sys,psutil;from pathlib import Path;"
@@ -133,7 +137,10 @@ def main() -> int:
                         probes.append(observed)
                     result["process_hosts"] = probes
 
-                check("all branded hosts execute with expected process identity", process_hosts)
+                check(
+                    "all unchanged named hosts execute with expected process filenames",
+                    process_hosts,
+                )
                 previous = read_json(installer.pointer)
                 check(
                     "update preserving configuration",

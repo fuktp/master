@@ -89,7 +89,38 @@ def verify_release(folder: Path) -> dict[str, Any]:
 def hidden_run(arguments: list[str], **options: Any) -> subprocess.CompletedProcess[Any]:
     if sys.platform == "win32":
         options["creationflags"] = 0x08000000
-    return subprocess.run(arguments, shell=False, **options)
+    try:
+        return subprocess.run(arguments, shell=False, **options)
+    except OSError as exc:
+        code = getattr(exc, "winerror", None) or exc.errno
+        raise RuntimeError(
+            f"Falha ao iniciar processo. Código nativo: {code}\n"
+            f"Executável: {arguments[0]}\nPasta de trabalho: {options.get('cwd', '')}\n"
+            f"Motivo informado pelo sistema: {exc.strerror or exc}\n"
+            "Verifique as permissões e os registros de proteção/políticas do Windows para este executável."
+        ) from exc
+
+
+def check_windows_hosts(release: Path) -> None:
+    """Probe the declared application hosts without starting the GUI, monitor or extraction."""
+    from .windows_hosts import HOST_DESCRIPTIONS
+
+    if sys.platform != "win32":
+        raise RuntimeError("A verificação de execução dos hosts exige Windows real.")
+    if not read_json(release / "release.json").get("windows_process_hosts"):
+        return  # Older packages have only the original interpreter.
+    for name in HOST_DESCRIPTIONS:
+        result = hidden_run(
+            [str(release / "runtime" / name), "-B", "-c", "pass"],
+            cwd=release / "src",
+            capture_output=True,
+            timeout=30,
+        )
+        if result.returncode:
+            raise RuntimeError(
+                f"O host {name} não concluiu a verificação de execução "
+                f"(código {result.returncode}). Nenhuma extração foi iniciada."
+            )
 
 
 class WindowsLinks:
@@ -500,6 +531,9 @@ class NativeInstaller:
             Lock(self.paths.maintenance_lock),
             Lock(self.paths.lock),
         ):
+            if sys.platform == "win32" and package.get("windows_process_hosts"):
+                checkpoint("Verificando execução dos hosts CAIO antes de copiar o runtime")
+                check_windows_hosts(source)
             if (
                 os.name == "nt"
                 and config.install_schedules

@@ -1,0 +1,9 @@
+{
+  "archive": "/workspace/master/build/release-dev12/CAIO_2.0.0.dev12.zip",
+  "size": 84867110,
+  "sha256": "63fe3438c7acf9697fc63accd93b1cdd9140a1e299abca96b3f6c4fcc99fe17e",
+  "payload_files": 4122,
+  "payload_bytes": 237879551,
+  "runtime": "original Windows CPython; byte-identical named process hosts retain upstream signature and metadata; private pinned dependencies",
+  "windows_execution": "not executed on this Linux host"
+}

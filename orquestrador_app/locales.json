@@ -2618,5 +2618,9 @@
   "Atualize o CAIO pelo novo pacote para usar o desinstalador externo.": [
     "Update CAIO using the new package to use the external uninstaller.",
     "Actualice CAIO con el nuevo paquete para usar el desinstalador externo."
+  ],
+  "Verificando execução dos hosts CAIO antes de copiar o runtime": [
+    "Checking CAIO host execution before copying the runtime",
+    "Verificando la ejecución de los hosts CAIO antes de copiar el entorno de ejecución"
   ]
 }

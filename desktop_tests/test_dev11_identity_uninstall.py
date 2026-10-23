@@ -30,52 +30,26 @@ from orquestrador_app.uninstallation import (
     stop_monitor,
 )
 from orquestrador_app.windows_hosts import HOST_DESCRIPTIONS, ROUTINE_HOSTS, executable, host_for
-from tools.brand_windows_hosts import brand
+from tools.prepare_windows_hosts import build_hosts
 
 
-@pytest.mark.parametrize("name,description", list(HOST_DESCRIPTIONS.items()))
-def test_windows_hosts_have_real_image_identity_icon_and_original_interpreter_code(
-    tmp_path: Path, name: str, description: str
-) -> None:
+def test_named_hosts_keep_original_executable_signature_and_resources(tmp_path: Path) -> None:
+    import shutil
+
     original = Path(__file__).parent / "fixtures/pythonw-original.exe"
+    shutil.copy2(original, tmp_path / "pythonw.exe")
+    build_hosts(tmp_path)
     checksum = digest(original)
-    target = tmp_path / name
-    brand(
-        original,
-        target,
-        name=name,
-        description=description,
-        version="2.0.0.dev11",
-        icon=Path("assets/caio.ico"),
-    )
-    pe = pefile.PE(str(target))
-    before = pefile.PE(str(original))
-    strings = next(
-        table.entries
-        for group in pe.FileInfo
-        for item in group
-        if hasattr(item, "StringTable")
-        for table in item.StringTable
-    )
-    assert strings[b"FileDescription"].decode() == description
-    assert strings[b"OriginalFilename"].decode() == name
-    assert strings[b"ProductVersion"] == b"2.0.0.dev11"
-    assert pe.OPTIONAL_HEADER.Subsystem == 2 and pe.FILE_HEADER.Machine == 0x8664
-    assert pe.OPTIONAL_HEADER.DATA_DIRECTORY[4].Size == 0 and pe.verify_checksum()
-    for old in before.sections:
-        if old.Name.rstrip(b"\0") != b".rsrc":
-            assert old.get_data() == next(
-                section.get_data() for section in pe.sections if section.Name == old.Name
-            )
-    assert pe.OPTIONAL_HEADER.AddressOfEntryPoint == before.OPTIONAL_HEADER.AddressOfEntryPoint
-    kinds = {entry.id for entry in pe.DIRECTORY_ENTRY_RESOURCE.entries}
-    assert {3, 14, 16, 24} <= kinds
-    assert digest(original) == checksum
-    pe.close()
-    before.close()
+    for name in HOST_DESCRIPTIONS:
+        target = tmp_path / name
+        assert digest(target) == checksum
+        pe = pefile.PE(str(target))
+        assert pe.OPTIONAL_HEADER.Subsystem == 2 and pe.FILE_HEADER.Machine == 0x8664
+        assert pe.OPTIONAL_HEADER.DATA_DIRECTORY[4].Size > 0
+        pe.close()
 
 
-def test_worker_routes_to_matching_branded_image_only_in_packaged_windows(
+def test_worker_routes_to_matching_named_image_only_in_packaged_windows(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     from orquestrador_app import processes, resources

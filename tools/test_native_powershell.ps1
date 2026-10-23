@@ -171,6 +171,35 @@ namespace Windows.Forms {
     Remove-NativeOwnedRelease $entry $cleanupOwned
     if (Test-Path -LiteralPath $entry.path) { throw 'Limpeza parcial nao pode ser retomada.' }
     $count++
+    $savedLocalAppData = $env:LOCALAPPDATA
+    try {
+        $env:LOCALAPPDATA = Join-Path $temporary 'local-data'
+        $invalid = Join-Path $temporary 'not-executable.exe'
+        [IO.File]::WriteAllText($invalid, 'not a valid Windows executable')
+        $failure = ''
+        try { Start-HiddenProcess $invalid @('secret-not-for-diagnostic') $temporary | Out-Null } catch { $failure = $_.Exception.Message }
+        if (-not $failure.Contains($invalid) -or -not $failure.Contains('Codigo nativo:') -or -not $failure.Contains($temporary)) { throw 'Falha de execucao perdeu executavel, pasta ou codigo nativo.' }
+        $reports = @(Get-ChildItem -LiteralPath (Join-Path $env:LOCALAPPDATA 'Orquestrador-Teste/bootstrap') -Filter 'start-error-*.json')
+        if ($reports.Count -ne 1) { throw 'Falha de execucao nao gerou diagnostico.' }
+        $diagnostic = Read-NativeJson $reports[0].FullName
+        if (-not $diagnostic.native_code -or $diagnostic.executable -ne $invalid -or (Get-Content -LiteralPath $reports[0].FullName -Raw).Contains('secret-not-for-diagnostic')) { throw 'Diagnostico incorreto ou inclui argumentos.' }
+        $count++
+        # A named application host exists, but setup must still select the untouched interpreter.
+        $bridgePayload = Join-Path $temporary 'bridge-payload'
+        New-Item -ItemType Directory -Path (Join-Path $bridgePayload 'runtime'),(Join-Path $bridgePayload 'src') | Out-Null
+        [IO.File]::WriteAllText((Join-Path $bridgePayload 'runtime/pythonw.exe'), 'original fixture')
+        [IO.File]::WriteAllText((Join-Path $bridgePayload 'runtime/CAIO-Orquestrador.exe'), 'named fixture')
+        function Start-HiddenProcess([string]$File, [string[]]$Arguments, [string]$WorkingDirectory) {
+            $script:bridgeExecutable = $File
+            return [pscustomobject]@{HasExited=$true; ExitCode=0}
+        }
+        $bridge = Start-NativeBridge $bridgePayload @{action='preview'; data_root=$temporary}
+        if ($script:bridgeExecutable -ne (Join-Path $bridgePayload 'runtime/pythonw.exe') -or -not (Test-Path -LiteralPath (Join-Path $bridge.Work 'request.json'))) { throw 'Preview da pagina 2 deixou de usar o interpretador original.' }
+        $count++
+    } finally {
+        $env:LOCALAPPDATA = $savedLocalAppData
+        . (Join-Path $Root 'native/Native.Common.ps1')
+    }
     foreach ($script in $files) {
         $content = Get-Content -LiteralPath $script.FullName -Raw
         if ($content -match '(?im)^\s*(Set-ExecutionPolicy|Unblock-File|Add-MpPreference|Set-MpPreference)\b') { throw 'Alteração de política de segurança não autorizada.' }

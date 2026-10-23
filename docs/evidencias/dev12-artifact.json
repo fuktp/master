@@ -1,0 +1,26 @@
+{
+  "archive": "CAIO_2.0.0.dev12.zip",
+  "sha256": "63fe3438c7acf9697fc63accd93b1cdd9140a1e299abca96b3f6c4fcc99fe17e",
+  "payload_files_verified": 4122,
+  "source_matches_package": true,
+  "private_runtime": "Windows x64 GUI PE",
+  "named_process_hosts": {
+    "CAIO-Orquestrador.exe": "CAIO - Orquestrador",
+    "CAIO-Monitor.exe": "CAIO - Monitor de agendamentos",
+    "CAIO-Desinstalador.exe": "CAIO - Desinstalador",
+    "CAIO-Rotina.exe": "CAIO - Rotina adicional",
+    "CAIO-Rotina-Clientes.exe": "CAIO - Rotina Clientes",
+    "CAIO-Rotina-Eventos.exe": "CAIO - Rotina Eventos",
+    "CAIO-Rotina-Procedimentos.exe": "CAIO - Rotina Procedimentos",
+    "CAIO-Rotina-KWMS.exe": "CAIO - Rotina KWMS",
+    "CAIO-Rotina-ATMS.exe": "CAIO - Rotina ATMS"
+  },
+  "process_hosts_byte_identical_to_original": true,
+  "original_interpreter_sha256": "435e222945e1a110559fb71b5ebff8c3d698689b5e5eee0371815c1141d72738",
+  "windows_signature_trust_verified": false,
+  "root_open_and_uninstall_entries_verified": true,
+  "windows_runtime_executed": false,
+  "winforms_executed": false,
+  "scheduled_tasks_executed": false,
+  "extracted_root": "/workspace/master/build/validation-dev12/cache/updates/0216affa-e58a-48f4-af44-ff525d1d8c99/CAIO_2.0.0.dev12"
+}

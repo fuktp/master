@@ -1,4 +1,17 @@
-# CAIO 2.0.0.dev11 — validação e histórico das melhorias
+# CAIO 2.0.0.dev12 — validação e histórico das melhorias
+
+## Resultado dev12
+
+Suíte offline: **271 testes e 7 subtestes aprovados; 1 teste exclusivo Windows não executado**. PowerShell 7.6.8/Linux: **35 verificações**. Evidências atuais em `evidencias/dev12-*`; capturas da dev11 permanecem como referência visual, pois esta correção não altera layout. A redução de oito casos parametrizados corresponde à remoção da edição PE: um teste verifica integralmente os nove binários copiados, incluindo a tabela de assinatura.
+
+| Correção | Verificação | Limite |
+|---|---|---|
+| Página 2 usa o interpretador original | Executa a função PowerShell real de preview com processo substituto; host CAIO também presente no payload | Não reproduz a política Zero Trust do usuário |
+| Preservação de assinatura upstream | Nove arquivos com hash idêntico ao Python original e tabela de certificado presente; verificador repete no ZIP | Não comprova cadeia confiável nem liberação organizacional |
+| Erro de início identifica código/arquivo/cwd | Falha real de Process.Start em fixture não executável no Linux; JSON sem argumentos; Win32 5 simulado no teste Python sem retry | Windows Access Denied real depende do ambiente |
+| Bloqueio antecipado | Sondagem vazia nos nove hosts; recusa simulada confirma ausência de snapshot/cópia/configuração ativada | Execução da sondagem e liberação Zero Trust exigem Windows |
+
+Pendente: instalar no Windows com a política do usuário, conferir a cadeia de assinatura e os eventos do controle de aplicações, nomes CAIO na aba Detalhes e descrição original Python onde o Windows a utiliza. Manter testes de desinstalação, DPI/ícones e ciclo de atualização já listados abaixo. Esta revisão preserva assinaturas; não afirma que um aplicativo foi aprovado pela política da organização.
 
 ## Resultado dev11
 

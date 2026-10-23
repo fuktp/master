@@ -39,6 +39,6 @@ def host_for(arguments: tuple[str, ...]) -> str:
 
 
 def executable(release: Path, name: str = MAIN_HOST) -> Path:
-    """Old releases remain usable for rollback; new releases declare all branded hosts."""
+    """Old releases remain usable for rollback; new releases declare all named hosts."""
     candidate = release / "runtime" / name
     return candidate if candidate.is_file() else release / "runtime/pythonw.exe"

@@ -1,4 +1,16 @@
-# CAIO 2.0.0.dev11 — referência técnica
+# CAIO 2.0.0.dev12 — referência técnica
+
+## Inicialização e assinatura — dev12
+
+Relato: `Exception calling Start ... Access is denied`, na página 2 (Local de instalação de teste), em Windows com Zero Trust. Essa página executa `preview` via `Start-NativeBridge`; na dev11 ele preferia o host CAIO com recursos modificados e sem assinatura. A recusa é compatível com controle de execução, mas seu mecanismo exato exige o evento de política do computador do usuário. Não foi reproduzido em Windows neste host.
+
+`Start-NativeBridge` volta a usar `runtime/pythonw.exe` original em preview, health, instalação e recuperação. `tools/prepare_windows_hosts.py` substitui o editor PE: copia o interpretador original para os nove nomes CAIO, sem modificar recursos, certificado, metadados ou checksum. Build e verificador exigem hashes idênticos ao original e presença da tabela de certificado. Isso prova preservação dos bytes, não confiança da cadeia de assinatura nem autorização Zero Trust. Os nomes CAIO aparecem nos executáveis; descrições/ícones internos do PE permanecem Python. A identidade CAIO das janelas/atalhos/bandeja é independente desses recursos.
+
+`Start-HiddenProcess` valida a pasta de trabalho, extrai o código nativo da exceção interna do .NET e registra caminho do executável, cwd, código, motivo e data em `%LOCALAPPDATA%/Orquestrador-Teste/bootstrap/start-error-*.json`. Argumentos não são registrados. Falha de gravação não esconde o erro original. Não há tentativa automática com outro binário após recusa, execução como administrador ou alteração de proteção/política. `hidden_run` também conserva código e caminhos em falhas do health/preflight Python.
+
+`check_windows_hosts` inicia cada host declarado com `-B -c pass`, em Windows real, antes de snapshot/cópia. O wizard também faz a verificação na etapa de dependências. Não importa os extratores nem executa monitor/rotinas; bloqueio ou saída diferente de zero interrompe a operação. A conferência semântica das tarefas e o rollback permanecem intactos.
+
+Build atual: `.venv/bin/python tools/build_native_zip.py --runtime build/restored-dev8/CAIO_2.0.0.dev8/payload/runtime --output build/release-dev12`. Verificação com `tools/verify_native_artifact.py`; evidências `docs/evidencias/dev12-*`; snapshot `Versionamento_interno/2.0.0.dev12-caio`. As seções dev11 e anteriores abaixo são históricas; a edição PE descrita nelas foi removida na dev12.
 
 ## Correções dev11
 

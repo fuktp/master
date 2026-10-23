@@ -99,6 +99,7 @@ function Quote-NativeArgument([string]$Value) {
 
 function Start-HiddenProcess([string]$File, [string[]]$Arguments, [string]$WorkingDirectory) {
     if (-not [IO.File]::Exists($File)) { throw "Componente ausente: $File" }
+    if (-not [IO.Directory]::Exists($WorkingDirectory)) { throw "Pasta de trabalho ausente: $WorkingDirectory" }
     $info = New-Object Diagnostics.ProcessStartInfo
     $info.FileName = $File
     $info.Arguments = (($Arguments | ForEach-Object { Quote-NativeArgument $_ }) -join ' ')
@@ -106,7 +107,19 @@ function Start-HiddenProcess([string]$File, [string[]]$Arguments, [string]$Worki
     $info.CreateNoWindow = $true
     $info.WindowStyle = [Diagnostics.ProcessWindowStyle]::Hidden
     $info.WorkingDirectory = $WorkingDirectory
-    return [Diagnostics.Process]::Start($info)
+    try { return [Diagnostics.Process]::Start($info) } catch {
+        $cause = $_.Exception
+        while ($null -ne $cause.InnerException -and -not ($cause -is [ComponentModel.Win32Exception])) { $cause = $cause.InnerException }
+        $code = if ($cause -is [ComponentModel.Win32Exception]) { $cause.NativeErrorCode } else { $cause.HResult }
+        $message = "Falha ao iniciar processo. Codigo nativo: $code`nExecutavel: $File`nPasta de trabalho: $WorkingDirectory`nMotivo informado pelo sistema: $($cause.Message)"
+        if ($code -eq 5) { $message += "`nO Windows negou a execucao. Este codigo nao distingue permissoes de bloqueio por protecao ou politica. Solicite a verificacao deste executavel pela TI." }
+        try {
+            $diagnostic = Join-Path $env:LOCALAPPDATA ('Orquestrador-Teste\bootstrap\start-error-' + [Guid]::NewGuid().ToString('N') + '.json')
+            Write-NativeJson $diagnostic @{ executable=$File; working_directory=$WorkingDirectory; native_code=$code; system_message=$cause.Message; at=[DateTime]::UtcNow.ToString('o') }
+            $message += "`nDiagnostico: $diagnostic"
+        } catch { } # Failure to save evidence must never hide the original launch error.
+        throw $message
+    }
 }
 
 function Start-NativeBridge([string]$Payload, $Request) {
@@ -117,8 +130,8 @@ function Start-NativeBridge([string]$Payload, $Request) {
     $eventsPath = Join-Path $work 'events.jsonl'
     $cancelPath = Join-Path $work 'cancel.request'
     Write-NativeJson $requestPath $Request
-    $runtime = Join-Path $Payload 'runtime\CAIO-Orquestrador.exe'
-    if (-not (Test-Path -LiteralPath $runtime)) { $runtime = Join-Path $Payload 'runtime\pythonw.exe' }
+    # Setup/recovery use the original interpreter, independently of application process branding.
+    $runtime = Join-Path $Payload 'runtime\pythonw.exe'
     $arguments = @('-B', '-m', 'orquestrador_app.native_bridge', '--request', $requestPath, '--result', $resultPath, '--events', $eventsPath, '--cancel', $cancelPath)
     $process = Start-HiddenProcess $runtime $arguments (Join-Path $Payload 'src')
     return [pscustomobject]@{ Process = $process; Result = $resultPath; Events = $eventsPath; Cancel = $cancelPath; Work = $work; Started = [DateTime]::UtcNow }

@@ -1,0 +1,2 @@
+63fe3438c7acf9697fc63accd93b1cdd9140a1e299abca96b3f6c4fcc99fe17e  CAIO_2.0.0.dev12.zip
+d5cfaf352a7f4c473927d8a4095ef7d7c468815b6e4a73cf21a794dc7f5422ea  Fontes_CAIO_2.0.0.dev12.zip
