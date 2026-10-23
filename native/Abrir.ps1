@@ -26,7 +26,10 @@ try {
     if ((Get-FileHash -LiteralPath $manifest -Algorithm SHA256).Hash.ToLowerInvariant() -ne $pointer.manifest_sha256) { throw 'Manifesto da versão foi alterado; abra o wizard para reparar.' }
     $arguments = @('-B', '-m', 'orquestrador_app', '--data-root', $DataRoot)
     if ($Agent) { $arguments += '--agent' }
-    Start-HiddenProcess (Join-Path $release 'runtime\pythonw.exe') $arguments (Join-Path $release 'src') | Out-Null
+    $hostName = if ($Agent) { 'CAIO-Monitor.exe' } else { 'CAIO-Orquestrador.exe' }
+    $executable = Join-Path $release ('runtime\' + $hostName)
+    if (-not (Test-Path -LiteralPath $executable)) { $executable = Join-Path $release 'runtime\pythonw.exe' }
+    Start-HiddenProcess $executable $arguments (Join-Path $release 'src') | Out-Null
     exit 0
 } catch {
     if (-not $Agent) {

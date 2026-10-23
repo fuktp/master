@@ -144,6 +144,14 @@ def main() -> None:
                 (root / entry).write_bytes(wrapper.replace("\n", "\r\n").encode(encoding))
     shutil.copytree(source / "assets", payload / "assets")
     shutil.copy2(source / "assets/caio.ico", payload / "assets/orquestrador.ico")
+    from brand_windows_hosts import build_hosts
+
+    from orquestrador_app.uninstallation import PUBLIC_ENTRIES, render_entries
+    from orquestrador_app.windows_hosts import HOST_DESCRIPTIONS
+
+    build_hosts(runtime, source / "assets/caio.ico", version)
+    for name, content in render_entries(native).items():
+        (root / name).write_bytes(content)
     # Top-level scripts are the entry point; the installed launchers are in the manifested payload.
     files = {
         p.relative_to(payload).as_posix(): sha256(p)
@@ -155,8 +163,10 @@ def main() -> None:
         "distribution": "native-scripts",
         "version": version,
         "python": "3.13.16",
+        "windows_process_hosts": HOST_DESCRIPTIONS,
+        "public_entries": list(PUBLIC_ENTRIES),
         "files": files,
-        "signature": "unsigned scripts; SHA-256 verifies integrity, not publisher identity",
+        "signature": "unsigned scripts and CAIO hosts; SHA-256 verifies integrity, not publisher identity",
     }
     (payload / "release.json").write_text(
         json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8"
@@ -180,7 +190,7 @@ def main() -> None:
                 "sha256": sha256(archive),
                 "payload_files": len(files),
                 "payload_bytes": sum((payload / name).stat().st_size for name in files),
-                "runtime": "official Windows CPython with private pinned dependencies",
+                "runtime": "original Windows CPython, unsigned CAIO branded hosts and private pinned dependencies",
                 "windows_execution": "not executed on this Linux host",
             },
             indent=2,

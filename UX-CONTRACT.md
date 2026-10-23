@@ -71,3 +71,9 @@ Configurações comuns têm formulários, JSON em Avançado e validação de e-m
 Publicação, restauração, limpeza, rotina e suporte apresentam prévia legível, estado de carregamento e ação explícita habilitada após leitura. Erros mantêm a prévia/valores. O commit revalida os arquivos; falhas não fecham a revisão nem sinalizam sucesso. Histórico e notificações se vinculam pelo ID da execução. A central resolve o clique ambíguo de balões sucessivos.
 
 Acompanhamento de log pode ser desativado sem perder a posição. Preferências locais lembram tamanho, splitter, principais larguras, filtros e ordenação. Sem seleção, o painel mostra ações do lote; com seleção, ações da rotina/lote selecionado. Controles de pausa/retomada/cancelamento da execução ficam no menu Controlar execução, preservando área de tabela em janelas menores. Calendários de feriados só existem quando explicitamente nomeados/configurados.
+
+## Fluxos dev11
+
+Abrir CAIO e Desinstalar CAIO têm iniciadores numerados na raiz do ZIP e da instalação. O desinstalador confirma escopo e preservação antes de alterar dados; Cancelar/Escape fecham sem mutação. Durante o commit, fechar/cancelar ficam bloqueados para não interromper a transação. Falha mantém mensagem e permite nova tentativa. Execução ativa ou interface aberta bloqueiam antes das remoções. A ação dentro da interface primeiro protege alterações não salvas e entrega o controle após fechar a janela. A remoção dos arquivos é concluída pelo processo pai depois que o runtime próprio sai.
+
+O rodapé ocupa uma linha em todas as larguras; caminho completo permanece acessível sem expandir sua altura. UTF-8 é o contrato de novos logs; a leitura de CP1252 antigo não altera o conteúdo em disco.

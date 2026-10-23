@@ -36,13 +36,44 @@ def main() -> None:
             if path.read_text(encoding="utf-8-sig") != packaged.read_text(encoding="utf-8-sig"):
                 raise ValueError("Script empacotado diverge do fonte: " + path.name)
     entries = {p.name for p in root.iterdir() if p.is_file()}
-    if entries != {"00 - Read Me.md", "01 - Instalar.vbs", "01 - Instalar(alt).bat"}:
+    from orquestrador_app.uninstallation import PUBLIC_ENTRIES, render_entries
+
+    if entries != {
+        "00 - Read Me.md",
+        "01 - Instalar.vbs",
+        "01 - Instalar(alt).bat",
+        *PUBLIC_ENTRIES,
+    }:
         raise ValueError("Entradas do ZIP não seguem a sequência numerada.")
     if digest(source / "README.md") != digest(root / "00 - Read Me.md"):
         raise ValueError("Guia empacotado diverge da documentação vigente.")
     for name in ("01 - Instalar.vbs", "01 - Instalar(alt).bat"):
         if "payload\\native\\wizard.ps1" not in (root / name).read_text():
             raise ValueError("Lançador numerado aponta para caminho inválido.")
+    for name, expected in render_entries(release / "native").items():
+        if (root / name).read_bytes() != expected:
+            raise ValueError("Entrada de abertura/desinstalação divergente: " + name)
+    import pefile
+
+    from orquestrador_app.windows_hosts import HOST_DESCRIPTIONS
+
+    for name, description in HOST_DESCRIPTIONS.items():
+        host = pefile.PE(str(release / "runtime" / name))
+        strings = next(
+            table.entries
+            for group in host.FileInfo
+            for item in group
+            if hasattr(item, "StringTable")
+            for table in item.StringTable
+        )
+        if (
+            strings[b"FileDescription"].decode("utf8") != description
+            or strings[b"OriginalFilename"].decode("utf8") != name
+            or host.OPTIONAL_HEADER.Subsystem != 2
+            or host.FILE_HEADER.Machine != 0x8664
+        ):
+            raise ValueError("Identidade do executável CAIO divergente: " + name)
+        host.close()
     for name in ("locales.json",):
         if digest(source / "orquestrador_app" / name) != digest(
             release / "src/orquestrador_app" / name
@@ -67,6 +98,8 @@ def main() -> None:
         "payload_files_verified": len(record["files"]),
         "source_matches_package": True,
         "private_runtime": "Windows x64 GUI PE",
+        "branded_process_hosts": HOST_DESCRIPTIONS,
+        "root_open_and_uninstall_entries_verified": True,
         "windows_runtime_executed": False,
         "winforms_executed": False,
         "scheduled_tasks_executed": False,

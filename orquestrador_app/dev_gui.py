@@ -35,6 +35,7 @@ from .io import BusyError, Lock, read_json, sanitize
 from .paths import Paths
 from .processes import command, spawn
 from .qt_tasks import Task
+from .runtime import decode_log_bytes
 from .store import Store
 from .ui import FlowLayout, configure_table, set_cell
 from .versioning import history
@@ -134,7 +135,9 @@ def collect(paths: Paths, selected_log: str = "") -> dict[str, Any]:
         file = folder / selected_log
         with file.open("rb") as stream:
             stream.seek(max(0, file.stat().st_size - 131072))
-            text = str(sanitize(stream.read().decode("utf-8", errors="replace"), export=True))
+            text = str(
+                sanitize(decode_log_bytes(stream.read(), tail=stream.tell() > 131072), export=True)
+            )
     pointer = paths.root / "installation.json"
     transaction = paths.root / "state/install-transaction.json"
     if (paths.root / "state/native-transaction.json").is_file():

@@ -503,3 +503,138 @@ def test_recovery_report_identifies_partial_task_failure_and_restores_other_comp
     assert not report["complete"] and components["scheduled_task"]["intervention_required"]
     assert components["configuration"]["restored"] and components["shortcuts"]["restored"]
     assert load(paths).email != "changed@example.invalid" and links.value == "previous links"
+
+
+class FakeRegistration:
+    def __init__(self) -> None:
+        self.value: dict[str, Any] | None = None
+
+    def snapshot(self) -> dict[str, Any] | None:
+        return copy.deepcopy(self.value)
+
+    def install(self, version: str) -> None:
+        self.value = {"DisplayVersion": version}
+
+    def remove(self) -> None:
+        self.value = None
+
+    def restore(self, value: dict[str, Any] | None) -> None:
+        self.value = copy.deepcopy(value)
+
+
+def public_payload(payload: Path) -> None:
+    import shutil
+
+    from orquestrador_app.uninstallation import PUBLIC_ENTRIES
+
+    for name in (
+        "Entrada.vbs",
+        "Entrada.bat",
+        "Entrada.ps1",
+        "Desinstalar.ps1",
+        "Native.Common.ps1",
+    ):
+        shutil.copy2(Path("native") / name, payload / "native" / name)
+    record = read_json(payload / "release.json")
+    record["public_entries"] = list(PUBLIC_ENTRIES)
+    record["files"] = {
+        p.relative_to(payload).as_posix(): digest(p)
+        for p in payload.rglob("*")
+        if p.is_file() and p.name != "release.json"
+    }
+    atomic_json(payload / "release.json", record)
+
+
+def test_public_entries_and_registration_restore_after_update_rollback(
+    native: tuple[Any, ...],
+) -> None:
+    installer, paths, config, payload, tasks, links = native
+    public_payload(payload)
+    registration = FakeRegistration()
+    installer.registration = registration
+    installer.install(payload, config)
+    before = {p.name: p.read_bytes() for p in paths.root.glob("0[23]*")}
+    pointer = read_json(installer.pointer)
+    record = read_json(payload / "release.json")
+    record["version"] = "2.0.0.dev100"
+    atomic_json(payload / "release.json", record)
+    with pytest.raises(RuntimeError, match="induzida"):
+        installer.install(payload, load(paths), fault="activation")
+    assert before == {p.name: p.read_bytes() for p in paths.root.glob("0[23]*")}
+    assert read_json(installer.pointer) == pointer and registration.value == {
+        "DisplayVersion": "2.0.0.dev99"
+    }
+    components = read_json(paths.root / "state/recovery-report.json")["components"]
+    assert next(row for row in components if row["component"] == "windows_registration")["restored"]
+
+
+def test_uninstaller_preserves_data_and_only_plans_verified_program_files(
+    native: tuple[Any, ...],
+) -> None:
+    installer, paths, config, payload, tasks, links = native
+    public_payload(payload)
+    registration = FakeRegistration()
+    installer.registration = registration
+    installer.install(payload, config)
+    saved_config = paths.config.read_bytes()
+    report = paths.root / "relatorios/fixture.txt"
+    report.parent.mkdir(exist_ok=True)
+    report.write_text("user report")
+    unrelated = paths.root / "app/versions/not-managed"
+    unrelated.mkdir()
+    (unrelated / "keep.txt").write_text("external")
+    result = installer.uninstall(remove_program_files=True)
+    assert result["status"] == "uninstalled" and result["cleanup_pending"]
+    assert not installer.pointer.exists() and registration.value is None and tasks.value is None
+    assert paths.config.read_bytes() == saved_config and report.read_text() == "user report"
+    assert (
+        not (paths.root / "02 - Abrir CAIO.vbs").exists()
+        and (paths.root / "03 - Desinstalar CAIO.vbs").exists()
+    )
+    plan = read_json(paths.root / "state/uninstall-cleanup.json")
+    assert str(unrelated) in plan["preserved_unverified"]
+    assert all(
+        Path(row["path"]).is_relative_to(paths.root / "app/versions") for row in plan["releases"]
+    )
+    assert all(Path(row["path"]).exists() for row in plan["releases"]), (
+        "Deletion waits for Windows host to exit"
+    )
+    assert Path(result["backup"]).is_dir() and paths.database.is_file()
+
+
+def test_uninstaller_refuses_open_interface_before_any_mutation(native: tuple[Any, ...]) -> None:
+    installer, paths, config, payload, tasks, links = native
+    installer.install(payload, config)
+    before = installer.pointer.read_bytes()
+    with Lock(paths.root / "state/interface.lock"):
+        with pytest.raises(BusyError):
+            installer.uninstall()
+    assert (
+        installer.pointer.read_bytes() == before
+        and not (paths.root / "state/uninstalled.json").exists()
+    )
+
+
+def test_failed_uninstall_restores_registration_task_links_and_public_entries(
+    native: tuple[Any, ...], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    installer, paths, config, payload, tasks, links = native
+    public_payload(payload)
+    registration = FakeRegistration()
+    installer.registration = registration
+    installer.install(payload, config)
+    before = installer.pointer.read_bytes()
+    tasks.value = "task before uninstall"
+
+    def fail_remove() -> None:
+        registration.value = None
+        raise PermissionError("registry fixture denied")
+
+    monkeypatch.setattr(registration, "remove", fail_remove)
+    with pytest.raises(PermissionError, match="fixture"):
+        installer.uninstall()
+    assert installer.pointer.read_bytes() == before and tasks.value == "task before uninstall"
+    assert registration.value == {"DisplayVersion": "2.0.0.dev99"}
+    assert (paths.root / "02 - Abrir CAIO.vbs").exists() and not (
+        paths.root / "state/uninstalled.json"
+    ).exists()

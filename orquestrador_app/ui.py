@@ -8,7 +8,7 @@ from string import Template
 from typing import Any
 
 from PySide6.QtCore import QPoint, QRect, QSize, Qt, QTime
-from PySide6.QtGui import QColor, QFont, QIcon, QPalette
+from PySide6.QtGui import QColor, QFont, QIcon, QPalette, QResizeEvent
 from PySide6.QtWidgets import (
     QAbstractItemView,
     QApplication,
@@ -18,6 +18,7 @@ from PySide6.QtWidgets import (
     QLayoutItem,
     QListWidget,
     QPushButton,
+    QSizePolicy,
     QTimeEdit,
     QToolButton,
     QVBoxLayout,
@@ -36,6 +37,30 @@ DAYS = (
     "Sábado",
     "Domingo",
 )
+
+
+class SingleLineLabel(QLabel):
+    """A bounded footer: elide the visible path, retain the complete accessible text/tooltip."""
+
+    def __init__(self, text: str):
+        super().__init__(text)
+        self.full_text = text
+        self.setProperty("singleLine", True)
+        self.setWordWrap(False)
+        self.setToolTip(text)
+        self.setAccessibleName(text)
+        self.setMinimumWidth(0)
+        self.setMaximumWidth(650)
+        self.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Fixed)
+        self.setFixedHeight(self.fontMetrics().height() + 6)
+
+    def resizeEvent(self, event: QResizeEvent) -> None:
+        self.setText(
+            self.fontMetrics().elidedText(
+                self.full_text, Qt.TextElideMode.ElideMiddle, max(0, self.contentsRect().width())
+            )
+        )
+        super().resizeEvent(event)
 
 
 @cache

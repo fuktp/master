@@ -15,6 +15,16 @@ _installed = False
 _streams: list[Any] = []
 
 
+def decode_log_bytes(data: bytes, *, tail: bool = False) -> str:
+    if tail:
+        while data and data[0] & 0xC0 == 0x80:
+            data = data[1:]
+    try:
+        return data.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        return data.decode("cp1252", errors="replace")
+
+
 def hidden_options(options: dict[str, Any]) -> dict[str, Any]:
     result = dict(options)
     result["creationflags"] = (
@@ -39,6 +49,12 @@ def install_console_policy() -> None:
 
 
 def capture_windowed_streams(folder: Path) -> None:
+    # A redirected Windows stream otherwise uses the ANSI code page, even when the UI reads UTF-8.
+    os.environ.update(PYTHONUTF8="1", PYTHONIOENCODING="utf-8")
+    for name in ("stdout", "stderr"):
+        stream = getattr(sys, name)
+        if stream is not None and hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="backslashreplace", line_buffering=True)
     if not getattr(sys, "frozen", False) and sys.stdout is not None and sys.stderr is not None:
         return
     folder.mkdir(parents=True, exist_ok=True)

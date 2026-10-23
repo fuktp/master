@@ -19,6 +19,16 @@ from .paths import Paths, check_directory
 from .sandbox import MARKER, check_location, mark, remember, validate_isolation
 from .store import Store
 from .tasks import WindowsTasks, current_user
+from .uninstallation import (
+    PUBLIC_ENTRIES,
+    WindowsRegistration,
+    check_entry,
+    cleanup_plan,
+    install_entries,
+    restore_entries,
+    stop_monitor,
+)
+from .windows_hosts import executable
 
 PACKAGE_OWNER = "orquestrador-native-package-v1"
 SNAPSHOT_OWNER = "orquestrador-native-backup-v1"
@@ -46,6 +56,18 @@ def verify_release(folder: Path) -> dict[str, Any]:
         "native/Update.ps1",
     }
     files = record.get("files", {})
+    if record.get("windows_process_hosts"):
+        from .windows_hosts import HOST_DESCRIPTIONS
+
+        required.update("runtime/" + name for name in HOST_DESCRIPTIONS)
+        required.update(
+            {
+                "native/Entrada.ps1",
+                "native/Desinstalar.ps1",
+                "native/Entrada.vbs",
+                "native/Entrada.bat",
+            }
+        )
     if not required.issubset(files) or len(files) > 20000:
         raise ValueError("Pacote incompleto ou com manifesto inválido.")
     for name, expected in files.items():
@@ -114,7 +136,10 @@ class WindowsLinks:
                         raise ValueError(
                             "Há um atalho de outra instalação com o mesmo nome; ele foi preservado."
                         )
-                shortcut.TargetPath = str(self.paths.root / "launch/Iniciar.vbs")
+                public = self.paths.root / "02 - Abrir CAIO.vbs"
+                shortcut.TargetPath = str(
+                    public if public.is_file() else self.paths.root / "launch/Iniciar.vbs"
+                )
                 shortcut.WorkingDirectory = str(self.paths.root)
                 shortcut.Description = "Orquestrador • ambiente de teste isolado"
                 shortcut.IconLocation = str(icon_file) + ",0"
@@ -153,6 +178,7 @@ class NativeInstaller:
         self.paths = paths
         self.tasks = tasks if tasks is not None else WindowsTasks(paths)
         self.links = links if links is not None else WindowsLinks(paths)
+        self.registration = WindowsRegistration(paths)
         self.health = health or self.check_health
         self.pointer = paths.root / "installation.json"
         self.journal = paths.root / "state/native-transaction.json"
@@ -166,7 +192,7 @@ class NativeInstaller:
         try:
             result = hidden_run(
                 [
-                    str(release / "runtime/pythonw.exe"),
+                    str(executable(release)),
                     "-B",
                     "-m",
                     "orquestrador_app",
@@ -190,6 +216,17 @@ class NativeInstaller:
 
     def snapshot(self, folder: Path) -> dict[str, Any]:
         folder.mkdir(parents=True, exist_ok=False)
+        atomic_json(folder / "uninstall-registration.json", self.registration.snapshot())
+        for name in ("uninstalled.json", "uninstall-cleanup.json"):
+            source = self.paths.root / "state" / name
+            if source.is_file():
+                (folder / "uninstall-state").mkdir(exist_ok=True)
+                shutil.copy2(source, folder / "uninstall-state" / name)
+        for name in PUBLIC_ENTRIES:
+            entry = self.paths.root / name
+            if entry.is_file():
+                (folder / "root-entries").mkdir(exist_ok=True)
+                shutil.copy2(entry, folder / "root-entries" / name)
         for name in ("config.json", "installation.json", MARKER, "update.json"):
             if (self.paths.root / name).is_file():
                 shutil.copy2(self.paths.root / name, folder / name)
@@ -269,6 +306,13 @@ class NativeInstaller:
                     atomic_json(target, read_json(folder / name))
                 else:
                     target.unlink(missing_ok=True)
+            for name in ("uninstalled.json", "uninstall-cleanup.json"):
+                saved_state = folder / "uninstall-state" / name
+                current_state = self.paths.root / "state" / name
+                if saved_state.is_file():
+                    atomic_json(current_state, read_json(saved_state))
+                else:
+                    current_state.unlink(missing_ok=True)
             report["components"].append({"component": "configuration", "restored": True})
         except Exception as exc:
             failures.append("configuration: " + str(exc))
@@ -305,6 +349,7 @@ class NativeInstaller:
                     shutil.rmtree(target)
                 if (folder / name).is_dir():
                     shutil.copytree(folder / name, target)
+            restore_entries(self.paths, folder)
             report["components"].append({"component": "scripts_and_launchers", "restored": True})
         except Exception as exc:
             failures.append("scripts_and_launchers: " + str(exc))
@@ -377,6 +422,20 @@ class NativeInstaller:
             report["components"].append(
                 {
                     "component": "shortcuts",
+                    "restored": False,
+                    "error": str(exc),
+                    "intervention_required": True,
+                }
+            )
+        try:
+            registration = folder / "uninstall-registration.json"
+            self.registration.restore(read_json(registration) if registration.is_file() else None)
+            report["components"].append({"component": "windows_registration", "restored": True})
+        except Exception as exc:
+            failures.append("windows_registration: " + str(exc))
+            report["components"].append(
+                {
+                    "component": "windows_registration",
                     "restored": False,
                     "error": str(exc),
                     "intervention_required": True,
@@ -503,6 +562,10 @@ class NativeInstaller:
                         temporary = launch / (file.name + ".new")
                         shutil.copy2(file, temporary)
                         temporary.replace(launch / file.name)
+                if package.get("public_entries"):
+                    install_entries(self.paths, release / "native")
+                else:
+                    restore_entries(self.paths, release / "no-root-entries")
                 shutil.copy2(release / "assets/orquestrador.ico", launch / "orquestrador.ico")
                 from .windows_identity import launch_icon
 
@@ -525,12 +588,18 @@ class NativeInstaller:
                         "distribution": "native-scripts",
                         "version": package["version"],
                         "release": str(release),
-                        "executable": str(release / "runtime/pythonw.exe"),
+                        "executable": str(executable(release)),
                         "launcher": str(launcher),
                         "backup": str(backup),
                         "manifest_sha256": digest(release / "release.json"),
                     },
                 )
+                if package.get("public_entries"):
+                    self.registration.install(str(package["version"]))
+                else:
+                    self.registration.remove()
+                (self.paths.root / "state/uninstalled.json").unlink(missing_ok=True)
+                (self.paths.root / "state/uninstall-cleanup.json").unlink(missing_ok=True)
                 if fault == "activation":
                     raise RuntimeError("Falha induzida após ativação.")
                 checkpoint("Validando configuração, lançamento e tarefa após ativação")
@@ -588,15 +657,37 @@ class NativeInstaller:
                 self._restore(checkpoint)
                 raise
 
-    def uninstall(self) -> None:
-        with Lock(self.paths.maintenance_lock), Lock(self.paths.lock):
+    def uninstall(
+        self,
+        *,
+        remove_program_files: bool = False,
+        progress: Callable[[str], None] = lambda _: None,
+    ) -> dict[str, Any]:
+        with (
+            Lock(self.paths.root / "state/interface.lock"),
+            Lock(self.paths.maintenance_lock),
+            Lock(self.paths.lock),
+        ):
             if not self.pointer.is_file():
-                return
+                return {"status": "already_uninstalled"}
+            check_location(self.paths.root)
             pointer = read_json(self.pointer)
             if pointer.get("distribution") != "native-scripts":
                 raise ValueError("Instalação de scripts não reconhecida.")
-            backup = self.paths.root / "backups/app" / ("before-uninstall-" + str(uuid.uuid4()))
-            self.snapshot(backup)
+            progress("Encerrando somente o monitor desta instalação…")
+            stop_monitor(self.paths)
+            with Lock(self.paths.root / "state/monitor.lock"):
+                return self._uninstall_locked(remove_program_files, progress)
+
+    def _uninstall_locked(
+        self, remove_program_files: bool, progress: Callable[[str], None]
+    ) -> dict[str, Any]:
+        progress("Preservando configuração, histórico, scripts e versão em backup…")
+        backup = self.paths.root / "backups/app" / ("before-uninstall-" + str(uuid.uuid4()))
+        self.snapshot(backup)
+        try:
+            plan = cleanup_plan(self.paths) if remove_program_files else None
+            progress("Removendo tarefa, atalhos e registro próprios do CAIO…")
             self.tasks.remove()
             empty = self.paths.root / "cache" / str(uuid.uuid4())
             empty.mkdir()
@@ -604,7 +695,34 @@ class NativeInstaller:
                 self.links.restore(empty)
             finally:
                 empty.rmdir()
+            self.registration.remove()
+            for name, action in PUBLIC_ENTRIES.items():
+                if action == "open":
+                    check_entry(self.paths.root / name)
+                    (self.paths.root / name).unlink(missing_ok=True)
             self.pointer.unlink()
+            if plan is not None:
+                atomic_json(self.paths.root / "state/uninstall-cleanup.json", plan)
+            else:
+                (self.paths.root / "state/uninstall-cleanup.json").unlink(missing_ok=True)
+            result = {
+                "status": "uninstalled",
+                "backup": str(backup),
+                "cleanup_pending": bool(plan and plan["releases"]),
+                "preserved": ["configuration", "history", "reports", "scripts", "backups"],
+                "program_files_requested": remove_program_files,
+            }
+            atomic_json(self.paths.root / "state/uninstalled.json", result)
+            return result
+        except Exception as exc:
+            try:
+                self._restore(backup)
+            except Exception as recovery_error:
+                raise RuntimeError(
+                    "Desinstalação incompleta; recuperação exige intervenção. Backup: "
+                    + str(backup)
+                ) from recovery_error
+            raise exc
 
 
 def installer_for(paths: Paths) -> Any:

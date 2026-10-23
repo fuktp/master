@@ -102,6 +102,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--health-check", action="store_true")
     parser.add_argument("--health-output", type=Path)
     parser.add_argument("--agent", action="store_true")
+    parser.add_argument("--uninstall", action="store_true")
     parser.add_argument("--scheduled", action="store_true")
     parser.add_argument("--worker")
     parser.add_argument("--run-id", default="")
@@ -156,6 +157,10 @@ def main(argv: list[str] | None = None) -> int:
     from .runtime import capture_windowed_streams
 
     capture_windowed_streams(paths.root / "logs")
+    if args.uninstall:
+        from .uninstall_gui import run
+
+        return run(paths)
     if args.worker:
         from .worker import execute
 

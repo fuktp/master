@@ -139,6 +139,38 @@ namespace Windows.Forms {
     $count++
     Wait-OwnedParent 2147483000 0 1
     $count++
+    $cleanupOwned = Join-Path $temporary 'owned-versions'
+    New-Item -ItemType Directory -Path $cleanupOwned | Out-Null
+    $cleanupOwned += [IO.Path]::DirectorySeparatorChar
+    function New-CleanupFixture([string]$Name) {
+        $directory = Join-Path $cleanupOwned $Name
+        New-Item -ItemType Directory -Path $directory | Out-Null
+        [IO.File]::WriteAllText((Join-Path $directory 'own.txt'), 'ação preservada')
+        $hash = (Get-FileHash -LiteralPath (Join-Path $directory 'own.txt') -Algorithm SHA256).Hash.ToLowerInvariant()
+        Write-NativeJson (Join-Path $directory 'release.json') @{owner='orquestrador-native-package-v1'; files=@{'own.txt'=$hash}}
+        return [pscustomobject]@{path=$directory; manifest_sha256=(Get-FileHash -LiteralPath (Join-Path $directory 'release.json') -Algorithm SHA256).Hash.ToLowerInvariant(); files=[pscustomobject]@{'own.txt'=$hash}}
+    }
+    $entry = New-CleanupFixture 'full'
+    Remove-NativeOwnedRelease $entry $cleanupOwned
+    if (Test-Path -LiteralPath $entry.path) { throw 'Limpeza completa nao removeu a versao.' }
+    $count++
+    $entry = New-CleanupFixture 'external'
+    [IO.File]::WriteAllText((Join-Path $entry.path 'external.txt'), 'preservar')
+    $refused = $false
+    try { Remove-NativeOwnedRelease $entry $cleanupOwned } catch { $refused = $true }
+    if (-not $refused -or -not (Test-Path -LiteralPath (Join-Path $entry.path 'own.txt'))) { throw 'Limpeza nao preservou versao com arquivo externo.' }
+    $count++
+    $entry = New-CleanupFixture 'changed'
+    [IO.File]::WriteAllText((Join-Path $entry.path 'own.txt'), 'alterado')
+    $refused = $false
+    try { Remove-NativeOwnedRelease $entry $cleanupOwned } catch { $refused = $true }
+    if (-not $refused -or -not (Test-Path -LiteralPath (Join-Path $entry.path 'own.txt'))) { throw 'Limpeza aceitou arquivo alterado.' }
+    $count++
+    $entry = New-CleanupFixture 'retry'
+    Remove-Item -LiteralPath (Join-Path $entry.path 'own.txt')
+    Remove-NativeOwnedRelease $entry $cleanupOwned
+    if (Test-Path -LiteralPath $entry.path) { throw 'Limpeza parcial nao pode ser retomada.' }
+    $count++
     foreach ($script in $files) {
         $content = Get-Content -LiteralPath $script.FullName -Raw
         if ($content -match '(?im)^\s*(Set-ExecutionPolicy|Unblock-File|Add-MpPreference|Set-MpPreference)\b') { throw 'Alteração de política de segurança não autorizada.' }

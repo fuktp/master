@@ -6,6 +6,7 @@ import argparse
 import datetime as dt
 import json
 import platform
+import subprocess
 import sys
 import tempfile
 import time
@@ -29,6 +30,7 @@ def main() -> int:
     from orquestrador_app.paths import Paths
     from orquestrador_app.sandbox import prepare_config
     from orquestrador_app.tasks import WindowsTasks, current_user
+    from orquestrador_app.windows_hosts import HOST_DESCRIPTIONS
     from orquestrador_app.windows_identity import app_id, launch_icon
 
     payload = args.payload.resolve()
@@ -45,6 +47,9 @@ def main() -> int:
             "desktop/taskbar pinned icon and notifications",
             "Narrator, high contrast and DPI 100/125/150/200%",
             "corporate Edge/SSO/VPN",
+            "Task Manager grouping/icons for orchestrator, monitor and all routines",
+            "root 03 launcher: cancel, active-job refusal, file removal and retry after file lock",
+            "Windows Apps uninstall entry and root 02 open launcher",
         ],
         "host_without_global_python": "NOT_PROVEN: run on a clean VM and record its image; this tool never invokes global Python",
     }
@@ -94,6 +99,41 @@ def main() -> int:
                     "install private runtime and offline health",
                     lambda: installer.install(payload, config),
                 )
+
+                def process_hosts() -> None:
+                    import win32api
+
+                    release = Path(read_json(installer.pointer)["release"])
+                    probes = []
+                    for name, description in HOST_DESCRIPTIONS.items():
+                        target = release / "runtime" / name
+                        info = win32api.GetFileVersionInfo(
+                            str(target), r"\StringFileInfo\040904B0\FileDescription"
+                        )
+                        assert info == description, (name, info)
+                        output = paths.root / "state" / (name + ".json")
+                        code = (
+                            "import json,sys,psutil;from pathlib import Path;"
+                            "p=psutil.Process();"
+                            "Path(sys.argv[1]).write_text(json.dumps({'name':p.name(),'exe':p.exe(),"
+                            "'stdout':sys.stdout.encoding if sys.stdout else None,"
+                            "'text':'Ação, relatório, início'}),encoding='utf-8')"
+                        )
+                        process = subprocess.run(
+                            [str(target), "-B", "-c", code, str(output)],
+                            cwd=release / "src",
+                            timeout=30,
+                            check=True,
+                        )
+                        assert process.returncode == 0
+                        observed = read_json(output)
+                        assert observed["name"].casefold() == name.casefold(), observed
+                        assert Path(observed["exe"]).resolve() == target.resolve(), observed
+                        assert observed["text"] == "Ação, relatório, início"
+                        probes.append(observed)
+                    result["process_hosts"] = probes
+
+                check("all branded hosts execute with expected process identity", process_hosts)
                 previous = read_json(installer.pointer)
                 check(
                     "update preserving configuration",
@@ -184,10 +224,25 @@ def main() -> int:
                     raise AssertionError("Scheduled marker did not execute")
 
                 check("real scheduled execution in user session", scheduled)
+
+                def uninstallation() -> None:
+                    configuration = digest(paths.config)
+                    installer.uninstall(remove_program_files=False)
+                    assert digest(paths.config) == configuration
+                    assert not installer.pointer.exists()
+                    assert tasks.export() is None
+                    assert installer.registration.snapshot() is None
+                    assert (paths.root / "03 - Desinstalar CAIO.vbs").is_file()
+                    assert not (paths.root / "02 - Abrir CAIO.vbs").exists()
+
+                check("uninstall own components and preserve data", uninstallation)
                 result["private_installation_executable"] = previous["executable"]
                 result["recovery"] = read_json(paths.root / "state/recovery-report.json")
             finally:
-                tasks.remove()
+                try:
+                    tasks.remove()
+                finally:
+                    installer.registration.remove()
     except Exception as exc:
         result["error"] = str(exc)
     result["passed"] = (

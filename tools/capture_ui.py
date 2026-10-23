@@ -17,10 +17,11 @@ from PySide6.QtCore import Qt, QThread
 from PySide6.QtTest import QTest
 from PySide6.QtWidgets import QApplication
 
-from orquestrador_app.config import defaults, save
+from orquestrador_app.config import save
 from orquestrador_app.gui import MainWindow, RoutineDialog
 from orquestrador_app.paths import Paths
-from orquestrador_app.resources import source_root
+from orquestrador_app.sandbox import prepare_config
+from orquestrador_app.uninstall_gui import UninstallDialog
 
 
 def main() -> None:
@@ -32,9 +33,13 @@ def main() -> None:
     captures: list[str] = []
     for language in ("pt-BR", "en", "es"):
         with tempfile.TemporaryDirectory(prefix="caio-design-") as temporary:
-            paths = Paths.user(temporary)
+            paths = Paths.user(
+                Path(temporary)
+                / ("Pasta de teste com caminho longo e acentos ação relatório " * 2).strip()
+                / "Instalação CAIO"
+            )
             paths.ensure()
-            config = defaults(paths, source_root())
+            config = prepare_config(paths)
             config.language = language
             save(paths, config)
             window = MainWindow(paths)
@@ -56,6 +61,11 @@ def main() -> None:
                         assert window.width() == width, "Content forced the window wider"
                         assert window.log.isVisible() and window.status_label.isVisible()
                         assert window.page_title.text()
+                        assert not window.installation_banner.wordWrap()
+                        assert (
+                            window.statusBar().height()
+                            <= window.installation_banner.fontMetrics().height() + 12
+                        )
                         name = f"{language}-{width}-page-{page}.png"
                         assert window.grab().save(str(args.output / name))
                         captures.append(name)
@@ -77,6 +87,11 @@ def main() -> None:
                 )
                 dialog.frequency.hidePopup()
                 dialog.reject()
+                uninstall = UninstallDialog(paths)
+                uninstall.show()
+                app.processEvents()
+                assert uninstall.grab().save(str(args.output / f"{language}-uninstall.png"))
+                uninstall.reject()
             finally:
                 window.timer.stop()
                 window.dev_panel.timer.stop()

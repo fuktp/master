@@ -22,6 +22,10 @@ from .store import Store
 
 def run_agent(paths: Paths) -> int:
     paths.ensure()
+    if (paths.root / "state/uninstalled.json").is_file() and not (
+        paths.root / "installation.json"
+    ).is_file():
+        return 0
     try:
         ownership = Lock(paths.root / "state/monitor.lock")
         ownership.__enter__()
@@ -164,6 +168,21 @@ def run_agent(paths: Paths) -> int:
 
         def protected_tick() -> None:
             nonlocal planner
+            stop = paths.root / "state/monitor-stop.json"
+            if stop.is_file():
+                import psutil
+
+                request = read_json(stop)
+                if (
+                    request.get("owner") == "caio-monitor-stop-v1"
+                    and request.get("pid") == os.getpid()
+                    and abs(request.get("created", 0) - psutil.Process().create_time()) < 0.01
+                    and not (task and task.isRunning())
+                ):
+                    timer.stop()
+                    tray.hide()
+                    app.quit()
+                    return
             if planner and planner.isRunning():
                 return
             if planner:

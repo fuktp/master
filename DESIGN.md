@@ -100,3 +100,7 @@ Verificação de deriva: `desktop_tests/test_ui_design.py` compara os papéis do
 ## Operação dev10
 
 O histórico grande usa modelo Qt e paginação; tabelas pequenas mantêm seleção e células estáveis. Formulários comuns substituem edição JSON no fluxo usual, com modo avançado explícito. Erros são texto persistente e indicação junto ao campo quando disponível. Monitor informa processo/tarefa/comunicação como fatos distintos. Prévia precede operações em arquivos e limpeza. Ação do lote e da seleção não competem em repouso; controles de execução ficam em menu próprio para manter a tabela legível em 980×720. O log aceita suspender acompanhamento sem pausar o processo.
+
+## Ajustes dev11
+
+O rodapé TESTE ISOLADO ocupa uma linha, com altura medida pela fonte. Caminhos longos recebem reticências no meio; tooltip e nome acessível retêm o endereço completo. A área de atividade continua redimensionável. Desinstalar CAIO usa o tema existente, mostra a pasta e os dados preservados, destaca a remoção em vermelho e dá foco inicial a Cancelar. Erro mantém a confirmação aberta; progresso indeterminado corresponde ao trabalho assíncrono real.

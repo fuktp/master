@@ -1,4 +1,23 @@
-# CAIO 2.0.0.dev10 — avaliação das 60 melhorias e evidências
+# CAIO 2.0.0.dev11 — validação e histórico das melhorias
+
+## Resultado dev11
+
+**276 testes e 7 subtestes aprovados; 1 teste exclusivo Windows não executado.** PowerShell 7.6.8/Linux: **33 verificações**, incluindo limpeza real de fixtures completas/parciais e recusa de arquivos alterados ou externos. Mypy, Ruff, saúde offline, capturas Qt e verificação do ZIP têm evidências em `evidencias/dev11-*`. A matriz dev10 abaixo permanece como histórico das 60 propostas.
+
+| Mudança | Evidência local | Limite |
+|---|---|---|
+| Rodapé de uma linha com caminho completo acessível | Caminho longo no Qt, altura pela fonte, tooltip e reticências; capturas PT/EN/ES em três tamanhos | DPI Windows pendente |
+| Acentos nos logs | Processo Python real redirecionado com ambiente inicialmente CP1252, saída UTF-8; leitura incremental/multibyte, BOM e CP1252 antigo | Bytes antigos já substituídos não são recuperáveis |
+| Nomes, descrições e ícone dos processos CAIO | Nove PEs reais; checksum, recursos, seções de código e entry point; seleção do host por modo/rotina | Execução e apresentação no Task Manager Windows pendentes |
+| Abrir e desinstalar pela raiz | Quatro entradas geradas e conferidas no pacote; conflito com arquivo externo recusado | Duplo clique VBS/BAT Windows pendente |
+| Desinstalação com dados preservados | Snapshot, tarefa, atalhos, registro HKCU com double, locks, rollback induzido, dados/SQLite/relatórios preservados e plano de limpeza | Registro real em Aplicativos instalados e encerramento do monitor Windows pendentes |
+| Cancelamento | Qt real: cancelar não cria/modifica dados | Cancelamento pelo iniciador Windows pendente |
+
+Roteiro `diagnostics/validate_windows_release.ps1`: além do ciclo anterior, executa os nove hosts privados, consulta seus nomes/metadados e desinstala componentes próprios em instalação temporária. Não foi executado neste Linux.
+
+Antes de homologar no Windows: conferir nomes/ícones de orquestrador, monitor e cinco rotinas; janela, atalho fixado e notificações; abrir pelo 02; cancelar o 03 sem alterações; bloquear desinstalação durante rotina; confirmar pelo 03 e por Aplicativos instalados; conferir remoção do runtime após saída, preservação de dados/backups e repetição após arquivo bloqueado. Conferir rodapé com caminho longo em 100/125/150/200% e saída/logs com `ação, relatório, início, ã, é, í`. Usar VM limpa sem Python global. **Esta entrega é de desenvolvimento e não representa homologação Windows.**
+
+## Histórico dev10
 
 ## Resultado desta revisão
 
@@ -14,7 +33,7 @@ Suíte offline: **255 testes e 7 subtestes aprovados; 1 teste Windows não execu
 | 4 | **Implementado.** Heartbeat com PID, nascimento do processo, horário e intervalo; informa última comunicação e avisa parada inesperada ou comunicação vencida. Não declara sucesso de rotina por heartbeat. |
 | 5 | **Implementado.** Última tentativa e publicação consultadas diretamente por rotina, com índice. Teste inclui 1.101 execuções de outra rotina. |
 | 6 | **Implementado no painel.** Etapa, categoria/causa conhecida, código e ação contextual: driver, login, conectividade, destino ou detalhes. Erros sem causa conhecida continuam identificados como tal. |
-| 7 | **Implementado.** Recuperação registra seis componentes, erros e intervenção necessária; tenta os componentes independentes mesmo após falha de um deles. Teste de falha do Agendador confirma restauração dos outros componentes. |
+| 7 | **Implementado.** Recuperação registra seis componentes na dev10; a dev11 acrescenta o registro Windows, erros e intervenção necessária; tenta os componentes independentes mesmo após falha de um deles. Teste de falha do Agendador confirma restauração dos outros componentes. |
 | 8 | **Windows pendente.** Ícone e AppUserModelID comuns preservados. Roteiro confere metadados dos atalhos; janela, item fixado, bandeja e notificações precisam de inspeção visual real. |
 | 9 | **Implementado.** Simulação não executa nem consome frequência; indica origens desabilitadas, sucesso na cadeia e sucesso anterior válido. Sucesso futuro aparece como condição, nunca como fato. |
 | 10 | **Implementado.** Monitor verifica entre 1 e 30 segundos conforme execução e próxima oportunidade; repouso/pausa usam 30 segundos. |

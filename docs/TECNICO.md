@@ -1,4 +1,20 @@
-# CAIO 2.0.0.dev10 — referência técnica
+# CAIO 2.0.0.dev11 — referência técnica
+
+## Correções dev11
+
+`ui.SingleLineLabel` impede quebra no rodapé, fixa a altura pela fonte e aplica reticências no meio do caminho. Tooltip e nome acessível guardam o texto completo. A regra global de quebra de rótulos ignora este controle. O tamanho máximo da barra acompanha uma linha com margem.
+
+`processes.spawn` define `PYTHONUTF8=1` e `PYTHONIOENCODING=utf-8` antes de criar filhos; `runtime.capture_windowed_streams` reconfigura stdout/stderr existentes antes do retorno antecipado. LogTail mantém caracteres UTF-8 divididos entre leituras, ignora o fragmento inicial de uma cauda limitada e usa CP1252 para logs antigos incompatíveis com UTF-8. O painel Dev usa o mesmo decodificador. Não há regravação de evidências nem recuperação de bytes já perdidos em logs antigos.
+
+`tools/brand_windows_hosts.py` preserva as seções de código, entry point, manifesto e copyright do pythonw privado. Recria recursos PE RT_VERSION, RT_ICON e RT_GROUP_ICON, remove a referência à assinatura anterior e recalcula checksum. Nove hosts recebem nome, descrição, versão e ICO CAIO; não são executáveis assinados. O pythonw original, o núcleo Python e sua licença permanecem no runtime. Testes com PE real conferem essas invariantes; não executam Windows no Linux. Fixture de origem e hash em `desktop_tests/fixtures/provenance.json`.
+
+`windows_hosts.py` escolhe o processo por modo e rotina. `processes.command`, `Abrir.ps1` e o bridge usam hosts próprios quando disponíveis, com fallback para versões antigas ao reverter. Os cinco extratores mantêm seus bytes. Processos de Edge, driver e auxiliares externos conservam suas identidades.
+
+`uninstallation.py` gera os quatro iniciadores públicos e registra a instalação por usuário em HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall, com proprietário e caminho conferidos. A atualização captura registro, entradas e estado de desinstalação no snapshot; rollback restaura esses componentes separadamente. `NativeInstaller.uninstall` usa locks de interface/manutenção/execução, confirma PID+nascimento+argumentos+caminho do monitor e cria backup verificável antes das remoções. Uma falha restaura os componentes capturados e registra intervenção quando necessário.
+
+`uninstall_gui.py` oferece confirmação, Cancelar como foco padrão, opção de arquivos e progresso assíncrono. `Entrada.ps1` espera a interface de origem terminar por PID+nascimento. O desinstalador Python nunca remove o runtime em que está executando: `Desinstalar.ps1` aguarda sua saída e executa o plano restrito a versões verificadas. A limpeza reconfere hashes, recusa links/arquivos externos e mantém o manifesto até remover os demais arquivos, permitindo repetir limpeza parcial. O relatório `state/uninstalled.json` distingue desativação e limpeza pendente; `state/uninstall-cleanup.json` conserva o plano para nova tentativa. Dados e backup da versão ficam preservados. Atualizar novamente elimina o plano antigo dentro da transação.
+
+Comandos atuais: build em `build/release-dev11`, verificação em `build/validation-dev11`, evidências `docs/evidencias/dev11-*` e snapshot `Versionamento_interno/2.0.0.dev11-caio`. Guias e comandos dev8/dev9/dev10 abaixo são referência histórica. O runtime base continua sendo o conjunto verificado da dev8, acrescido somente dos hosts de identificação; nenhuma biblioteca foi removida para simular ganho de desempenho.
 
 ## Operação, desempenho e persistência — dev10
 

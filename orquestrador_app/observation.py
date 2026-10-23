@@ -24,7 +24,9 @@ class LogTail:
         self.file: Path | None = None
         self.offset = 0
         self.inode = 0
-        self.decoder = codecs.getincrementaldecoder("utf-8")(errors="replace")
+        self.decoder: codecs.IncrementalDecoder = codecs.getincrementaldecoder("utf-8-sig")(
+            errors="strict"
+        )
 
     def read(self, file: Path | None) -> dict[str, Any]:
         if file is None or not file.is_file():
@@ -33,13 +35,24 @@ class LogTail:
         reset = file != self.file or stat.st_ino != self.inode or stat.st_size < self.offset
         if reset:
             self.file, self.offset, self.inode = file, max(0, stat.st_size - 65536), stat.st_ino
-            self.decoder.reset()
+            self.decoder = codecs.getincrementaldecoder("utf-8-sig")(errors="strict")
         with file.open("rb") as stream:
             stream.seek(self.offset)
             data = stream.read(65536)
             self.offset = stream.tell()
+        if reset and stat.st_size > 65536:
+            # The bounded tail may begin in the middle of a UTF-8 character.
+            while data and data[0] & 0xC0 == 0x80:
+                data = data[1:]
+        buffered = self.decoder.getstate()[0]
+        try:
+            text = self.decoder.decode(data)
+        except UnicodeDecodeError:
+            # Old Windows redirected logs used CP1252. Read them without rewriting the evidence.
+            self.decoder = codecs.getincrementaldecoder("cp1252")(errors="replace")
+            text = self.decoder.decode(buffered + data)
         return {
-            "text": self.decoder.decode(data),
+            "text": text,
             "reset": reset,
             "file": file.name,
             "more": self.offset < stat.st_size,

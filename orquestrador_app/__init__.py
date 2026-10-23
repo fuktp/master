@@ -1,2 +1,2 @@
-VERSION = "2.0.0.dev10"
+VERSION = "2.0.0.dev11"
 TEST_EDITION = True

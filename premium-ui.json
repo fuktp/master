@@ -10,7 +10,7 @@
     "unit": "QT_QPA_PLATFORM=offscreen .venv/bin/python -m pytest -q",
     "lint": ".venv/bin/ruff check .",
     "types": ".venv/bin/mypy --platform win32",
-    "visual": "QT_QPA_PLATFORM=offscreen XDG_CACHE_HOME=/workspace/caio-onboarding/cache .venv/bin/python tools/capture_ui.py --output docs/evidencias/dev10-visual",
+    "visual": "QT_QPA_PLATFORM=offscreen XDG_CACHE_HOME=/workspace/caio-onboarding/cache .venv/bin/python tools/capture_ui.py --output docs/evidencias/dev11-visual",
     "health": "QT_QPA_PLATFORM=offscreen .venv/bin/python -m orquestrador_app --health-check"
   },
   "evidence": {

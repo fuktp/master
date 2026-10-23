@@ -14,10 +14,21 @@ import psutil
 def command(*arguments: str) -> list[str]:
     if getattr(sys, "frozen", False):
         return [sys.executable, *arguments]
-    return [sys.executable, "-B", "-m", "orquestrador_app", *arguments]
+    host = sys.executable
+    if sys.platform == "win32":
+        from .resources import source_root
+        from .windows_hosts import executable, host_for
+
+        release = source_root().parent
+        if (release / "release.json").is_file():
+            host = str(executable(release, host_for(arguments)))
+    return [host, "-B", "-m", "orquestrador_app", *arguments]
 
 
 def spawn(arguments: list[str], **kwargs: Any) -> subprocess.Popen[Any]:
+    environment = dict(os.environ if kwargs.get("env") is None else kwargs["env"])
+    environment.update(PYTHONUTF8="1", PYTHONIOENCODING="utf-8")
+    kwargs["env"] = environment
     if os.name == "nt":
         kwargs["creationflags"] = 0x08000000
     else:

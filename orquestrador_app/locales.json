@@ -2566,5 +2566,57 @@
   "Última repetição": [
     "Last repetition",
     "Última repetición"
+  ],
+  "Desinstalar CAIO": [
+    "Uninstall CAIO",
+    "Desinstalar CAIO"
+  ],
+  "Desinstalar CAIO e preservar dados…": [
+    "Uninstall CAIO and preserve data…",
+    "Desinstalar CAIO y conservar datos…"
+  ],
+  "A tarefa do monitor, os atalhos e o registro desta instalação no Windows serão removidos. O monitor próprio será encerrado; execuções em andamento precisam terminar antes.": [
+    "The monitor task, shortcuts and Windows registration for this installation will be removed. Its monitor will stop; running jobs must finish first.",
+    "Se eliminarán la tarea del monitor, los accesos directos y el registro de esta instalación en Windows. Se detendrá su monitor; las ejecuciones activas deben terminar primero."
+  ],
+  "Configurações, relatórios, histórico, scripts e backups serão preservados. Uma cópia da versão atual será guardada para recuperação.": [
+    "Settings, reports, history, scripts and backups will be preserved. A copy of the current version will be kept for recovery.",
+    "Se conservarán la configuración, los informes, el historial, los scripts y las copias de seguridad. Se guardará una copia de la versión actual para recuperación."
+  ],
+  "Remover os arquivos verificados do aplicativo após sair": [
+    "Remove verified application files after closing",
+    "Eliminar los archivos verificados de la aplicación al salir"
+  ],
+  "Remove somente as versões gerenciadas em app/versions. Dados e backups permanecem.": [
+    "Removes only managed versions in app/versions. Data and backups remain.",
+    "Elimina solo las versiones gestionadas en app/versions. Los datos y las copias de seguridad se conservan."
+  ],
+  "Preparando desinstalação…": [
+    "Preparing to uninstall…",
+    "Preparando la desinstalación…"
+  ],
+  "Feche a interface CAIO e aguarde as rotinas em execução antes de tentar novamente.": [
+    "Close the CAIO interface and wait for running routines before trying again.",
+    "Cierre la interfaz CAIO y espere a que terminen las rutinas activas antes de volver a intentarlo."
+  ],
+  "Encerrando somente o monitor desta instalação…": [
+    "Stopping only this installation’s monitor…",
+    "Deteniendo solo el monitor de esta instalación…"
+  ],
+  "Preservando configuração, histórico, scripts e versão em backup…": [
+    "Backing up settings, history, scripts and application version…",
+    "Guardando la configuración, el historial, los scripts y la versión en una copia de seguridad…"
+  ],
+  "Removendo tarefa, atalhos e registro próprios do CAIO…": [
+    "Removing CAIO’s own task, shortcuts and registration…",
+    "Eliminando la tarea, los accesos directos y el registro propios de CAIO…"
+  ],
+  "Aguarde a operação atual antes de desinstalar.": [
+    "Wait for the current operation before uninstalling.",
+    "Espere a que termine la operación actual antes de desinstalar."
+  ],
+  "Atualize o CAIO pelo novo pacote para usar o desinstalador externo.": [
+    "Update CAIO using the new package to use the external uninstaller.",
+    "Actualice CAIO con el nuevo paquete para usar el desinstalador externo."
   ]
 }

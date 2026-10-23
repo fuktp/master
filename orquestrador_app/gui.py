@@ -86,6 +86,7 @@ from .ui import (
     DAYS,
     DaysPicker,
     FlowLayout,
+    SingleLineLabel,
     TimesPicker,
     apply_theme,
     configure_table,
@@ -1155,10 +1156,9 @@ class MainWindow(QMainWindow):
         self.navigation.setCurrentRow(0)
         self.show_page(0)
         if self.config.test_mode:
-            banner = QLabel(f"TESTE ISOLADO • {self.paths.root}")
-            banner.setToolTip(str(self.paths.root))
-            banner.setMaximumWidth(650)
-            self.statusBar().addPermanentWidget(banner)
+            self.installation_banner = SingleLineLabel(f"{tr('TESTE ISOLADO')} • {self.paths.root}")
+            self.statusBar().addPermanentWidget(self.installation_banner, 1)
+            self.statusBar().setMaximumHeight(self.installation_banner.height() + 6)
         self.tray = QSystemTrayIcon(icon(), self)
         self.tray.setToolTip("CAIO • Orquestrador")
         menu = QMenu()
@@ -1189,7 +1189,8 @@ class MainWindow(QMainWindow):
         for table in self.findChildren(QTableWidget):
             configure_table(table)
         for label in self.findChildren(QLabel):
-            label.setWordWrap(True)
+            if not label.property("singleLine"):
+                label.setWordWrap(True)
         self.selection_actions()
         self.restore_window_preferences()
         if observe:
@@ -1711,7 +1712,7 @@ class MainWindow(QMainWindow):
         button("Reverter atualização…", self.rollback_application, controls)
         layout.addLayout(controls)
         button(
-            "Desinstalar componentes próprios e preservar dados…",
+            "Desinstalar CAIO e preservar dados…",
             self.uninstall,
             layout,
             intent="danger",
@@ -3273,17 +3274,64 @@ class MainWindow(QMainWindow):
                 self.background(lambda: Installer(self.paths).rollback(Path(folder)))
 
     def uninstall(self) -> None:
-        if (
+        if not self.confirm_settings_navigation():
+            return
+        if self.task and self.task.isRunning():
+            self.set_status(tr("Aguarde a operação atual antes de desinstalar."), "warning")
+            return
+        from .native_updates import is_native
+
+        if is_native(self.paths):
+            import os
+
+            import psutil
+
+            entry = self.paths.root / "launch/Entrada.ps1"
+            if not entry.is_file():
+                self.set_status(
+                    tr("Atualize o CAIO pelo novo pacote para usar o desinstalador externo."),
+                    "warning",
+                )
+                return
+            host = str(
+                Path(os.environ["WINDIR"]) / "System32/WindowsPowerShell/v1.0/powershell.exe"
+            )
+            spawn(
+                [
+                    host,
+                    "-NoProfile",
+                    "-STA",
+                    "-ExecutionPolicy",
+                    "Bypass",
+                    "-WindowStyle",
+                    "Hidden",
+                    "-File",
+                    str(entry),
+                    "-Action",
+                    "uninstall",
+                    "-DataRoot",
+                    str(self.paths.root),
+                    "-ParentPid",
+                    str(os.getpid()),
+                    "-ParentStarted",
+                    str(psutil.Process().create_time()),
+                ]
+            )
+            self.exit_requested = True
+            self.close()
+        elif (
             QMessageBox.question(
                 self,
-                "Desinstalar",
-                "Remover somente tarefa e atalho próprios? Dados, histórico e backups serão preservados.",
+                tr("Desinstalar"),
+                tr(
+                    "Remover somente tarefa e atalho próprios? Dados, histórico e backups serão preservados."
+                ),
             )
             == QMessageBox.StandardButton.Yes
         ):
-            from .native_install import installer_for
+            from .install import Installer
 
-            self.background(lambda: installer_for(self.paths).uninstall())
+            self.background(lambda: Installer(self.paths).uninstall())
 
     def refresh(self) -> None:
         if self.exit_requested:

@@ -1,0 +1,7 @@
+{
+  "file": "pythonw-original.exe",
+  "sha256": "435e222945e1a110559fb71b5ebff8c3d698689b5e5eee0371815c1141d72738",
+  "origin": "Original CPython 3.13.16 Windows x64 pythonw.exe from the verified CAIO dev8 private runtime",
+  "license": "Python-LICENSE.txt",
+  "purpose": "PE resource tests only; never executed on Linux"
+}

@@ -117,7 +117,8 @@ function Start-NativeBridge([string]$Payload, $Request) {
     $eventsPath = Join-Path $work 'events.jsonl'
     $cancelPath = Join-Path $work 'cancel.request'
     Write-NativeJson $requestPath $Request
-    $runtime = Join-Path $Payload 'runtime\pythonw.exe'
+    $runtime = Join-Path $Payload 'runtime\CAIO-Orquestrador.exe'
+    if (-not (Test-Path -LiteralPath $runtime)) { $runtime = Join-Path $Payload 'runtime\pythonw.exe' }
     $arguments = @('-B', '-m', 'orquestrador_app.native_bridge', '--request', $requestPath, '--result', $resultPath, '--events', $eventsPath, '--cancel', $cancelPath)
     $process = Start-HiddenProcess $runtime $arguments (Join-Path $Payload 'src')
     return [pscustomobject]@{ Process = $process; Result = $resultPath; Events = $eventsPath; Cancel = $cancelPath; Work = $work; Started = [DateTime]::UtcNow }
@@ -180,4 +181,34 @@ function Open-NativeApplication([string]$DataRoot) {
 function Show-NativeError([string]$Message) {
     Add-Type -AssemblyName System.Windows.Forms
     [Windows.Forms.MessageBox]::Show($Message, 'Orquestrador', [Windows.Forms.MessageBoxButtons]::OK, [Windows.Forms.MessageBoxIcon]::Error) | Out-Null
+}
+
+function Remove-NativeOwnedRelease {
+    param($Entry, [string]$Owned)
+    $directory = [IO.Path]::GetFullPath([string]$entry.path)
+    if (-not $directory.StartsWith($owned, [StringComparison]::OrdinalIgnoreCase)) { throw 'Limpeza fora da pasta de versoes recusada.' }
+    if (-not (Test-Path -LiteralPath $directory)) { return }
+    if ((Get-Item -LiteralPath $directory).Attributes -band [IO.FileAttributes]::ReparsePoint) { throw 'Link inesperado na pasta da versao.' }
+    $manifestPath = Join-Path $directory 'release.json'
+    # Keep the manifest until all other files are removed, so a locked file can be retried.
+    if (Test-Path -LiteralPath $manifestPath) {
+        if ((Get-FileHash -LiteralPath $manifestPath -Algorithm SHA256).Hash.ToLowerInvariant() -ne $entry.manifest_sha256) { throw 'Manifesto mudou depois da confirmacao; arquivos preservados.' }
+        $manifest = Read-NativeJson $manifestPath
+        if ($manifest.owner -ne 'orquestrador-native-package-v1') { throw 'Versao nao gerenciada; arquivos preservados.' }
+    }
+    $files = @(Get-ChildItem -LiteralPath $directory -Recurse -File -Force)
+    if (@(Get-ChildItem -LiteralPath $directory -Recurse -Force | Where-Object { $_.Attributes -band [IO.FileAttributes]::ReparsePoint }).Count) { throw 'Link inesperado nos arquivos da versao.' }
+    foreach ($file in $files) {
+        if ($file.FullName -eq $manifestPath) { continue }
+        $relative = $file.FullName.Substring($directory.Length + 1).Replace('\', '/')
+        $expected = $entry.files.PSObject.Properties[$relative]
+        if ($null -eq $expected) { throw 'A versao contem arquivos externos; eles foram preservados.' }
+        if ((Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash.ToLowerInvariant() -ne [string]$expected.Value) { throw 'Arquivo mudou depois da confirmacao; versao preservada.' }
+    }
+    foreach ($file in $files) {
+        if ($file.FullName -ne $manifestPath) { Remove-Item -LiteralPath $file.FullName -Force }
+    }
+    if (Test-Path -LiteralPath $manifestPath) { Remove-Item -LiteralPath $manifestPath -Force }
+    Get-ChildItem -LiteralPath $directory -Recurse -Directory -Force | Sort-Object { $_.FullName.Length } -Descending | ForEach-Object { Remove-Item -LiteralPath $_.FullName -Force }
+    Remove-Item -LiteralPath $directory -Force
 }

@@ -1,4 +1,4 @@
-# CAIO — versão de teste 2.0.0.dev10
+# CAIO — versão de teste 2.0.0.dev11
 
 Aplicativo Windows de automação, com interface em português, inglês e espanhol. Esta revisão redesenha a interface a partir do tema KPMG Claro: navegação lateral, títulos e resumos claros, hierarquia de ações e campos legíveis. As correções do instalador e do Agendador da dev8 foram preservadas.
 
@@ -6,13 +6,15 @@ Aplicativo Windows de automação, com interface em português, inglês e espanh
 A dev10 aplica as melhorias operacionais avaliadas em [docs/VALIDACAO.md](docs/VALIDACAO.md): monitor com comunicação real, histórico paginado, configuração protegida contra edição concorrente, formulários guiados e prévias antes de operações em arquivos. Mantém o tema integral KPMG Claro e os cinco extratores originais. **Windows real ainda precisa de homologação.**
 
 
-## Downloads da dev10
+A dev11 reduz o rodapé **TESTE ISOLADO • caminho** a uma linha: caminhos longos recebem reticências e o endereço completo fica no tooltip. Corrige a saída dos processos para UTF-8 e lê logs antigos em CP1252 sem regravá-los. Inclui identidade própria dos processos CAIO e desinstalador com preservação dos dados.
 
-- [Aplicativo completo com runtime privado](https://github.com/fuktp/master/raw/refs/heads/master/releases/2.0.0.dev10/CAIO_2.0.0.dev10.zip)
-- [Fontes, testes, evidências e versionamento interno](https://github.com/fuktp/master/raw/refs/heads/master/releases/2.0.0.dev10/Fontes_CAIO_2.0.0.dev10.zip)
-- [Hashes SHA-256 dos ZIPs](releases/2.0.0.dev10/SHA256SUMS.txt)
+## Downloads da dev11
 
-Os ZIPs preservam a entrega dev10 original. Os fontes atuais também estão disponíveis diretamente neste repositório. Extraia todo o aplicativo e abra `01 - Instalar.vbs`. A homologação Windows continua pendente conforme a matriz de validação.
+- [Aplicativo completo com runtime privado](https://github.com/fuktp/master/raw/refs/heads/master/releases/2.0.0.dev11/CAIO_2.0.0.dev11.zip)
+- [Fontes, testes, evidências e versionamento interno](https://github.com/fuktp/master/raw/refs/heads/master/releases/2.0.0.dev11/Fontes_CAIO_2.0.0.dev11.zip)
+- [Hashes SHA-256 dos ZIPs](releases/2.0.0.dev11/SHA256SUMS.txt)
+
+Extraia todo o aplicativo e abra `01 - Instalar.vbs`. O repositório mantém os pacotes anteriores. A homologação Windows continua pendente conforme a matriz de validação.
 
 ## Instalar ou atualizar
 
@@ -25,13 +27,23 @@ Os ZIPs preservam a entrega dev10 original. Os fontes atuais também estão disp
 
 Se a tentativa anterior foi revertida ao conferir a tarefa, abra o iniciador deste ZIP e selecione novamente a mesma pasta de teste reconhecida. Não apague configurações nem backups para repetir a instalação.
 
-Depois de atualizar, confirme **CAIO • Teste 2.0.0.dev10** no título da janela. O atalho existente abre a versão apontada pela instalação. Se um ícone fixado manualmente na barra de tarefas ainda apontar para um lançador antigo do Python/WSH, desafixe-o e fixe a janela CAIO atual; a atualização não altera itens externos fixados pelo usuário.
+Depois de atualizar, confirme **CAIO • Teste 2.0.0.dev11** no título da janela. O atalho existente abre a versão apontada pela instalação. Se um ícone fixado manualmente na barra de tarefas ainda apontar para um lançador antigo do Python/WSH, desafixe-o e fixe a janela CAIO atual; a atualização não altera itens externos fixados pelo usuário.
 
 Janelas, bandeja, atalhos e mensagens usam o mesmo ICO CAIO. Os atalhos passam a ter identidade própria do Windows e nome de arquivo de ícone baseado no conteúdo, evitando reutilizar o caminho do ícone antigo em cache. Abrir o atalho novamente solicita o foco da janela já aberta, inclusive para detalhes de notificações.
 
-Python 3.13.16 e as bibliotecas estão incluídos em um runtime privado. O usuário não precisa instalar Python, pip ou executar comandos. A entrada é o VBS, não um EXE próprio; executáveis internos do Python e da automação continuam necessários. Mantenha a pasta `payload` junto dos iniciadores e não execute seus arquivos manualmente.
+Python 3.13.16 e as bibliotecas estão incluídos em um runtime privado. O usuário não precisa instalar Python, pip ou executar comandos. A entrada continua sendo o VBS. O runtime inclui hosts gráficos com nomes e metadados CAIO: `CAIO-Orquestrador.exe`, `CAIO-Monitor.exe` e `CAIO-Rotina-Clientes.exe`, `Eventos`, `Procedimentos`, `KWMS` e `ATMS`. Scripts adicionais usam `CAIO-Rotina.exe`. São cópias do host Python com recursos de identificação e ícone CAIO; o código executável do interpretador permanece preservado. Esses hosts personalizados não têm assinatura própria. A apresentação e o agrupamento no Gerenciador de Tarefas ainda exigem conferência em Windows real. Mantenha a pasta `payload` junto dos iniciadores e não execute seus arquivos manualmente.
 
 Requer Windows x64, sessão de usuário compatível e Edge para as rotinas de navegador. Scripts e pacote não têm certificado próprio. O iniciador não altera políticas persistentes nem desativa proteções: se a organização bloquear VBS/PowerShell/runtime, a TI precisa avaliar a execução. Trocar EXE por scripts não garante liberação pelo SmartScreen ou Defender.
+
+## Abrir e desinstalar
+
+Os iniciadores ficam visíveis tanto na raiz do ZIP extraído quanto na raiz da instalação:
+
+- **02 - Abrir CAIO.vbs** abre o aplicativo instalado. Na pasta do ZIP, usa a última instalação de teste registrada neste usuário.
+- **03 - Desinstalar CAIO.vbs** abre a confirmação de desinstalação. Também aparece em **Aplicativos instalados** do Windows para este usuário.
+- As alternativas **02 - Abrir CAIO(alt).bat** e **03 - Desinstalar CAIO(alt).bat** podem mostrar brevemente um console.
+
+A desinstalação exige fechar a interface e terminar as rotinas. Pela ação interna em Manutenção, a janela entrega o controle ao desinstalador e fecha. Cancelar a confirmação não altera a instalação. Confirmar encerra somente o monitor identificado desta instalação e remove tarefa, atalhos e registro próprios. A opção marcada remove versões verificadas de `app/versions` depois de o desinstalador fechar; pastas desconhecidas ou alteradas são preservadas. Configuração, relatórios, histórico, scripts e backups permanecem, incluindo uma cópia da versão atual para recuperação. Os iniciadores 03 permanecem para repetir uma limpeza interrompida por arquivo bloqueado. Nenhuma limpeza apaga dados de produção nem programas externos.
 
 ## Onde ficam os arquivos
 
