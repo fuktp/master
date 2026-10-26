@@ -28,6 +28,7 @@ from orquestrador_app.uninstall_gui import UninstallDialog
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--portable", action="store_true")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     app = QApplication.instance() or QApplication([])
@@ -40,7 +41,12 @@ def main() -> None:
                 / "Instalação CAIO"
             )
             paths.ensure()
-            config = prepare_config(paths)
+            if args.portable:
+                from orquestrador_app.portable import prepare
+
+                config = prepare(paths)
+            else:
+                config = prepare_config(paths)
             config.language = language
             save(paths, config)
             window = MainWindow(paths)
@@ -88,11 +94,26 @@ def main() -> None:
                 )
                 dialog.frequency.hidePopup()
                 dialog.reject()
-                uninstall = UninstallDialog(paths)
-                uninstall.show()
-                app.processEvents()
-                assert uninstall.grab().save(str(args.output / f"{language}-uninstall.png"))
-                uninstall.reject()
+                if args.portable:
+                    from orquestrador_app.portable_gui import SetupDialog
+
+                    setup = SetupDialog(Paths.user(Path(temporary) / "first-use"))
+                    setup.language.setCurrentIndex(setup.language.findData(language))
+                    setup.show()
+                    app.processEvents()
+                    assert setup.grab().save(str(args.output / f"{language}-first-use.png"))
+                    setup.editor.email.setText("invalid")
+                    setup.commit()
+                    app.processEvents()
+                    assert setup.error.text()
+                    assert setup.grab().save(str(args.output / f"{language}-first-error.png"))
+                    setup.reject()
+                else:
+                    uninstall = UninstallDialog(paths)
+                    uninstall.show()
+                    app.processEvents()
+                    assert uninstall.grab().save(str(args.output / f"{language}-uninstall.png"))
+                    uninstall.reject()
                 picker = QFileDialog(window, tr("Selecionar pacote completo"), str(paths.root))
                 picker.setOption(QFileDialog.Option.DontUseNativeDialog, True)
                 picker.show()
@@ -115,6 +136,7 @@ def main() -> None:
                 app.processEvents()
     report = {
         "platform": app.platformName(),
+        "profile": "portable_gui" if args.portable else "desktop",
         "pages": captures,
         "locales": ["pt-BR", "en", "es"],
         "keyboard_navigation": "passed",

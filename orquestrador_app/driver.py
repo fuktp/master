@@ -185,6 +185,10 @@ def candidates(paths: Paths, config: Config) -> list[Path]:
 def diagnose(
     paths: Paths, config: Config, repair: bool = False, test_session: bool = True
 ) -> dict[str, Any]:
+    if config.execution_profile == "portable_gui":
+        from .portable_driver import check
+
+        return check(paths, config, repair=repair, test_session=test_session)
     with Lock(paths.root / "state/driver.lock"):
         if not config.driver:
             config.driver = str(paths.root / "cache/driver/msedgedriver.exe")

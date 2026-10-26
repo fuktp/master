@@ -108,3 +108,12 @@ O rodapé TESTE ISOLADO ocupa uma linha, com altura medida pela fonte. Caminhos 
 ## Localização dev13
 
 O catálogo é o dono dos textos de produto em PT-BR/EN/ES; os pacotes oficiais Qt complementam botões e calendário. Moldes preservam variáveis e não traduzem dados do usuário. Seletores de arquivo Qt passam a usar o diálogo Qt para respeitar o idioma escolhido; os controles do shell mantêm a aparência/idioma do Windows. A confirmação de retirada no wizard usa o mesmo tema, fonte, tamanho pela fonte e Cancelar como foco inicial. Não há mudança de paleta, ícone nem hierarquia visual.
+
+
+## Perfil gráfico por scripts — dev14
+
+A identidade KPMG, o tema completo e o ICO permanecem. O primeiro acesso reutiliza SettingsEditor, validação junto ao campo e rolagem de formulários; trocar PT/EN/ES preserva valores. Salvar grava dados em segundo plano e impede fechar durante o commit; cancelar antes do commit não salva configuração. Importar exige prévia explícita dos novos caminhos e preserva a origem, sem copiar perfil/cookies.
+
+No perfil portable_gui, Diagnóstico exporta um XML desabilitado para revisão da TI, sem registrar/remover tarefas. Manutenção orienta remoção/substituição de arquivos e preservação dos dados. Não oferece instalador, atualização ou desinstalação de software. O painel mostra última verificação pontual e atividade, sem esperar heartbeat residente. Verificar novamente força consulta do driver com progresso/erro existentes. Fechar a GUI espera as operações de fundo já iniciadas e encerra; não inicia agente. O backend usa o Python original e permanece identificável pelo Windows.
+
+As regras históricas de wizard/instalação deste contrato aplicam-se somente ao perfil desktop preservado, não à distribuição vigente. Donos canônicos: SettingsEditor para formulários, Task para operações de fundo, portable.py para preparação/importação/tarefa, portable_driver.py para atualização, MainWindow para ações e estado. Não duplicar paleta, seletor, validador ou editor de rotinas.

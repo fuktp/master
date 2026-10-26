@@ -1,6 +1,6 @@
 [project]
 name = "orquestrador-desktop"
-version = "2.0.0.dev13"
+version = "2.0.0.dev14"
 requires-python = ">=3.12,<3.14"
 dependencies = [
   "PySide6==6.9.3", "selenium==4.36.0", "pandas==2.3.3",
@@ -22,14 +22,14 @@ dev = [
 [tool.ruff]
 target-version = "py312"
 line-length = 100
-include = ["orquestrador_app/**/*.py", "desktop_tests/**/*.py", "tools/**/*.py", "desktop_entry.py"]
+include = ["orquestrador_app/**/*.py", "desktop_tests/**/*.py", "tools/**/*.py", "desktop_entry.py", "caio_gui.py", "caio_jobs.py"]
 
 [tool.ruff.lint]
 select = ["E4", "E7", "E9", "F", "I"]
 
 [tool.mypy]
 python_version = "3.12"
-files = ["orquestrador_app", "desktop_entry.py"]
+files = ["orquestrador_app", "desktop_entry.py", "caio_gui.py", "caio_jobs.py"]
 follow_imports = "silent"
 ignore_missing_imports = true
 check_untyped_defs = true

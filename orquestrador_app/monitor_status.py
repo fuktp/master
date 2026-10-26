@@ -40,6 +40,35 @@ def monitor_state(
     now: dt.datetime | None = None,
 ) -> dict[str, Any]:
     now = now or dt.datetime.now(dt.timezone.utc)
+    if config.execution_profile == "portable_gui":
+        from .io import BusyError, Lock
+
+        try:
+            with Lock(paths.lock):
+                active = False
+        except BusyError:
+            active = True
+        check_file = paths.root / "state/scheduler-check.json"
+        check = read_json(check_file) if check_file.is_file() else {}
+        paused = config.scheduling_paused or paused_until(config.paused_until, now)
+        return {
+            "state": "active"
+            if active
+            else "paused"
+            if paused
+            else "installed"
+            if installed
+            else "configured",
+            "configured": True,
+            "installed": installed,
+            "active": active,
+            "paused": paused,
+            "communicating": False,
+            "last_seen": check.get("at", ""),
+            "unexpected_stop": False,
+            "error": task_error or check.get("error", ""),
+            "task_status_known": installed is not None,
+        }
     file = paths.root / "state/monitor-heartbeat.json"
     value: dict[str, Any] = {}
     try:

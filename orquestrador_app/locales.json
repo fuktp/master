@@ -4278,5 +4278,205 @@
   "Logs": [
     "Logs",
     "Registros"
+  ],
+  "Exportar tarefa para a TI…": [
+    "Export task for IT…",
+    "Exportar tarea para TI…"
+  ],
+  "Manutenção dos arquivos": [
+    "File maintenance",
+    "Mantenimiento de archivos"
+  ],
+  "Última verificação": [
+    "Last check",
+    "Última comprobación"
+  ],
+  "Agendamento sem monitor residente": [
+    "Scheduling without a resident monitor",
+    "Programación sin monitor residente"
+  ],
+  "Feche as execuções e a interface. A TI pode remover o atalho e a tarefa CAIO-Scripts, substituir ou excluir a pasta dos scripts. Preserve a pasta dos dados, que contém configuração, histórico, relatórios e perfil do navegador.": [
+    "Close running jobs and the interface. IT can remove the shortcut and CAIO-Scripts task, and replace or delete the scripts folder. Keep the data folder, which contains settings, history, reports and the browser profile.",
+    "Cierre las ejecuciones y la interfaz. TI puede quitar el acceso directo y la tarea CAIO-Scripts, y reemplazar o eliminar la carpeta de scripts. Conserve la carpeta de datos, que contiene configuración, historial, informes y el perfil del navegador."
+  ],
+  "A tarefa difere da configuração esperada. Confira os campos em Diagnóstico.": [
+    "The task differs from the expected configuration. Review the fields in Diagnostics.",
+    "La tarea difiere de la configuración esperada. Revise los campos en Diagnóstico."
+  ],
+  "Importar configuração e histórico…": [
+    "Import settings and history…",
+    "Importar configuración e historial…"
+  ],
+  "Preparar dados do CAIO": [
+    "Set up CAIO data",
+    "Preparar datos de CAIO"
+  ],
+  "Idioma": [
+    "Language",
+    "Idioma"
+  ],
+  "Selecionar origem da configuração": [
+    "Select settings source",
+    "Seleccionar origen de la configuración"
+  ],
+  "Selecionar pasta dos dados do CAIO": [
+    "Select CAIO data folder",
+    "Seleccionar carpeta de datos de CAIO"
+  ],
+  "Revisar importação": [
+    "Review import",
+    "Revisar importación"
+  ],
+  "Os originais serão preservados. Revise os novos destinos. O perfil do navegador não será copiado.": [
+    "Original files will be preserved. Review the new destinations. The browser profile will not be copied.",
+    "Se conservarán los originales. Revise los nuevos destinos. No se copiará el perfil del navegador."
+  ],
+  "A interface já está aberta para esta pasta de dados.": [
+    "The interface is already open for this data folder.",
+    "La interfaz ya está abierta para esta carpeta de datos."
+  ],
+  "Escolha e-mail e destinos. Esta etapa salva somente seus dados; não instala programas nem tarefas.": [
+    "Choose an email and destinations. This step only saves your data; it does not install programs or tasks.",
+    "Elija correo y destinos. Este paso solo guarda sus datos; no instala programas ni tareas."
+  ],
+  "Remover arquivos do CAIO…": [
+    "Remove CAIO files…",
+    "Quitar archivos de CAIO…"
+  ],
+  "Separe a pasta dos dados da pasta dos scripts.": [
+    "Keep the data folder separate from the scripts folder.",
+    "Separe la carpeta de datos de la carpeta de scripts."
+  ],
+  "Escolha uma pasta exclusiva para os dados do CAIO.": [
+    "Choose a dedicated folder for CAIO data.",
+    "Elija una carpeta exclusiva para los datos de CAIO."
+  ],
+  "Escolha uma origem diferente da pasta dos dados.": [
+    "Choose a source other than the data folder.",
+    "Elija un origen diferente de la carpeta de datos."
+  ],
+  "A pasta dos dados já está configurada.": [
+    "The data folder is already configured.",
+    "La carpeta de datos ya está configurada."
+  ],
+  "Perfil de execução inválido.": [
+    "Invalid execution profile.",
+    "Perfil de ejecución no válido."
+  ],
+  "Abra esta configuração pelo modo correspondente.": [
+    "Open these settings using the corresponding mode.",
+    "Abra esta configuración con el modo correspondiente."
+  ],
+  "Use o pythonw.exe original aprovado pela TI.": [
+    "Use the original pythonw.exe approved by IT.",
+    "Utilice el pythonw.exe original aprobado por TI."
+  ],
+  "Escolha um novo atalho .lnk.": [
+    "Choose a new .lnk shortcut.",
+    "Elija un nuevo acceso directo .lnk."
+  ],
+  "Use CPython 3.13.5 x64 e o pythonw.exe original aprovado pela TI.": [
+    "Use CPython 3.13.5 x64 and the original pythonw.exe approved by IT.",
+    "Utilice CPython 3.13.5 x64 y el pythonw.exe original aprobado por TI."
+  ],
+  "Importe os dados anteriores para uma nova pasta pelo primeiro acesso.": [
+    "Import previous data into a new folder during first use.",
+    "Importe los datos anteriores a una carpeta nueva durante el primer acceso."
+  ],
+  "Resposta de versão do EdgeDriver inválida.": [
+    "Invalid EdgeDriver version response.",
+    "Respuesta de versión de EdgeDriver no válida."
+  ],
+  "Origem do EdgeDriver não autorizada.": [
+    "EdgeDriver source is not authorized.",
+    "Origen de EdgeDriver no autorizado."
+  ],
+  "Download do EdgeDriver excede o limite permitido.": [
+    "EdgeDriver download exceeds the allowed limit.",
+    "La descarga de EdgeDriver supera el límite permitido."
+  ],
+  "A assinatura Microsoft precisa ser verificada no Windows.": [
+    "The Microsoft signature must be verified on Windows.",
+    "La firma de Microsoft debe verificarse en Windows."
+  ],
+  "Assinatura Microsoft do EdgeDriver não aprovada. Encaminhe o diagnóstico à TI.": [
+    "EdgeDriver Microsoft signature was not approved. Send the diagnostics to IT.",
+    "La firma de Microsoft de EdgeDriver no fue aprobada. Envíe el diagnóstico a TI."
+  ],
+  "ZIP do EdgeDriver excede o limite permitido.": [
+    "EdgeDriver ZIP exceeds the allowed limit.",
+    "El ZIP de EdgeDriver supera el límite permitido."
+  ],
+  "ZIP do EdgeDriver inválido.": [
+    "Invalid EdgeDriver ZIP.",
+    "ZIP de EdgeDriver no válido."
+  ],
+  "A versão assinada do EdgeDriver diverge do download solicitado.": [
+    "The signed EdgeDriver version differs from the requested download.",
+    "La versión firmada de EdgeDriver difiere de la descarga solicitada."
+  ],
+  "A versão executada do EdgeDriver diverge da versão assinada.": [
+    "The running EdgeDriver version differs from the signed version.",
+    "La versión ejecutada de EdgeDriver difiere de la versión firmada."
+  ],
+  "O WebDriver está bloqueado por política. Encaminhe o diagnóstico à TI.": [
+    "WebDriver is blocked by policy. Send the diagnostics to IT.",
+    "WebDriver está bloqueado por una política. Envíe el diagnóstico a TI."
+  ],
+  "Use o EdgeDriver gerenciado na pasta dos dados.": [
+    "Use the managed EdgeDriver in the data folder.",
+    "Utilice el EdgeDriver administrado en la carpeta de datos."
+  ],
+  "EdgeDriver ausente ou incompatível. Use Verificar novamente.": [
+    "EdgeDriver is missing or incompatible. Use Check again.",
+    "EdgeDriver no está disponible o es incompatible. Use Comprobar de nuevo."
+  ],
+  "Verificar novamente": [
+    "Check again",
+    "Comprobar de nuevo"
+  ],
+  "Estado da tarefa": [
+    "Task status",
+    "Estado de la tarea"
+  ],
+  "Última consulta ao Agendador": [
+    "Last Scheduler query",
+    "Última consulta al Programador"
+  ],
+  "Este modo mantém os dados isolados na pasta escolhida.": [
+    "This mode keeps data isolated in the selected folder.",
+    "Este modo mantiene los datos aislados en la carpeta elegida."
+  ],
+  "Não foi possível abrir a interface. Peça à TI para conferir o Python e as dependências aprovadas.": [
+    "Unable to open the interface. Ask IT to check Python and the approved dependencies.",
+    "No se pudo abrir la interfaz. Pida a TI que revise Python y las dependencias aprobadas."
+  ],
+  "A cópia do histórico excedeu dois minutos. Feche a origem e tente novamente.": [
+    "Copying history exceeded two minutes. Close the source and try again.",
+    "La copia del historial superó dos minutos. Cierre el origen y vuelva a intentarlo."
+  ],
+  "Use caio_gui.py ou caio_jobs.py para o modo por scripts.": [
+    "Use caio_gui.py or caio_jobs.py for scripts mode.",
+    "Utilice caio_gui.py o caio_jobs.py para el modo de scripts."
+  ],
+  "Atividade": [
+    "Activity",
+    "Actividad"
+  ],
+  "Arquivos e armazenamento": [
+    "Files and storage",
+    "Archivos y almacenamiento"
+  ],
+  "Agendamento por tarefa do Windows": [
+    "Scheduling through a Windows task",
+    "Programación mediante una tarea de Windows"
+  ],
+  "Conferir tarefas compara a tarefa com os scripts e dados atuais. Exportar cria um XML desabilitado para revisão da TI.": [
+    "Check tasks compares the task with the current scripts and data. Export creates a disabled XML for IT review.",
+    "Comprobar tareas compara la tarea con los scripts y datos actuales. Exportar crea un XML deshabilitado para revisión de TI."
+  ],
+  "O caminho dos scripts mudou. Peça à TI para revisar o atalho, a tarefa e a configuração.": [
+    "The scripts path has changed. Ask IT to review the shortcut, task and settings.",
+    "La ruta de los scripts cambió. Pida a TI que revise el acceso directo, la tarea y la configuración."
   ]
 }

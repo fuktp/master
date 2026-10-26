@@ -1,0 +1,65 @@
+{
+  "version": "2.0.0.dev14",
+  "created_utc": "2026-10-26T15:38:23.365550+00:00",
+  "status": "development_package_verified",
+  "windows_homologated": false,
+  "eligible_for_homologated_release": false,
+  "profile": "portable_gui",
+  "notes": "Graphical scripts on IT-approved CPython; Windows processes remain visible. No claim of corporate policy authorization.",
+  "tests": {
+    "passed": 300,
+    "subtests_passed": 7,
+    "skipped_windows": 1
+  },
+  "post_suite_validation": {
+    "portable_tests_passed": 21,
+    "reason": "Clear stale package_root when rebasing known extractor sources; covered by updated migration test and extracted artifact smoke."
+  },
+  "powershell_legacy_checks": 40,
+  "artifact": {
+    "artifact": "build/release-dev14/CAIO_Portatil_Scripts_2.0.0.dev14.zip",
+    "bytes": 352875,
+    "sha256": "93797d8b6b29c835f0090615b615c8ab054a6006320516f48885338e6d69c534",
+    "profile": "portable_gui",
+    "files": 62,
+    "source_matches_package": true,
+    "private_runtime": false,
+    "executable_payloads": [],
+    "extracted_health": {
+      "version": "2.0.0.dev14",
+      "health": "ok",
+      "profile": "portable_gui",
+      "ui_tabs": 6,
+      "extractors": 5,
+      "network_used": false,
+      "windows_executed": false
+    },
+    "extracted_worker": {
+      "status": "success",
+      "published": true,
+      "utf8_log": true,
+      "qt_loaded": false
+    },
+    "network_used": false,
+    "windows_homologated": false
+  },
+  "preserved_theme_icon_and_extractors": true,
+  "benchmark": "dev14-benchmark-linux.json",
+  "visual": "dev14-visual/capture.json",
+  "localization": {
+    "catalog_entries": 1120,
+    "owned_literals_checked": 338,
+    "errors": [],
+    "scope": "Owned Python captions and catalog placeholder parity; Qt/PowerShell runtime checks complement this audit. User data, technical JSON and external logs are not translated."
+  },
+  "criteria_pending": [
+    "TI evaluation in disposable Windows Server 2019/1809 Desktop Experience VM with equivalent policies",
+    "CPython 3.13.5 x64 and native dependencies approved by TI",
+    "Actual Microsoft download, TLS/proxy and Windows Authenticode chain",
+    "Scheduler one-shot task import, enable, execution and session behavior",
+    "Windows SSO/MFA/VPN and five extractors in isolated destinations",
+    "Real process names, window/shortcut/pinned/tray/notification icons",
+    "Windows DPI 100/125/150/200, keyboard, contrast and screen reader",
+    "Windows benchmark and data-preserving file removal"
+  ]
+}

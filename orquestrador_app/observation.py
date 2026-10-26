@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import codecs
+import datetime as dt
 import os
 import time
 from pathlib import Path
@@ -64,6 +65,7 @@ class Observer:
         self.paths = paths
         self.tail = LogTail()
         self.checked_at = 0.0
+        self.task_checked_at = ""
         self.installed: bool | None = None
         self.task_error = ""
         self.engine: Engine | None = None
@@ -80,8 +82,21 @@ class Observer:
         engine.config = config
         if os.name == "nt" and time.monotonic() - self.checked_at > 60:
             self.checked_at = time.monotonic()
+            self.task_checked_at = dt.datetime.now(dt.timezone.utc).isoformat()
             try:
-                self.installed = bool(WindowsTasks(self.paths).export())
+                if config.execution_profile == "portable_gui":
+                    from .portable import task_status
+
+                    report = task_status(self.paths)
+                    self.installed = report["installed"]
+                    if report["installed"] and not report["matches"]:
+                        raise RuntimeError(
+                            tr(
+                                "A tarefa difere da configuração esperada. Confira os campos em Diagnóstico."
+                            )
+                        )
+                else:
+                    self.installed = bool(WindowsTasks(self.paths).export())
                 self.task_error = ""
             except Exception as exc:
                 self.installed = None
@@ -89,7 +104,7 @@ class Observer:
         from .notifications import claim
 
         notifications = claim(engine.store)
-        result = {
+        result: dict[str, Any] = {
             "config": config,
             "rows": engine.panel(),
             "monitor": monitor_state(
@@ -100,6 +115,7 @@ class Observer:
                 Path(config.logs) / (log_run + ".process.log") if log_run else None
             ),
         }
+        result["monitor"]["task_checked_at"] = self.task_checked_at
         if history is not None:
             result["history"] = engine.store.history_page(**history)
         if backups:

@@ -35,6 +35,7 @@ from .io import BusyError, Lock, read_json, sanitize
 from .paths import Paths
 from .processes import command, spawn
 from .qt_tasks import Task
+from .resources import source_root
 from .runtime import decode_log_bytes
 from .store import Store
 from .ui import FlowLayout, configure_table, set_cell
@@ -98,7 +99,7 @@ def collect(paths: Paths, selected_log: str = "") -> dict[str, Any]:
 
     monitor = monitor_state(paths, config)
     heartbeat = paths.root / "state/monitor-heartbeat.json"
-    if heartbeat.is_file():
+    if config.execution_profile != "portable_gui" and heartbeat.is_file():
         identity_record = read_json(heartbeat)
         try:
             process = psutil.Process(identity_record["pid"])
@@ -148,7 +149,8 @@ def collect(paths: Paths, selected_log: str = "") -> dict[str, Any]:
             "version": VERSION,
             "edition": "teste isolado" if config.test_mode else "desenvolvimento em código",
             "os": platform.platform(),
-            "python_private": sys.version,
+            "python_runtime": sys.version,
+            "execution_profile": config.execution_profile,
             "frozen": bool(getattr(sys, "frozen", False)),
             "executable": sys.executable,
             "data_root": str(paths.root),
@@ -168,7 +170,15 @@ def collect(paths: Paths, selected_log: str = "") -> dict[str, Any]:
         "events": events,
         "logs": logs,
         "log_text": text,
-        "versions": history(paths),
+        "versions": [
+            {
+                "version": VERSION,
+                "profile": config.execution_profile,
+                "code_root": str(source_root()),
+            }
+        ]
+        if config.execution_profile == "portable_gui"
+        else history(paths),
     }
 
 

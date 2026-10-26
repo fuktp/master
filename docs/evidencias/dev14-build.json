@@ -1,0 +1,11 @@
+{
+  "artifact": "build/release-dev14/CAIO_Portatil_Scripts_2.0.0.dev14.zip",
+  "bytes": 352875,
+  "sha256": "93797d8b6b29c835f0090615b615c8ab054a6006320516f48885338e6d69c534",
+  "files": 62,
+  "profile": "portable_gui",
+  "private_runtime": false,
+  "executable_payloads": [],
+  "source_matches_package": true,
+  "windows_homologated": false
+}

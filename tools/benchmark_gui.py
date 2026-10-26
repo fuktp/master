@@ -17,6 +17,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--portable", action="store_true")
     args = parser.parse_args()
     started = time.perf_counter()
     if sys.platform != "win32":
@@ -35,7 +36,12 @@ def main() -> None:
     with tempfile.TemporaryDirectory(prefix="orquestrador-benchmark-") as temporary:
         paths = Paths.user(temporary)
         paths.ensure()
-        save(paths, defaults(paths, source_root()))
+        if args.portable:
+            from orquestrador_app.portable import prepare
+
+            save(paths, prepare(paths))
+        else:
+            save(paths, defaults(paths, source_root()))
         window = MainWindow(paths)
         window.show()
         app.processEvents()
@@ -75,6 +81,7 @@ def main() -> None:
         timer.stop()
         record = {
             "version": VERSION,
+            "profile": "portable_gui" if args.portable else "desktop",
             "environment": platform.platform(),
             "idle_cpu_percent_one_core": 100
             * (time.process_time() - cpu_started)

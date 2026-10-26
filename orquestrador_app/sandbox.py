@@ -69,7 +69,14 @@ def confined(paths: Paths, value: str | Path, label: str) -> Path:
 def validate_isolation(paths: Paths, config: Config) -> None:
     if not config.test_mode:
         raise ValueError("Esta edição executa somente configurações de teste isoladas.")
-    if Path(config.install_root).resolve() != (paths.root / "app").resolve():
+    expected_code = (
+        source_root() if config.execution_profile == "portable_gui" else paths.root / "app"
+    )
+    if Path(config.install_root).resolve() != expected_code.resolve():
+        if config.execution_profile == "portable_gui":
+            raise ValueError(
+                "O caminho dos scripts mudou. Peça à TI para revisar o atalho, a tarefa e a configuração."
+            )
         raise ValueError("O aplicativo de teste deve ficar em app na pasta escolhida no wizard.")
     for key in ("profile", "driver", "downloads", "logs"):
         confined(paths, getattr(config, key), key)
@@ -106,7 +113,9 @@ def prepare_config(paths: Paths, source: Config | None = None) -> Config:
     config.test_mode = True
     config.install_schedules = False
     config.scheduling_paused = True
-    config.install_root = str(paths.root / "app")
+    config.install_root = str(
+        source_root() if config.execution_profile == "portable_gui" else paths.root / "app"
+    )
     config.profile = str(paths.root / "profiles/Edge-Teste")
     config.driver = str(paths.root / "cache/driver/msedgedriver.exe")
     config.driver_options = {

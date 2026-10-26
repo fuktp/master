@@ -121,6 +121,7 @@ class Routine:
 
 @dataclass
 class Config:
+    execution_profile: str = "desktop"
     language: str = "pt-BR"
     queue_delay_seconds: int = 30
     schema_version: int = 2
@@ -208,6 +209,11 @@ def ordered(config: Config) -> list[Routine]:
 
 
 def validate(config: Config) -> None:
+    if config.execution_profile not in {"desktop", "portable_gui"}:
+        raise ValueError("Perfil de execução inválido.")
+    if config.execution_profile == "portable_gui" and not config.test_mode:
+        raise ValueError("Este modo mantém os dados isolados na pasta escolhida.")
+
     def timestamp(value: str) -> None:
         if value and dt.datetime.fromisoformat(value).tzinfo is None:
             raise ValueError("Pausa temporária precisa incluir fuso horário.")
@@ -468,6 +474,7 @@ def portable(config: Config) -> Json:
         "vpn_interfaces",
         "test_mode",
         "install_schedules",
+        "execution_profile",
     ):
         data.pop(key, None)
     for job in data["routines"]:

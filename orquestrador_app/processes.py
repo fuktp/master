@@ -12,6 +12,28 @@ import psutil
 
 
 def command(*arguments: str) -> list[str]:
+    profile = os.environ.get("CAIO_EXECUTION_PROFILE", "desktop")
+    if "--data-root" in arguments:
+        from .config import load
+        from .paths import Paths
+
+        index = arguments.index("--data-root")
+        if index + 1 < len(arguments):
+            paths = Paths.user(arguments[index + 1])
+            if paths.config.is_file():
+                profile = load(paths).execution_profile
+    if profile == "portable_gui":
+        from .resources import source_root
+
+        entry = (
+            "caio_jobs.py"
+            if any(
+                flag in arguments
+                for flag in ("--worker", "--tick", "--health-check", "--export-task", "--shortcut")
+            )
+            else "caio_gui.py"
+        )
+        return [sys.executable, "-B", str(source_root() / entry), *arguments]
     if getattr(sys, "frozen", False):
         return [sys.executable, *arguments]
     host = sys.executable

@@ -1219,9 +1219,10 @@ class MainWindow(QMainWindow):
         translate_tree(self)
         from .windows_identity import set_process_identity, set_window_identity
 
-        set_process_identity(paths)
-        if isinstance(app, QApplication) and app.platformName() == "windows":
-            set_window_identity(self, paths)
+        if self.config.execution_profile != "portable_gui":
+            set_process_identity(paths)
+            if isinstance(app, QApplication) and app.platformName() == "windows":
+                set_window_identity(self, paths)
 
     def show_page(self, index: int) -> None:
         if getattr(self, "_navigation_guard", False):
@@ -1260,7 +1261,13 @@ class MainWindow(QMainWindow):
         layout.setSpacing(12)
         summary = QHBoxLayout()
         self.summary_values: list[QLabel] = []
-        for text in ("Rotinas habilitadas", "Agendamento", "Estado do monitor"):
+        for text in (
+            "Rotinas habilitadas",
+            "Agendamento",
+            "Estado da tarefa"
+            if self.config.execution_profile == "portable_gui"
+            else "Estado do monitor",
+        ):
             card = QFrame()
             card.setProperty("role", "summary")
             card_layout = QVBoxLayout(card)
@@ -1362,9 +1369,14 @@ class MainWindow(QMainWindow):
             tr("Atividade do aplicativo: operações, avisos e logs aparecem aqui.")
         )
         self.log.setMinimumHeight(70)
-        self.log.setAccessibleName(tr("Atividade da instalação"))
+        activity_label = (
+            "Atividade"
+            if self.config.execution_profile == "portable_gui"
+            else "Atividade da instalação"
+        )
+        self.log.setAccessibleName(tr(activity_label))
         self.log.document().setMaximumBlockCount(800)
-        self.activity_layout.addWidget(explain("Atividade da instalação"))
+        self.activity_layout.addWidget(explain(activity_label))
         log_controls = QHBoxLayout()
         self.follow_log = QCheckBox(tr("Acompanhar novas linhas"))
         self.follow_log.setChecked(True)
@@ -1660,22 +1672,28 @@ class MainWindow(QMainWindow):
             actions,
         )
         button(
-            "Reparar EdgeDriver",
+            "Verificar novamente"
+            if self.config.execution_profile == "portable_gui"
+            else "Reparar EdgeDriver",
             lambda: self.driver_operation(True),
             actions,
         )
         button("Testar conectividade", self.connectivity, actions)
         layout.addLayout(actions)
-        layout = section("Agendador e monitor")
+        layout = section(
+            "Agendamento"
+            if self.config.execution_profile == "portable_gui"
+            else "Agendador e monitor"
+        )
         tasks = FlowLayout()
         button("Conferir tarefas", self.task_diff, tasks)
-        button("Instalar/atualizar tarefa", self.install_task, tasks)
-        button(
-            "Remover tarefa própria",
-            lambda: self.manage_task(False),
-            tasks,
-            intent="danger",
-        )
+        if self.config.execution_profile == "portable_gui":
+            button("Exportar tarefa para a TI…", self.export_portable_task, tasks)
+        else:
+            button("Instalar/atualizar tarefa", self.install_task, tasks)
+            button(
+                "Remover tarefa própria", lambda: self.manage_task(False), tasks, intent="danger"
+            )
         layout.addLayout(tasks)
         self.tasks_view = QTableWidget(0, 4)
         self.tasks_view.setHorizontalHeaderLabels(["Campo", "No Windows", "Esperado", "Resultado"])
@@ -1685,7 +1703,9 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.tasks_view)
         layout.addWidget(
             explain(
-                "Conferir tarefas compara o monitor registrado com esta instalação. A lista abaixo contém backups de relatórios, não resultados do diagnóstico."
+                "Conferir tarefas compara a tarefa com os scripts e dados atuais. Exportar cria um XML desabilitado para revisão da TI."
+                if self.config.execution_profile == "portable_gui"
+                else "Conferir tarefas compara o monitor registrado com esta instalação. A lista abaixo contém backups de relatórios, não resultados do diagnóstico."
             )
         )
         layout.addWidget(
@@ -1716,9 +1736,14 @@ class MainWindow(QMainWindow):
         button("Validar selecionado", self.validate_backup, controls)
         button("Restaurar selecionado", self.restore_backup, controls)
         layout.addLayout(controls)
-        layout = section("Versões do aplicativo e armazenamento")
+        layout = section(
+            "Arquivos e armazenamento"
+            if self.config.execution_profile == "portable_gui"
+            else "Versões do aplicativo e armazenamento"
+        )
         controls = FlowLayout()
-        button("Backup do aplicativo", self.backup_application, controls)
+        if self.config.execution_profile != "portable_gui":
+            button("Backup do aplicativo", self.backup_application, controls)
         button("Ocupação e limpeza…", self.storage_review, controls)
         button(
             "Resultado da recuperação",
@@ -1731,10 +1756,13 @@ class MainWindow(QMainWindow):
             controls,
         )
         button("Arquivos rejeitados…", self.rejected_files, controls)
-        button("Reverter atualização…", self.rollback_application, controls)
+        if self.config.execution_profile != "portable_gui":
+            button("Reverter atualização…", self.rollback_application, controls)
         layout.addLayout(controls)
         button(
-            "Desinstalar CAIO e preservar dados…",
+            "Remover arquivos do CAIO…"
+            if self.config.execution_profile == "portable_gui"
+            else "Desinstalar CAIO e preservar dados…",
             self.uninstall,
             layout,
             intent="danger",
@@ -1806,6 +1834,39 @@ class MainWindow(QMainWindow):
         dialog.show()
 
     def render_monitor(self, value: dict[str, Any]) -> None:
+        if self.config.execution_profile == "portable_gui":
+            from .i18n import display_value
+
+            self.summary_values[2].setText(
+                tr(
+                    "Processo ativo"
+                    if value["active"]
+                    else "Tarefa instalada"
+                    if value["installed"]
+                    else "Não verificado"
+                    if value["installed"] is None
+                    else "Não configurado"
+                )
+            )
+            self.summary_values[1].setText(tr("Pausado" if value["paused"] else "Ativo"))
+            self.monitor_status_label.setText(
+                tr("Agendamento sem monitor residente")
+                + " · "
+                + tr("Última verificação")
+                + ": "
+                + (display_value(value["last_seen"]) if value["last_seen"] else tr("Nunca"))
+                + " · "
+                + tr("Última consulta ao Agendador")
+                + ": "
+                + (
+                    display_value(value["task_checked_at"])
+                    if value.get("task_checked_at")
+                    else tr("Não verificado")
+                )
+            )
+            if value.get("error"):
+                self.set_status(tr(value["error"]), "warning")
+            return
         from .i18n import display_value
 
         labels = {
@@ -2566,6 +2627,10 @@ class MainWindow(QMainWindow):
     def driver_operation(self, repair: bool) -> None:
         def operation() -> Any:
             with Lock(self.paths.lock):
+                if self.config.execution_profile == "portable_gui":
+                    from .portable_driver import check
+
+                    return check(self.paths, load(self.paths), repair=repair, force=repair)
                 return diagnose(self.paths, load(self.paths), repair=repair)
 
         self.background(operation)
@@ -2762,6 +2827,11 @@ class MainWindow(QMainWindow):
         self.settings_error.clear()
 
     def write_config(self, config: Config, *, editing: bool = False) -> None:
+        if (
+            self.config.execution_profile == "portable_gui"
+            and config.execution_profile != "portable_gui"
+        ):
+            raise ValueError(tr("Perfil de execução inválido."))
         if self.config.test_mode and not config.test_mode:
             raise ValueError("O modo de teste isolado não pode ser desativado nesta instalação.")
         if self.settings_dirty() and not editing:
@@ -3123,7 +3193,23 @@ class MainWindow(QMainWindow):
         except Exception as exc:
             self.set_status(str(exc), "error")
 
+    def portable_maintenance(self) -> None:
+        QMessageBox.information(
+            self,
+            tr("Manutenção dos arquivos"),
+            tr(
+                "Feche as execuções e a interface. A TI pode remover o atalho e a tarefa CAIO-Scripts, substituir ou excluir a pasta dos scripts. Preserve a pasta dos dados, que contém configuração, histórico, relatórios e perfil do navegador."
+            )
+            + "\n\n"
+            + str(source_root())
+            + "\n"
+            + str(self.paths.root),
+        )
+
     def installation(self) -> None:
+        if self.config.execution_profile == "portable_gui":
+            self.portable_maintenance()
+            return
         if self.task and self.task.isRunning():
             self.task_error("Encerre a execução antes de atualizar o aplicativo.")
             return
@@ -3192,7 +3278,21 @@ class MainWindow(QMainWindow):
         current = read_json(pointer)
         return Path(current.get("launcher", current["executable"]))
 
+    def export_portable_task(self) -> None:
+        from .portable import export_task
+
+        file, _ = QFileDialog.getSaveFileName(
+            self, tr("Exportar tarefa para a TI…"), "CAIO-Scripts.xml", "XML (*.xml)"
+        )
+        if file:
+            self.background(lambda: export_task(self.paths, Path(file)))
+
     def task_diff(self) -> None:
+        if self.config.execution_profile == "portable_gui":
+            from .portable import task_status
+
+            self.background(lambda: task_status(self.paths))
+            return
         try:
             executable = self.installed_executable()
             self.background(
@@ -3205,6 +3305,10 @@ class MainWindow(QMainWindow):
         self.manage_task(True)
 
     def manage_task(self, install: bool) -> None:
+        if self.config.execution_profile == "portable_gui":
+            self.export_portable_task()
+            return
+
         def operation() -> Any:
             tasks = WindowsTasks(self.paths)
             executable = self.installed_executable()
@@ -3315,6 +3419,10 @@ class MainWindow(QMainWindow):
                 set_cell(self.tasks_view, row, column, content)
 
     def backup_application(self) -> None:
+        if self.config.execution_profile == "portable_gui":
+            self.portable_maintenance()
+            return
+
         def backup() -> Any:
             with Lock(self.paths.lock):
                 folder = (
@@ -3329,6 +3437,9 @@ class MainWindow(QMainWindow):
         self.background(backup)
 
     def rollback_application(self) -> None:
+        if self.config.execution_profile == "portable_gui":
+            self.portable_maintenance()
+            return
         folder = QFileDialog.getExistingDirectory(
             self,
             tr("Selecionar backup de aplicativo"),
@@ -3356,6 +3467,9 @@ class MainWindow(QMainWindow):
                 self.background(lambda: Installer(self.paths).rollback(Path(folder)))
 
     def uninstall(self) -> None:
+        if self.config.execution_profile == "portable_gui":
+            self.portable_maintenance()
+            return
         if not self.confirm_settings_navigation():
             return
         if self.task and self.task.isRunning():
@@ -3560,7 +3674,9 @@ class MainWindow(QMainWindow):
                 + tr("pausado" if self.config.scheduling_paused else "ativo")
                 + " • "
                 + tr(
-                    "Monitor configurado"
+                    "Agendamento por tarefa do Windows"
+                    if self.config.execution_profile == "portable_gui"
+                    else "Monitor configurado"
                     if self.config.install_schedules
                     else "Sem monitor: instale a tarefa para executar horários automaticamente"
                 )
@@ -3648,8 +3764,11 @@ class MainWindow(QMainWindow):
         if self.isVisible() and self.settings_dirty() and not self.confirm_settings_navigation():
             event.ignore()
             return
+        if self.config.execution_profile == "portable_gui" and not self.exit_requested:
+            self.exit_requested = True
         if self.exit_requested:
             self.timer.stop()
+            self.dev_panel.timer.stop()
             active = [task for task in self.findChildren(QThread) if task.isRunning()]
             if active:
                 for task in active:

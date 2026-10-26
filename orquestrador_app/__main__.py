@@ -152,6 +152,14 @@ def main(argv: list[str] | None = None) -> int:
         and not load(paths).test_mode
     ):
         raise ValueError("A edição de teste não abre configurações da instalação original.")
+    if paths.config.is_file() and load(paths).execution_profile == "portable_gui":
+        os.environ["CAIO_EXECUTION_PROFILE"] = "portable_gui"
+        if args.agent or args.uninstall or args.command == "configure-schedules":
+            raise ValueError("Use caio_gui.py ou caio_jobs.py para o modo por scripts.")
+        if not args.worker and not args.scheduled and args.command is None:
+            from .portable import main as portable_main
+
+            return portable_main(graphical=True, argv=["--data-root", str(paths.root)])
     paths.ensure()
     configure_logging(paths)
     from .runtime import capture_windowed_streams
